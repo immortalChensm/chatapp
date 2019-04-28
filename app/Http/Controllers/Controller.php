@@ -48,7 +48,7 @@ class Controller extends BaseController
             if ($result['error'] == 0){
                 $fileKeyName = "other/".$file->getNameWithExtension();
                 $localFileSrc = config("upload")['attachedDir']."/".$file->getNameWithExtension();
-                $videoImageSrc = $this->videoCoverResolve($fileKeyName,$localFileSrc);
+                //$videoImageSrc = $this->videoCoverResolve($fileKeyName,$localFileSrc);
                 $cosUpload = $this->uploadCosFile([
                     'fileKeyName'=>$fileKeyName,
                     'file'=>$localFileSrc

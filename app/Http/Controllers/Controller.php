@@ -85,13 +85,15 @@ class Controller extends BaseController
 
     }
 
-    function videoCoverResolve($result,$localFileSrc):string
+    private function videoCoverResolve($fileKeyName,$localFileSrc)
     {
-        if (preg_match('/\.mp4|\.avi/',$result['fileKeyName'])){
+
+        if (preg_match('/\.mp4|\.avi/',$fileKeyName)){
             $imageFileSrc = config("upload")['attachedDir']."/".date("YmdHis").".png";
             $this->getVideoImage($localFileSrc,$imageFileSrc);
             return $imageFileSrc;
         }
+        return null;
 
     }
 

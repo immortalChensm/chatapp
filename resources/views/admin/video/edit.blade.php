@@ -123,14 +123,14 @@
             function store(){
                 $.ajax({
                     type: 'POST',
-                    url: "{{url('admin/musics/save')}}",
+                    url: "{{url('admin/videos/save')}}",
                     dataType: 'json',
                     data: $('#postForm').serializeArray(),
                     success: function(data){
                         if (data.code == 1){
                             layer.msg(data.message);
                            setTimeout(function () {
-                               window.location = "{{url('admin/musics')}}";
+                               window.location = "{{url('admin/videos')}}";
                            },2000);
 
                         }else if(data.code ==100)

@@ -48,6 +48,7 @@ class Controller extends BaseController
             if ($result['error'] == 0){
                 $fileKeyName = "other/".$file->getNameWithExtension();
                 $localFileSrc = config("upload")['attachedDir']."/".$file->getNameWithExtension();
+                $videoImageSrc = $this->videoCoverResolve($fileKeyName,$localFileSrc);
                 $cosUpload = $this->uploadCosFile([
                     'fileKeyName'=>$fileKeyName,
                     'file'=>$localFileSrc
@@ -77,7 +78,20 @@ class Controller extends BaseController
               'message'=>$file->getErrors()
             ];
         }
+        if (!empty($videoImageSrc)){
+            $result['videoImageSrc'] = $videoImageSrc;
+        }
         return $result;
+
+    }
+
+    function videoCoverResolve($result,$localFileSrc):string
+    {
+        if (preg_match('/\.mp4|\.avi/',$result['fileKeyName'])){
+            $imageFileSrc = config("upload")['attachedDir']."/".date("YmdHis").".png";
+            $this->getVideoImage($localFileSrc,$imageFileSrc);
+            return $imageFileSrc;
+        }
 
     }
 
@@ -157,6 +171,29 @@ class Controller extends BaseController
     }
 
     /**
+     * 下载存储上的文件并保存
+     * @param $key
+     * @param $localPath
+     * @return array
+     */
+    function downloadCosFileSavelocal($key,$localPath)
+    {
+        try {
+                 $localPath = @$localPath;
+                 $result = $this->getCosClient()->getObject([
+                        'Bucket' => config("cos")['bucket'],
+                        'Key' => $key,
+                        'SaveAs' => $localPath]
+                 );
+                 $result = ['code'=>1,'data'=>$localPath];
+            } catch (\Exception $e) {
+                    // 请求失败
+                 $result = ['code'=>0,'data'=>$e];
+           }
+            return $result;
+    }
+
+    /**
      * 屏蔽或限制分享
      * @param Model $model
      * @return array
@@ -227,6 +264,24 @@ class Controller extends BaseController
     {
         ($dom=new Dom())->load($html);
         return $dom;
+    }
+
+    /**
+     * 获取视频图片
+     * @param $sourceFile 视频文件
+     * @param $coverFileName  图片文件
+     */
+    function getVideoImage($sourceFile,$coverFileName)
+    {
+        $ffmpeg = \FFMpeg\FFMpeg::create(array(
+            'ffmpeg.binaries'  => '/usr/local/bin/ffmpeg',
+            'ffprobe.binaries' => '/usr/local/bin/ffprobe',
+            'timeout'          => 3600, // The timeout for the underlying process
+            'ffmpeg.threads'   => 12,   // The number of threads that FFMpeg should use
+        ));
+        $video = $ffmpeg->open($sourceFile);
+        $frame = $video->frame(\FFMpeg\Coordinate\TimeCode::fromSeconds(5));
+        $frame->save($coverFileName);
     }
 
 }

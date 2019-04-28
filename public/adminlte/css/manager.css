@@ -1,0 +1,20 @@
+.input-box
+{
+    width:200px;
+    float:left;
+}
+
+.search-box{
+    float:right;
+    width:100px;
+    margin-right:0px;
+}
+
+.addBtn{
+    position:absolute;
+    right:0;
+}
+
+.edit-box{
+    width:220px;
+}

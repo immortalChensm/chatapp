@@ -48,11 +48,12 @@ class Controller extends BaseController
             if ($result['error'] == 0){
                 $fileKeyName = "other/".$file->getNameWithExtension();
                 $localFileSrc = config("upload")['attachedDir']."/".$file->getNameWithExtension();
-                $videoImageSrc = $this->videoCoverResolve($fileKeyName,$localFileSrc);
+
                 $cosUpload = $this->uploadCosFile([
                     'fileKeyName'=>$fileKeyName,
                     'file'=>$localFileSrc
                 ]);
+                $videoImageSrc = $this->videoCoverResolve($fileKeyName,$localFileSrc);
                 if ($cosUpload['code']==1){
                     //删除本地的文件，获取存储桶上的文件uri
                     if ($this->getFileSystem()->exists($localFileSrc))$this->getFileSystem()->delete($localFileSrc);

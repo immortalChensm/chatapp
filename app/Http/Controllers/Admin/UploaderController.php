@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Filesystem\Filesystem;
-use Illuminate\Http\Request;
+use App\Cosjs\Qcloud;
 use App\Http\Controllers\Controller;
-
 class UploaderController extends Controller
 {
     function uploadFile()
@@ -20,4 +18,18 @@ class UploaderController extends Controller
         }
 
     }
+
+    /**
+     * js临时key
+     */
+    function jsUploadTempKeys()
+    {
+        $tempKeys = (new Qcloud())->getTempKeys(config("cos")['jsConfig']);
+        return response($tempKeys,200,[
+            'Access-Control-Allow-Origin'=>'*',
+            'Access-Control-Allow-Headers'=>'origin,accept,content-type'
+        ]);
+    }
+
+
 }

@@ -31,3 +31,4 @@ function deleteCosFile($data)
     }
     return $result;
 }
+

@@ -116,11 +116,11 @@
                         "targets": 10,
                         "render": function ( data, type, row, meta ) {
 
-                            var BtnHtml = "<button type='button' class='btn  btn-success btn-sm update' data='"+row.musicId+"'>修改</button>";
-                            BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm delete' data='"+row.musicId+"' data-name='"+row.title+"' data-user='"+row.userType+"'>移除</button>";
-                            BtnHtml+= "  <button type='button' class='fa fa-eye btn  btn-danger btn-sm isShow' data='"+row.musicId+"' data-title='"+row.title+"' data-user='"+row.userType+"'>屏蔽</button>";
-                            BtnHtml+= "  <button type='button' class='fa fa-share btn  btn-danger btn-sm disableShare' data='"+row.musicId+"' data-title='"+row.title+"' data-user='"+row.userType+"'>分享</button>";
-                            BtnHtml+= "  <button type='button' class='fa fa-music btn  success btn-sm playMusic' data='"+row.musicId+"' data-title='"+row.title+"'>播放</button>";
+                            var BtnHtml = "<button type='button' class='btn  btn-success btn-sm update' data='"+row.videoId+"'>修改</button>";
+                            BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm delete' data='"+row.videoId+"' data-name='"+row.title+"' data-user='"+row.userType+"'>移除</button>";
+                            BtnHtml+= "  <button type='button' class='fa fa-eye btn  btn-danger btn-sm isShow' data='"+row.videoId+"' data-title='"+row.title+"' data-user='"+row.userType+"'>屏蔽</button>";
+                            BtnHtml+= "  <button type='button' class='fa fa-share btn  btn-danger btn-sm disableShare' data='"+row.videoId+"' data-title='"+row.title+"' data-user='"+row.userType+"'>分享</button>";
+                            BtnHtml+= "  <button type='button' class='fa fa-music btn  success btn-sm play' data='"+row.videoId+"' data-title='"+row.title+"'>播放</button>";
                             return BtnHtml;
                         }
                     } ],
@@ -128,7 +128,7 @@
                     language:dataGridlanguage,
                     serverSide: true,
                     ajax: {
-                        //url: '/admin/get/musics',
+                        url: '/admin/get/videos',
                         type: 'GET'
                     },
                     "searching": false,
@@ -147,7 +147,7 @@
 
             //编辑操作
             $("#datagrid").on("click",".update",function (e) {
-               location.href = "/admin/musics/edit/"+$(this).attr("data");
+               location.href = "/admin/videos/edit/"+$(this).attr("data");
             });
 
             //移除操作
@@ -156,16 +156,16 @@
                 var title = $(":input[name=title]").val();
 
                 if ($(this).attr("data-user")!=2){
-                    layer.msg("该音乐为用户发布的内容禁止操作！");
+                    layer.msg("该视频为用户发布的内容禁止操作！");
                     return false;
                 }
                 var dataid = $(this).attr("data");
-                layer.confirm('您确定要删除('+$(this).attr("data-name")+")这首音乐吗？", {
+                layer.confirm('您确定要删除('+$(this).attr("data-name")+")这个视频吗？", {
                     btn: ['确认','取消'] //按钮
                 }, function(){
                     $.ajax({
                         type: "delete",
-                        url: "{{url('/admin/musics/remove/')}}/"+dataid,
+                        url: "{{url('/admin/videos/remove/')}}/"+dataid,
                         dataType: 'json',
                         data: {
                             "_token":"{{csrf_token()}}"
@@ -191,7 +191,7 @@
             });
 
             function refreshData(data) {
-                window.tableGrid.ajax.url( '/admin/get/musics?title='+data.title+"&singer="+data.singer).load();
+                window.tableGrid.ajax.url( '/admin/get/videos?title='+data.title).load();
             }
 
             //屏蔽操作
@@ -199,11 +199,10 @@
                 var dateId = $(this).attr("data");
                 var type=1;
                 var title = $(":input[name=title]").val();
-                var singer = $(":input[name=singer]").val();
                 if ($(this).hasClass("disableShare"))type=2;
                 $.ajax({
                     type: "put",
-                    url: "{{url('/admin/musics/shieldOrShare/')}}/" + dateId,
+                    url: "{{url('/admin/videos/shieldOrShare/')}}/" + dateId,
                     dataType: 'json',
                     data: {
                         "_token": "{{csrf_token()}}",
@@ -213,7 +212,7 @@
                         if (data.code == 1) {
                             layer.msg(data.message);
                             setTimeout(function () {
-                                refreshData({'title':title,'singer':singer});
+                                refreshData({'title':title});
                             }, 2000);
                         } else {
                             layer.msg(data.message);
@@ -225,25 +224,31 @@
                 });
             });
 
-            //playMusic
-            $("#datagrid").on("click",".playMusic",function (e) {
+            //play
+            $("#datagrid").on("click",".play",function (e) {
                 var dateId = $(this).attr("data");
-                if ($("body").find("audio").attr("src")){
-                    $("body").find("audio").attr("src","");
+                if ($("body").find("video").attr("src")){
+                    $("body").find("video").attr("src","");
                     $("body").find("audio").hide();
                     return false;
                 }
                 $.ajax({
                     type: "put",
-                    url: "{{url('/admin/musics/play/')}}/" + dateId,
+                    url: "{{url('/admin/videos/play/')}}/" + dateId,
                     dataType: 'json',
                     data: {
                         "_token": "{{csrf_token()}}",
                     },
                     success: function (data) {
                         if (data.code == 1) {
-                            $("body").find("audio").attr("src",data.message);
+                            //$("body").find("audio").attr("src",data.message);
                             //$("body").find("audio").show();
+                            layer.open({
+                                type: 1,
+                                skin: 'layui-layer-rim', //加上边框
+                                area: ['1000px', '650px'], //宽高
+                                content: "<video src='"+data.message+"' autoplay controls width='900px' height='450px'></video>"
+                            });
                         } else {
                             layer.msg(data.message);
                         }

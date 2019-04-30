@@ -52,6 +52,7 @@
                 </ul>
             </li>
 
+
             <li class="treeview @if(preg_match('/articles|tags/',request()->url())) active @endif">
                 <a href="#">
                     <i class="fa fa-book"></i> <span>文章管理</span>
@@ -113,7 +114,7 @@
                 </ul>
             </li>
 
-            <li class="treeview">
+            <li class="treeview @if(preg_match('/users/',request()->url())) active @endif">
                 <a href="#">
                     <i class="fa fa-user"></i> <span>用户管理</span>
                     <span class="pull-right-container">
@@ -121,7 +122,7 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li ><a href="{{url("admin/managers")}}"><i class="fa fa-circle-o"></i> 用户列表</a></li>
+                    <li @if(preg_match('/users/',request()->url())) class="active" @endif><a href="{{url("admin/users")}}"><i class="fa fa-circle-o"></i> 用户列表</a></li>
                 </ul>
             </li>
 

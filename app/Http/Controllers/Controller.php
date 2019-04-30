@@ -48,12 +48,11 @@ class Controller extends BaseController
             if ($result['error'] == 0){
                 $fileKeyName = "other/".$file->getNameWithExtension();
                 $localFileSrc = config("upload")['attachedDir']."/".$file->getNameWithExtension();
-
                 $cosUpload = $this->uploadCosFile([
                     'fileKeyName'=>$fileKeyName,
                     'file'=>$localFileSrc
                 ]);
-                $videoImageSrc = $this->videoCoverResolve($fileKeyName,$localFileSrc);
+                //$videoImageSrc = $this->videoCoverResolve($fileKeyName,$localFileSrc);
                 if ($cosUpload['code']==1){
                     //删除本地的文件，获取存储桶上的文件uri
                     if ($this->getFileSystem()->exists($localFileSrc))$this->getFileSystem()->delete($localFileSrc);
@@ -285,6 +284,15 @@ class Controller extends BaseController
         $video = $ffmpeg->open($sourceFile);
         $frame = $video->frame(\FFMpeg\Coordinate\TimeCode::fromSeconds(5));
         $frame->save($coverFileName);
+    }
+
+    function playModel(Model $model)
+    {
+        $uri = $this->downloadCosFile([
+            'fileKeyName'=>$model['uriKey'],
+            'expire'=>config('cos')['expire']
+        ])['data'];
+        return $uri?['code'=>1,'message'=>$uri]:['code'=>0,'message'=>'链接失效请重试'];
     }
 
 }

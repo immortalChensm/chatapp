@@ -119,12 +119,8 @@ class MusicsController extends Controller
         return $this->modelShieldOrShare($musics);
     }
 
-    function playMusic(Musics $musics)
+    function play(Musics $musics)
     {
-        $uri = $this->downloadCosFile([
-            'fileKeyName'=>$musics['uriKey'],
-            'expire'=>config('cos')['expire']
-        ])['data'];
-        return $uri?['code'=>1,'message'=>$uri]:['code'=>0,'message'=>'链接失效请重试'];
+        return $this->playModel($musics);
     }
 }

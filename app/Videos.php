@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Videos extends Model
 {
     //
-    public $primaryKey = "vidoeId";
+    public $primaryKey = "videoId";
     protected $table = "videos";
     protected $guarded = [];
 }

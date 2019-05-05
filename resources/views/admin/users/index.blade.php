@@ -178,7 +178,7 @@
                 var name = $(":input[name=name]").val();
                 var mobile = $(":input[name=mobile]").val();
                 var handNum = $(":input[name=handNum]").val();
-                var reaName = $(":input[name=reaName]").val();
+                var reaName = $(":input[name=realName]").val();
                 var sex = $(":input[name=sex]").val();
                 var isValiated = $(":input[name=isValiated]").val();
                 var obj = {

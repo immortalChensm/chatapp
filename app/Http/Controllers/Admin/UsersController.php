@@ -20,7 +20,7 @@ class UsersController extends Controller
             $searchItem['name']       = $request->name;
             $searchItem['mobile']     = $request->mobile;
             $searchItem['handNum']    = $request->handNum;
-            $searchItem['reaName']    = $request->reaName;
+            $searchItem['realName']    = $request->realName;
             $searchItem['sex']        = $request->sex;
             $searchItem['isValiated'] = $request->isValiated;
         },function ($query,&$searchItem){

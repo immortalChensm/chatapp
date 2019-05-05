@@ -149,7 +149,7 @@
                         "targets": 9,
                         "render": function ( data, type, row, meta ) {
                             var BtnHtml = "<button type='button' class='fa fa-edit btn  btn-success btn-sm update' data='"+row.userId+"' data-user='"+row.userType+"'>编辑/查看</button>";
-                            BtnHtml+= "  <button type='button' class='fa fa-remove btn  btn-danger btn-sm delete' data='"+row.userId+"' data-title='"+row.title+"' data-user='"+row.userType+"'>移除</button>";
+                            BtnHtml+= "  <button type='button' class='fa fa-remove btn  btn-danger btn-sm delete' data='"+row.userId+"' data-title='"+row.name+"' data-user='"+row.userType+"'>移除</button>";
                             return BtnHtml;
                         }
                     } ],

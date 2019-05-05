@@ -17,13 +17,32 @@ class UsersController extends Controller
     function users(Request $request,User $user)
     {
         return $this->models(...[$request,$user,function (&$searchItem)use($request){
-            $searchItem['name']   = $request->name;
+            $searchItem['name']       = $request->name;
+            $searchItem['mobile']     = $request->mobile;
+            $searchItem['handNum']    = $request->handNum;
+            $searchItem['reaName']    = $request->reaName;
+            $searchItem['sex']        = $request->sex;
+            $searchItem['isValiated'] = $request->isValiated;
         },function ($query,&$searchItem){
             if ($searchItem['name']){
-                if ($searchItem['name']){
-                    $query->where("name","LIKE","%".$searchItem['name']."%");
-                }
+                $query->where("name","LIKE","%".$searchItem['name']."%");
             }
+            if ($searchItem['mobile']){
+                $query->where("mobile","LIKE","%".$searchItem['mobile']."%");
+            }
+            if ($searchItem['handNum']){
+                $query->where("handNum","LIKE","%".$searchItem['handNum']."%");
+            }
+            if ($searchItem['reaName']){
+                $query->where("reaName","LIKE","%".$searchItem['reaName']."%");
+            }
+            if ($searchItem['sex']){
+                $query->where("sex","=",$searchItem['sex']);
+            }
+            if ($searchItem['isValiated']){
+                $query->where("isValiated","=",$searchItem['isValiated']);
+            }
+
         },function (&$item){
             $item->sex     = $item->sex==1?'男':'女';
             $item->isValiated     = $item->isValiated==1?'已认证':'未认证';

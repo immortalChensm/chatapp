@@ -178,18 +178,18 @@
                 var name = $(":input[name=name]").val();
                 var mobile = $(":input[name=mobile]").val();
                 var handNum = $(":input[name=handNum]").val();
-                var reaName = $(":input[name=realName]").val();
+                var realName = $(":input[name=realName]").val();
                 var sex = $(":input[name=sex]").val();
                 var isValiated = $(":input[name=isValiated]").val();
                 var obj = {
                     name:name,
                     mobile:mobile,
                     handNum:handNum,
-                    reaName:reaName,
+                    realName:realName,
                     sex:sex,
                     'isValiated':isValiated
                 }
-                window.tableGrid.ajax.url( '/admin/get/users?name='+ obj.name+"&mobile="+obj.mobile+"&handNum="+obj.handNum+"&reaName="+obj.reaName+"&sex="+obj.sex+"&isValiated="+obj.isValiated).load();
+                window.tableGrid.ajax.url( '/admin/get/users?name='+ obj.name+"&mobile="+obj.mobile+"&handNum="+obj.handNum+"&realName="+obj.realName+"&sex="+obj.sex+"&isValiated="+obj.isValiated).load();
             }
 
 

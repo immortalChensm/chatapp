@@ -33,8 +33,8 @@ class UsersController extends Controller
             if ($searchItem['handNum']){
                 $query->where("handNum","LIKE","%".$searchItem['handNum']."%");
             }
-            if ($searchItem['reaName']){
-                $query->where("reaName","LIKE","%".$searchItem['reaName']."%");
+            if ($searchItem['realName']){
+                $query->where("realName","LIKE","%".$searchItem['realName']."%");
             }
             if ($searchItem['sex']){
                 $query->where("sex","=",$searchItem['sex']);

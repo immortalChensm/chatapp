@@ -20,7 +20,7 @@ class UsersController extends Controller
             $searchItem['name']       = $request->name;
             $searchItem['mobile']     = $request->mobile;
             $searchItem['handNum']    = $request->handNum;
-            $searchItem['realName']    = $request->realName;
+            $searchItem['realName']   = $request->realName;
             $searchItem['sex']        = $request->sex;
             $searchItem['isValiated'] = $request->isValiated;
         },function ($query,&$searchItem){
@@ -44,8 +44,8 @@ class UsersController extends Controller
             }
 
         },function (&$item){
-            $item->sex     = $item->sex==1?'男':'女';
-            $item->isValiated     = $item->isValiated==1?'已认证':'未认证';
+            $item->sex         = $item->sex == 1 ? '男' : '女';
+            $item->isValiated  = $item->isValiated == 1 ? '已认证' : '未认证';
             $item->createdDate = date("Y-m-d H", strtotime($item->created_at));
         }]);
     }

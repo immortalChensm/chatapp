@@ -189,7 +189,7 @@
                     sex:sex,
                     'isValiated':isValiated
                 }
-                table.ajax.url( '/admin/get/users?name='+ obj.name+"&mobile="+obj.mobile+"&handNum="+obj.handNum+"&reaName="+obj.reaName+"&sex="+obj.sex+"&isValiated="+obj.isValiated).load();
+                window.tableGrid.ajax.url( '/admin/get/users?name='+ obj.name+"&mobile="+obj.mobile+"&handNum="+obj.handNum+"&reaName="+obj.reaName+"&sex="+obj.sex+"&isValiated="+obj.isValiated).load();
             }
 
 

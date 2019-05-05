@@ -29,28 +29,28 @@
 
                                 <div class="input-group input-box ">
                                     <span class="input-group-addon"><i class="fa">用户昵称</i></span>
-                                    <input type="text" class="form-control " name="title" placeholder="用户昵称">
+                                    <input type="text" class="form-control " name="name" placeholder="用户昵称">
                                 </div>
                                 <div class="input-group input-box ">
                                     <span class="input-group-addon"><i class="fa">传联号</i></span>
-                                    <input type="text" class="form-control " name="title" placeholder="传联号">
+                                    <input type="text" class="form-control " name="handNum" placeholder="传联号">
                                 </div>
                                 <div class="input-group input-box ">
                                     <span class="input-group-addon"><i class="fa">手机号</i></span>
-                                    <input type="text" class="form-control " name="title" placeholder="手机号">
+                                    <input type="text" class="form-control " name="mobile" placeholder="手机号">
                                 </div>
                                 <div class="input-group input-box ">
                                     <span class="input-group-addon"><i class="fa">真实姓名</i></span>
-                                    <input type="text" class="form-control " name="title" placeholder="真实姓名">
+                                    <input type="text" class="form-control " name="realName" placeholder="真实姓名">
                                 </div>
 
 
                                 <div class="input-group input-box">
                                     <span class="input-group-addon"><i class="fa">性别</i></span>
-                                        <select class="form-control" name="tagId">
+                                        <select class="form-control" name="sex">
                                             <option value="">请选择性别</option>
-                                                @foreach(['男','女'] as $item)
-                                                    <option value="{{$item}}" >{{$item}}</option>
+                                                @foreach([1=>'男',2=>'女'] as $key=>$item)
+                                                    <option value="{{$key}}" >{{$item}}</option>
                                                 @endforeach
 
                                         </select>
@@ -59,10 +59,10 @@
 
                                 <div class="input-group input-box">
                                     <span class="input-group-addon"><i class="fa">是否认证</i></span>
-                                    <select class="form-control" name="tagId">
+                                    <select class="form-control" name="isValiated">
                                         <option value="">请选择</option>
-                                        @foreach(['已认证','未认证'] as $item)
-                                            <option value="{{$item}}" >{{$item}}</option>
+                                        @foreach([1=>'已认证',0=>'未认证'] as $key=>$item)
+                                            <option value="{{$key}}" >{{$item}}</option>
                                         @endforeach
 
                                     </select>
@@ -166,13 +166,31 @@
                 });
                 window.tableGrid =table;
                     $("#search").on("click",function (e) {
-                    var title = $(":input[name=title]").val();
-                    var tagId = $(":input[name=tagId]").val();
-
-                    table.ajax.url( '/admin/get/articles?title='+ title+"&tagId="+tagId).load();
+                    //table.ajax.url( '/admin/get/users?title='+ title+"&tagId="+tagId).load();
+                        searchByField();
                 })
 
             })
+
+            //
+            function searchByField()
+            {
+                var name = $(":input[name=name]").val();
+                var mobile = $(":input[name=mobile]").val();
+                var handNum = $(":input[name=handNum]").val();
+                var reaName = $(":input[name=reaName]").val();
+                var sex = $(":input[name=sex]").val();
+                var isValiated = $(":input[name=isValiated]").val();
+                var obj = {
+                    name:name,
+                    mobile:mobile,
+                    handNum:handNum,
+                    reaName:reaName,
+                    sex:sex,
+                    'isValiated':isValiated
+                }
+                table.ajax.url( '/admin/get/users?name='+ obj.name+"&mobile="+obj.mobile+"&handNum="+obj.handNum+"&reaName="+obj.reaName+"&sex="+obj.sex+"&isValiated="+obj.isValiated).load();
+            }
 
 
             //编辑操作
@@ -182,14 +200,14 @@
 
             //移除操作
             $("#datagrid").on("click",".delete",function (e) {
-                var title = $(":input[name=title]").val();
+                var title = $(":input[name=name]").val();
                 var dateId = $(this).attr("data");
                 layer.confirm('您确定要删除('+$(this).attr("data-title")+")该用户？", {
                     btn: ['确认','取消'] //按钮
                 }, function(){
                     $.ajax({
                         type: "delete",
-                        url: "{{url('/admin/articles/remove/')}}/"+dateId,
+                        url: "{{url('/admin/users/remove/')}}/"+dateId,
                         dataType: 'json',
                         data: {
                             "_token":"{{csrf_token()}}"
@@ -198,8 +216,7 @@
                             if (data.code==1){
                                 layer.msg(data.message);
                                 setTimeout(function () {
-                                    //window.location = "{{url('admin/articles')}}";
-                                    window.tableGrid.ajax.url( '/admin/get/articles?title='+ title+"&tagId="+tagId).load();
+                                    searchByField();
                                 },2000);
                             }else{
                                 layer.msg(data.message);

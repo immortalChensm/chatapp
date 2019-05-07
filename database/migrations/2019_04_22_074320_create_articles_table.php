@@ -17,6 +17,7 @@ class CreateArticlesTable extends Migration
             $table->bigIncrements('articleId')->unique()->comment("文章Id");
             $table->string('title')->index("title")->comment("文章标题");
             $table->text("content")->nullable()->comment("文章的内容");
+            $table->text("image")->nullable()->comment("文章的图片兼容app端的文章图片存储");
             $table->integer("readCount")->unsigned()->nullable()->comment("文章阅读数量");
             $table->integer("commentCount")->unsigned()->nullable()->comment("文章评论数量");
             $table->integer("upCount")->unsigned()->nullable()->comment("文章点赞数量");

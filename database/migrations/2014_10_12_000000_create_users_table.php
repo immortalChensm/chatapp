@@ -18,8 +18,8 @@ class CreateUsersTable extends Migration
             $table->bigIncrements("userId")->comment("用户Id");
 
             $table->string("headImgUrl")->nullable()->comment("用户头像");
-            $table->string("handNum")->nullable(false)->unique("handNum")->comment("用户的传联号");
-            $table->unsignedInteger("star")->nullable(false)->default(0)->comment("用户星级");
+            $table->string("handNum")->nullable()->unique("handNum")->comment("用户的传联号");
+            $table->unsignedInteger("star")->nullable()->default(0)->comment("用户星级");
             $table->unsignedDecimal("money",10,2)->default(0.00)->comment("用户余额");
             $table->unsignedInteger("shipNumber")->default(0)->comment("船票数量");
             $table->unsignedInteger("praiseNumber")->default(0)->comment("用户收到的点赞数量");
@@ -61,7 +61,7 @@ class CreateUsersTable extends Migration
             $table->unsignedTinyInteger("showMsgDetail")->nullable(false)->default(1)->comment("消息是否显示详情");
 
             $table->string("name")->unique("name")->nullable()->comment("用户网名");
-
+            $table->unsignedTinyInteger("isIm")->nullable()->default(0)->commemt("是否已经导入IM系统0没有1已导入");
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

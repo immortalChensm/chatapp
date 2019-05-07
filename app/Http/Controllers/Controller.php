@@ -213,7 +213,7 @@ class Controller extends BaseController
     {
         $data = $model::where($model->primaryKey,"=",$model->id)->first();
         if ($data->userType==1){
-            return ['code'=>0,'message'=>'用户发布的相册禁止操作！'];
+            return ['code'=>0,'message'=>'用户发布的数据禁止操作！'];
         }else{
             return ['code'=>1];
         }

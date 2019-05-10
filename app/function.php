@@ -53,3 +53,26 @@ function downloadCosFile($data)
     return $result;
 }
 
+/**
+ * 将将存储桶上的文件保存到本地
+ * @param $key  key
+ * @param $localPath 本地保存路径
+ * @return array
+ */
+function downloadCosFileSavelocal($key,$localPath)
+{
+    try {
+        $localPath = @$localPath;
+        $result = getCosClient()->getObject([
+                'Bucket' => config("cos")['bucket'],
+                'Key' => $key,
+                'SaveAs' => $localPath]
+        );
+        $result = ['code'=>1,'data'=>$localPath];
+    } catch (\Exception $e) {
+        // 请求失败
+        $result = ['code'=>0,'data'=>$e];
+    }
+    return $result;
+}
+

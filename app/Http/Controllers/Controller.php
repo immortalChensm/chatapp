@@ -181,19 +181,20 @@ class Controller extends BaseController
      */
     function downloadCosFileSavelocal($key,$localPath)
     {
-        try {
-                 $localPath = @$localPath;
-                 $result = $this->getCosClient()->getObject([
-                        'Bucket' => config("cos")['bucket'],
-                        'Key' => $key,
-                        'SaveAs' => $localPath]
-                 );
-                 $result = ['code'=>1,'data'=>$localPath];
-            } catch (\Exception $e) {
-                    // 请求失败
-                 $result = ['code'=>0,'data'=>$e];
-           }
-            return $result;
+//        try {
+//                 $localPath = @$localPath;
+//                 $result = $this->getCosClient()->getObject([
+//                        'Bucket' => config("cos")['bucket'],
+//                        'Key' => $key,
+//                        'SaveAs' => $localPath]
+//                 );
+//                 $result = ['code'=>1,'data'=>$localPath];
+//            } catch (\Exception $e) {
+//                    // 请求失败
+//                 $result = ['code'=>0,'data'=>$e];
+//           }
+//            return $result;
+        return downloadCosFileSavelocal($key,$localPath);
     }
 
     /**

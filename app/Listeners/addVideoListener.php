@@ -28,7 +28,7 @@ class addVideoListener
     {
         $videoFile = $event->videoModel;
         $localFileSrc = config("upload")['attachedDir']."/".str_replace('/','',$videoFile['uriKey']);
-        $cosFile = downloadCosFileSavelocal($video['uriKey'],$localFileSrc);
+        $cosFile = downloadCosFileSavelocal($videoFile['uriKey'],$localFileSrc);
         $ffmpeg = \FFMpeg\FFMpeg::create(array(
             'ffmpeg.binaries'  => '/usr/local/bin/ffmpeg',
             'ffprobe.binaries' => '/usr/local/bin/ffprobe',
@@ -37,8 +37,8 @@ class addVideoListener
         ));
         $video = $ffmpeg->open($cosFile['data']);
         $frame = $video->frame(\FFMpeg\Coordinate\TimeCode::fromSeconds(5));
-        $localFileSrcCover = config("upload")['attachedDir']."/".str_replace('/','',(function($video){
-                $videoSrc = explode('.',$video['uriKey']);
+        $localFileSrcCover = config("upload")['attachedDir']."/".str_replace('/','',(function($videoFile){
+                $videoSrc = explode('.',$videoFile['uriKey']);
                 return str_replace('/','',$videoSrc[0]);
             })($videoFile)).".png";
         $frame->save($localFileSrcCover);

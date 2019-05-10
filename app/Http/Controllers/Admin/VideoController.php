@@ -51,7 +51,6 @@ class VideoController extends Controller
         }]);
     }
 
-
     function store(StoreVideoPost $request)
     {
         $prepareData = [ 'title'        => $request->title,
@@ -120,15 +119,19 @@ class VideoController extends Controller
     }
 
 
-    //移除存储桶上的视频
+    /**
+     * 移除存储桶上的视频 连同封面一起
+     * @return \Illuminate\Http\JsonResponse
+     */
     function removeVideoFile()
     {
-        if ($this->removeCosFile(['key'=>request()->fileKeyName])['code']==1){
+        $file = explode(".",request('fileKeyName'));
+        if ($this->removeCosFile(['key'=>request('fileKeyName')])['code']==1){
+            $this->removeCosFile(['key'=>$file[0].".png"]);
             return response()->json(['code'=>1,'message'=>'移除成功']);
         }
 
     }
-
     /**
      * 获取存储桶上的文件视频uri
      * @return array

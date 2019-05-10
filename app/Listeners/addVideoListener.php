@@ -37,7 +37,10 @@ class addVideoListener
         ));
         $video = $ffmpeg->open($cosFile['data']);
         $frame = $video->frame(\FFMpeg\Coordinate\TimeCode::fromSeconds(5));
-        $localFileSrcCover = config("upload")['attachedDir']."/".str_replace('/','',explode('.',$video['uriKey'])[0]).".png";
+        $localFileSrcCover = config("upload")['attachedDir']."/".str_replace('/','',(function($video){
+                $videoSrc = explode('.',$video['uriKey']);
+                return str_replace('/','',$videoSrc[0]);
+            })($video)).".png";
         $frame->save($localFileSrcCover);
     }
 }

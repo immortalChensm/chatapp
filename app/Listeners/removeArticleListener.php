@@ -3,7 +3,6 @@
 namespace App\Listeners;
 
 use App\Events\removeArticle;
-use App\Http\Controllers\Controller;
 use Illuminate\Filesystem\Filesystem;
 use PHPHtmlParser\Dom;
 

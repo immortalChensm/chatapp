@@ -76,3 +76,24 @@ function downloadCosFileSavelocal($key,$localPath)
     return $result;
 }
 
+
+/**
+ * 上传文件到存储桶上
+ * @param $data
+ * @return array
+ */
+function uploadCosFile($data)
+{
+
+    ### 上传文件流
+    try {
+        $result = getCosClient()->putObject(array(
+            'Bucket' => config("cos")['bucket'],
+            'Key' => $data['fileKeyName'],
+            'Body' => fopen($data['file'], 'rb')));
+        $data = ['code'=>1,'data'=>$result];
+    } catch (\Exception $e) {
+        $data = ['code'=>0,'data'=>$e];
+    }
+    return $data;
+}

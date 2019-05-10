@@ -136,16 +136,18 @@ class Controller extends BaseController
     {
 
         ### 上传文件流
-        try {
-            $result = $this->getCosClient()->putObject(array(
-                'Bucket' => config("cos")['bucket'],
-                'Key' => $data['fileKeyName'],
-                'Body' => fopen($data['file'], 'rb')));
-            $data = ['code'=>1,'data'=>$result];
-        } catch (\Exception $e) {
-            $data = ['code'=>0,'data'=>$e];
-        }
-        return $data;
+//        try {
+//            $result = $this->getCosClient()->putObject(array(
+//                'Bucket' => config("cos")['bucket'],
+//                'Key' => $data['fileKeyName'],
+//                'Body' => fopen($data['file'], 'rb')));
+//            $data = ['code'=>1,'data'=>$result];
+//        } catch (\Exception $e) {
+//            $data = ['code'=>0,'data'=>$e];
+//        }
+//        return $data;
+
+        return uploadCosFile($data);
     }
 
     /**下载存储桶里的文件【腾迅对象存储服务】

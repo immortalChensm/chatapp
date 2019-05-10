@@ -68,6 +68,7 @@ function downloadCosFileSavelocal($key,$localPath)
                 'Key' => $key,
                 'SaveAs' => $localPath]
         );
+        print_r($result);
         $result = ['code'=>1,'data'=>$localPath];
     } catch (\Exception $e) {
         // 请求失败

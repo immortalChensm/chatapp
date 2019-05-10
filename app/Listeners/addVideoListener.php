@@ -47,12 +47,13 @@ class addVideoListener
 
     private function uploadCoverFileAndSave($uriKey,$localFileSrcCover,$videoFile,$localFileSrc)
     {
+        $key = "other/".substr($uriKey,strlen("other"));
         $ret = uploadCosFile([
-            'fileKeyName'=>$uriKey,
+            'fileKeyName'=>$key,
             'file'=>$localFileSrcCover
         ]);
         if ($ret['code']==1){
-            DB::table("videos")->where("videoId","=",$videoFile['videoId'])->update(['cover'=>$uriKey]);
+            DB::table("videos")->where("videoId","=",$videoFile['videoId'])->update(['cover'=>$key]);
             //删除本地文件
             $fileSystem = new Filesystem();
             if ($fileSystem->exists($localFileSrc)){

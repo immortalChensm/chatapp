@@ -16,6 +16,11 @@ function getCosClient()
             'secretKey' => config("cos")['secretKey']]]);
 }
 
+/**
+ * 删除存储桶上的文件
+ * @param $data
+ * @return array
+ */
 function deleteCosFile($data)
 {
     try {
@@ -27,6 +32,22 @@ function deleteCosFile($data)
         $result = ['code'=>1,'data'=>$result];
     } catch (\Exception $e) {
         // 请求失败
+        $result = ['code'=>0,'data'=>$e];
+    }
+    return $result;
+}
+
+/**
+ * 下载存储桶上的文件
+ * @param $data
+ * @return array
+ */
+function downloadCosFile($data)
+{
+    try {
+        $signedUrl = getCosClient()->getObjectUrl(config("cos")['bucket'], $data['fileKeyName'], $data['expire']?$data['expire']:'+10 minutes');
+        $result = ['code'=>1,'data'=>$signedUrl];
+    } catch (\Exception $e) {
         $result = ['code'=>0,'data'=>$e];
     }
     return $result;

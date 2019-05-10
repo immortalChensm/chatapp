@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\addVideo;
 use App\Http\Requests\Admin\StoreVideoPost;
 use App\Videos;
 use App\Http\Controllers\Controller;
@@ -72,14 +73,22 @@ class VideoController extends Controller
                     'fileKeyName'=>$prepareData['uriKey'],
                     'expire'=>config('cos')['expire']
                 ])['data'],config('cos')['cacheTime']);
+                event(new addVideo(['videoId'=>$request->videoId,'uriKey'=>$request->uriKey]));
             }
             return $result;
 
         }else {
-            return Videos::create(array_merge($prepareData,[
+            $addRet = Videos::create(array_merge($prepareData,[
                 'userId'       => 1,
                 'userType'     => 2
-            ])) ? ['code' => 1, 'message' => '添加成功'] : ['code' => 0, 'message' => '添加失败'];
+            ]));
+            if ($addRet){
+                event(new addVideo(['videoId'=>$addRet['videoId'],'uriKey'=>$addRet['uriKey']]));
+                $ret = ['code' => 1, 'message' => '添加成功'];
+            }else{
+                $ret = ['code' => 0, 'message' => '添加失败'];
+            }
+            return $ret;
         }
     }
 
@@ -109,4 +118,26 @@ class VideoController extends Controller
     {
         return $this->playModel($videos);
     }
+
+
+    //移除存储桶上的视频
+    function removeVideoFile()
+    {
+        if ($this->removeCosFile(['key'=>request()->fileKeyName])['code']==1){
+            return response()->json(['code'=>1,'message'=>'移除成功']);
+        }
+
+    }
+
+    /**
+     * 获取存储桶上的文件视频uri
+     * @return array
+     */
+    function getVideoCosUri()
+    {
+        $retUri = $this->downloadCosFile(['fileKeyName'=>request('fileKeyName'),'expire'=>config('cos')['expire']]);
+        return $retUri['code']==1?['code'=>1,'message'=>$retUri['data']]:['code'=>0,'message'=>'获取失败'];
+    }
+
+
 }

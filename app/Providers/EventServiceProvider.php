@@ -15,7 +15,10 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
             'App\Events\removeArticle'=>[
                 'App\Listeners\removeArticleListener'
-            ]
+            ],
+            'App\Events\addVideo'=>[
+                'App\Listeners\addVideoListener'
+            ],
     ];
 
     /**

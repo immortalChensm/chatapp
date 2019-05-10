@@ -27,7 +27,9 @@ class UploaderController extends Controller
         $tempKeys = (new Qcloud())->getTempKeys(config("cos")['jsConfig']);
         return response($tempKeys,200,[
             'Access-Control-Allow-Origin'=>'*',
-            'Access-Control-Allow-Headers'=>'origin,accept,content-type'
+            'Access-Control-Allow-Headers'=>'Origin, Content-Type, Cookie, Accept',
+            'Access-Control-Allow-Methods'=>'GET, POST, PATCH, PUT, OPTIONS',
+            'Access-Control-Allow-Credentials'=>'false',
         ]);
     }
 

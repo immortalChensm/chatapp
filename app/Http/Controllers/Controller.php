@@ -154,13 +154,14 @@ class Controller extends BaseController
      */
     function downloadCosFile($data)
     {
-        try {
-            $signedUrl = $this->getCosClient()->getObjectUrl(config("cos")['bucket'], $data['fileKeyName'], $data['expire']?$data['expire']:'+10 minutes');
-            $result = ['code'=>1,'data'=>$signedUrl];
-        } catch (\Exception $e) {
-            $result = ['code'=>0,'data'=>$e];
-        }
-        return $result;
+//        try {
+//            $signedUrl = $this->getCosClient()->getObjectUrl(config("cos")['bucket'], $data['fileKeyName'], $data['expire']?$data['expire']:'+10 minutes');
+//            $result = ['code'=>1,'data'=>$signedUrl];
+//        } catch (\Exception $e) {
+//            $result = ['code'=>0,'data'=>$e];
+//        }
+//        return $result;
+          return downloadCosFile($data);
     }
 
     /**
@@ -173,7 +174,7 @@ class Controller extends BaseController
     }
 
     /**
-     * 下载存储上的文件并保存
+     * 下载存储桶的文件并保存
      * @param $key
      * @param $localPath
      * @return array

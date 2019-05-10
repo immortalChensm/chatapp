@@ -26,8 +26,8 @@ class addVideoListener
      */
     public function handle(addVideo $event)
     {
-        $video = $event->videoModel;
-        $localFileSrc = config("upload")['attachedDir']."/".str_replace('/','',$video['uriKey']);
+        $videoFile = $event->videoModel;
+        $localFileSrc = config("upload")['attachedDir']."/".str_replace('/','',$videoFile['uriKey']);
         $cosFile = downloadCosFileSavelocal($video['uriKey'],$localFileSrc);
         $ffmpeg = \FFMpeg\FFMpeg::create(array(
             'ffmpeg.binaries'  => '/usr/local/bin/ffmpeg',
@@ -40,7 +40,7 @@ class addVideoListener
         $localFileSrcCover = config("upload")['attachedDir']."/".str_replace('/','',(function($video){
                 $videoSrc = explode('.',$video['uriKey']);
                 return str_replace('/','',$videoSrc[0]);
-            })($video)).".png";
+            })($videoFile)).".png";
         $frame->save($localFileSrcCover);
     }
 }

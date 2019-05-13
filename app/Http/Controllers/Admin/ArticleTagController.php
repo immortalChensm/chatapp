@@ -33,6 +33,7 @@ class ArticleTagController extends Controller
      */
     function edit()
     {
+        print_r(request("*"));
         isset(request()->tagId)?$data=ArticleTag::where("tagId","=",request()->tagId)->first():$data='';
         return view("admin.articletag.edit",compact('data'));
     }

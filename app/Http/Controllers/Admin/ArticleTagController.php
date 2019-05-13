@@ -39,8 +39,7 @@ class ArticleTagController extends Controller
 
     function store(StoreArticleTagPost $request)
     {
-        print_r($request->except("_token"));
-        return empty($request->tagId)?(ArticleTag::create($request->except("_token"))?['code'=>1,'message'=>'添加成功']:['code'=>0,'message'=>'添加失败']):
+        return empty($request->tagId)?(ArticleTag::create($request->except("_token","s"))?['code'=>1,'message'=>'添加成功']:['code'=>0,'message'=>'添加失败']):
             (ArticleTag::where("tagId","=",$request->tagId)->update(['name'=>$request->name])?['code'=>1,'message'=>'更新成功']:['code'=>0,'message'=>'更新失败']);
     }
 

@@ -29,12 +29,12 @@ class ArticlesController extends Controller
             $searchItem['tagId']   = $request->query->get('tagId');
         },function ($query,&$searchItem){
             if ($searchItem['title']){
-                if ($searchItem['title']){
+
                 $query->where("title","LIKE","%".$searchItem['title']."%");
             }
             if ($searchItem['tagId']){
                 $query->where("tagId","=",$searchItem['tagId']);
-            }
+            
             }
         },function (&$item){
             $item->tagName     = $item->tag->name;

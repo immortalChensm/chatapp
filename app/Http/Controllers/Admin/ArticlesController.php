@@ -81,7 +81,7 @@ class ArticlesController extends Controller
     {
         if (!empty($request->articleId)){
             $article = Articles::where("articleId","=",$request->articleId)->first();
-            $article->id = $articles->articleId;
+            $article->id = $article->articleId;
             if(($checkIfCan=$this->isManager($article))&&$checkIfCan['code']==0){
                 return $checkIfCan;
             }

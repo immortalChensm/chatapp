@@ -186,7 +186,7 @@
                 </ul>
             </li>
 
-            <li class="treeview">
+            <li class="treeview @if(preg_match('/system/',request()->url())) active @endif">
                 <a href="#">
                     <i class="fa fa-wrench"></i> <span>系统设置</span>
                     <span class="pull-right-container">
@@ -194,8 +194,8 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li ><a href="{{url("admin/managers")}}"><i class="fa fa-circle-o"></i> 网站设置</a></li>
-                    <li ><a href="{{url("admin/managers")}}"><i class="fa fa-circle-o"></i> 关于我们</a></li>
+                    <li @if(preg_match('/system/',request()->url())) class="active" @endif><a href="{{url("admin/system/index")}}"><i class="fa fa-circle-o"></i> 网站设置</a></li>
+                    <li @if(preg_match('/about/',request()->url())) class="active" @endif><a href="{{url("admin/about")}}"><i class="fa fa-circle-o"></i> 关于我们</a></li>
                 </ul>
             </li>
 

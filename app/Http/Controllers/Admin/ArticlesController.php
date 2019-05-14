@@ -87,7 +87,7 @@ class ArticlesController extends Controller
             }
         }
         return empty($request->articleId)?(Articles::create(array_merge($request->except("_token","s"),['userId'=>1,'userType'=>2]))?['code'=>1,'message'=>'文章添加成功']:['code'=>0,'message'=>'文章添加失败']):
-            (Articles::where("articleId","=",$request->articleId)->update(array_merge($request->except("_token"),['userId'=>1]))?['code'=>1,'message'=>'文章更新成功']:['code'=>0,'message'=>'文章更新失败']);
+            (Articles::where("articleId","=",$request->articleId)->update(array_merge($request->except("_token","s"),['userId'=>1]))?['code'=>1,'message'=>'文章更新成功']:['code'=>0,'message'=>'文章更新失败']);
     }
 
     function remove(Articles $articles)

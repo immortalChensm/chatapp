@@ -35,72 +35,14 @@
                         </div>
                         <form role="form" id="postForm">
                             {{csrf_field()}}
-
                             <div class="box-body">
-
+                                @foreach($data as $item)
                                 <div class="form-group edit-box">
-                                    <label for="exampleInputEmail1">用户注册短期存储空间大小</label>
-
-
-                                    @if (isset($data))
-                                        @foreach($data as $item)
-                                            @if($item->name == 'tempSize')
-                                                <input type="number" class="form-control input-max-box" class="edit-box" name="config[tempSize]" value="{{$item->value}}" placeholder="空间大小M">
-
-                                            @endif
-                                        @endforeach
-                                        @else
-                                        <input type="number" class="form-control input-max-box" class="edit-box" name="config[tempSize]" value="" placeholder="空间大小M">
-                                    @endif
-                                    (注册时的临时存储空间大小，默认单位为M)
+                                    <label for="exampleInputEmail1">{{$item->item}}</label>
+                                    <input type="{{$item->type}}" class="form-control input-max-box" class="edit-box" name="config[{{$item->name}}]" value="{{$item->value}}" placeholder="请输入数据">
+                                    (<mark>{{$item->description}}</mark>)
                                 </div>
-
-                                <div class="form-group edit-box">
-                                    <label for="exampleInputEmail1">用户多久未登录会清空数据</label>>
-                                    @if (isset($data))
-                                        @foreach($data as $item)
-
-                                            @if($item->name == 'noLogDay')
-                                                <input type="number" class="form-control input-max-box" class="edit-box" name="config[noLogDay]" value="{{$item->value}}" placeholder="单位为天">
-                                            @endif
-                                        @endforeach
-                                        @else
-                                        <input type="number" class="form-control input-max-box" class="edit-box" name="config[noLogDay]" value="" placeholder="单位为天">
-                                    @endif
-                                    (用户距离上次登录时间未活动时清空数据，单位为天)
-                                </div>
-
-                                <div class="form-group edit-box">
-                                    <label for="exampleInputEmail1">用户分享的数据多少个赞得一张船票</label>
-                                    @if (isset($data))
-                                        @foreach($data as $item)
-
-                                            @if($item->name == 'praiseToShip')
-                                                <input type="number" class="form-control input-max-box" class="edit-box" name="config[praiseToShip]" value="{{$item->value}}" placeholder="单位为赞个数">
-                                            @endif
-                                        @endforeach
-                                        @else
-                                        <input type="number" class="form-control input-max-box" class="edit-box" name="config[praiseToShip]" value="" placeholder="单位为赞个数">
-                                    @endif
-
-                                    (用户分享的数据多少个赞得一张船票，单位为个)
-                                </div>
-
-                                <div class="form-group edit-box">
-                                    <label for="exampleInputEmail1">用户累积多少张船票升一级</label>
-
-                                    @if (isset($data))
-                                        @foreach($data as $item)
-
-                                            @if($item->name == 'shipToGrade')
-                                                <input type="number" class="form-control input-max-box" class="edit-box" name="config[shipToGrade]" value="{{$item->value}}" placeholder="单位为张">
-                                            @endif
-                                        @endforeach
-                                        @else
-                                        <input type="number" class="form-control input-max-box" class="edit-box" name="config[shipToGrade]" value="" placeholder="单位为张">
-                                    @endif
-                                    (用户累积多少张船票升一级，单位为张)
-                                </div>
+                                    @endforeach
 
                             </div>
                             <div class="box-footer">

@@ -34,7 +34,7 @@ class ArticlesController extends Controller
             }
             if ($searchItem['tagId']){
                 $query->where("tagId","=",$searchItem['tagId']);
-            
+
             }
         },function (&$item){
             $item->tagName     = $item->tag->name;
@@ -54,6 +54,11 @@ class ArticlesController extends Controller
         return view("admin.articles.edit",compact('data','tag'));
     }
 
+    /**
+     * 从文章的uriKey下载文件并保存在html
+     * @param $article
+     * @return QueryList
+     */
     private function getCosFileFromArticle($article)
     {
         $articleHtml = QueryList::getInstance()->html($article->content);

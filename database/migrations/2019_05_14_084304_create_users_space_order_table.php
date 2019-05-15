@@ -16,7 +16,7 @@ class CreateUsersSpaceOrderTable extends Migration
         Schema::create('users_space_order', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedBigInteger("userId")->comment("购买空间的用户id");
-            $table->unsignedInteger("storageSize")->default(0)->comment("购买空间的大小");
+            $table->unsignedDecimal("storageSize",10,2)->default(0)->comment("购买空间的大小");
             $table->unsignedInteger("buyTime")->comment("购买时间");
             $table->unsignedInteger("expireTime")->comment("过期时间");
             $table->timestamps();

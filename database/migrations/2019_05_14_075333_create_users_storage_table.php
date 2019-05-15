@@ -16,11 +16,11 @@ class CreateUsersStorageTable extends Migration
         Schema::create('users_storage', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger("userId")->comment("用户id");
-            $table->unsignedInteger("totalForeverSpace")->default(0)->comment("用户的永久存储空间大小M");
-            $table->unsignedInteger("usedForeverSpace")->default(0)->comment("用户已经使用的永久存储空间大小M");
+            $table->unsignedDecimal("totalForeverSpace",10,2)->default(0)->comment("用户的永久存储空间大小M");
+            $table->unsignedDecimal("usedForeverSpace",10,2)->default(0)->comment("用户已经使用的永久存储空间大小M");
 
-            $table->unsignedInteger("tempSpace")->default(0)->comment("用户的临时空间大小");
-            $table->unsignedInteger("tempUsedSpace")->default(0)->comment("用户已经使用的临时存储空间M");
+            $table->unsignedDecimal("tempSpace",10,2)->default(0)->comment("用户的临时空间大小");
+            $table->unsignedDecimal("tempUsedSpace",10,2)->default(0)->comment("用户已经使用的临时存储空间M");
             $table->timestamps();
         });
     }

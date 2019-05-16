@@ -244,7 +244,7 @@ class Controller extends BaseController
         $data         = $model->where(function ($query) use ($searchItem,$queryCallback) {
             $queryCallback($query,$searchItem);
 
-        })->orderByRaw($orderSql);
+        })->orderByRaw("created_at desc,".$orderSql);
         $recordsFiltered = $data->count($model->primaryKey);
         $infos           = $data->skip($start)->take($length)->get();
         $infos->map(function ($item)use($dataResolveCallback){

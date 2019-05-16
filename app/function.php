@@ -68,6 +68,7 @@ function downloadCosFileSavelocal($key,$localPath)
                 'Key' => $key,
                 'SaveAs' => $localPath]
         );
+
         $result = ['code'=>1,'data'=>$localPath];
     } catch (\Exception $e) {
         // 请求失败
@@ -96,4 +97,23 @@ function uploadCosFile($data)
         $data = ['code'=>0,'data'=>$e];
     }
     return $data;
+}
+
+function getCosObject($key)
+{
+    try {
+        /**
+         * @var \Guzzle\Service\Resource\Model $ret
+         */
+        $ret = getCosClient()->headObject(array(
+            'Bucket' => \EasySwoole\EasySwoole\Config::getInstance()->getConf("COS.bucket"),
+            'Key' => $key,
+        ));
+        $result = ['code'=>1,'data'=>$ret->toArray()];
+
+    } catch (\Exception $e) {
+        // 请求失败
+        $result = ['code'=>0,'data'=>$e->getMessage()];
+    }
+    return $result;
 }

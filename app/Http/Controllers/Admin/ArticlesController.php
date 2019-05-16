@@ -39,7 +39,8 @@ class ArticlesController extends Controller
         },function (&$item){
             $item->tagName     = $item->tag->name;
             $item->isShow      = $item->isShow == 0 ? '是' : '否';
-            $item->canShared  = $item->canShared == 1 ? '是' : '否';
+            $item->canShared   = $item->canShared == 1 ? '是' : '否';
+            $item->isStoraged  = $item->isStoraged == 1 ? '是' : '否';
             $item->createdDate = date("Y-m-d H", strtotime($item->created_at));
         }]);
     }

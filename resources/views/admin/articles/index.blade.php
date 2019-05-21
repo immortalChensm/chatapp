@@ -138,6 +138,7 @@
                             BtnHtml+= "  <button type='button' class='fa fa-remove btn  btn-danger btn-sm delete' data='"+row.articleId+"' data-title='"+row.title+"' data-user='"+row.userType+"'>移除</button>";
                             BtnHtml+= "  <button type='button' class='fa fa-eye btn  btn-danger btn-sm isShow' data='"+row.articleId+"' data-title='"+row.title+"' data-user='"+row.userType+"'>屏蔽</button>";
                             BtnHtml+= "  <button type='button' class='fa fa-share btn  btn-danger btn-sm disableShare' data='"+row.articleId+"' data-title='"+row.title+"' data-user='"+row.userType+"'>分享</button>";
+                            BtnHtml+= "  <button type='button' class='fa fa-hand-pointer-o btn  btn-danger btn-sm top' data='"+row.articleId+"' data-title='"+row.title+"' data-user='"+row.userType+"'>置顶</button>";
                             return BtnHtml;
                         }
                     } ],
@@ -226,6 +227,33 @@
                                 //window.location = "{{url('admin/articles')}}";
                                 window.tableGrid.ajax.url( '/admin/get/articles?title='+ title+"&tagId="+tagId).load();
                             }, 2000);
+                        } else {
+                            layer.msg(data.message);
+                        }
+                    },
+                    error: function (data) {
+
+                    }
+                });
+            });
+
+            //置顶操作
+            $("#datagrid").on("click",".top",function (e) {
+                var dateId = $(this).attr("data");
+                var title = $(":input[name=title]").val();
+                var tagId = $(":input[name=tagId]").val();
+                $.ajax({
+                    type: "post",
+                    url: "{{url('/admin/manager/setTop/')}}",
+                    dataType: 'json',
+                    data: {
+                        "_token": "{{csrf_token()}}",
+                        'topId':dateId,
+                        'topType':'1'
+                    },
+                    success: function (data) {
+                        if (data.code == 1) {
+                            layer.msg(data.message);
                         } else {
                             layer.msg(data.message);
                         }

@@ -56,4 +56,5 @@ class UsersController extends Controller
             return ['code'=>1,'message'=>'删除成功'];
         }else{return ['code'=>0,'message'=>'删除失败'];}
     }
+
 }

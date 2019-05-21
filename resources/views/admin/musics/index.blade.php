@@ -129,6 +129,7 @@
                             BtnHtml+= "  <button type='button' class='fa fa-eye btn  btn-danger btn-sm isShow' data='"+row.musicId+"' data-title='"+row.title+"' data-user='"+row.userType+"'>屏蔽</button>";
                             BtnHtml+= "  <button type='button' class='fa fa-share btn  btn-danger btn-sm disableShare' data='"+row.musicId+"' data-title='"+row.title+"' data-user='"+row.userType+"'>分享</button>";
                             BtnHtml+= "  <button type='button' class='fa fa-music btn  success btn-sm playMusic' data='"+row.musicId+"' data-title='"+row.title+"'>播放</button>";
+                            BtnHtml+= "  <button type='button' class='fa fa-hand-pointer-o btn  btn-danger btn-sm top' data='"+row.musicId+"' data-title='"+row.title+"' data-user='"+row.userType+"'>置顶</button>";
                             return BtnHtml;
                         }
                     } ],
@@ -252,6 +253,31 @@
                         if (data.code == 1) {
                             $("body").find("audio").attr("src",data.message);
                             //$("body").find("audio").show();
+                        } else {
+                            layer.msg(data.message);
+                        }
+                    },
+                    error: function (data) {
+
+                    }
+                });
+            });
+
+            //置顶操作
+            $("#datagrid").on("click",".top",function (e) {
+                var dateId = $(this).attr("data");
+                $.ajax({
+                    type: "post",
+                    url: "{{url('/admin/manager/setTop/')}}",
+                    dataType: 'json',
+                    data: {
+                        "_token": "{{csrf_token()}}",
+                        'topId':dateId,
+                        'topType':'3'
+                    },
+                    success: function (data) {
+                        if (data.code == 1) {
+                            layer.msg(data.message);
                         } else {
                             layer.msg(data.message);
                         }

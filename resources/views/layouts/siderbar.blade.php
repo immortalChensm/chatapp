@@ -194,8 +194,9 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li @if(preg_match('/system/',request()->url())) class="active" @endif><a href="{{url("admin/system/index")}}"><i class="fa fa-circle-o"></i> 网站设置</a></li>
+                    <li @if(preg_match('/index/',request()->url())) class="active" @endif><a href="{{url("admin/system/index")}}"><i class="fa fa-circle-o"></i> 网站设置</a></li>
                     <li @if(preg_match('/about/',request()->url())) class="active" @endif><a href="{{url("admin/about")}}"><i class="fa fa-circle-o"></i> 关于我们</a></li>
+                    <li @if(preg_match('/top/',request()->url())) class="active" @endif><a href="{{url("admin/system/top")}}"><i class="fa fa-circle-o"></i> 置顶记录</a></li>
                 </ul>
             </li>
 

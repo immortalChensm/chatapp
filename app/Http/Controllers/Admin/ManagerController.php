@@ -6,6 +6,7 @@ use App\Http\Requests\Admin\StoreManagerPost;
 use App\Manager;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class ManagerController extends Controller
 {
@@ -88,5 +89,24 @@ class ManagerController extends Controller
     function removeManager(Manager $manager)
     {
         print_r($manager->toArray());
+    }
+
+    function top()
+    {
+        $ret = DB::table("top")->where("id","=",1)->value("topId");
+        if ($ret){
+            DB::table("top")->where("id","=",1)->update([
+                'topId'=>request("topId"),
+                "topType"=>request("topType"),
+                "created_at"=>date("Y-m-d H:i:s")
+            ]);
+        }else{
+            DB::table("top")->insert([
+                'topId'=>request("topId"),
+                "topType"=>request("topType"),
+                "created_at"=>date("Y-m-d H:i:s")
+            ]);
+        }
+        return ['code'=>1,'message'=>'设置成功'];
     }
 }

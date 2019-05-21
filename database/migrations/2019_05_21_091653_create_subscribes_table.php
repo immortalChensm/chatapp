@@ -15,8 +15,8 @@ class CreateSubscribesTable extends Migration
     {
         Schema::create('subscribes', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedBigInteger("userId")->comment("用户id");
-            $table->unsignedBigInteger("followerId")->comment("被关注的人");
+            $table->unsignedBigInteger("userId")->index()->comment("用户id");
+            $table->unsignedBigInteger("followerId")->index()->comment("被关注的人");
             $table->timestamps();
         });
     }

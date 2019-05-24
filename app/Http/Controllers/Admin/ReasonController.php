@@ -39,7 +39,7 @@ class ReasonController extends Controller
             $item->userName  = isset($item->userName->realName)?$item->userName->realName:$item->userName->name;
             $item->createdDate = date("Y-m-d H", strtotime($item->created_at));
             $item->title = DB::table($this->typeTable[$item->modelType])->value("title");
-            $item->typeName = $this->typeTitle[$item->modelType]];
+            $item->typeName = $this->typeTitle[$item->modelType];
         }]);
     }
 

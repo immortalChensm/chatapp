@@ -150,7 +150,7 @@
                 </ul>
             </li>
 
-            <li class="treeview  @if(preg_match('/report/',request()->url())||preg_match('/reasons/',request()->url())) active @endif">
+            <li class="treeview  @if(preg_match('/reports/',request()->url())||preg_match('/reasons/',request()->url())) active @endif">
                 <a href="#">
                     <i class="fa  fa-warning (alias)"></i> <span>举报管理</span>
                     <span class="pull-right-container">
@@ -158,7 +158,7 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li ><a href="{{url("admin/reports")}}"><i class="fa fa-circle-o"></i> 举报列表</a></li>
+                    <li @if(preg_match('/reports/',request()->url())) class="active" @endif><a href="{{url("admin/reports")}}"><i class="fa fa-circle-o"></i> 举报列表</a></li>
                     <li @if(preg_match('/reasons/',request()->url())) class="active" @endif><a href="{{url("admin/report/reasons")}}"><i class="fa fa-circle-o"></i> 举报原因列表</a></li>
                 </ul>
             </li>

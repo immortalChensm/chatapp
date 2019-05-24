@@ -41,6 +41,11 @@ class ReasonController extends Controller
         }]);
     }
 
+    function removeReport(Reports $reports)
+    {
+        return $this->removeModel($reports);
+    }
+
     function reasons(Request $request,Reason $reason)
     {
         return $this->models(...[$request,$reason,function (&$searchItem)use($request){

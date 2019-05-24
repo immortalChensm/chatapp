@@ -115,7 +115,7 @@
                         "render": function ( data, type, row, meta ) {
 
                             var BtnHtml = "";
-                            BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm delete' data='"+row.id+"' data-name='"+row.reason+"'>移除</button>";
+                            BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm delete' data='"+row.id+"' data-name='"+row.reasonName+"'>移除</button>";
                             return BtnHtml;
                         }
                     } ],
@@ -148,7 +148,7 @@
                 }, function(){
                     $.ajax({
                         type: "delete",
-                        url: "{{url('/admin/report/reasons/remove/')}}/"+dataid,
+                        url: "{{url('/admin/report/remove/')}}/"+dataid,
                         dataType: 'json',
                         data: {
                             "_token":"{{csrf_token()}}"
@@ -157,7 +157,7 @@
                             if (data.code==1){
                                 layer.msg(data.message);
                                 setTimeout(function () {
-                                    window.location = "{{url('admin/report/reasons')}}";
+                                    window.location = "{{url('admin/reports')}}";
                                 },2000);
                             }else{
                                 layer.msg(data.message);

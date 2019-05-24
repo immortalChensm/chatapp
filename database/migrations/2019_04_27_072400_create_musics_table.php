@@ -19,10 +19,10 @@ class CreateMusicsTable extends Migration
             $table->string('singer')->index("singer")->comment("歌手");
             $table->text("introduction")->nullable()->comment("音乐简介");
             $table->string('uriKey')->index("uriKey")->comment("音乐uriKey");
-            $table->integer("readCount")->unsigned()->nullable()->comment("阅读数量");
-            $table->integer("commentCount")->unsigned()->nullable()->comment("评论数量");
-            $table->integer("upCount")->unsigned()->nullable()->comment("点赞数量");
-            $table->integer("downCount")->unsigned()->nullable()->comment("踩点数量");
+            $table->integer("readCount")->unsigned()->nullable()->default(0)->comment("阅读数量");
+            $table->integer("commentCount")->unsigned()->nullable()->default(0)->comment("评论数量");
+            $table->integer("upCount")->unsigned()->nullable()->default(0)->comment("点赞数量");
+            $table->integer("downCount")->unsigned()->nullable()->default(0)->comment("踩点数量");
             $table->unsignedInteger("userId")->index()->nullable(false)->comment("发布作者Id");
             $table->unsignedTinyInteger("isStoraged")->nullable(false)->default("0")->comment("是否永久保存标志位1为永久保存");
             $table->unsignedInteger("shareCount")->default("0")->comment("分享次数");

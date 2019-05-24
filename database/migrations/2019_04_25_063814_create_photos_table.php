@@ -18,10 +18,10 @@ class CreatePhotosTable extends Migration
             $table->string('title')->index("title")->comment("相册标题");
             $table->text("introduction")->nullable()->comment("相册简介");
 
-            $table->integer("readCount")->unsigned()->nullable()->comment("相册阅读数量");
-            $table->integer("commentCount")->unsigned()->nullable()->comment("相册评论数量");
-            $table->integer("upCount")->unsigned()->nullable()->comment("相册点赞数量");
-            $table->integer("downCount")->unsigned()->nullable()->comment("相册踩点数量");
+            $table->integer("readCount")->unsigned()->nullable()->default(0)->comment("相册阅读数量");
+            $table->integer("commentCount")->unsigned()->nullable()->default(0)->comment("相册评论数量");
+            $table->integer("upCount")->unsigned()->nullable()->default(0)->comment("相册点赞数量");
+            $table->integer("downCount")->unsigned()->nullable()->default(0)->comment("相册踩点数量");
             $table->unsignedInteger("userId")->index()->nullable(false)->comment("相册发布作者Id");
             $table->unsignedTinyInteger("isStoraged")->nullable(false)->default("0")->comment("是否永久保存标志位1为永久保存");
             $table->unsignedInteger("shareCount")->default("0")->comment("相册分享次数");

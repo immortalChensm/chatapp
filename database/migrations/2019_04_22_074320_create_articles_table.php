@@ -18,10 +18,10 @@ class CreateArticlesTable extends Migration
             $table->string('title')->index("title")->comment("文章标题");
             $table->text("content")->nullable()->comment("文章的内容");
             $table->text("image")->nullable()->comment("文章的图片兼容app端的文章图片存储");
-            $table->integer("readCount")->unsigned()->nullable()->comment("文章阅读数量");
-            $table->integer("commentCount")->unsigned()->nullable()->comment("文章评论数量");
-            $table->integer("upCount")->unsigned()->nullable()->comment("文章点赞数量");
-            $table->integer("downCount")->unsigned()->nullable()->comment("文章踩点数量");
+            $table->integer("readCount")->unsigned()->nullable()->default(0)->comment("文章阅读数量");
+            $table->integer("commentCount")->unsigned()->nullable()->default(0)->comment("文章评论数量");
+            $table->integer("upCount")->unsigned()->nullable()->default(0)->comment("文章点赞数量");
+            $table->integer("downCount")->unsigned()->nullable()->default(0)->comment("文章踩点数量");
             $table->unsignedInteger("userId")->nullable(false)->comment("文章发布作者Id");
             $table->unsignedTinyInteger("isStoraged")->nullable(false)->default("0")->comment("是否永久保存标志位1为永久保存");
             $table->unsignedInteger("shareCount")->default("0")->comment("文章分享次数");

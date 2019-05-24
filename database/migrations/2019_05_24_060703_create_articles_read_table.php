@@ -17,7 +17,7 @@ class CreateArticlesReadTable extends Migration
             $table->increments('id');
             $table->unsignedBigInteger("userId")->index()->comment("阅读用户id");
             $table->unsignedInteger("tagId")->index()->comment("阅读的文章类别");
-            $table->unsignedInteger("readCount")->comment("用户的阅读次数");
+            $table->unsignedInteger("readCount")->default(0)->comment("用户的阅读次数");
             $table->timestamps();
         });
     }

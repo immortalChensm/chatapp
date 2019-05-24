@@ -63,6 +63,7 @@
                                     <th>举报者</th>
                                     <th>联系人信息</th>
                                     <th>举报内容</th>
+                                    <th>类型</th>
                                     <th>举报时间</th>
                                     <th>操作</th>
                                 </tr>
@@ -77,6 +78,7 @@
                                     <th>举报者</th>
                                     <th>联系人信息</th>
                                     <th>举报内容</th>
+                                    <th>类型</th>
                                     <th>举报时间</th>
                                     <th>操作</th>
                                 </tr>
@@ -108,10 +110,11 @@
                         { data:"userName",name:"userName",orderable: false,searchable:true },
                         { data:"contact",name:"contact",orderable: false,searchable:true },
                         { data:"title",name:"title",orderable: false,searchable:true },
+                        { data:"typeName",name:"typeName",orderable: false,searchable:true },
                         { data:"createdDate",name:"createdDate"}
                     ],
                     columnDefs: [ {
-                        "targets": 7,
+                        "targets": 8,
                         "render": function ( data, type, row, meta ) {
 
                             var BtnHtml = "";

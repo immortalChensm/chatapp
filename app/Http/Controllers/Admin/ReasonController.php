@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 class ReasonController extends Controller
 {
     protected $typeTable       = ['1' => 'articles', '2' => 'photos', '3' => 'musics', '4' => 'videos'];
+    protected $typeTitle       = ['1' => '文章', '2' => '相册', '3' => '音乐', '4' => '视频'];
     protected $typeField       = ['1' => 'articleId', '2' => 'photoId', '3' => 'musicId', '4' => 'videoId'];
 
     function index()
@@ -38,6 +39,7 @@ class ReasonController extends Controller
             $item->userName  = isset($item->userName->realName)?$item->userName->realName:$item->userName->name;
             $item->createdDate = date("Y-m-d H", strtotime($item->created_at));
             $item->title = DB::table($this->typeTable[$item->modelType])->value("title");
+            $item->typeName = $this->typeTitle[$item->modelType]];
         }]);
     }
 

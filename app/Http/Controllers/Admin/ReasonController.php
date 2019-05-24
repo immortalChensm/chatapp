@@ -21,16 +21,17 @@ class ReasonController extends Controller
 
     function reports()
     {
-        return view("admin.reason.reports");
+        $data = Reason::all();
+        return view("admin.reason.reports",compact('data'));
     }
 
     function ajaxReports(Request $request,Reports $reports)
     {
         return $this->models(...[$request,$reports,function (&$searchItem)use($request){
-            $searchItem['reason']   = $request->query->get('reason');
+            $searchItem['reasonId']   = $request->query->get('reasonId');
         },function ($query,&$searchItem){
-            if ($searchItem['reason']){
-                $query->where("reason","LIKE","%".$searchItem['reason']."%");
+            if ($searchItem['reasonId']){
+                $query->where("reasonId",$searchItem['reasonId']);
             }
         },function (&$item)use($reports){
             $item->reasonName      = $item->reasonName->reason;

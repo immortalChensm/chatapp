@@ -27,9 +27,17 @@
                         <div class="box-header">
                             <h3 class="box-title">
 
-                                <div class="input-group input-box input-max-box">
-                                    <span class="input-group-addon"><i class="fa">名称</i></span>
-                                    <input type="text" class="form-control " name="name" placeholder="名称">
+                                <div class="input-group input-box">
+                                    <span class="input-group-addon"><i class="fa">举报原因</i></span>
+                                    <select class="form-control" name="reasonId">
+                                        <option value="">请选择选项</option>
+                                        @if(!empty($data))
+                                            @foreach($data as $item)
+                                                <option value="{{$item['id']}}" @if($item['id']==request()['id']) selected @endif >{{$item['reason']}}</option>
+                                            @endforeach
+                                        @endif
+                                    </select>
+
                                 </div>
 
 
@@ -124,8 +132,8 @@
                 });
 
                 $("#search").on("click",function (e) {
-                    var name = $(":input[name=name]").val();
-                    table.ajax.url( '/admin/reports/list?reason='+name).load();
+                    var reasonId = $(":input[name=reasonId]").val();
+                    table.ajax.url( '/admin/reports/list?reasonId='+reasonId).load();
                 })
 
             })

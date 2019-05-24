@@ -16,7 +16,7 @@ class Reports extends Model
     }
 
     public function userName(){
-        return $this->belongsTo('App\User','userId','id')->select(['realName','name']);
+        return $this->belongsTo('App\User','userId','userId')->select(['realName','name']);
     }
 
 }

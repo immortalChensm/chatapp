@@ -18,7 +18,7 @@ class CreateUserPraisesTable extends Migration
             $table->unsignedBigInteger("userId")->index()->comment("用户id");
             $table->unsignedBigInteger("praiseNum")->default(0)->comemt("用户获得的点赞数量");
             $table->date("day")->comment("日期");
-            $table->unsignedTinyInteger("type")->default(0)->comment("1为已结算船票");
+            $table->unsignedBigInteger("type")->default(0)->comment("大小0为第几次结算为船票");
             $table->timestamps();
         });
     }

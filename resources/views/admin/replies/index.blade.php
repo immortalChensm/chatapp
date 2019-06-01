@@ -11,7 +11,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                评论管理
+                回复管理
             </h1>
             <ol class="breadcrumb">
                 <li><a href="{{url("/admin")}}"><i class="fa fa-dashboard"></i> 首页</a></li>
@@ -29,12 +29,12 @@
 
                                 <div class="input-group input-box input-max-box">
                                     <span class="input-group-addon"><i class="fa">回复者</i></span>
-                                    <input type="text" class="form-control " name="userName" placeholder="评论者">
+                                    <input type="text" class="form-control " name="userName" placeholder="回复者">
                                 </div>
 
                                 <div class="input-group input-box input-max-box">
                                     <span class="input-group-addon"><i class="fa">内容</i></span>
-                                    <input type="text" class="form-control " name="content" placeholder="评论内容">
+                                    <input type="text" class="form-control " name="content" placeholder="内容">
                                 </div>
 
 

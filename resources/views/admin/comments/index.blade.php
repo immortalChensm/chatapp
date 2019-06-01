@@ -199,7 +199,6 @@
                     dataType: 'json',
                     data: {
                         "_token": "{{csrf_token()}}",
-                        'type':type,
                     },
                     success: function (data) {
                         if (data.code == 1) {

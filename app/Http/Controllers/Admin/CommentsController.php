@@ -33,6 +33,7 @@ class CommentsController extends Controller
             if (isset($searchItem['userId'])&&!empty($searchItem['userId'])){
                 $query->whereIn("userId",$searchItem['userId']);
             }
+            $query->where("isDeleted","=",0);//软删除
         },function (&$item){
             $item->userName        = User::where("userId", $item['userId'])->value("name");
             $item->createdDate     = date("Y-m-d H", strtotime($item->created_at));

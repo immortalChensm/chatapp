@@ -36,7 +36,9 @@ class CommentsController extends Controller
             $item->createdDate = date("Y-m-d H", strtotime($item->created_at));
             $item->title       = DB::table($this->typeTable[$item->modelType])->value("title");
             $item->commentPraise       = $item['praise'];
+            $item->commentUserName       = User::where("userId", $item['ownerUserId'])->value("name");
             $item->typeName    = $this->typeTitle[$item->modelType];
+            $item->commentReply    = count($item->reply);
         }]);
     }
 

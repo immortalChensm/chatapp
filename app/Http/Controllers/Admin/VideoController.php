@@ -45,6 +45,7 @@ class VideoController extends Controller
                 $query->where("title","LIKE","%".$searchItem['title']."%");
             }
         },function (&$item){
+            $item->userId      = User::where("userId","=",$item['userId'])->value("name");
             $item->isShow      = $item->isShow == 0 ? '是' : '否';
             $item->canShared   = $item->canShared == 1 ? '是' : '否';
             $item->createdDate = date("Y-m-d H", strtotime($item->created_at));

@@ -23,9 +23,9 @@ class CommentsController extends Controller
     }
 
 
-    function comments(Request $request,Comments $reports)
+    function comments(Request $request,Comments $comments)
     {
-        return $this->models(...[$request,$reports,function (&$searchItem)use($request){
+        return $this->models(...[$request,$comments,function (&$searchItem)use($request){
             $searchItem['reasonId']   = $request->query->get('reasonId');
         },function ($query,&$searchItem){
             if ($searchItem['reasonId']){

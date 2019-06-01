@@ -63,6 +63,7 @@
                                     <th>评论赞数</th>
                                     <th>评论回复数</th>
                                     <th>评论时间</th>
+                                    <th>屏蔽</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -79,6 +80,7 @@
                                     <th>评论赞数</th>
                                     <th>评论回复数</th>
                                     <th>评论时间</th>
+                                    <th>屏蔽</th>
                                     <th>操作</th>
                                 </tr>
                                 </tfoot>
@@ -112,7 +114,7 @@
                         { data:"commentPraise",name:"commentPraise",orderable: false},
                         { data:"commentReply",name:"commentReply",orderable: false},
                         { data:"isShow",name:"isShow",orderable: false},
-                        { data:"createdDate",name:"createdDate",orderable: false},
+                        { data:"createdDate",name:"createdDate",orderable: false}
                     ],
                     columnDefs: [ {
                         "targets": 10,

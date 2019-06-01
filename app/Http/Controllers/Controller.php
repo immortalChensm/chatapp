@@ -261,9 +261,14 @@ class Controller extends BaseController
         ],200);
     }
 
-    function removeModel(Model $model)
+    function removeModel(Model $model,$type=1)
     {
-        return $model->delete()?['code'=>1,'message'=>'删除成功']:['code'=>0,'message'=>'删除失败'];
+        if($type==1){
+            return $model->delete()?['code'=>1,'message'=>'删除成功']:['code'=>0,'message'=>'删除失败'];
+        }elseif($type==2){
+            return $model->update(['isDeleted'=>1])?['code'=>1,'message'=>'删除成功']:['code'=>0,'message'=>'删除失败'];
+        }
+
     }
 
     function getDomObj($html)

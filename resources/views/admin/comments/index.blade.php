@@ -119,7 +119,7 @@
 
                             var BtnHtml = "<button type='button' class='btn  btn-success btn-sm update' data='"+row.id+"'>查看回复详情</button>";
                             BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm delete' data='"+row.id+"' data-name='"+row.title+"'>移除</button>";
-                            BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm delete' data='"+row.id+"' data-name='"+row.title+"'>屏蔽</button>";
+                            BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm isShow' data='"+row.id+"' data-name='"+row.title+"'>屏蔽</button>";
                             return BtnHtml;
                         }
                     } ],
@@ -182,7 +182,34 @@
 
                 });
             });
+            //屏蔽操作
+            $("#datagrid").on("click",".isShow",function (e) {
+                var dateId = $(this).attr("data");
+                var name = $(":input[name=userName]").val();
+                var content = $(":input[name=content]").val();
+                $.ajax({
+                    type: "put",
+                    url: "{{url('/admin/comments/shieldOrShare/')}}/" + dateId,
+                    dataType: 'json',
+                    data: {
+                        "_token": "{{csrf_token()}}",
+                        'type':type,
+                    },
+                    success: function (data) {
+                        if (data.code == 1) {
+                            layer.msg(data.message);
+                            setTimeout(function () {
+                                window.tableGrid.ajax.url( '/admin/get/comments?name='+name+'&content='+content).load();
+                            }, 2000);
+                        } else {
+                            layer.msg(data.message);
+                        }
+                    },
+                    error: function (data) {
 
+                    }
+                });
+            });
 
         </script>
         @endsection

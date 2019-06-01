@@ -18,8 +18,6 @@ class CommentsController extends Controller
     {
         return view("admin.comments.index");
     }
-
-
     function comments(Request $request,Comments $comments)
     {
         return $this->models(...[$request,$comments,function (&$searchItem)use($request){
@@ -28,7 +26,6 @@ class CommentsController extends Controller
                 $userIds = User::where("name","LIKE","%".$request->query->get('name')."%")->pluck("userId");
                 $searchItem['userId']   = count($userIds->toArray())>0?$userIds->toArray():'';
             }
-
         },function ($query,&$searchItem){
             if ($searchItem['content']){
                 $query->where("content","LIKE","%".$searchItem['content']."%");
@@ -47,9 +44,12 @@ class CommentsController extends Controller
         }]);
     }
 
-
+    function shieldOrShare(Comments $comments)
+    {
+        return $this->modelShieldOrShare($comments);
+    }
     function remove(Comments $comments)
     {
-        return $this->removeModel($comments);
+        return $this->removeModel($comments,2);
     }
 }

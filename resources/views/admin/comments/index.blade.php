@@ -111,10 +111,11 @@
                         { data:"commentUserName",name:"commentUserName",orderable: false},
                         { data:"commentPraise",name:"commentPraise",orderable: false},
                         { data:"commentReply",name:"commentReply",orderable: false},
+                        { data:"isShow",name:"isShow",orderable: false},
                         { data:"createdDate",name:"createdDate",orderable: false},
                     ],
                     columnDefs: [ {
-                        "targets": 9,
+                        "targets": 10,
                         "render": function ( data, type, row, meta ) {
 
                             var BtnHtml = "<button type='button' class='btn  btn-success btn-sm update' data='"+row.id+"'>查看回复详情</button>";
@@ -134,7 +135,7 @@
                     "lengthMenu": [ 10, 25, 50, 75, 100 ],
                     "pageLength": 10
                 });
-
+                window.tableGrid =table;
                 $("#search").on("click",function (e) {
                     var name = $(":input[name=userName]").val();
                     var content = $(":input[name=content]").val();
@@ -151,7 +152,8 @@
 
             //移除操作
             $("#datagrid").on("click",".delete",function (e) {
-
+                var name = $(":input[name=userName]").val();
+                var content = $(":input[name=content]").val();
                 var dataid = $(this).attr("data");
                 layer.confirm('您确定要删除('+$(this).attr("data-name")+")吗？", {
                     btn: ['确认','取消'] //按钮
@@ -167,7 +169,7 @@
                             if (data.code==1){
                                 layer.msg(data.message);
                                 setTimeout(function () {
-                                    window.location = "{{url('admin/get/comments')}}";
+                                    window.tableGrid.ajax.url( '/admin/get/comments?name='+name+'&content='+content).load();
                                 },2000);
                             }else{
                                 layer.msg(data.message);

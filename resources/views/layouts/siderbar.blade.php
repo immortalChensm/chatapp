@@ -138,7 +138,7 @@
                 </ul>
             </li>
 
-            <li class="treeview">
+            <li class="treeview  @if(preg_match('/comments/',request()->url())||preg_match('/comments/',request()->url())) active @endif">
                 <a href="#">
                     <i class="fa  fa-comments"></i> <span>评论管理</span>
                     <span class="pull-right-container">
@@ -146,7 +146,7 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li ><a href="{{url("admin/managers")}}"><i class="fa fa-circle-o"></i> 评论列表</a></li>
+                    <li @if(preg_match('/comments/',request()->url())) class="active" @endif><a href="{{url("admin/comments")}}"><i class="fa fa-circle-o"></i> 评论列表</a></li>
                 </ul>
             </li>
 

@@ -27,14 +27,18 @@ class CommentsController extends Controller
     {
         return $this->models(...[$request,$comments,function (&$searchItem)use($request){
             $searchItem['content']   = $request->query->get('content');
-            $userIds = User::where("name","LIKE","%".$request->query->get('userName')."%")->pluck("userId");
-            $temp = [];
-            if (count($userIds)>0){
-                foreach($userIds as $userId){
-                    $temp[] = $userId;
+
+            if (!empty($request->query->get('userName'))){
+                $userIds = User::where("name","LIKE","%".$request->query->get('userName')."%")->pluck("userId");
+                $temp = [];
+                if (count($userIds)>0){
+                    foreach($userIds as $userId){
+                        $temp[] = $userId;
+                    }
+                    $searchItem['userId']   = implode(",",$temp);
                 }
-                $searchItem['userId']   = implode(",",$temp);
             }
+
 
 
         },function ($query,&$searchItem){

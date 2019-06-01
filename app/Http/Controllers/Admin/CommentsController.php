@@ -41,8 +41,9 @@ class CommentsController extends Controller
             $item->commentUserName = User::where("userId", $item['ownerUserId'])->value("name");
             $item->typeName        = $this->typeTitle[$item->modelType];
             $item->commentReply    = count($item->reply);
-            if ($item['isDeleted']==1)unset($item);
             $item->isShow = $item->isShow==1?'否':'是';
+            if ($item['isDeleted']==1)unset($item);
+
         }]);
     }
 

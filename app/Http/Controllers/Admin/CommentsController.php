@@ -39,13 +39,11 @@ class CommentsController extends Controller
                 }
             }
 
-
-
         },function ($query,&$searchItem){
             if ($searchItem['content']){
                 $query->where("content","LIKE","%".$searchItem['content']."%");
             }
-            if ($searchItem['userId']){
+            if (isset($searchItem['userId'])&&!empty($searchItem['userId'])){
                 $query->whereIn("userId",$searchItem['userId']);
             }
         },function (&$item){

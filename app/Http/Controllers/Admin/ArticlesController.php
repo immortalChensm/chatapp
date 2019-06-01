@@ -6,6 +6,7 @@ use App\Articles;
 use App\ArticleTag;
 use App\Events\removeArticle;
 use App\Http\Requests\Admin\StoreArticlePost;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use QL\QueryList;
@@ -38,6 +39,7 @@ class ArticlesController extends Controller
             }
         },function (&$item){
             $item->tagName     = $item->tag->name;
+            $item->userId      = User::where("userId","=",$item['userId'])->value("name");
             $item->isShow      = $item->isShow == 0 ? '是' : '否';
             $item->canShared   = $item->canShared == 1 ? '是' : '否';
             $item->isStoraged  = $item->isStoraged == 1 ? '是' : '否';

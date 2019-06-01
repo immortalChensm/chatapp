@@ -34,6 +34,7 @@ class CommentsController extends Controller
             if ($searchItem['content']){
                 $query->where("content","LIKE","%".$searchItem['content']."%");
             }
+            print_r($searchItem);
             if (isset($searchItem['userId'])&&!empty($searchItem['userId'])){
                 $query->whereIn("userId",$searchItem['userId']);
             }

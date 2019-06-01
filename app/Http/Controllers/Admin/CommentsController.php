@@ -28,8 +28,8 @@ class CommentsController extends Controller
         return $this->models(...[$request,$comments,function (&$searchItem)use($request){
             $searchItem['content']   = $request->query->get('content');
 
-            if (!empty($request->query->get('userName'))){
-                $userIds = User::where("name","LIKE","%".$request->query->get('userName')."%")->pluck("userId");
+            if (!empty($request->query->get('name'))){
+                $userIds = User::where("name","LIKE","%".$request->query->get('name')."%")->pluck("userId");
                 $temp = [];
                 if (count($userIds)>0){
                     foreach($userIds as $userId){
@@ -37,7 +37,6 @@ class CommentsController extends Controller
                     }
                     $searchItem['userId']   = implode(",",$temp);
                 }
-                print_r($searchItem);
             }
 
         },function ($query,&$searchItem){

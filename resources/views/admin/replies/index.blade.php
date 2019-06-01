@@ -58,8 +58,9 @@
                                     <th>回复人</th>
                                     <th>回复内容</th>
                                     <th>被回复者</th>
-                                    <th>回复时间</th>
+
                                     <th>屏蔽</th>
+                                    <th>回复时间</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -71,8 +72,8 @@
                                     <th>回复人</th>
                                     <th>回复内容</th>
                                     <th>被回复者</th>
-                                    <th>回复时间</th>
                                     <th>屏蔽</th>
+                                    <th>回复时间</th>
                                     <th>操作</th>
                                 </tr>
                                 </tfoot>

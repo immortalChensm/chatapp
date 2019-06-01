@@ -122,7 +122,7 @@
                     language:dataGridlanguage,
                     serverSide: true,
                     ajax: {
-                        url: '/admin/report/reasons/list',
+                        url: '/admin/get/comments',
                         type: 'GET'
                     },
                     "searching": false,

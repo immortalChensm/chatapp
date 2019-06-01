@@ -26,18 +26,27 @@ class CommentsController extends Controller
     function comments(Request $request,Comments $comments)
     {
         return $this->models(...[$request,$comments,function (&$searchItem)use($request){
-            $searchItem['reasonId']   = $request->query->get('reasonId');
+            $searchItem['content']   = $request->query->get('content');
+            $userIds = User::where("name","LIKE","%".$request->query->get('userName')."%")->pluck("userId");
+            $temp = [];
+            foreach($userIds as $userId){
+                $temp[] = $userId;
+            }
+            $searchItem['userId']   = implode(",",$temp);
         },function ($query,&$searchItem){
-            if ($searchItem['reasonId']){
-                $query->where("reasonId",$searchItem['reasonId']);
+            if ($searchItem['content']){
+                $query->where("content","LIKE","%".$searchItem['content']."%");
+            }
+            if ($searchItem['userId']){
+                $query->whereIn("userId",$searchItem['userId']);
             }
         },function (&$item){
-            $item->userName    = User::where("userId", $item['userId'])->value("name");
-            $item->createdDate = date("Y-m-d H", strtotime($item->created_at));
-            $item->title       = DB::table($this->typeTable[$item->modelType])->value("title");
-            $item->commentPraise       = $item['praise'];
-            $item->commentUserName       = User::where("userId", $item['ownerUserId'])->value("name");
-            $item->typeName    = $this->typeTitle[$item->modelType];
+            $item->userName        = User::where("userId", $item['userId'])->value("name");
+            $item->createdDate     = date("Y-m-d H", strtotime($item->created_at));
+            $item->title           = DB::table($this->typeTable[$item->modelType])->value("title");
+            $item->commentPraise   = $item['praise'];
+            $item->commentUserName = User::where("userId", $item['ownerUserId'])->value("name");
+            $item->typeName        = $this->typeTitle[$item->modelType];
             $item->commentReply    = count($item->reply);
         }]);
     }

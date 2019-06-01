@@ -24,7 +24,6 @@ class CommentsController extends Controller
     {
         return $this->models(...[$request,$comments,function (&$searchItem)use($request){
             $searchItem['content']   = $request->query->get('content');
-
             if (!empty($request->query->get('name'))){
                 $userIds = User::where("name","LIKE","%".$request->query->get('name')."%")->pluck("userId");
                 $searchItem['userId']   = count($userIds->toArray())>0?implode(",",$userIds->toArray()):'';
@@ -34,7 +33,6 @@ class CommentsController extends Controller
             if ($searchItem['content']){
                 $query->where("content","LIKE","%".$searchItem['content']."%");
             }
-            print_r($searchItem);
             if (isset($searchItem['userId'])&&!empty($searchItem['userId'])){
                 $query->whereIn("userId",$searchItem['userId']);
             }

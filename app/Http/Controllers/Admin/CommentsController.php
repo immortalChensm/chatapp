@@ -3,9 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Comments;
-use App\Http\Requests\Admin\StoreReasonPost;
-use App\Reason;
-use App\Reports;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -30,6 +27,7 @@ class CommentsController extends Controller
 
             if (!empty($request->query->get('name'))){
                 $userIds = User::where("name","LIKE","%".$request->query->get('name')."%")->pluck("userId");
+                print_r($userIds);
                 $searchItem['userId']   = implode(",",$userIds);
                 print_r($searchItem);
             }

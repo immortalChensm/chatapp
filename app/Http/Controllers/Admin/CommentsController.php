@@ -37,6 +37,7 @@ class CommentsController extends Controller
                     }
                     $searchItem['userId']   = implode(",",$temp);
                 }
+                print_r($searchItem);
             }
 
         },function ($query,&$searchItem){

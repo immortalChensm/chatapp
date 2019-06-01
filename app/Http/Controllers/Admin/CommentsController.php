@@ -27,9 +27,7 @@ class CommentsController extends Controller
 
             if (!empty($request->query->get('name'))){
                 $userIds = User::where("name","LIKE","%".$request->query->get('name')."%")->pluck("userId");
-                print_r($userIds->toArray());
-                $searchItem['userId']   = implode(",",$userIds);
-                print_r($searchItem);
+                $searchItem['userId']   = count($userIds->toArray())>0?implode(",",$userIds->toArray()):'';
             }
 
         },function ($query,&$searchItem){

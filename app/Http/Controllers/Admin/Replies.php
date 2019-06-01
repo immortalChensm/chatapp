@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Comments;
+use App\Reply;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
 
-class CommentsController extends Controller
+class RepliesController extends Controller
 {
     protected $typeTable       = ['1' => 'articles', '2' => 'photos', '3' => 'musics', '4' => 'videos'];
     protected $typeTitle       = ['1' => '文章', '2' => '相册', '3' => '音乐', '4' => '视频'];
@@ -16,11 +15,11 @@ class CommentsController extends Controller
 
     function index()
     {
-        return view("admin.comments.index");
+        return view("admin.replies.index");
     }
-    function comments(Request $request,Comments $comments)
+    function replies(Request $request,Reply $reply)
     {
-        return $this->models(...[$request,$comments,function (&$searchItem)use($request){
+        return $this->models(...[$request,$reply,function (&$searchItem)use($request){
             $searchItem['content']   = $request->query->get('content');
             if (!empty($request->query->get('name'))){
                 $userIds = User::where("name","LIKE","%".$request->query->get('name')."%")->pluck("userId");
@@ -36,23 +35,19 @@ class CommentsController extends Controller
             $query->where("isDeleted","=",0);//软删除
         },function (&$item){
             $item->userName        = User::where("userId", $item['userId'])->value("name");
+            $item->replyUserName   = User::where("userId", $item['commentUserId'])->value("name");
             $item->createdDate     = date("Y-m-d H", strtotime($item->created_at));
-            $item->title           = DB::table($this->typeTable[$item->modelType])->value("title");
-            $item->commentPraise   = $item['praise'];
-            $item->commentUserName = User::where("userId", $item['ownerUserId'])->value("name");
-            $item->typeName        = $this->typeTitle[$item->modelType];
-            $item->commentReply    = count($item->reply);
             $item->isShow = $item->isShow==1?'否':'是';
 
         }]);
     }
 
-    function shieldOrShare(Comments $comments)
+    function shieldOrShare(Reply $reply)
     {
-        return $this->modelShieldOrShare($comments);
+        return $this->modelShieldOrShare($reply);
     }
-    function remove(Comments $comments)
+    function remove(Reply $reply)
     {
-        return $this->removeModel($comments,2);
+        return $this->removeModel($reply,2);
     }
 }

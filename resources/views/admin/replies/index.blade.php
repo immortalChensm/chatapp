@@ -1,6 +1,6 @@
 @extends("layouts.main")
 @section("title")
-    评论列表
+    回复列表
     @endsection
         @section("css")
         <link rel="stylesheet" href="{{asset("adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css")}}">
@@ -15,7 +15,7 @@
             </h1>
             <ol class="breadcrumb">
                 <li><a href="{{url("/admin")}}"><i class="fa fa-dashboard"></i> 首页</a></li>
-                <li class="active">评论列表</li>
+                <li class="active">回复列表</li>
             </ol>
         </section>
         <!-- Main content -->
@@ -28,12 +28,12 @@
                             <h3 class="box-title">
 
                                 <div class="input-group input-box input-max-box">
-                                    <span class="input-group-addon"><i class="fa">评论者</i></span>
+                                    <span class="input-group-addon"><i class="fa">回复者</i></span>
                                     <input type="text" class="form-control " name="userName" placeholder="评论者">
                                 </div>
 
                                 <div class="input-group input-box input-max-box">
-                                    <span class="input-group-addon"><i class="fa">评论内容</i></span>
+                                    <span class="input-group-addon"><i class="fa">内容</i></span>
                                     <input type="text" class="form-control " name="content" placeholder="评论内容">
                                 </div>
 
@@ -55,16 +55,11 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>评论者</th>
-                                    <th>评论内容</th>
-                                    <th>评论对象</th>
-                                    <th>评论类型</th>
-                                    <th>被评论者</th>
-                                    <th>评论赞数</th>
-                                    <th>评论回复数</th>
+                                    <th>回复人</th>
+                                    <th>回复内容</th>
+                                    <th>被回复者</th>
+                                    <th>回复时间</th>
                                     <th>屏蔽</th>
-                                    <th>评论时间</th>
-
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -73,16 +68,11 @@
                                 <tfoot>
                                 <tr>
                                     <th>ID</th>
-                                    <th>评论者</th>
-                                    <th>评论内容</th>
-                                    <th>评论对象</th>
-                                    <th>评论类型</th>
-                                    <th>被评论者</th>
-                                    <th>评论赞数</th>
-                                    <th>评论回复数</th>
+                                    <th>回复人</th>
+                                    <th>回复内容</th>
+                                    <th>被回复者</th>
+                                    <th>回复时间</th>
                                     <th>屏蔽</th>
-                                    <th>评论时间</th>
-
                                     <th>操作</th>
                                 </tr>
                                 </tfoot>
@@ -110,21 +100,17 @@
                         { data:"id",name:"id",orderable: true,searchable:false },
                         { data:"userName",name:"userName",orderable: false,searchable:true },
                         { data:"content",name:"content",orderable: false},
-                        { data:"title",name:"title",orderable: false},
-                        { data:"typeName",name:"typeName",orderable: false},
-                        { data:"commentUserName",name:"commentUserName",orderable: false},
-                        { data:"commentPraise",name:"commentPraise",orderable: false},
-                        { data:"commentReply",name:"commentReply",orderable: false},
+                        { data:"replyUserName",name:"replyUserName",orderable: false},
                         { data:"isShow",name:"isShow",orderable: false},
                         { data:"createdDate",name:"createdDate",orderable: false}
                     ],
                     columnDefs: [ {
-                        "targets": 10,
+                        "targets": 6,
                         "render": function ( data, type, row, meta ) {
 
                             var BtnHtml = "";
-                            BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm delete' data='"+row.id+"' data-name='"+row.title+"'>移除</button>";
-                            BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm isShow' data='"+row.id+"' data-name='"+row.title+"'>屏蔽</button>";
+                            BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm delete' data='"+row.id+"' data-name='"+row.userName+"'>移除</button>";
+                            BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm isShow' data='"+row.id+"' data-name='"+row.userName+"'>屏蔽</button>";
                             return BtnHtml;
                         }
                     } ],
@@ -132,7 +118,7 @@
                     language:dataGridlanguage,
                     serverSide: true,
                     ajax: {
-                        url: '/admin/get/comments',
+                        url: '/admin/get/replies',
                         type: 'GET'
                     },
                     "searching": false,
@@ -143,7 +129,7 @@
                 $("#search").on("click",function (e) {
                     var name = $(":input[name=userName]").val();
                     var content = $(":input[name=content]").val();
-                    table.ajax.url( '/admin/get/comments?name='+name+'&content='+content).load();
+                    table.ajax.url( '/admin/get/replies?name='+name+'&content='+content).load();
                 })
 
             })
@@ -159,7 +145,7 @@
                 }, function(){
                     $.ajax({
                         type: "delete",
-                        url: "{{url('/admin/comments/remove/')}}/"+dataid,
+                        url: "{{url('/admin/replies/remove/')}}/"+dataid,
                         dataType: 'json',
                         data: {
                             "_token":"{{csrf_token()}}"
@@ -168,7 +154,7 @@
                             if (data.code==1){
                                 layer.msg(data.message);
                                 setTimeout(function () {
-                                    window.tableGrid.ajax.url( '/admin/get/comments?name='+name+'&content='+content).load();
+                                    window.tableGrid.ajax.url( '/admin/get/replies?name='+name+'&content='+content).load();
                                 },2000);
                             }else{
                                 layer.msg(data.message);
@@ -190,7 +176,7 @@
                 var content = $(":input[name=content]").val();
                 $.ajax({
                     type: "put",
-                    url: "{{url('/admin/comments/shieldOrShare/')}}/" + dateId,
+                    url: "{{url('/admin/replies/shieldOrShare/')}}/" + dateId,
                     dataType: 'json',
                     data: {
                         "_token": "{{csrf_token()}}",
@@ -200,7 +186,7 @@
                         if (data.code == 1) {
                             layer.msg(data.message);
                             setTimeout(function () {
-                                window.tableGrid.ajax.url( '/admin/get/comments?name='+name+'&content='+content).load();
+                                window.tableGrid.ajax.url( '/admin/get/replies?name='+name+'&content='+content).load();
                             }, 2000);
                         } else {
                             layer.msg(data.message);

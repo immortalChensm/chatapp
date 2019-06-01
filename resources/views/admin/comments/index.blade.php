@@ -28,8 +28,13 @@
                             <h3 class="box-title">
 
                                 <div class="input-group input-box input-max-box">
-                                    <span class="input-group-addon"><i class="fa">名称</i></span>
-                                    <input type="text" class="form-control " name="name" placeholder="名称">
+                                    <span class="input-group-addon"><i class="fa">评论者</i></span>
+                                    <input type="text" class="form-control " name="userName" placeholder="评论者">
+                                </div>
+
+                                <div class="input-group input-box input-max-box">
+                                    <span class="input-group-addon"><i class="fa">评论内容</i></span>
+                                    <input type="text" class="form-control " name="content" placeholder="评论内容">
                                 </div>
 
 
@@ -100,13 +105,13 @@
                     columns: [
                         { data:"id",name:"id",orderable: true,searchable:false },
                         { data:"userName",name:"userName",orderable: false,searchable:true },
-                        { data:"content",name:"content"},
-                        { data:"title",name:"title"},
-                        { data:"typeName",name:"typeName"},
-                        { data:"commentUserName",name:"commentUserName"},
-                        { data:"commentPraise",name:"commentPraise"},
-                        { data:"commentReply",name:"commentReply"},
-                        { data:"createdDate",name:"createdDate"},
+                        { data:"content",name:"content",orderable: false},
+                        { data:"title",name:"title",orderable: false},
+                        { data:"typeName",name:"typeName",orderable: false},
+                        { data:"commentUserName",name:"commentUserName",orderable: false},
+                        { data:"commentPraise",name:"commentPraise",orderable: false},
+                        { data:"commentReply",name:"commentReply",orderable: false},
+                        { data:"createdDate",name:"createdDate",orderable: false},
                     ],
                     columnDefs: [ {
                         "targets": 9,
@@ -131,8 +136,9 @@
                 });
 
                 $("#search").on("click",function (e) {
-                    var name = $(":input[name=name]").val();
-                    table.ajax.url( '/admin/report/reasons/list?reason='+name).load();
+                    var name = $(":input[name=userName]").val();
+                    var content = $(":input[name=content]").val();
+                    table.ajax.url( '/admin/get/comments?name='+name+'&content='+content).load();
                 })
 
             })
@@ -152,7 +158,7 @@
                 }, function(){
                     $.ajax({
                         type: "delete",
-                        url: "{{url('/admin/report/reasons/remove/')}}/"+dataid,
+                        url: "{{url('/admin/comments/remove/')}}/"+dataid,
                         dataType: 'json',
                         data: {
                             "_token":"{{csrf_token()}}"
@@ -161,7 +167,7 @@
                             if (data.code==1){
                                 layer.msg(data.message);
                                 setTimeout(function () {
-                                    window.location = "{{url('admin/report/reasons')}}";
+                                    window.location = "{{url('admin/get/comments')}}";
                                 },2000);
                             }else{
                                 layer.msg(data.message);

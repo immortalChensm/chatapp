@@ -99,14 +99,14 @@
                     processing:true,
                     columns: [
                         { data:"id",name:"id",orderable: true,searchable:false },
-                        { data:"userName",name:"userName",orderable: true,searchable:true },
+                        { data:"userName",name:"userName",orderable: false,searchable:true },
                         { data:"content",name:"content"},
                         { data:"title",name:"title"},
-                        { data:"modelType",name:"modelType"},
+                        { data:"typeName",name:"typeName"},
                         { data:"commentUserName",name:"commentUserName"},
                         { data:"commentPraise",name:"commentPraise"},
                         { data:"commentReply",name:"commentReply"},
-                        { data:"created_at",name:"created_at"},
+                        { data:"createdDate",name:"createdDate"},
                     ],
                     columnDefs: [ {
                         "targets": 9,

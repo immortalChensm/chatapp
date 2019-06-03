@@ -152,7 +152,7 @@
                 }, function(){
                     $.ajax({
                         type: "delete",
-                        url: "{{url('/admin/replies/remove/')}}/"+dataid,
+                        url: "{{url('/admin/order/business/remove/')}}/"+dataid,
                         dataType: 'json',
                         data: {
                             "_token":"{{csrf_token()}}"

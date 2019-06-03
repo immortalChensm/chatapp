@@ -142,11 +142,11 @@
 
             })
 
-
             //移除操作
             $("#datagrid").on("click",".delete",function (e) {
                 var name = $(":input[name=userName]").val();
                 var type = $(":input[name=type]").val();
+                var dataid = $(this).attr("data");
                 layer.confirm('您确定要删除('+$(this).attr("data-name")+")吗？", {
                     btn: ['确认','取消'] //按钮
                 }, function(){

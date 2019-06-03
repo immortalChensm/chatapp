@@ -28,6 +28,7 @@ class BusinessController extends Controller
             }
         },function (&$item){
             $item->userName        = User::where("userId", $item['userId'])->value("name");
+            $item->type            = (function($type){$typeName=['1'=>'撰写专户','2'=>'专业拍摄','3'=>'音乐制作','4'=>'视频拍摄'];return $typeName[$type];})($item->type);
             $item->createdDate     = date("Y-m-d H", strtotime($item->created_at));
         }]);
     }

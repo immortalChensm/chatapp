@@ -32,6 +32,11 @@
                                     <input type="text" class="form-control " name="userName" placeholder="用户名称">
                                 </div>
 
+                                <div class="input-group input-box input-max-box">
+                                    <span class="input-group-addon"><i class="fa">用户名称</i></span>
+                                    <input type="text" class="form-control " name="userName" placeholder="用户名称">
+                                </div>
+
                                 <div class="search-box" id="search">
                                     <span class="input-group-btn">
                                       <button type="button" class="btn btn-info btn-flat searchBtn">搜索</button>
@@ -49,6 +54,7 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
+                                    <th>业务类型</th>
                                     <th>提交人</th>
                                     <th>用户姓名</th>
                                     <th>联系电话</th>
@@ -62,6 +68,7 @@
                                 <tfoot>
                                 <tr>
                                     <th>ID</th>
+                                    <th>业务类型</th>
                                     <th>提交人</th>
                                     <th>用户姓名</th>
                                     <th>联系电话</th>
@@ -92,6 +99,7 @@
                     processing:true,
                     columns: [
                         { data:"id",name:"id",orderable: true,searchable:false },
+                        { data:"type",name:"type",orderable: false,searchable:false },
                         { data:"userName",name:"userName",orderable: false,searchable:true },
                         { data:"name",name:"name",orderable: false,searchable:true },
                         { data:"mobile",name:"content",orderable: false},
@@ -99,7 +107,7 @@
                         { data:"createdDate",name:"createdDate",orderable: false}
                     ],
                     columnDefs: [ {
-                        "targets": 6,
+                        "targets": 7,
                         "render": function ( data, type, row, meta ) {
 
                             var BtnHtml = "";

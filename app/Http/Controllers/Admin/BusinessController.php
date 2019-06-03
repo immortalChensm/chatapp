@@ -28,7 +28,7 @@ class BusinessController extends Controller
                 $query->whereIn("userId",$searchItem['userId']);
             }
             if (isset($searchItem['type'])&&!empty($searchItem['type'])){
-                $query->whereIn("type",$searchItem['type']);
+                $query->where("type",$searchItem['type']);
             }
         },function (&$item){
             $item->userName        = User::where("userId", $item['userId'])->value("name");

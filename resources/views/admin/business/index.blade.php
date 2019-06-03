@@ -36,7 +36,7 @@
                                     <span class="input-group-addon"><i class="fa">业务类型</i></span>
                                     <select class="form-control" name="type">
                                         <option value="">请选择业务类型</option>
-                                            @foreach(['1'=>'专记','2'=>'相册制作','3'=>'音乐制作 ','4'=>'视频拍摄'] as $k=>$item)
+                                            @foreach(['1'=>'撰写专记','2'=>'专业拍摄','3'=>'音乐制作','4'=>'视频拍摄'] as $k=>$item)
                                                 <option value="{{$k}}" @if($k==request()['type']) selected @endif >{{$item}}</option>
                                             @endforeach
 

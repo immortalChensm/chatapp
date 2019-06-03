@@ -21,8 +21,11 @@ class BusinessController extends Controller
                 $userIds = User::where("name","LIKE","%".$request->query->get('name')."%")->pluck("userId");
                 $searchItem['userId']   = count($userIds->toArray())>0?$userIds->toArray():'';
             }
+            $searchItem['type'] = $request->query->get('type');
         },function ($query,&$searchItem){
-
+            if (isset($searchItem['type'])&&!empty($searchItem['type'])){
+                $query->whereIn("type",$searchItem['type']);
+            }
             if (isset($searchItem['userId'])&&!empty($searchItem['userId'])){
                 $query->whereIn("userId",$searchItem['userId']);
             }

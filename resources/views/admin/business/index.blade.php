@@ -32,9 +32,16 @@
                                     <input type="text" class="form-control " name="userName" placeholder="用户名称">
                                 </div>
 
-                                <div class="input-group input-box input-max-box">
-                                    <span class="input-group-addon"><i class="fa">用户名称</i></span>
-                                    <input type="text" class="form-control " name="userName" placeholder="用户名称">
+                                <div class="input-group input-box">
+                                    <span class="input-group-addon"><i class="fa">业务类型</i></span>
+                                    <select class="form-control" name="type">
+                                        <option value="">请选择业务类型</option>
+                                            @foreach(['1'=>'专记','2'=>'相册制作','3'=>'音乐制作 ','4'=>'视频拍摄'] as $k=>$item)
+                                                <option value="{{$k}}" @if($k==request()['type']) selected @endif >{{$item}}</option>
+                                            @endforeach
+
+                                    </select>
+
                                 </div>
 
                                 <div class="search-box" id="search">
@@ -129,7 +136,8 @@
                 window.tableGrid =table;
                 $("#search").on("click",function (e) {
                     var name = $(":input[name=userName]").val();
-                    table.ajax.url( '/admin/order/get/business?name='+name).load();
+                    var type = $(":input[name=type]").val();
+                    table.ajax.url( '/admin/order/get/business?name='+name+"&type="+type).load();
                 })
 
             })
@@ -138,7 +146,7 @@
             //移除操作
             $("#datagrid").on("click",".delete",function (e) {
                 var name = $(":input[name=userName]").val();
-
+                var type = $(":input[name=type]").val();
                 layer.confirm('您确定要删除('+$(this).attr("data-name")+")吗？", {
                     btn: ['确认','取消'] //按钮
                 }, function(){
@@ -153,7 +161,7 @@
                             if (data.code==1){
                                 layer.msg(data.message);
                                 setTimeout(function () {
-                                    window.tableGrid.ajax.url( '/admin/order/get/business?name='+name).load();;
+                                    window.tableGrid.ajax.url( '/admin/order/get/business?name='+name+"&type="+type).load();
                                 },2000);
                             }else{
                                 layer.msg(data.message);

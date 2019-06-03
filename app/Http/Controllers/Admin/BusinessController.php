@@ -23,11 +23,12 @@ class BusinessController extends Controller
             }
             $searchItem['type'] = $request->query->get('type');
         },function ($query,&$searchItem){
-            if (isset($searchItem['type'])&&!empty($searchItem['type'])){
-                $query->whereIn("type",$searchItem['type']);
-            }
+
             if (isset($searchItem['userId'])&&!empty($searchItem['userId'])){
                 $query->whereIn("userId",$searchItem['userId']);
+            }
+            if (isset($searchItem['type'])&&!empty($searchItem['type'])){
+                $query->whereIn("type",$searchItem['type']);
             }
         },function (&$item){
             $item->userName        = User::where("userId", $item['userId'])->value("name");

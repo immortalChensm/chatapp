@@ -126,7 +126,7 @@
                 </ul>
             </li>
 
-            <li class="treeview">
+            <li class="treeview @if(preg_match('/business/',request()->url())||preg_match('/business/',request()->url())) active @endif">
                 <a href="#">
                     <i class="fa  fa-reorder (alias)"></i> <span>订单管理</span>
                     <span class="pull-right-container">
@@ -134,7 +134,7 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li ><a href="{{url("admin/managers")}}"><i class="fa fa-circle-o"></i> 订单列表</a></li>
+                    <li @if(preg_match('/business/',request()->url())) class="active" @endif ><a href="{{url("admin/order/business")}}"><i class="fa fa-circle-o"></i> 用户业务列表</a></li>
                 </ul>
             </li>
 

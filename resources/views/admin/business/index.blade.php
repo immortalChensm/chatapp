@@ -49,6 +49,7 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
+                                    <th>提交人</th>
                                     <th>用户姓名</th>
                                     <th>联系电话</th>
                                     <th>联系地址</th>
@@ -61,6 +62,7 @@
                                 <tfoot>
                                 <tr>
                                     <th>ID</th>
+                                    <th>提交人</th>
                                     <th>用户姓名</th>
                                     <th>联系电话</th>
                                     <th>联系地址</th>
@@ -91,12 +93,13 @@
                     columns: [
                         { data:"id",name:"id",orderable: true,searchable:false },
                         { data:"userName",name:"userName",orderable: false,searchable:true },
+                        { data:"name",name:"name",orderable: false,searchable:true },
                         { data:"mobile",name:"content",orderable: false},
                         { data:"address",name:"replyUserName",orderable: false},
                         { data:"createdDate",name:"createdDate",orderable: false}
                     ],
                     columnDefs: [ {
-                        "targets": 5,
+                        "targets": 6,
                         "render": function ( data, type, row, meta ) {
 
                             var BtnHtml = "";

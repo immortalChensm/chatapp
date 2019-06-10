@@ -109,7 +109,7 @@
                     language:dataGridlanguage,
                     serverSide: true,
                     ajax: {
-                        url: '/admin/reportUsers/get/users',
+                        //url: '/admin/reportUsers/get/users',
                         type: 'GET'
                     },
                     "searching": false,

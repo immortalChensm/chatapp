@@ -28,8 +28,8 @@
                             <h3 class="box-title">
 
                                 <div class="input-group input-box input-max-box">
-                                    <span class="input-group-addon"><i class="fa">用户</i></span>
-                                    <input type="text" class="form-control " name="name" placeholder="名称">
+                                    <span class="input-group-addon"><i class="fa">被举报人</i></span>
+                                    <input type="text" class="form-control " name="name" placeholder="被举报人">
                                 </div>
 
 

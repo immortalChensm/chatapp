@@ -151,7 +151,7 @@
                 </ul>
             </li>
 
-            <li class="treeview  @if(preg_match('/reports/',request()->url())||preg_match('/reasons/',request()->url())) active @endif">
+            <li class="treeview  @if(preg_match('/reports/',request()->url())||preg_match('/reasons/',request()->url())||preg_match('/reportUsers/',request()->url())) active @endif">
                 <a href="#">
                     <i class="fa  fa-warning (alias)"></i> <span>举报管理</span>
                     <span class="pull-right-container">

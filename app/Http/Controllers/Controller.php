@@ -230,9 +230,12 @@ class Controller extends BaseController
         $orderDir    = $request->query->get('order')['0']['dir'];
         $fields      = $request->query->get('columns');
         $fieldName   = [];
-        foreach ($fields as $key=>$item) {
-            $fieldName[$key] = $item['name'];
+        if (count($fields)>0){
+            foreach ($fields as $key=>$item) {
+                $fieldName[$key] = $item['name'];
+            }
         }
+
         $orderSql = "";
         if (isset($orderColumn)) {
             $orderSql = " {$fieldName[intval($orderColumn)]} " . $orderDir;

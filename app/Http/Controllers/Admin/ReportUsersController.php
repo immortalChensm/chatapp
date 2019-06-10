@@ -21,8 +21,8 @@ class ReportUsersController extends Controller
                 $searchItem['reportedUserId']   = count($userIds->toArray())>0?$userIds->toArray():'';
             }
         },function ($query,&$searchItem){
-            if (isset($searchItem['userId'])&&!empty($searchItem['userId'])){
-                $query->whereIn("userId",$searchItem['userId']);
+            if (isset($searchItem['reportedUserId'])&&!empty($searchItem['reportedUserId'])){
+                $query->whereIn("userId",$searchItem['reportedUserId']);
             }
         },function (&$item)use($reports){
             $item->userName  = isset($item->userName->realName)?$item->userName->realName:$item->userName->name;

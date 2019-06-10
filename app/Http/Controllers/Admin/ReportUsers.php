@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\Admin\StoreReasonPost;
-use App\Reason;
-use App\Reports;
 use App\ReportUsers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
 
 class ReportUsersController extends Controller
 {

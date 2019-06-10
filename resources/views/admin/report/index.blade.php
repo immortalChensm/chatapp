@@ -109,7 +109,7 @@
                     language:dataGridlanguage,
                     serverSide: true,
                     ajax: {
-                        url: '/admin/reportUsers/users',
+                        url: '/admin/reportUsers/get/users',
                         type: 'GET'
                     },
                     "searching": false,
@@ -119,7 +119,7 @@
 
                 $("#search").on("click",function (e) {
                     var name = $(":input[name=name]").val();
-                    table.ajax.url( '/admin/reportUsers/users?name='+name).load();
+                    table.ajax.url( '/admin/reportUsers/get/users?name='+name).load();
                 })
 
             })
@@ -144,7 +144,7 @@
                                 layer.msg(data.message);
                                 setTimeout(function () {
 
-                                    window.tableGrid.ajax.url( '/admin/reportUsers/users?name='+name).load();
+                                    window.tableGrid.ajax.url( '/admin/reportUsers/get/users?name='+name).load();
                                 },2000);
                             }else{
                                 layer.msg(data.message);

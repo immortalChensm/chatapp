@@ -160,7 +160,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li @if(preg_match('/reports/',request()->url())) class="active" @endif><a href="{{url("admin/reports")}}"><i class="fa fa-circle-o"></i> 举报列表</a></li>
-                    <li @if(preg_match('/reportUsers/',request()->url())) class="active" @endif><a href="{{url("admin/reportUsers/users")}}"><i class="fa fa-circle-o"></i> 举报用户列表</a></li>
+                    <li @if(preg_match('/reportUsers/',request()->url())) class="active" @endif><a href="{{url("admin/reportUsers")}}"><i class="fa fa-circle-o"></i> 举报用户列表</a></li>
                     <li @if(preg_match('/reasons/',request()->url())) class="active" @endif><a href="{{url("admin/report/reasons")}}"><i class="fa fa-circle-o"></i> 举报原因列表</a></li>
                 </ul>
             </li>

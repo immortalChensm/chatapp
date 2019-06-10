@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\ReportUsers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\User;
 class ReportUsersController extends Controller
 {
     function index()

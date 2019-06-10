@@ -22,7 +22,7 @@ class ReportUsersController extends Controller
             }
         },function ($query,&$searchItem){
             if (isset($searchItem['reportedUserId'])&&!empty($searchItem['reportedUserId'])){
-                $query->whereIn("userId",$searchItem['reportedUserId']);
+                $query->whereIn("reportedUserId",$searchItem['reportedUserId']);
             }
         },function (&$item)use($reportUsers){
             $item->userName  = isset($item->userName->realName)?$item->userName->realName:$item->userName->name;

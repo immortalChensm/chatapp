@@ -109,7 +109,7 @@ class Controller extends BaseController
     {
         $redis = new \Redis();
         if($redis->connect(env("REDIS_HOST"),env("REDIS_PORT"))){
-            $redis->auth("123456");
+            $redis->auth(env("MAIL_PASSWORD"));
             return $redis;
         }else{
             return $redis->connect(env("REDIS_HOST"),env("REDIS_PORT"));

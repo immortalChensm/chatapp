@@ -17,7 +17,6 @@ class CreateRedpacketTable extends Migration
             $table->increments('id');
             $table->unsignedBigInteger("userId")->comment("红包发布的人");
             $table->unsignedDecimal("money",10,2)->default(0)->comment("红包金额");
-            $table->tinyInteger("type")->default(1)->comment("1为群2为个人红包");
             $table->string("message")->comment("红包留言");
             $table->unsignedBigInteger("num")->default(0)->comment("红包个数");
             $table->timestamps();

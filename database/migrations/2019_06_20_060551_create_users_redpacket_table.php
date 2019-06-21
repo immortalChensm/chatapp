@@ -18,6 +18,7 @@ class CreateUsersRedpacketTable extends Migration
             $table->unsignedBigInteger("userId")->index()->comment("红包领取人");
             $table->unsignedBigInteger("sendUserId")->index()->comment("红包发送人");
             $table->unsignedDecimal("money",10,2)->default(0)->comment("红包领取金额");
+            $table->unsignedInteger("redpacketid")->comment("抢到的红包");
             $table->timestamps();
         });
     }

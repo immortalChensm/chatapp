@@ -131,7 +131,7 @@
             //
             function searchByField()
             {
-                var name = $(":input[name=name]").val();
+                var name = $(":input[name=groupId]").val();
                 window.tableGrid.ajax.url( '/admin/get/users?name='+name).load();
             }
 

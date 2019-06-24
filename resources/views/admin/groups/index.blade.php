@@ -38,9 +38,6 @@
                                     </span>
                                 </div>
 
-                                {{--<button type="button" class="btn bg-navy margin addBtn" onclick="location.href='{{url("/admin/articles/edit")}}'">发布文章</button>--}}
-
-
                             </h3>
                         </div>
 
@@ -96,11 +93,11 @@
                         { data:"id",name:"id",orderable: true,searchable:false },
                         { data:"GroupId",name:"GroupId",orderable: false,searchable:true },
                         { data:"Name",name:"Name",orderable: false,searchable:false },
-                        { data:"Operator_Account",name:"Operator_Account",orderable: false,searchable:true },
-                        { data:"Owner_Account",name:"Owner_Account",orderable: false,searchable:true },
-                        { data:"Owner_Name",name:"Owner_Name",orderable: false,searchable:true },
-                        { data:"Type",name:"Type",orderable: false,searchable:true },
-                        { data:"createdDate",name:"createdDate",orderable: false,searchable:true },
+                        { data:"Operator_Account",name:"Operator_Account",orderable: false,searchable:false },
+                        { data:"Owner_Account",name:"Owner_Account",orderable: false,searchable:false },
+                        { data:"Owner_Name",name:"Owner_Name",orderable: false,searchable:false },
+                        { data:"Type",name:"Type",orderable: false,searchable:false },
+                        { data:"createdDate",name:"createdDate",orderable: false,searchable:false }
                     ],
                     columnDefs: [ {
                         "targets": 8,
@@ -121,12 +118,12 @@
                     "searching": false,
                     "lengthMenu": [ 10, 25, 50, 75, 100 ],
                     "pageLength": 10
-                });
+                })
 
-                     window.tableGrid =table;
-                    $("#search").on("click",function (e) {
-                        searchByField();
-                    });
+                 window.tableGrid =table;
+                $("#search").on("click",function (e){
+                    searchByField();
+                });
 
             });
 

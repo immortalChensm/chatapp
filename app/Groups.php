@@ -11,6 +11,6 @@ class Groups extends Model
 
     public function user()
     {
-        return $this->hasOne('App\Users',"Owner_Account","userId")->select(['name','realName']);
+        return $this->hasOne('App\Users',"Owner_Account","id")->select(['name','realName']);
     }
 }

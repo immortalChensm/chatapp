@@ -25,7 +25,7 @@ class GroupsController extends Controller
             }
 
         },function (&$item){
-            $item->Owner_Name = User::where("userId",$item->Owner_Account);
+            $item->Owner_Name = User::where("userId",$item->Owner_Account)->value("name");
             $item->createdDate = date("Y-m-d H", strtotime($item->created_at));
         }]);
     }

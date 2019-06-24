@@ -6,11 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\User;
 class Groups extends Model
 {
-    use Notifiable;
-
     protected $table = "groups";
     public $primaryKey = "id";
-
     protected $guarded = [];
 
     function user()

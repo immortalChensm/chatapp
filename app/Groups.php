@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 use App\User;
-class Groups extends Authenticatable
+class Groups extends Model
 {
     use Notifiable;
 

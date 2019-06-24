@@ -9,7 +9,7 @@ class Groups extends Model
     public $primaryKey = "id";
     protected $guarded = [];
 
-    function user()
+    public function user()
     {
         return $this->hasOne('App\Users',"Owner_Account","userId")->select(['name','realName']);
     }

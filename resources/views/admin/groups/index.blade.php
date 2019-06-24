@@ -91,7 +91,7 @@
                     processing:true,
                     columns: [
                         { data:"id",name:"id",orderable: true,searchable:false },
-                        { data:"GroupId",name:"GroupId",orderable: false,searchable:true },
+                        { data:"GroupId",name:"GroupId",orderable: true,searchable:true },
                         { data:"Name",name:"Name",orderable: false,searchable:false },
                         { data:"Operator_Account",name:"Operator_Account",orderable: false,searchable:false },
                         { data:"Owner_Account",name:"Owner_Account",orderable: false,searchable:false },
@@ -100,7 +100,7 @@
                         { data:"createdDate",name:"createdDate",orderable: false,searchable:false }
                     ],
                     columnDefs: [ {
-                        "targets": 8,
+                        "targets": 7,
                         "render": function ( data, type, row, meta ) {
                             var BtnHtml = "<button type='button' class='fa fa-edit btn  btn-success btn-sm update' data='"+row.id+"' data-user='"+row.id+"'>编辑/查看</button>";
                             BtnHtml+= "  <button type='button' class='fa fa-remove btn  btn-danger btn-sm delete' data='"+row.GroupId+"' data-title='"+row.name+"' data-user='"+row.GroupId+"'>解散群</button>";
@@ -132,7 +132,6 @@
                 var name = $(":input[name=name]").val();
                 window.tableGrid.ajax.url( '/admin/get/users?name='+name).load();
             }
-
 
             //编辑操作
             $("#datagrid").on("click",".update",function (e) {

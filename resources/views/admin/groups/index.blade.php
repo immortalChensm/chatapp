@@ -86,46 +86,7 @@
         <script src="{{asset("adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
         <script src="{{asset("adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
         <script>
-            $(function () {
-                var table = $('#datagrid').DataTable({
-                    processing:true,
-                    columns: [
-                        { data:"id",name:"id",orderable: true,searchable:false },
-                        { data:"GroupId",name:"GroupId",orderable: false,searchable:true },
-                        { data:"Name",name:"Name",orderable: false,searchable:false },
-                        { data:"Operator_Account",name:"Operator_Account",orderable: false,searchable:false },
-                        { data:"Owner_Account",name:"Owner_Account",orderable: false,searchable:false },
-                        { data:"Owner_Name",name:"Owner_Name",orderable: false,searchable:false },
-                        { data:"Type",name:"Type",orderable: false,searchable:false },
-                        { data:"createdDate",name:"createdDate",orderable: false,searchable:false }
-                    ],
-                    columnDefs: [ {
-                        "targets": 8,
-                        "render": function ( data, type, row, meta ) {
-                            var BtnHtml = "<button type='button' class='fa fa-edit btn  btn-success btn-sm update' data='"+row.id+"' data-user='"+row.id+"'>编辑/查看</button>";
-                            BtnHtml+= "  <button type='button' class='fa fa-remove btn  btn-danger btn-sm delete' data='"+row.GroupId+"' data-title='"+row.name+"' data-user='"+row.GroupId+"'>解散群</button>";
-                            BtnHtml+= "  <button type='button' class='fa fa-remove btn  btn-danger btn-sm delete' data='"+row.GroupId+"' data-title='"+row.name+"' data-user='"+row.GroupId+"'>发送消息</button>";
-                            return BtnHtml;
-                        }
-                    } ],
-                    hover:true,
-                    language: dataGridlanguage,
-                    serverSide: true,
-                    ajax: {
-                        url: '/admin/get/groups',
-                        type: 'GET'
-                    },
-                    "searching": false,
-                    "lengthMenu": [ 10, 25, 50, 75, 100 ],
-                    "pageLength": 10
-                });
 
-                 window.tableGrid =table;
-                $("#search").on("click",function (e){
-                    searchByField();
-                });
-
-            });
 
             //
             function searchByField()

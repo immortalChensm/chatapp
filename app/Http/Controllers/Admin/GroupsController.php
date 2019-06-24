@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Groups;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -24,7 +25,7 @@ class GroupsController extends Controller
             }
 
         },function (&$item){
-            $item->Owner_Name = $item->user->name;
+            $item->Owner_Name = User::where("userId",$item->Owner_Account);
             $item->createdDate = date("Y-m-d H", strtotime($item->created_at));
         }]);
     }

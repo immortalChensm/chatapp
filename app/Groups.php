@@ -9,8 +9,4 @@ class Groups extends Model
     public $primaryKey = "id";
     protected $guarded = [];
 
-    public function user()
-    {
-        return $this->belongsTo('App\Users',"Owner_Account","id")->select(['name','realName']);
-    }
 }

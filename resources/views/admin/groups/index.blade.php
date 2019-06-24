@@ -105,9 +105,9 @@
                     columnDefs: [ {
                         "targets": 8,
                         "render": function ( data, type, row, meta ) {
-                            var BtnHtml = "<button type='button' class='fa fa-edit btn  btn-success btn-sm update' data='"+row.userId+"' data-user='"+row.id+"'>编辑/查看</button>";
-                            BtnHtml+= "  <button type='button' class='fa fa-remove btn  btn-danger btn-sm delete' data='"+row.userId+"' data-title='"+row.name+"' data-user='"+row.GroupId+"'>解散群</button>";
-                            BtnHtml+= "  <button type='button' class='fa fa-remove btn  btn-danger btn-sm delete' data='"+row.userId+"' data-title='"+row.name+"' data-user='"+row.GroupId+"'>发送消息</button>";
+                            var BtnHtml = "<button type='button' class='fa fa-edit btn  btn-success btn-sm update' data='"+row.id+"' data-user='"+row.id+"'>编辑/查看</button>";
+                            BtnHtml+= "  <button type='button' class='fa fa-remove btn  btn-danger btn-sm delete' data='"+row.GroupId+"' data-title='"+row.name+"' data-user='"+row.GroupId+"'>解散群</button>";
+                            BtnHtml+= "  <button type='button' class='fa fa-remove btn  btn-danger btn-sm delete' data='"+row.GroupId+"' data-title='"+row.name+"' data-user='"+row.GroupId+"'>发送消息</button>";
                             return BtnHtml;
                         }
                     } ],
@@ -122,13 +122,13 @@
                     "lengthMenu": [ 10, 25, 50, 75, 100 ],
                     "pageLength": 10
                 });
-                window.tableGrid =table;
-                    $("#search").on("click",function (e) {
-                    //table.ajax.url( '/admin/get/users?title='+ title+"&tagId="+tagId).load();
-                        searchByField();
-                })
 
-            })
+                     window.tableGrid =table;
+                    $("#search").on("click",function (e) {
+                        searchByField();
+                    });
+
+            });
 
             //
             function searchByField()
@@ -136,7 +136,7 @@
                 var name = $(":input[name=groupId]").val();
                 var obj = {
                     name:name,
-                }
+                };
                 window.tableGrid.ajax.url( '/admin/get/groups?name='+ obj.name).load();
             }
 

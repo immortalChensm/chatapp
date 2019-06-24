@@ -102,7 +102,6 @@
                     columnDefs: [ {
                         "targets": 8,
                         "render": function ( data, type, row, meta ) {
-
                             var BtnHtml = "<button type='button' class='fa fa-edit btn  btn-success btn-sm update' data='"+row.id+"' data-user='"+row.id+"'>编辑/查看</button>";
                             BtnHtml+= "  <button type='button' class='fa fa-remove btn  btn-danger btn-sm delete' data='"+row.GroupId+"' data-title='"+row.name+"' data-user='"+row.GroupId+"'>解散群</button>";
                             BtnHtml+= "  <button type='button' class='fa fa-remove btn  btn-danger btn-sm delete' data='"+row.GroupId+"' data-title='"+row.name+"' data-user='"+row.GroupId+"'>发送消息</button>";
@@ -110,10 +109,10 @@
                         }
                     } ],
                     hover:true,
-                    language:dataGridlanguage,
+                    language: dataGridlanguage,
                     serverSide: true,
                     ajax: {
-                        url: '/admin/get/\'/admin/get/groups\',',
+                        url: '/admin/get/groups',
                         type: 'GET'
                     },
                     "searching": false,
@@ -121,7 +120,7 @@
                     "pageLength": 10
                 });
                 window.tableGrid =table;
-                $("#search").on("click",function (e) {;
+                $("#search").on("click",function (e) {
                     searchByField();
                 })
 
@@ -130,17 +129,14 @@
             //
             function searchByField()
             {
-                var name = $(":input[name=groupId]").val();
-                var obj = {
-                    name:name,
-                };
-                window.tableGrid.ajax.url( '/admin/get/groups?name='+ obj.name).load();
+                var name = $(":input[name=name]").val();
+                window.tableGrid.ajax.url( '/admin/get/users?name='+name).load();
             }
 
 
             //编辑操作
             $("#datagrid").on("click",".update",function (e) {
-               location.href = "/admin/articles/edit/"+$(this).attr("data");
+                location.href = "/admin/articles/edit/"+$(this).attr("data");
             });
 
             //移除操作
@@ -176,7 +172,6 @@
 
                 });
             });
-
         </script>
         @endsection
 

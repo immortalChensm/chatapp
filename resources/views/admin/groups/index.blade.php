@@ -132,7 +132,7 @@
             function searchByField()
             {
                 var name = $(":input[name=groupId]").val();
-                window.tableGrid.ajax.url( '/admin/get/users?name='+name).load();
+                window.tableGrid.ajax.url( '/admin/get/groups?name='+name).load();
             }
 
             //编辑操作

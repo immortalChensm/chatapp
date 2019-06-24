@@ -118,7 +118,7 @@
                     "searching": false,
                     "lengthMenu": [ 10, 25, 50, 75, 100 ],
                     "pageLength": 10
-                })
+                });
 
                  window.tableGrid =table;
                 $("#search").on("click",function (e){

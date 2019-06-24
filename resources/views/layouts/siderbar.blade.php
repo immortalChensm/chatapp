@@ -102,7 +102,7 @@
                 </ul>
             </li>
 
-            <li class="treeview">
+            <li class="treeview @if(preg_match('/groups/',request()->url())) active @endif">
                 <a href="#">
                     <i class="fa  fa-group (alias)"></i> <span>群组管理</span>
                     <span class="pull-right-container">
@@ -110,7 +110,7 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li ><a href="{{url("admin/managers")}}"><i class="fa fa-circle-o"></i> 群组列表</a></li>
+                    <li @if(preg_match('/groups/',request()->url())) class="active" @endif ><a href="{{url("admin/groups")}}"><i class="fa fa-circle-o"></i> 群组列表</a></li>
                 </ul>
             </li>
 

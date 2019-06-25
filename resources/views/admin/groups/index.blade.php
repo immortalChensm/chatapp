@@ -48,6 +48,8 @@
                                     <th>ID</th>
                                     <th>群ID</th>
                                     <th>群名称</th>
+                                    <th>群人数</th>
+                                    <th>群简介</th>
                                     <th>创建人</th>
                                     <th>群主ID</th>
                                     <th>群主名</th>
@@ -63,6 +65,8 @@
                                     <th>ID</th>
                                     <th>群ID</th>
                                     <th>群名称</th>
+                                    <th>群人数</th>
+                                    <th>群简介</th>
                                     <th>创建人</th>
                                     <th>群主ID</th>
                                     <th>群主名</th>
@@ -95,6 +99,8 @@
                         { data:"id",name:"id",orderable: true,searchable:false },
                         { data:"GroupId",name:"GroupId",orderable: true,searchable:true },
                         { data:"Name",name:"Name",orderable: false,searchable:false },
+                        { data:"MemberNum",name:"MemberNum",orderable: false,searchable:false },
+                        { data:"Introduction",name:"Introduction",orderable: false,searchable:false },
                         { data:"Operator_Account",name:"Operator_Account",orderable: false,searchable:false },
                         { data:"Owner_Account",name:"Owner_Account",orderable: false,searchable:false },
                         { data:"Owner_Name",name:"Owner_Name",orderable: false,searchable:false },
@@ -102,7 +108,7 @@
                         { data:"createdDate",name:"createdDate",orderable: false,searchable:false }
                     ],
                     columnDefs: [ {
-                        "targets": 8,
+                        "targets": 10,
                         "render": function ( data, type, row, meta ) {
                             var BtnHtml = "<button type='button' class='fa fa-edit btn  btn-success btn-sm update' data='"+row.id+"' data-user='"+row.id+"'>编辑/查看</button>";
                             BtnHtml+= "  <button type='button' class='fa fa-remove btn  btn-danger btn-sm delete' data='"+row.GroupId+"' data-title='"+row.name+"' data-user='"+row.GroupId+"'>解散群</button>";

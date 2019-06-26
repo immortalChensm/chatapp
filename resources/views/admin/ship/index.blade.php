@@ -42,7 +42,7 @@
                                     <span class="input-group-addon"><i class="fa">船票类别</i></span>
                                     <select class="form-control" name="type">
                                         <option value="">请选择类别</option>
-                                        @foreach([1=>'平台',2=>'商户'] as $key=>$item)
+                                        @foreach([1=>'商户',2=>'平台'] as $key=>$item)
                                             <option value="{{$key}}" >{{$item}}</option>
                                         @endforeach
 
@@ -134,8 +134,8 @@
                         type: 'GET'
                     },
                     "searching": false,
-                    "lengthMenu": [ 1, 25, 50, 75, 100 ],
-                    "pageLength": 1
+                    "lengthMenu": [ 10, 25, 50, 75, 100 ],
+                    "pageLength": 10
                 });
                 window.tableGrid =table;
                 $("#search").on("click",function (e) {

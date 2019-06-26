@@ -31,18 +31,10 @@
                                     <span class="input-group-addon"><i class="fa">买家</i></span>
                                     <input type="text" class="form-control " name="buyer" placeholder="买家">
                                 </div>
+
                                 <div class="input-group input-box ">
                                     <span class="input-group-addon"><i class="fa">卖家</i></span>
                                     <input type="text" class="form-control " name="seller" placeholder="<div class="input-group input-box">
-                                    <span class="input-group-addon"><i class="fa">船票类别</i></span>
-                                    <select class="form-control" name="type">
-                                        <option value="">请选择性别</option>
-                                        @foreach([1=>'平台',2=>'商户'] as $key=>$item)
-                                            <option value="{{$key}}" >{{$item}}</option>
-                                        @endforeach
-
-                                    </select>
-
                                 </div>
 
 
@@ -57,6 +49,7 @@
                                     </select>
 
                                 </div>
+
                                 <div class="search-box" id="search">
                                     <span class="input-group-btn">
                                       <button type="button" class="btn btn-info btn-flat searchBtn">搜索</button>

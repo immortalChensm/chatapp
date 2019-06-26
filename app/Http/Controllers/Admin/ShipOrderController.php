@@ -26,10 +26,10 @@ class ShipOrderController extends Controller
             }
 
         },function (&$item){
-            $item->sellerUserName = $item->seller->realName;
+            $item->sellerUserName = property_exists($item->seller,'realName')?$item->seller->realName:$item->seller->name;
             $item->typeName = ($item->type==1)?'商户':'平台';
             if ($item->userId){
-                $item->userName = $item->buyer->realName;
+                $item->userName = property_exists($item->buyer,'realName')?$item->buyer->realName:$item->buyer->name;;
                 $item->statusName = "已售出";
             }else{
                 $item->userName = "";

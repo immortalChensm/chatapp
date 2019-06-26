@@ -46,15 +46,12 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>群ID</th>
-                                    <th>群名称</th>
-                                    <th>群人数</th>
-                                    <th>群简介</th>
-                                    <th>创建人</th>
-                                    <th>群主ID</th>
-                                    <th>群主名</th>
-                                    <th>类型</th>
-                                    <th>创建时间</th>
+                                    <th>买家</th>
+                                    <th>卖家</th>
+                                    <th>船票类别</th>
+                                    <th>出售/购买数量</th>
+                                    <th>出售/购买金额</th>
+                                    <th>售出时间</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -63,15 +60,12 @@
                                 <tfoot>
                                 <tr>
                                     <th>ID</th>
-                                    <th>群ID</th>
-                                    <th>群名称</th>
-                                    <th>群人数</th>
-                                    <th>群简介</th>
-                                    <th>创建人</th>
-                                    <th>群主ID</th>
-                                    <th>群主名</th>
-                                    <th>类型</th>
-                                    <th>创建时间</th>
+                                    <th>买家</th>
+                                    <th>卖家</th>
+                                    <th>船票类别</th>
+                                    <th>出售/购买数量</th>
+                                    <th>出售/购买金额</th>
+                                    <th>售出时间</th>
                                     <th>操作</th>
                                 </tr>
                                 </tfoot>
@@ -97,18 +91,15 @@
                     processing:true,
                     columns: [
                         { data:"id",name:"id",orderable: true,searchable:false },
-                        { data:"GroupId",name:"GroupId",orderable: true,searchable:true },
-                        { data:"Name",name:"Name",orderable: false,searchable:false },
-                        { data:"MemberNum",name:"MemberNum",orderable: false,searchable:false },
-                        { data:"Introduction",name:"Introduction",orderable: false,searchable:false },
-                        { data:"Operator_Account",name:"Operator_Account",orderable: false,searchable:false },
-                        { data:"Owner_Account",name:"Owner_Account",orderable: false,searchable:false },
-                        { data:"Owner_Name",name:"Owner_Name",orderable: false,searchable:false },
-                        { data:"Type",name:"Type",orderable: false,searchable:false },
+                        { data:"userName",name:"userName",orderable: true,searchable:true },
+                        { data:"sellerUserName",name:"sellerUserName",orderable: false,searchable:false },
+                        { data:"typeName",name:"typeName",orderable: false,searchable:false },
+                        { data:"shipNum",name:"shipNum",orderable: false,searchable:false },
+                        { data:"payMoney",name:"payMoney",orderable: false,searchable:false },
                         { data:"createdDate",name:"createdDate",orderable: false,searchable:false }
                     ],
                     columnDefs: [ {
-                        "targets": 10,
+                        "targets": 7,
                         "render": function ( data, type, row, meta ) {
                             var BtnHtml = "<button type='button' class='fa fa-edit btn  btn-success btn-sm update' data='"+row.id+"' data-user='"+row.id+"'>编辑/查看</button>";
                             BtnHtml+= "  <button type='button' class='fa fa-remove btn  btn-danger btn-sm delete' data='"+row.GroupId+"' data-title='"+row.name+"' data-user='"+row.GroupId+"'>解散群</button>";

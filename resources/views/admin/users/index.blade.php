@@ -161,7 +161,7 @@
                         type: 'GET'
                     },
                     "searching": false,
-                    "lengthMenu": [ 10, 25, 50, 75, 100 ],
+                    "lengthMenu": [ 1, 25, 50, 75, 100 ],
                     "pageLength": 10
                 });
                 window.tableGrid =table;

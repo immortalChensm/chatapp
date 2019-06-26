@@ -11,12 +11,12 @@ class ShipOrder extends Model
 
     public function buyer()
     {
-        return $this->belongsTo('App\User','userId','userId')->select("name,realName");
+        return $this->belongsTo('App\User','userId','userId')->select(["name","realName"]);
     }
 
     public function seller()
     {
-        return $this->belongsTo('App\User','sellerUserId','userId')->select("name,realName");
+        return $this->belongsTo('App\User','sellerUserId','userId')->select(["name","realName"]);
     }
 
 }

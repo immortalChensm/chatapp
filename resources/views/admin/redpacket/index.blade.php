@@ -112,7 +112,7 @@
                     language: dataGridlanguage,
                     serverSide: true,
                     ajax: {
-                        url: '/admin/get/order/storage',
+                        url: '/admin/get/order/expenditure',
                         type: 'GET'
                     },
                     "searching": false,
@@ -129,7 +129,7 @@
             function searchByField()
             {
                 var buyer = $(":input[name=buyer]").val();
-                window.tableGrid.ajax.url( '/admin/get/order/storage?buyer='+buyer).load();
+                window.tableGrid.ajax.url( '/admin/get/order/expenditure?buyer='+buyer).load();
             }
         </script>
         @endsection

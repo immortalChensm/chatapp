@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Groups;
+use App\ShipOrder;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -15,9 +16,9 @@ class ShipOrderController extends Controller
         return view("admin.ship.index");
     }
 
-    function groups(Request $request,Groups $groups)
+    function orders(Request $request,ShipOrder $shipOrder)
     {
-        return $this->models(...[$request,$groups,function (&$searchItem)use($request){
+        return $this->models(...[$request,$shipOrder,function (&$searchItem)use($request){
             $searchItem['name']       = $request->name;
         },function ($query,&$searchItem){
             if ($searchItem['name']){
@@ -25,7 +26,9 @@ class ShipOrderController extends Controller
             }
 
         },function (&$item){
-            $item->Owner_Name = User::where("userId",$item->Owner_Account)->value("name");
+            $item->userName = $item->buyer;
+            $item->sellerUserName = $item->seller;
+            $item->typeName = ($item->type==1)?'商户':'平台';
             $item->createdDate = date("Y-m-d H", $item->CreateTime);
         }]);
     }

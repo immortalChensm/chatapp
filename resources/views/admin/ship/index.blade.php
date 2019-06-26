@@ -113,7 +113,7 @@
                     language: dataGridlanguage,
                     serverSide: true,
                     ajax: {
-                        url: '/admin/get/groups',
+                        url: '/admin/get/order/ship',
                         type: 'GET'
                     },
                     "searching": false,

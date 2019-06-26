@@ -9,12 +9,12 @@ class ShipOrder extends Model
     public $primaryKey = "id";
     protected $guarded = [];
 
-    function buyer()
+    public function buyer()
     {
         return $this->belongsTo('App\User','userId','userId')->value("name");
     }
 
-    function seller()
+    public function seller()
     {
         return $this->belongsTo('App\User','sellerUserId','userId')->value("name");
     }

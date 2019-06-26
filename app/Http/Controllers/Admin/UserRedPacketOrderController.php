@@ -36,8 +36,8 @@ class UserRedPacketOrderController extends Controller
         },function (&$item){
             $item->userName = property_exists($item->sender,'realName')?$item->sender->realName:$item->sender->name;
             $item->recvName = property_exists($item->recver,'realName')?$item->recver->realName:$item->recver->name;
-            $item->recvDate = date("Y-m-d", strtotime($item->created_at));
-            $item->createdDate = date("Y-m-d", strtotime($item->sendDate->created_at));
+            $item->recvDate = date("Y-m-d H:i:s", strtotime($item->created_at));
+            $item->createdDate = date("Y-m-d H:i:s", strtotime($item->sendDate->created_at));
         }]);
     }
 

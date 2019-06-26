@@ -19,10 +19,24 @@ class ShipOrderController extends Controller
     function orders(Request $request,ShipOrder $shipOrder)
     {
         return $this->models(...[$request,$shipOrder,function (&$searchItem)use($request){
-            $searchItem['name']       = $request->name;
+            $searchItem['type']       = $request->type;
+            if (!empty($request->query->get('seller'))){
+                $userIds = User::where("name","LIKE","%".$request->query->get('seller')."%")->value("userId");
+                $searchItem['sellerUserId']   = $userIds;
+            }
+            if (!empty($request->query->get('buyer'))){
+                $userIds = User::where("name","LIKE","%".$request->query->get('buyer')."%")->value("userId");
+                $searchItem['userId']   = $userIds;
+            }
         },function ($query,&$searchItem){
-            if ($searchItem['name']){
-                $query->where("GroupId","=",$searchItem['name']);
+            if ($searchItem['type']){
+                $query->where("type","=",$searchItem['type']);
+            }
+            if ($searchItem['userId']){
+                $query->where("userId","=",$searchItem['userId']);
+            }
+            if ($searchItem['sellerUserId']){
+                $query->where("sellerUserId","=",$searchItem['sellerUserId']);
             }
 
         },function (&$item){

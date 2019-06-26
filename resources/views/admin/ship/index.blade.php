@@ -28,10 +28,35 @@
                             <h3 class="box-title">
 
                                 <div class="input-group input-box ">
-                                    <span class="input-group-addon"><i class="fa">群组ID</i></span>
-                                    <input type="text" class="form-control " name="groupId" placeholder="群组ID">
+                                    <span class="input-group-addon"><i class="fa">买家</i></span>
+                                    <input type="text" class="form-control " name="buyer" placeholder="买家">
+                                </div>
+                                <div class="input-group input-box ">
+                                    <span class="input-group-addon"><i class="fa">卖家</i></span>
+                                    <input type="text" class="form-control " name="seller" placeholder="<div class="input-group input-box">
+                                    <span class="input-group-addon"><i class="fa">船票类别</i></span>
+                                    <select class="form-control" name="type">
+                                        <option value="">请选择性别</option>
+                                        @foreach([1=>'平台',2=>'商户'] as $key=>$item)
+                                            <option value="{{$key}}" >{{$item}}</option>
+                                        @endforeach
+
+                                    </select>
+
+                                </div>">
                                 </div>
 
+                                <div class="input-group input-box">
+                                    <span class="input-group-addon"><i class="fa">船票类别</i></span>
+                                    <select class="form-control" name="type">
+                                        <option value="">请选择性别</option>
+                                        @foreach([1=>'平台',2=>'商户'] as $key=>$item)
+                                            <option value="{{$key}}" >{{$item}}</option>
+                                        @endforeach
+
+                                    </select>
+
+                                </div>
                                 <div class="search-box" id="search">
                                     <span class="input-group-btn">
                                       <button type="button" class="btn btn-info btn-flat searchBtn">搜索</button>
@@ -129,48 +154,14 @@
             //
             function searchByField()
             {
-                var name = $(":input[name=groupId]").val();
-                window.tableGrid.ajax.url( '/admin/get/groups?name='+name).load();
+                var buyer = $(":input[name=buyer]").val();
+                var seller = $(":input[name=seller]").val();
+                var type = $(":input[name=type]").val();
+                window.tableGrid.ajax.url( '/admin/get/order/ship?buyer='+buyer+"&seller="+seller+"&type="+type).load();
             }
 
-            //编辑操作
-            $("#datagrid").on("click",".update",function (e) {
-                location.href = "/admin/articles/edit/"+$(this).attr("data");
-            });
 
-            //移除操作
-            $("#datagrid").on("click",".delete",function (e) {
-                var title = $(":input[name=name]").val();
-                var dateId = $(this).attr("data");
-                layer.confirm('您确定要删除('+$(this).attr("data-title")+")该用户？", {
-                    btn: ['确认','取消'] //按钮
-                }, function(){
-                    $.ajax({
-                        type: "delete",
-                        url: "{{url('/admin/users/remove/')}}/"+dateId,
-                        dataType: 'json',
-                        data: {
-                            "_token":"{{csrf_token()}}"
-                        },
-                        success: function(data){
-                            if (data.code==1){
-                                layer.msg(data.message);
-                                setTimeout(function () {
-                                    searchByField();
-                                },2000);
-                            }else{
-                                layer.msg(data.message);
-                            }
-                        },
-                        error:function(data){
 
-                        }
-                    });
-
-                }, function(){
-
-                });
-            });
         </script>
         @endsection
 

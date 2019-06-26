@@ -53,7 +53,6 @@
                                     <th>购买/出售金额</th>
                                     <th>售出时间</th>
                                     <th>状态</th>
-                                    <th>操作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -68,7 +67,6 @@
                                     <th>购买/出售金额</th>
                                     <th>售出时间</th>
                                     <th>状态</th>
-                                    <th>操作</th>
                                 </tr>
                                 </tfoot>
                             </table>
@@ -102,13 +100,13 @@
                         { data:"statusName",name:"statusName",orderable: false,searchable:false }
                     ],
                     columnDefs: [ {
-                        "targets": 8,
-                        "render": function ( data, type, row, meta ) {
-                            // var BtnHtml = "<button type='button' class='fa fa-edit btn  btn-success btn-sm update' data='"+row.id+"' data-user='"+row.id+"'>编辑/查看</button>";
-                            // BtnHtml+= "  <button type='button' class='fa fa-remove btn  btn-danger btn-sm delete' data='"+row.GroupId+"' data-title='"+row.name+"' data-user='"+row.GroupId+"'>解散群</button>";
-                            // BtnHtml+= "  <button type='button' class='fa fa-info btn  btn-success btn-sm send' data='"+row.GroupId+"' data-title='"+row.name+"' data-user='"+row.GroupId+"'>发送消息</button>";
-                            // return BtnHtml;
-                        }
+                        // "targets": 8,
+                        // "render": function ( data, type, row, meta ) {
+                        //     // var BtnHtml = "<button type='button' class='fa fa-edit btn  btn-success btn-sm update' data='"+row.id+"' data-user='"+row.id+"'>编辑/查看</button>";
+                        //     // BtnHtml+= "  <button type='button' class='fa fa-remove btn  btn-danger btn-sm delete' data='"+row.GroupId+"' data-title='"+row.name+"' data-user='"+row.GroupId+"'>解散群</button>";
+                        //     // BtnHtml+= "  <button type='button' class='fa fa-info btn  btn-success btn-sm send' data='"+row.GroupId+"' data-title='"+row.name+"' data-user='"+row.GroupId+"'>发送消息</button>";
+                        //     // return BtnHtml;
+                        // }
                     } ],
                     hover:true,
                     language: dataGridlanguage,

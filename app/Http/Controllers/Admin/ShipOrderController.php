@@ -39,6 +39,7 @@ class ShipOrderController extends Controller
             }else{
                 $item->userName = "";
                 $item->statusName = "未卖出";
+                $item->createdDate = "";
             }
 
         }]);

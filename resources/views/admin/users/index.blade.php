@@ -161,8 +161,8 @@
                         type: 'GET'
                     },
                     "searching": false,
-                    "lengthMenu": [ 1, 25, 50, 75, 100 ],
-                    "pageLength": 1
+                    "lengthMenu": [ 10, 25, 50, 75, 100 ],
+                    "pageLength": 10
                 });
                 window.tableGrid =table;
                     $("#search").on("click",function (e) {

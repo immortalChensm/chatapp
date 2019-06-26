@@ -242,7 +242,7 @@ class Controller extends BaseController
         }
         $searchItem = [];$searchCallback($searchItem);
         $start  = $request->query->get('start');//从多少开始
-        $length =1;//$request->query->get('length');//数据长度
+        $length = $request->query->get('length');//数据长度
         $recordsTotal = $model->count($model->primaryKey);
         $data         = $model->where(function ($query) use ($searchItem,$queryCallback) {
             $queryCallback($query,$searchItem);

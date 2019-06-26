@@ -52,6 +52,7 @@
                                     <th>出售/购买数量</th>
                                     <th>出售/购买金额</th>
                                     <th>售出时间</th>
+                                    <th>状态</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -66,6 +67,7 @@
                                     <th>出售/购买数量</th>
                                     <th>出售/购买金额</th>
                                     <th>售出时间</th>
+                                    <th>状态</th>
                                     <th>操作</th>
                                 </tr>
                                 </tfoot>
@@ -101,10 +103,10 @@
                     columnDefs: [ {
                         "targets": 7,
                         "render": function ( data, type, row, meta ) {
-                            var BtnHtml = "<button type='button' class='fa fa-edit btn  btn-success btn-sm update' data='"+row.id+"' data-user='"+row.id+"'>编辑/查看</button>";
-                            BtnHtml+= "  <button type='button' class='fa fa-remove btn  btn-danger btn-sm delete' data='"+row.GroupId+"' data-title='"+row.name+"' data-user='"+row.GroupId+"'>解散群</button>";
-                            BtnHtml+= "  <button type='button' class='fa fa-info btn  btn-success btn-sm send' data='"+row.GroupId+"' data-title='"+row.name+"' data-user='"+row.GroupId+"'>发送消息</button>";
-                            return BtnHtml;
+                            // var BtnHtml = "<button type='button' class='fa fa-edit btn  btn-success btn-sm update' data='"+row.id+"' data-user='"+row.id+"'>编辑/查看</button>";
+                            // BtnHtml+= "  <button type='button' class='fa fa-remove btn  btn-danger btn-sm delete' data='"+row.GroupId+"' data-title='"+row.name+"' data-user='"+row.GroupId+"'>解散群</button>";
+                            // BtnHtml+= "  <button type='button' class='fa fa-info btn  btn-success btn-sm send' data='"+row.GroupId+"' data-title='"+row.name+"' data-user='"+row.GroupId+"'>发送消息</button>";
+                            // return BtnHtml;
                         }
                     } ],
                     hover:true,

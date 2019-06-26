@@ -43,8 +43,8 @@
 
                                     </select>
 
-                                </div>">
                                 </div>
+
 
                                 <div class="input-group input-box">
                                     <span class="input-group-addon"><i class="fa">船票类别</i></span>

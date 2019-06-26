@@ -32,8 +32,8 @@ class SpaceOrderController extends Controller
             $item->userName = property_exists($item->buyer,'realName')?$item->buyer->realName:$item->buyer->name;
             $item->spaceNum = $item->storageSize/1024;
             $item->sellerUserName = "平台";
-            $item->buyDate = date("Y-m-d H", $item->buyTime);
-            $item->expireDate = date("Y-m-d H", $item->expireTime);
+            $item->buyDate = date("Y-m-d H:i:s", $item->buyTime);
+            $item->expireDate = date("Y-m-d", $item->expireTime);
         }]);
     }
 

@@ -35,7 +35,7 @@ class ShipOrderController extends Controller
             if ($item->userId){
                 $item->userName = property_exists($item->buyer,'realName')?$item->buyer->realName:$item->buyer->name;;
                 $item->statusName = "已售出";
-                $item->createdDate = date("Y-m-d H", strtotime($item->CreateTime));
+                $item->createdDate = date("Y-m-d H", strtotime($item->created_at));
             }else{
                 $item->userName = "";
                 $item->statusName = "未卖出";

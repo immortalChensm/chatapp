@@ -19,6 +19,7 @@ class CreateUsersSpaceOrderTable extends Migration
             $table->unsignedDecimal("storageSize",15,3)->default(0)->comment("购买空间的大小");
             $table->unsignedInteger("buyTime")->comment("购买时间");
             $table->unsignedInteger("expireTime")->comment("过期时间");
+            $table->unsignedInteger("shipNum")->default(0)->comment("所花费的船票");
             $table->timestamps();
         });
     }

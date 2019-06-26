@@ -47,7 +47,7 @@ class ShipOrderController extends Controller
             }
             $item->typeName = ($item->type==1)?'商户':'平台';
             if ($item->userId){
-                $item->userName = property_exists($item->buyer,'realName')?$item->buyer->realName:$item->buyer->name;;
+                $item->userName = property_exists($item->buyer,'realName')?$item->buyer->realName:$item->buyer->name;
                 $item->statusName = "已售出";
                 $item->createdDate = date("Y-m-d H", strtotime($item->created_at));
             }else{
@@ -57,13 +57,6 @@ class ShipOrderController extends Controller
             }
 
         }]);
-    }
-
-    function remove(Groups $groups)
-    {
-        if($groups->delete()){
-            return ['code'=>1,'message'=>'删除成功'];
-        }else{return ['code'=>0,'message'=>'删除失败'];}
     }
 
 }

@@ -34,14 +34,14 @@
 
                                 <div class="input-group input-box ">
                                     <span class="input-group-addon"><i class="fa">卖家</i></span>
-                                    <input type="text" class="form-control " name="seller" placeholder="<div class="input-group input-box">
+                                    <input type="text" class="form-control " name="seller" placeholder="卖家">
                                 </div>
 
 
                                 <div class="input-group input-box">
                                     <span class="input-group-addon"><i class="fa">船票类别</i></span>
                                     <select class="form-control" name="type">
-                                        <option value="">请选择性别</option>
+                                        <option value="">请选择类别</option>
                                         @foreach([1=>'平台',2=>'商户'] as $key=>$item)
                                             <option value="{{$key}}" >{{$item}}</option>
                                         @endforeach

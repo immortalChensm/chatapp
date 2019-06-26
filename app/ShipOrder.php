@@ -11,12 +11,12 @@ class ShipOrder extends Model
 
     function buyer()
     {
-        return $this->belongsTo('\App\User','userId','id')->value("name");
+        return $this->belongsTo('\App\User','userId','userId')->value("name");
     }
 
     function seller()
     {
-        return $this->belongsTo('\App\User','sellerUserId','id')->value("name");
+        return $this->belongsTo('\App\User','sellerUserId','userId')->value("name");
     }
 
 }

@@ -95,7 +95,7 @@
                         { data:"userName",name:"userName",orderable: true,searchable:true },
                         { data:"recvName",name:"recvName",orderable: true,searchable:true },
                         { data:"money",name:"money",orderable: false,searchable:false },
-                        { data:"recvDate",name:"recvDate",orderable: false,searchable:false }
+                        { data:"recvDate",name:"recvDate",orderable: false,searchable:false },
                         { data:"createdDate",name:"createdDate",orderable: false,searchable:false }
                     ],
                     columnDefs: [ {

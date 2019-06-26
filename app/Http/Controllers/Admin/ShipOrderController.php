@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Groups;
 use App\ShipOrder;
 use App\User;
 use Illuminate\Http\Request;

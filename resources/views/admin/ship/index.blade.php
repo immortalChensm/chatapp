@@ -99,9 +99,10 @@
                         { data:"shipNum",name:"shipNum",orderable: false,searchable:false },
                         { data:"payMoney",name:"payMoney",orderable: false,searchable:false },
                         { data:"createdDate",name:"createdDate",orderable: false,searchable:false }
+                        { data:"statusName",name:"statusName",orderable: false,searchable:false }
                     ],
                     columnDefs: [ {
-                        "targets": 7,
+                        "targets": 8,
                         "render": function ( data, type, row, meta ) {
                             // var BtnHtml = "<button type='button' class='fa fa-edit btn  btn-success btn-sm update' data='"+row.id+"' data-user='"+row.id+"'>编辑/查看</button>";
                             // BtnHtml+= "  <button type='button' class='fa fa-remove btn  btn-danger btn-sm delete' data='"+row.GroupId+"' data-title='"+row.name+"' data-user='"+row.GroupId+"'>解散群</button>";

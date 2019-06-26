@@ -29,6 +29,11 @@ class ShipOrderController extends Controller
             $item->userName = $item->buyer;
             $item->sellerUserName = $item->seller;
             $item->typeName = ($item->type==1)?'商户':'平台';
+            if ($item->userId){
+                $item->statusName = "已售出";
+            }else{
+                $item->statusName = "未卖出";
+            }
             $item->createdDate = date("Y-m-d H", $item->CreateTime);
         }]);
     }

@@ -29,13 +29,13 @@ class ShipOrderController extends Controller
                 $searchItem['userId']   = $userIds;
             }
         },function ($query,&$searchItem){
-            if ($searchItem['type']){
+            if (isset($searchItem['type'])){
                 $query->where("type","=",$searchItem['type']);
             }
-            if ($searchItem['userId']){
+            if (isset($searchItem['userId'])){
                 $query->where("userId","=",$searchItem['userId']);
             }
-            if ($searchItem['sellerUserId']){
+            if (isset($searchItem['sellerUserId'])){
                 $query->where("sellerUserId","=",$searchItem['sellerUserId']);
             }
 

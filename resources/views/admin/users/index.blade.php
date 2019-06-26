@@ -162,7 +162,7 @@
                     },
                     "searching": false,
                     "lengthMenu": [ 1, 25, 50, 75, 100 ],
-                    "pageLength": 10
+                    "pageLength": 1
                 });
                 window.tableGrid =table;
                     $("#search").on("click",function (e) {

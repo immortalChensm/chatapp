@@ -128,13 +128,14 @@
 
             <li class="treeview @if(preg_match('/business/',request()->url())||preg_match('/ship/',request()->url())
             ||preg_match('/ship/',request()->url())
+            ||preg_match('/given/',request()->url())
             ||preg_match('/storage/',request()->url())
             ||preg_match('/recharge/',request()->url())
             ||preg_match('/withdrawal/',request()->url())
             ||preg_match('/transfer/',request()->url())
             ||preg_match('/expenditure/',request()->url())
             ||preg_match('/income/',request()->url())
-            ||preg_match('/given/',request()->url())
+
             ) active @endif">
                 <a href="#">
                     <i class="fa  fa-reorder (alias)"></i> <span>订单管理</span>

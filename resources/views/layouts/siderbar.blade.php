@@ -145,8 +145,8 @@
                 </a>
                 <ul class="treeview-menu">
                     <li @if(preg_match('/business/',request()->url())) class="active" @endif ><a href="{{url("admin/order/business")}}"><i class="fa fa-circle-o"></i> 用户业务列表</a></li>
-                    <li @if(preg_match('/given/',request()->url())) class="active" @endif ><a href="{{url("admin/order/ship")}}"><i class="fa fa-circle-o"></i> 船票订单列表</a></li>
-                    <li @if(preg_match('/ship/',request()->url())) class="active" @endif ><a href="{{url("admin/order/given")}}"><i class="fa fa-circle-o"></i> 船票赠送列表</a></li>
+                    <li @if(preg_match('/ship/',request()->url())) class="active" @endif ><a href="{{url("admin/order/ship")}}"><i class="fa fa-circle-o"></i> 船票订单列表</a></li>
+                    <li @if(preg_match('/given/',request()->url())) class="active" @endif ><a href="{{url("admin/order/given")}}"><i class="fa fa-circle-o"></i> 船票赠送列表</a></li>
                     <li @if(preg_match('/storage/',request()->url())) class="active" @endif ><a href="{{url("admin/order/storage")}}"><i class="fa fa-circle-o"></i> 空间订单列表</a></li>
                     <li @if(preg_match('/recharge/',request()->url())) class="active" @endif ><a href="{{url("admin/order/recharge")}}"><i class="fa fa-circle-o"></i> 用户充值列表</a></li>
                     <li @if(preg_match('/withdrawal/',request()->url())) class="active" @endif ><a href="{{url("admin/order/withdrawal")}}"><i class="fa fa-circle-o"></i> 用户提现列表</a></li>

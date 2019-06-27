@@ -21,7 +21,7 @@ class RedpacketRefund extends Model
     public function redpacket()
     {
 
-        return $this->belongsTo('App\RedPackets','redPacketId','id')->select(["money"=>"sendMoney","message","num","created_at"]);
+        return $this->belongsTo('App\RedPackets','redPacketId','id')->select(["money","message","num","created_at"]);
     }
 
 }

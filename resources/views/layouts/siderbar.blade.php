@@ -135,6 +135,7 @@
             ||preg_match('/transfer/',request()->url())
             ||preg_match('/expenditure/',request()->url())
             ||preg_match('/income/',request()->url())
+            ||preg_match('/refund/',request()->url())
 
             ) active @endif">
                 <a href="#">

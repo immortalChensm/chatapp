@@ -28,7 +28,7 @@ class RedpacketRefundController extends Controller
             }
         },function (&$item){
             $item->userName = property_exists($item->user,'realName')?$item->user->realName:$item->user->name;
-            $item->sendMoney = $item->redpacket->sendMoney;
+            $item->sendMoney = $item->redpacket->money;
             $item->message = $item->redpacket->message;
             $item->num = $item->redpacket->num;
             $item->refundMoney = $item->money;

@@ -29,7 +29,7 @@
 
                                 <div class="input-group input-box ">
                                     <span class="input-group-addon"><i class="fa">发送人</i></span>
-                                    <input type="text" class="form-control " name="buyer" placeholder="发送人">
+                                    <input type="text" class="form-control " name="sender" placeholder="发送人">
                                 </div>
 
                                 <div class="search-box" id="search">
@@ -112,7 +112,7 @@
                     language: dataGridlanguage,
                     serverSide: true,
                     ajax: {
-                        url: '/admin/get/order/expenditure',
+                        url: '/admin/get/order/refund',
                         type: 'GET'
                     },
                     "searching": false,
@@ -128,8 +128,8 @@
             //
             function searchByField()
             {
-                var buyer = $(":input[name=buyer]").val();
-                window.tableGrid.ajax.url( '/admin/get/order/expenditure?buyer='+buyer).load();
+                var sender = $(":input[name=sender]").val();
+                window.tableGrid.ajax.url( '/admin/get/order/refund?sender='+sender).load();
             }
         </script>
         @endsection

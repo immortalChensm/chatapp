@@ -155,6 +155,7 @@
                     <li @if(preg_match('/expenditure/',request()->url())) class="active" @endif ><a href="{{url("admin/order/expenditure")}}"><i class="fa fa-circle-o"></i> 红包支出列表</a></li>
                     <li @if(preg_match('/income/',request()->url())) class="active" @endif ><a href="{{url("admin/order/income")}}"><i class="fa fa-circle-o"></i> 红包收入列表</a></li>
                     <li @if(preg_match('/refund/',request()->url())) class="active" @endif ><a href="{{url("admin/order/refund")}}"><i class="fa fa-circle-o"></i> 红包退还列表</a></li>
+                    <li @if(preg_match('/upgrade/',request()->url())) class="active" @endif ><a href="{{url("admin/order/upgrade")}}"><i class="fa fa-circle-o"></i> 用户升级列表</a></li>
                 </ul>
             </li>
 

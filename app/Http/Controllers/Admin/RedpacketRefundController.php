@@ -28,12 +28,12 @@ class RedpacketRefundController extends Controller
             }
         },function (&$item){
             $item->userName = property_exists($item->user,'realName')?$item->user->realName:$item->user->name;
-            $item->money = $item->redpacket->money;
+            $item->sendMoney = $item->redpacket->sendMoney;
             $item->message = $item->redpacket->message;
             $item->num = $item->redpacket->num;
             $item->refundMoney = $item->money;
-            $item->refundDate = date("Y-m-d H", strtotime($item->created_at));
-            $item->createdDate = date("Y-m-d H", strtotime($item->redpacket->created_at));
+            $item->refundDate = date("Y-m-d H:i:s", strtotime($item->created_at));
+            $item->createdDate = date("Y-m-d H:i:s", strtotime($item->redpacket->created_at));
         }]);
     }
 

@@ -92,7 +92,7 @@
                     columns: [
                         { data:"id",name:"id",orderable: true,searchable:false },
                         { data:"userName",name:"userName",orderable: true,searchable:true },
-                        { data:"money",name:"money",orderable: false,searchable:false },
+                        { data:"sendMoney",name:"sendMoney",orderable: false,searchable:false },
                         { data:"message",name:"message",orderable: false,searchable:false },
                         { data:"num",name:"num",orderable: false,searchable:false },
                         { data:"refundMoney",name:"refundMoney",orderable: false,searchable:false },

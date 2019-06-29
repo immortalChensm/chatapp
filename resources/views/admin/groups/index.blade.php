@@ -149,6 +149,7 @@
             //发送消息
            $("#datagrid").on("click",".send",function (e) {
             var groupId = $(this).attr("data");
+            alert(groupId);
                 layer.open({
                     type:0,
                     area: ['540px', '240px'],

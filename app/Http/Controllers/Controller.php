@@ -310,7 +310,8 @@ class Controller extends BaseController
     function getApi($method,$uri,$data)
     {
         $client = new \GuzzleHttp\Client([
-            'base_uri'=>config("imapi")['base_uri']
+            'base_uri'=>config("imapi")['base_uri'],
+            'verify' => false
         ]);
         switch ($method){
             case 'GET':
@@ -321,8 +322,7 @@ class Controller extends BaseController
             case 'POST':
                 break;
         }
-        print_r($response);
-        return json_decode($response,true);
+        return json_decode($response->getBody()->getContents(),true);
     }
 
 }

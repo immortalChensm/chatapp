@@ -37,4 +37,10 @@ class GroupsController extends Controller
         }else{return ['code'=>0,'message'=>'删除失败'];}
     }
 
+    function groupSendMsg(Request $request)
+    {
+        if (empty($request['message']))return ['code'=>0,'message'=>'请填写消息内容'];
+        $result = $this->getApi("GET","",request()->except("_token"));
+    }
+
 }

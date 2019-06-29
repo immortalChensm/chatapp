@@ -147,12 +147,39 @@
             });
 
             //发送消息
-            $("#datagrid").on("click",".send",function (e) {
+           $("#datagrid").on("click",".send",function (e) {
+            var groupId = $(this).attr("data");
                 layer.open({
-                    content: "<textarea class='form-control' name='text' placeholder='消息内容'></textarea>"
+                    type:0,
+                    area: ['540px', '240px'],
+                    content: "<textarea class='form-control' style='height:100px' name='text' placeholder='消息内容'></textarea>"
                     ,btn: ['提交', '取消']
                     ,yes: function(index, layero){
                         //按钮【按钮一】的回调
+                        console.log(index,layero);
+                        var message = $(layero).find(":input[name=text]").val();
+
+                        $.ajax({
+                            type: "post",
+                            url: "{{url('/admin/groups/sendMsg')}}",
+                            dataType: 'json',
+                            data: {
+                                "_token":"{{csrf_token()}}",
+                                message:message,
+                                groupId:groupId,
+                            },
+                            success: function(data){
+                                if (data.code==1){
+                                    layer.msg(data.message);
+                                }else{
+                                    layer.msg(data.message);
+                                }
+                            },
+                            error:function(data){
+
+                            }
+                        });
+
                     }
                     ,cancel: function(){
                         //右上角关闭回调

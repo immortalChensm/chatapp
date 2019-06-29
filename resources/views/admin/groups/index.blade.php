@@ -154,12 +154,11 @@
                     area: ['540px', '240px'],
                     content: "<textarea class='form-control' style='height:100px' name='text' placeholder='消息内容'></textarea>"
                     ,btn: ['提交', '取消']
-                    ,yes: function(index, layero){
+                    ,btn1: function(index, layero){
                         //按钮【按钮一】的回调
 
                         var message = $(layero).find(":input[name=text]").val();
                         if (message.length==0){
-
                             layer.msg("请填写消息内容");
                             return false;
                         }

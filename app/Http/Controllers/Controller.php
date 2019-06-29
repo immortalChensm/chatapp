@@ -323,6 +323,7 @@ class Controller extends BaseController
                 $response = $client->request("GET",$uri);
                 break;
         }
+        print_r($response);
         return json_decode($response->getBody()->getContents(),true);
     }
 

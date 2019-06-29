@@ -149,7 +149,7 @@
             //发送消息
             $("#datagrid").on("click",".send",function (e) {
                 layer.open({
-                    content: '填写消息内容'
+                    content: "<textarea class='form-control' name='text' placeholder='消息内容'></textarea>"
                     ,btn: ['提交', '取消']
                     ,yes: function(index, layero){
                         //按钮【按钮一】的回调

@@ -314,12 +314,12 @@ class Controller extends BaseController
             'verify' => false
         ]);
         switch ($method){
-            case 'GET':
-                $response = $client->request("GET",$uri,[
+            case 'POST':
+                $response = $client->request("POST",$uri,[
                     'form_params'=>$data
                 ]);
                 break;
-            case 'POST':
+            case 'GET':
                 break;
         }
         return json_decode($response->getBody()->getContents(),true);

@@ -146,6 +146,22 @@
                 location.href = "/admin/articles/edit/"+$(this).attr("data");
             });
 
+            //发送消息
+            $("#datagrid").on("click",".send",function (e) {
+                layer.open({
+                    content: '填写消息内容'
+                    ,btn: ['提交', '取消']
+                    ,yes: function(index, layero){
+                        //按钮【按钮一】的回调
+                    }
+                    ,cancel: function(){
+                        //右上角关闭回调
+
+                        //return false 开启该代码可禁止点击该按钮关闭
+                    }
+                });
+            });
+
             //移除操作
             $("#datagrid").on("click",".delete",function (e) {
                 var title = $(":input[name=name]").val();

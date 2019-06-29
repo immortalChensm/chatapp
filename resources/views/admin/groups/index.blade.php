@@ -156,9 +156,12 @@
                     ,btn: ['提交', '取消']
                     ,yes: function(index, layero){
                         //按钮【按钮一】的回调
-                        console.log(index,layero);
-                        var message = $(layero).find(":input[name=text]").val();
 
+                        var message = $(layero).find(":input[name=text]").val();
+                        if (message==''){
+                            layer.msg("请填写消息内容");
+                            return false;
+                        }
                         $.ajax({
                             type: "post",
                             url: "{{url('/admin/groups/sendMsg')}}",

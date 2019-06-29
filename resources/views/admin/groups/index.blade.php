@@ -170,7 +170,7 @@
                             },
                             success: function(data){
                                 if (data.code==1){
-                                    layer.msg(data.message);
+                                    layer.msg(data.message.result.ActionStatus);
                                 }else{
                                     layer.msg(data.message);
                                 }

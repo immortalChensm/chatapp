@@ -165,7 +165,7 @@
                             dataType: 'json',
                             data: {
                                 "_token":"{{csrf_token()}}",
-                                message:message,
+                                Text:message,
                                 groupId:groupId,
                             },
                             success: function(data){

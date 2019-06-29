@@ -147,7 +147,7 @@
             });
 
             //发送消息
-           $("#datagrid").on("click",".send",function (e) {
+          // $("#datagrid").on("click",".send",function (e) {
             var groupId = $(this).attr("data");
             alert(groupId);
                 layer.open({
@@ -188,7 +188,7 @@
                         //return false 开启该代码可禁止点击该按钮关闭
                     }
                 });
-            });
+           // });
 
             //移除操作
             $("#datagrid").on("click",".delete",function (e) {

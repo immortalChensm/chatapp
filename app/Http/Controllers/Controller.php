@@ -307,7 +307,7 @@ class Controller extends BaseController
         return $uri?['code'=>1,'message'=>$uri]:['code'=>0,'message'=>'链接失效请重试'];
     }
 
-    function getApi($method,$uri,$data)
+    function getApi($method,$uri,$data=[])
     {
         $client = new \GuzzleHttp\Client([
             'base_uri'=>config("imapi")['base_uri'],
@@ -320,6 +320,7 @@ class Controller extends BaseController
                 ]);
                 break;
             case 'GET':
+                $response = $client->request("GET",$uri);
                 break;
         }
         return json_decode($response->getBody()->getContents(),true);

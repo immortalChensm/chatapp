@@ -158,7 +158,8 @@
                         //按钮【按钮一】的回调
 
                         var message = $(layero).find(":input[name=text]").val();
-                        if (message==''){
+                        if (message.length==0){
+
                             layer.msg("请填写消息内容");
                             return false;
                         }

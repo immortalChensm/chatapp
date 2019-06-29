@@ -39,9 +39,9 @@ class GroupsController extends Controller
 
     function groupSendMsg(Request $request)
     {
-        //if (empty($request['message']))return ['code'=>0,'message'=>'请填写消息内容'];
-        return $result = $this->getApi("POST","",request()->except("_token"));
-//        return $this->getApi("GET","http://www.baidu.com");
+        if (empty($request['message']))return ['code'=>0,'message'=>'请填写消息内容'];
+        $result = $this->getApi("POST","",request()->except("_token"));
+        return ['code'=>1,'message'=>$result];
     }
 
 }

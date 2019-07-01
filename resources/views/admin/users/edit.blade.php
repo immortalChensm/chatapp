@@ -72,37 +72,32 @@
                             <strong><i class="fa fa-map-marker margin-r-5"></i>船票余额</strong>
 
                             <p class="text-muted">5张</p>
-
-                            <hr>
-
                             <strong><i class="fa fa-map-marker margin-r-5"></i>累积点赞数量</strong>
 
                             <p class="text-muted">59个</p>
-                            <hr>
 
                             <strong><i class="fa fa-map-marker margin-r-5"></i>红包支出总额</strong>
 
                             <p class="text-muted">50元</p>
-                            <hr>
+
                             <strong><i class="fa fa-map-marker margin-r-5"></i>红包收入总额</strong>
 
                             <p class="text-muted">500元</p>
-                            <hr>
 
                             <strong><i class="fa fa-map-marker margin-r-5"></i>最近登录位置</strong>
 
                             <p class="text-muted">贵阳</p>
-                            <hr>
+
 
                             <strong><i class="fa fa-map-marker margin-r-5"></i>最近登录时间</strong>
 
                             <p class="text-muted">2019-07-01</p>
-                            <hr>
+
 
                             <strong><i class="fa fa-map-marker margin-r-5"></i>登录次数</strong>
 
                             <p class="text-muted">300次</p>
-                            <hr>
+
 
                             <strong><i class="fa fa-pencil margin-r-5"></i> 账号状态</strong>
 

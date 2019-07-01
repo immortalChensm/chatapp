@@ -37,7 +37,7 @@
                                     <label for="inputEmail3" class="col-sm-2 control-label">用户头像</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control"  value="@if(isset($data['headImgUrl'])) {{$data['headImgUrl']}} @endif">
+                                        <input type="text" class="form-control"  style="border: none" value="@if(isset($data['headImgUrl'])) {{$data['headImgUrl']}} @endif">
                                     </div>
                                 </div>
 

@@ -60,6 +60,13 @@ class UsersController extends Controller
     function edit()
     {
         isset(request()->userId)?$data=User::where("userId","=",request()->userId)->first():$data='';
+        $result = $this->downloadCosFile([
+            'fileKeyName'=>$data['headImgUrl'],
+            'expire'=>config('cos')['expire']
+        ]);
+        if ($result['code']==1){
+            $data['headImgUrl'] = $result['data'];
+        }
         return view("admin.users.edit",compact('data'));
     }
 }

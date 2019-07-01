@@ -37,7 +37,7 @@
                                     <label for="inputEmail3" class="col-sm-2 control-label">用户头像</label>
 
                                     <div class="col-sm-10">
-                                        <input type="email" class="form-control"  value="@if(isset($data['headImgUrl'])) {{$data['headImgUrl']}} @endif id="inputEmail3" placeholder="Email">
+                                        <input type="text" class="form-control"  value="@if(isset($data['headImgUrl'])) {{$data['headImgUrl']}} @endif  >
                                     </div>
                                 </div>
 
@@ -45,7 +45,7 @@
                                     <label for="inputPassword3" class="col-sm-2 control-label">传联号</label>
 
                                     <div class="col-sm-10">
-                                        <input type="password" class="form-control" id="inputPassword3" value="@if(isset($data['handNum'])) {{$data['handNum']}} @endif placeholder="Password">
+                                        <input type="text" class="form-control" value="@if(isset($data['handNum'])) {{$data['handNum']}} @endif >
                                     </div>
                                 </div>
 

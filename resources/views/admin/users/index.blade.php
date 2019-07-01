@@ -195,7 +195,7 @@
 
             //编辑操作
             $("#datagrid").on("click",".update",function (e) {
-               location.href = "/admin/articles/edit/"+$(this).attr("data");
+               location.href = "/admin/users/edit/"+$(this).attr("data");
             });
 
             //移除操作

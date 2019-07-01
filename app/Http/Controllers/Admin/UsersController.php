@@ -57,4 +57,9 @@ class UsersController extends Controller
         }else{return ['code'=>0,'message'=>'删除失败'];}
     }
 
+    function edit()
+    {
+        isset(request()->userId)?$data=User::where("userId","=",request()->userId)->first():$data='';
+        return view("admin.users.edit",compact('data'));
+    }
 }

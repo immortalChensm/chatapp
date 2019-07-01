@@ -1,6 +1,6 @@
 @extends("layouts.main")
 @section("title")
-    文章编辑
+    用户编辑
     @endsection
 @section("css")
     <link rel="stylesheet" href="{{asset("adminlte/css/common.css")}}">
@@ -11,12 +11,12 @@
 
         <section class="content-header">
             <h1>
-                文章管理
+                用户管理
             </h1>
             <ol class="breadcrumb">
                 <li><a href="{{url("/admin")}}"><i class="fa fa-dashboard"></i> 首页</a></li>
-                <li><a href="{{url("/admin/articles")}}"><i class="fa"></i> 文章管理</a></li>
-                <li class="active">文章编辑</li>
+                <li><a href="{{url("/admin/users")}}"><i class="fa"></i> 用户管理</a></li>
+                <li class="active">用户编辑</li>
             </ol>
         </section>
 
@@ -89,53 +89,6 @@
             @section("js")
             <script>
 
-            $(function () {
-                    if (KindEditor){
-                    KindEditor.ready(function(K) {
-                    window.editor = K.create('#editor',{
-                    uploadJson:"{{url('admin/upload/file')}}"
-                    });
-
-            });
-
-
-            }else{
-            console.log("请引入kindeditor文件");
-            }
-
-
-            });
-
-            function store(){
-                    editor.sync();
-                    $.ajax({
-                            type: 'POST',
-                            url: "{{url('admin/articles/save')}}",
-                            dataType: 'json',
-                            data: $('#postForm').serializeArray(),
-                            success: function(data){
-                                    if (data.code == 1){
-                                    layer.msg(data.message);
-                                    setTimeout(function () {
-                                    window.location = "{{url('admin/articles')}}";
-                                    },2000);
-
-                            }else if(data.code ==100)
-                            {
-                                    for(var field in data.message){
-                                        layer.msg(data.message[field][0]);
-                                        return ;
-                                    }
-                                    }else{
-                                        layer.msg(data.message);
-                                    }
-                            },
-                            error:function(data){
-
-                            }
-            });
-
-            }
 
             </script>
 

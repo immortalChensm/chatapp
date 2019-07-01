@@ -12,7 +12,7 @@ class ReportGroup extends Model
     protected $guarded = [];
 
     public function reportGroupName(){
-        return $this->belongsTo('App\Group','groupId','id')->select('Name');
+        return $this->belongsTo('App\Groups','groupId','id')->select('Name');
     }
 
     public function userName(){

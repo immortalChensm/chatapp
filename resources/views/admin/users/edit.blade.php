@@ -126,7 +126,7 @@
                     <div class="nav-tabs-custom">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#activity" data-toggle="tab">聊天</a></li>
-                            {{--<li><a href="#timeline" data-toggle="tab">Timeline</a></li>--}}
+                            <li><a href="#timeline" data-toggle="tab">身份证资料</a></li>
                             <li><a href="#settings" data-toggle="tab">设置</a></li>
                         </ul>
                         <div class="tab-content">

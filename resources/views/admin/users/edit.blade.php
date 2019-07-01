@@ -83,6 +83,66 @@
                                 </div>
 
                                 <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">船票余额</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="shipNumber" value="@if(isset($data['shipNumber'])) {{$data['shipNumber']}} @endif">
+                                </div>
+
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">累积点赞数量</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="praiseNumber" value="@if(isset($data['praiseNumber'])) {{$data['praiseNumber']}} @endif">
+                                </div>
+
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">推广码</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="spreadCode" value="@if(isset($data['spreadCode'])) {{$data['spreadCode']}} @endif">
+                                </div>
+
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">用户生日</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="birthday" value="@if(isset($data['birthday'])) {{$data['birthday']}} @endif">
+                                </div>
+
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">用户小名</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="petName" value="@if(isset($data['petName'])) {{$data['petName']}} @endif">
+                                </div>
+
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">用户出生地</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="birthPlaceProvinceId" value="@if(isset($data['birthPlaceProvinceId'])) {{$data['birthPlaceProvinceId']}} @endif">
+                                </div>
+
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">用户现居住地</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="locationProvinceId" value="@if(isset($data['locationProvinceId'])) {{$data['locationProvinceId']}} @endif">
+                                </div>
+
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">用户介绍</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="introduction" value="@if(isset($data['introduction'])) {{$data['introduction']}} @endif">
+                                </div>
+
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">身份证号码</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="idCard" value="@if(isset($data['idCard'])) {{$data['idCard']}} @endif">
+                                </div>
+
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">身份证照片</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="idCardFrontPic" value="@if(isset($data['idCardFrontPic'])) {{$data['idCardFrontPic']}} @endif">
+                                </div>
+
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">是否是IM用户</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="isIm" value="@if(isset($data['isIm'])) {{$data['isIm']}} @endif">
+                                </div>
+
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">推荐人</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="recommendUserId" value="@if(isset($data['recommendUserId'])) {{$data['recommendUserId']}} @endif">
+                                </div>
+
+                                <div class="form-group edit-box">
                                     <label for="exampleInputEmail1">注册时间</label>
                                     <input type="text" class="form-control input-max-box" class="edit-box" name="created_at" value="@if(isset($data['created_at'])) {{$data['created_at']}} @endif">
                                 </div>

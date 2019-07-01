@@ -45,10 +45,16 @@
                                     <label for="inputPassword3" class="col-sm-2 control-label">传联号</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" value="@if(isset($data['handNum'])) {{$data['handNum']}} @endif">
+                                        <input type="text" class="form-control" style="border: none" value="@if(isset($data['handNum'])) {{$data['handNum']}} @endif">
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">用户昵称</label>
 
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" style="border: none" value="@if(isset($data['name'])) {{$data['name']}} @endif">
+                                    </div>
+                                </div>
 
                             </div>
                             <!-- /.box-body -->

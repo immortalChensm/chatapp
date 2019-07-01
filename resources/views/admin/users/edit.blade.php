@@ -42,10 +42,10 @@
 
                             <ul class="list-group list-group-unbordered">
                                 <li class="list-group-item">
-                                    <b>粉丝</b> <a class="pull-right">1,322</a>
+                                    <b>粉丝</b> <a class="pull-right">{{$data['followerNum']}}</a>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>关注</b> <a class="pull-right">543</a>
+                                    <b>关注</b> <a class="pull-right">{{$data['subscribeNum']}}</a>
                                 </li>
                                 <li class="list-group-item">
                                     <b>好友</b> <a class="pull-right">13,287</a>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
@@ -67,6 +68,13 @@ class UsersController extends Controller
         if ($result['code']==1){
             $data['headImgUrl'] = $result['data'];
         }
+        $this->userProfileHandler($data);
         return view("admin.users.edit",compact('data'));
+    }
+
+    function userProfileHandler(&$data)
+    {
+        $data['subscribeNum']   = DB::table("subscribes")->where("userId", $data['userId'])->count("followerId");
+        $data['followerNum']    = DB::table("subscribes")->where("followerId", $data['userId'])->count("userId");
     }
 }

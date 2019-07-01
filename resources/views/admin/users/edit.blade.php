@@ -1,6 +1,6 @@
 @extends("layouts.main")
 @section("title")
-    网站设置
+    用户管理
 @endsection
 @section("css")
     <link rel="stylesheet" href="{{asset("adminlte/css/common.css")}}">
@@ -16,12 +16,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                User Profile
+                用户资料
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="#">Examples</a></li>
-                <li class="active">User profile</li>
+                <li><a href="{{url("/admin")}}"><i class="fa fa-dashboard"></i> 首页</a></li>
+                <li><a href="{{url("/admin/users")}}"><i class="fa"></i>  用户管理</a></li>
+                <li class="active">用户资料</li>
             </ol>
         </section>
 

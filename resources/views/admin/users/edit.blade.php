@@ -65,18 +65,47 @@
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                            <strong><i class="fa fa-book margin-r-5"></i> 账号用户</strong>
+                            <strong><i class="fa fa-book margin-r-5"></i> 账号余额</strong>
 
                             <p class="text-muted">
-                                3
+                                3元
                             </p>
 
                             <hr>
 
                             <strong><i class="fa fa-map-marker margin-r-5"></i>船票余额</strong>
 
-                            <p class="text-muted">5</p>
+                            <p class="text-muted">5张</p>
 
+                            <hr>
+
+                            <strong><i class="fa fa-map-marker margin-r-5"></i>累积点赞数量</strong>
+
+                            <p class="text-muted">59个</p>
+                            <hr>
+
+                            <strong><i class="fa fa-map-marker margin-r-5"></i>红包支出总额</strong>
+
+                            <p class="text-muted">50元</p>
+                            <hr>
+                            <strong><i class="fa fa-map-marker margin-r-5"></i>红包收入总额</strong>
+
+                            <p class="text-muted">500元</p>
+                            <hr>
+
+                            <strong><i class="fa fa-map-marker margin-r-5"></i>最近登录位置</strong>
+
+                            <p class="text-muted">贵阳</p>
+                            <hr>
+
+                            <strong><i class="fa fa-map-marker margin-r-5"></i>最近登录时间</strong>
+
+                            <p class="text-muted">2019-07-01</p>
+                            <hr>
+
+                            <strong><i class="fa fa-map-marker margin-r-5"></i>登录次数</strong>
+
+                            <p class="text-muted">300次</p>
                             <hr>
 
                             <strong><i class="fa fa-pencil margin-r-5"></i> 账号状态</strong>
@@ -85,12 +114,12 @@
                                 <span class="label label-danger">IM账号</span>
                                 <span class="label label-success">50星级</span>
                                 <span class="label label-info">已认证</span>
-                                <span class="label label-warning">已禁止登录</span>
-                                <span class="label label-primary">可以发布文章</span>
-                                <span class="label label-primary">可以发布相册</span>
-                                <span class="label label-primary">可以发布音乐</span>
-                                <span class="label label-primary">可以发布视频</span>
-                                <span class="label label-primary">可以发表评论</span>
+                                <span class="label label-info">已禁止登录</span>
+                                <span class="label label-info">可以发布文章</span>
+                                <span class="label label-info">可以发布相册</span>
+                                <span class="label label-info">可以发布音乐</span>
+                                <span class="label label-info">可以发布视频</span>
+                                <span class="label label-info">可以发表评论</span>
                             </p>
 
                             <hr>

@@ -172,7 +172,11 @@
                 </ul>
             </li>
 
-            <li class="treeview  @if(preg_match('/reports/',request()->url())||preg_match('/reasons/',request()->url())||preg_match('/reportUsers/',request()->url())) active @endif">
+            <li class="treeview  @if(preg_match('/reports/',request()->url())
+            ||preg_match('/reasons/',request()->url())
+            ||preg_match('/reportUsers/',request()->url())
+            ||preg_match('/reportGroups/',request()->url())
+            ) active @endif">
                 <a href="#">
                     <i class="fa  fa-warning (alias)"></i> <span>举报管理</span>
                     <span class="pull-right-container">
@@ -182,6 +186,7 @@
                 <ul class="treeview-menu">
                     <li @if(preg_match('/reports/',request()->url())) class="active" @endif><a href="{{url("admin/reports")}}"><i class="fa fa-circle-o"></i> 举报列表</a></li>
                     <li @if(preg_match('/reportUsers/',request()->url())) class="active" @endif><a href="{{url("admin/reportUsers")}}"><i class="fa fa-circle-o"></i> 举报用户列表</a></li>
+                    <li @if(preg_match('/reportGroups/',request()->url())) class="active" @endif><a href="{{url("admin/reportGroups")}}"><i class="fa fa-circle-o"></i> 举报群组列表</a></li>
                     <li @if(preg_match('/reasons/',request()->url())) class="active" @endif><a href="{{url("admin/report/reasons")}}"><i class="fa fa-circle-o"></i> 举报原因列表</a></li>
                 </ul>
             </li>

@@ -65,35 +65,36 @@
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                            <strong><i class="fa fa-book margin-r-5"></i> Education</strong>
+                            <strong><i class="fa fa-book margin-r-5"></i> 账号用户</strong>
 
                             <p class="text-muted">
-                                B.S. in Computer Science from the University of Tennessee at Knoxville
+                                3
                             </p>
 
                             <hr>
 
-                            <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
+                            <strong><i class="fa fa-map-marker margin-r-5"></i>船票余额</strong>
 
-                            <p class="text-muted">Malibu, California</p>
+                            <p class="text-muted">5</p>
 
                             <hr>
 
-                            <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+                            <strong><i class="fa fa-pencil margin-r-5"></i> 账号状态</strong>
 
                             <p>
-                                <span class="label label-danger">UI Design</span>
-                                <span class="label label-success">Coding</span>
-                                <span class="label label-info">Javascript</span>
-                                <span class="label label-warning">PHP</span>
-                                <span class="label label-primary">Node.js</span>
+                                <span class="label label-danger">IM账号</span>
+                                <span class="label label-success">50星级</span>
+                                <span class="label label-info">已认证</span>
+                                <span class="label label-warning">已禁止登录</span>
+                                <span class="label label-primary">可以发布文章</span>
+                                <span class="label label-primary">可以发布相册</span>
+                                <span class="label label-primary">可以发布音乐</span>
+                                <span class="label label-primary">可以发布视频</span>
+                                <span class="label label-primary">可以发表评论</span>
                             </p>
 
                             <hr>
 
-                            <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
                         </div>
                         <!-- /.box-body -->
                     </div>

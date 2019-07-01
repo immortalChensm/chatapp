@@ -38,6 +38,11 @@
                             <div class="box-body">
 
                                 <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">用户头像</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="headImgUrl" value="@if(isset($data['headImgUrl'])) {{$data['headImgUrl']}} @endif">
+                                </div>
+
+                                <div class="form-group edit-box">
                                     <label for="exampleInputEmail1">传联号</label>
                                     <input type="text" class="form-control input-max-box" class="edit-box" name="handNum" value="@if(isset($data['handNum'])) {{$data['handNum']}} @endif">
                                 </div>
@@ -70,6 +75,11 @@
                                 <div class="form-group edit-box">
                                     <label for="exampleInputEmail1">是否认证</label>
                                     <input type="text" class="form-control input-max-box" class="edit-box" name="isValiated" value="@if(isset($data['isValiated'])) {{$data['isValiated']}} @endif">
+                                </div>
+
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">账户余额</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="money" value="@if(isset($data['money'])) {{$data['money']}} @endif">
                                 </div>
 
                                 <div class="form-group edit-box">

@@ -153,6 +153,36 @@
                                 </div>
 
                                 <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">禁止账号登录</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="recommendUserId" value="@if(isset($data['recommendUserId'])) {{$data['recommendUserId']}} @endif">
+                                </div>
+
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">禁止发布文章</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="recommendUserId" value="@if(isset($data['recommendUserId'])) {{$data['recommendUserId']}} @endif">
+                                </div>
+
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">禁止发布相册</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="recommendUserId" value="@if(isset($data['recommendUserId'])) {{$data['recommendUserId']}} @endif">
+                                </div>
+
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">禁止发布音乐</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="recommendUserId" value="@if(isset($data['recommendUserId'])) {{$data['recommendUserId']}} @endif">
+                                </div>
+
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">禁止发布视频</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="recommendUserId" value="@if(isset($data['recommendUserId'])) {{$data['recommendUserId']}} @endif">
+                                </div>
+
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">禁止评论内容</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="recommendUserId" value="@if(isset($data['recommendUserId'])) {{$data['recommendUserId']}} @endif">
+                                </div>
+
+                                <div class="form-group edit-box">
                                     <label for="exampleInputEmail1">注册时间</label>
                                     <input type="text" class="form-control input-max-box" class="edit-box" name="created_at" value="@if(isset($data['created_at'])) {{$data['created_at']}} @endif">
                                 </div>

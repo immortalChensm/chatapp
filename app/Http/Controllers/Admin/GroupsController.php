@@ -37,10 +37,26 @@ class GroupsController extends Controller
         }else{return ['code'=>0,'message'=>'删除失败'];}
     }
 
+    /**
+     * IM群内消息发送
+     * @param Request $request
+     * @return array
+     */
     function groupSendMsg(Request $request)
     {
         if (empty($request['Text']))return ['code'=>0,'message'=>'请填写消息内容'];
         $result = $this->getApi("POST","api/im/group/sendMsg",request()->except(['s','_token']));
+        return ['code'=>1,'message'=>$result];
+    }
+
+    /**IM群删除即解散
+     * @param Request $request
+     * @return array
+     */
+    function destroyGroup(Request $request)
+    {
+        if (empty($request['groupId']))return ['code'=>0,'message'=>'请选择要解散的群'];
+        $result = $this->getApi("POST","api/im/group/destroy",request()->except(['s','_token']));
         return ['code'=>1,'message'=>$result];
     }
 

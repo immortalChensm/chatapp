@@ -196,12 +196,12 @@
             $("#datagrid").on("click",".delete",function (e) {
                 var title = $(":input[name=name]").val();
                 var dateId = $(this).attr("data");
-                layer.confirm('您确定要删除('+$(this).attr("data-title")+")该用户？", {
+                layer.confirm('您确定要解散('+$(this).attr("data-title")+")该群？解散后无法恢复", {
                     btn: ['确认','取消'] //按钮
                 }, function(){
                     $.ajax({
                         type: "delete",
-                        url: "{{url('/admin/users/remove/')}}/"+dateId,
+                        //url: "{{url('/admin/users/remove/')}}/"+dateId,
                         dataType: 'json',
                         data: {
                             "_token":"{{csrf_token()}}"

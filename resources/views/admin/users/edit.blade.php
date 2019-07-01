@@ -66,13 +66,9 @@
                         <!-- /.box-header -->
                         <div class="box-body">
                             <strong><i class="fa fa-book margin-r-5"></i> 账号余额</strong>
-
                             <p class="text-muted">
                                 3元
                             </p>
-
-                            <hr>
-
                             <strong><i class="fa fa-map-marker margin-r-5"></i>船票余额</strong>
 
                             <p class="text-muted">5张</p>

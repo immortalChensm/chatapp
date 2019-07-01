@@ -56,6 +56,62 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">用户星级</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" style="border: none"  value="@if(isset($data['star'])) {{$data['star']}} @endif">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">真实姓名</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" style="border: none"   value="@if(isset($data['realName'])) {{$data['realName']}} @endif">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">性别</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" style="border: none"   value="@if(isset($data['sex'])) {{$data['sex']}} @endif">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">手机号码</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" style="border: none"  value="@if(isset($data['mobile'])) {{$data['mobile']}} @endif">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">是否认证</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" style="border: none"  value="@if(isset($data['isValiated'])) {{$data['isValiated']}} @endif">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">账户余额</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" style="border: none"  value="@if(isset($data['money'])) {{$data['money']}} @endif">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">船票余额</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" style="border: none"  value="@if(isset($data['shipNumber'])) {{$data['shipNumber']}} @endif">
+                                    </div>
+                                </div>
+
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">

@@ -342,57 +342,31 @@
                             <!-- /.tab-pane -->
 
                             <div class="tab-pane" id="settings">
-                                <form class="form-horizontal">
-                                    <div class="form-group">
-                                        <label for="inputName" class="col-sm-2 control-label">Name</label>
+                                <div class="form-group">
+                                    <label class="">
+                                        <div class="iradio_flat-green checked" aria-checked="true" aria-disabled="false" style="position: relative;"><input type="radio" name="r3" class="flat-red" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+                                    </label>
+                                    <label class="">
+                                        <div class="iradio_flat-green" aria-checked="false" aria-disabled="false" style="position: relative;"><input type="radio" name="r3" class="flat-red" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+                                    </label>
+                                    <label>
+                                        <div class="iradio_flat-green disabled" aria-checked="false" aria-disabled="true" style="position: relative;"><input type="radio" name="r3" class="flat-red" disabled="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+                                        登录权限
+                                    </label>
+                                </div>
 
-                                        <div class="col-sm-10">
-                                            <input type="email" class="form-control" id="inputName" placeholder="Name">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-
-                                        <div class="col-sm-10">
-                                            <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputName" placeholder="Name">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
-
-                                        <div class="col-sm-10">
-                                            <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
-
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-offset-2 col-sm-10">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-offset-2 col-sm-10">
-                                            <button type="submit" class="btn btn-danger">Submit</button>
-                                        </div>
-                                    </div>
-                                </form>
+                                <div class="form-group">
+                                    <label class="">
+                                        <div class="iradio_flat-green checked" aria-checked="true" aria-disabled="false" style="position: relative;"><input type="radio" name="r3" class="flat-red" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+                                    </label>
+                                    <label class="">
+                                        <div class="iradio_flat-green" aria-checked="false" aria-disabled="false" style="position: relative;"><input type="radio" name="r3" class="flat-red" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+                                    </label>
+                                    <label>
+                                        <div class="iradio_flat-green disabled" aria-checked="false" aria-disabled="true" style="position: relative;"><input type="radio" name="r3" class="flat-red" disabled="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+                                        文章发布权限
+                                    </label>
+                                </div>
                             </div>
                             <!-- /.tab-pane -->
                         </div>

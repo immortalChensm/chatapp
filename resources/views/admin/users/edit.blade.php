@@ -33,13 +33,48 @@
                         <form role="form" id="postForm">
                             {{csrf_field()}}
 
-                            <input type="hidden" name="articleId" value=" @if(isset($data['userId'])){{$data['userId']}} @endif">
+                            <input type="hidden" name="userId" value=" @if(isset($data['userId'])){{$data['userId']}} @endif">
 
                             <div class="box-body">
 
                                 <div class="form-group edit-box">
                                     <label for="exampleInputEmail1">传联号</label>
                                     <input type="text" class="form-control input-max-box" class="edit-box" name="handNum" value="@if(isset($data['handNum'])) {{$data['handNum']}} @endif">
+                                </div>
+
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">用户昵称</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="name" value="@if(isset($data['name'])) {{$data['name']}} @endif">
+                                </div>
+
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">用户星级</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="star" value="@if(isset($data['star'])) {{$data['star']}} @endif">
+                                </div>
+
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">真实姓名</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="realName" value="@if(isset($data['realName'])) {{$data['realName']}} @endif">
+                                </div>
+
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">性别</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="sex" value="@if(isset($data['sex'])) {{$data['sex']}} @endif">
+                                </div>
+
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">手机号码</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="mobile" value="@if(isset($data['mobile'])) {{$data['mobile']}} @endif">
+                                </div>
+
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">是否认证</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="isValiated" value="@if(isset($data['isValiated'])) {{$data['isValiated']}} @endif">
+                                </div>
+
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">注册时间</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="created_at" value="@if(isset($data['created_at'])) {{$data['created_at']}} @endif">
                                 </div>
 
                                 </div>

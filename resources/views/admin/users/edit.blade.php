@@ -53,8 +53,8 @@
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-default">Cancel</button>
-                                <button type="submit" class="btn btn-info pull-right">Sign in</button>
+                                {{--<a  class="btn btn-success" onclick="store()">提交</a>--}}
+                                <a href="{{url()->previous()}}" class="btn btn-info">返回</a>
                             </div>
                             <!-- /.box-footer -->
                         </form>

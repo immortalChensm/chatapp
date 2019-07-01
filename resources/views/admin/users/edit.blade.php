@@ -143,6 +143,16 @@
                                 </div>
 
                                 <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">用户红包支出总金额</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="recommendUserId" value="@if(isset($data['recommendUserId'])) {{$data['recommendUserId']}} @endif">
+                                </div>
+
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">用户红包收入总金额</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="recommendUserId" value="@if(isset($data['recommendUserId'])) {{$data['recommendUserId']}} @endif">
+                                </div>
+
+                                <div class="form-group edit-box">
                                     <label for="exampleInputEmail1">注册时间</label>
                                     <input type="text" class="form-control input-max-box" class="edit-box" name="created_at" value="@if(isset($data['created_at'])) {{$data['created_at']}} @endif">
                                 </div>

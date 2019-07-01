@@ -39,6 +39,7 @@
                             <h3 class="profile-username text-center">{{$data['name']}}</h3>
 
                             <p class="text-muted text-center">{{$data['realName']}}</p>
+                            <p class="text-muted text-center">{{$data['sex']==1?'男':'女'}}</p>
 
                             <ul class="list-group list-group-unbordered">
                                 <li class="list-group-item">

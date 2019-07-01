@@ -32,7 +32,8 @@
                         </div>
 
                     </div>
-                    <table class="table table-bordered">
+                    <div class="box-body">
+                    <table class="table table-bordered table-striped">
                         <tbody>
                         <tr>
                             <td>传联号</td>
@@ -44,6 +45,7 @@
                         </tr>
                         </tbody>
                     </table>
+                    </div>
 
 
                 </div>

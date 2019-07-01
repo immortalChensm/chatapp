@@ -11,10 +11,6 @@ class ReportGroup extends Model
     public $primaryKey = "id";
     protected $guarded = [];
 
-    public function reportGroupName(){
-        return $this->belongsTo('App\Groups','groupId','id')->select('Name');
-    }
-
     public function userName(){
         return $this->belongsTo('App\User','userId','userId')->select(['realName','name']);
     }

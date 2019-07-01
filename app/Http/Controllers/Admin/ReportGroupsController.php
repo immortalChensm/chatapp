@@ -26,8 +26,7 @@ class ReportGroupsController extends Controller
             }
         },function (&$item)use($reportGroup){
             $item->userName  = isset($item->userName->realName)?$item->userName->realName:$item->userName->name;
-//            $item->reportGroupName  = isset($item->reportGroupName->Name)?$item->reportGroupName->Name:$item->reportGroupName->Name;
-            $item->reportGroupName  =$item->reportGroupName;
+            $item->reportGroupName  = Groups::where("groupId",$item->groupId)->value("Name");
             $item->createdDate = date("Y-m-d H", strtotime($item->created_at));
 
         }]);

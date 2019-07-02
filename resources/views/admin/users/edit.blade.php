@@ -89,19 +89,33 @@
 
                             <p class="text-muted">{{$data['refundMoney']}}元</p>
 
-                            <strong><i class="fa fa-map-marker margin-r-5"></i>最近登录位置</strong>
+                            <strong><i class="fa fa-map-marker margin-r-5"></i>最近登录IP</strong>
 
-                            <p class="text-muted">贵阳</p>
+                            <p class="text-muted">
+                                @if(isset($data['loginInfo']['loginIp']))
+                                    {{$data['loginInfo']['loginIp']}}
+                                    @else
+                                    未登录
+                                    @endif
+                            </p>
 
 
                             <strong><i class="fa fa-map-marker margin-r-5"></i>最近登录时间</strong>
 
-                            <p class="text-muted">2019-07-01</p>
+                            <p class="text-muted"> @if(isset($data['loginInfo']['loginDate']))
+                                    {{$data['loginInfo']['loginDate']}}
+                                @else
+                                    0
+                                @endif</p>
 
 
                             <strong><i class="fa fa-map-marker margin-r-5"></i>登录次数</strong>
 
-                            <p class="text-muted">300次</p>
+                            <p class="text-muted">@if(isset($data['loginInfo']['loginCount']))
+                                    {{$data['loginInfo']['loginCount']}}
+                                @else
+                                    0
+                                @endif次</p>
 
 
                             <strong><i class="fa fa-pencil margin-r-5"></i> 账号状态</strong>

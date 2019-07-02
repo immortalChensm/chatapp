@@ -92,30 +92,30 @@
                             <strong><i class="fa fa-map-marker margin-r-5"></i>最近登录IP</strong>
 
                             <p class="text-muted">
-                                @if(!is_null($data['loginInfo'])&&isset($data['loginInfo']['loginIp']))
-                                    {{$data['loginInfo']['loginIp']}}
+                                @if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->loginIp))
+                                    {{$data['loginInfo']->loginIp}}
                                     @else
                                     未登录
                                     @endif
                             </p>
 
 
-                            <strong><i class="fa fa-map-marker margin-r-5"></i>最近登录时间</strong>
+                            {{--<strong><i class="fa fa-map-marker margin-r-5"></i>最近登录时间</strong>--}}
 
-                            <p class="text-muted"> @if(!is_null($data['loginInfo'])&&isset($data['loginInfo']['loginDate']))
-                                    {{$data['loginInfo']['loginDate']}}
-                                @else
-                                    ---
-                                @endif</p>
+                            {{--<p class="text-muted"> @if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->loginDate))--}}
+                                    {{--{{$data['loginInfo']['loginDate']}}--}}
+                                {{--@else--}}
+                                    {{-------}}
+                                {{--@endif</p>--}}
 
 
-                            <strong><i class="fa fa-map-marker margin-r-5"></i>登录次数</strong>
+                            {{--<strong><i class="fa fa-map-marker margin-r-5"></i>登录次数</strong>--}}
 
-                            <p class="text-muted">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']['loginCount']))
-                                    {{$data['loginInfo']['loginCount']}}
-                                @else
-                                    0
-                                @endif次</p>
+                            {{--<p class="text-muted">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']['loginCount']))--}}
+                                    {{--{{$data['loginInfo']['loginCount']}}--}}
+                                {{--@else--}}
+                                    {{--0--}}
+                                {{--@endif次</p>--}}
 
 
                             <strong><i class="fa fa-pencil margin-r-5"></i> 账号状态</strong>

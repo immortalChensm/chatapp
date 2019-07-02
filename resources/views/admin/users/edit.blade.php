@@ -123,55 +123,13 @@
                             <p>
                                 <span class="label label-success">@if($data['isIm']==1)IM账号@else普通账号@endif</span>
                                 <span class="label label-success">{{$data['star']}}星级</span>
-                                <span class="label label-success">
-
-                                    @if($data['isValiated']==1)
-                                        已认证
-                                        @else
-                                        未认证
-                                        @endif
-                                </span>
-                                <span class="label label-success">
-                                    @if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canLogin))
-                                        可登录
-                                    @else
-                                        已限制登录
-                                    @endif
-                                </span>
-                                <span class="label label-success">
-                                    @if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canPost))
-                                        可发布文章
-                                    @else
-                                        已限制文章发布
-                                    @endif
-                                </span>
-                                <span class="label label-success">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canPhoto))
-                                        可发布相册
-                                    @else
-                                        已限制发布相册
-                                    @endif
-                                </span>
-
-                                <span class="label label-success">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canMusic))
-                                        可发布音乐
-                                    @else
-                                        已限制发布音乐
-                                    @endif
-                                </span>
-
-                                <span class="label label-success">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canVideo))
-                                        可发布视频
-                                    @else
-                                        已限制发布视频
-                                    @endif
-                                </span>
-
-                                <span class="label label-success">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canComment))
-                                        可评论
-                                    @else
-                                        已限制评论
-                                    @endif
-                                </span>
+                                <span class="label label-success">@if($data['isValiated']==1)已认证@else未认证@endif</span>
+                                <span class="label label-success">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canLogin))可登录@else已限制登录@endif</span>
+                                <span class="label label-success">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canPost))可发布文章@else已限制文章发布@endif</span>
+                                <span class="label label-success">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canPhoto))可发布相册@else已限制发布相册@endif</span>
+                                <span class="label label-success">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canMusic))可发布音乐@else已限制发布音乐@endif</span>
+                                <span class="label label-success">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canVideo))可发布视频@else已限制发布视频@endif</span>
+                                <span class="label label-success">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canComment))可评论@else已限制评论@endif</span>
                             </p>
 
                             <hr>

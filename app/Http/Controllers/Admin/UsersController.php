@@ -76,5 +76,6 @@ class UsersController extends Controller
     {
         $data['subscribeNum']   = DB::table("subscribes")->where("userId", $data['userId'])->count("followerId");
         $data['followerNum']    = DB::table("subscribes")->where("followerId", $data['userId'])->count("userId");
+        $data['totalPraiseNum']    = DB::table("subscribes")->whereIn("userId", $data['userId'])->sum("user_praises", "praiseNum");
     }
 }

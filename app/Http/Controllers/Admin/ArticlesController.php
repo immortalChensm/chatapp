@@ -111,9 +111,7 @@ class ArticlesController extends Controller
         }else{return ['code'=>0,'message'=>'删除失败'];}
     }
 
-    /**
-     * 文章的屏蔽或分享限制操作
-     */
+
     function shieldOrShare(Articles $articles)
     {
         return $this->modelShieldOrShare($articles);

@@ -68,14 +68,14 @@
                         <div class="box-body">
                             <strong><i class="fa fa-book margin-r-5"></i> 账号余额</strong>
                             <p class="text-muted">
-                                3元
+                                {{$data['money']}}元
                             </p>
                             <strong><i class="fa fa-map-marker margin-r-5"></i>船票余额</strong>
 
-                            <p class="text-muted">5张</p>
+                            <p class="text-muted">{{$data['shipNumber']}}张</p>
                             <strong><i class="fa fa-map-marker margin-r-5"></i>累积点赞数量</strong>
 
-                            <p class="text-muted">59个</p>
+                            <p class="text-muted">{{$data['totalPraiseNum']}}个</p>
 
                             <strong><i class="fa fa-map-marker margin-r-5"></i>红包支出总额</strong>
 

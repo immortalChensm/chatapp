@@ -137,12 +137,40 @@
                                         未认证
                                         @endif
                                 </span>
-                                <span class="label label-info">已禁止登录</span>
-                                <span class="label label-info">可以发布文章</span>
-                                <span class="label label-info">可以发布相册</span>
-                                <span class="label label-info">可以发布音乐</span>
-                                <span class="label label-info">可以发布视频</span>
-                                <span class="label label-info">可以发表评论</span>
+                                <span class="label label-info">
+                                    @if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canLogin))
+                                        正常
+                                    @else
+                                        已限制登录
+                                    @endif
+                                </span>
+                                <span class="label label-info">
+                                    @if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canPost))
+                                        正常
+                                    @else
+                                        已限制文章发布
+                                    @endif
+                                </span>
+                                <span class="label label-info">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canPhoto))
+                                        正常
+                                    @else
+                                        已限制发布相册
+                                    @endif</span>
+                                <span class="label label-info">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canMusic))
+                                        正常
+                                    @else
+                                        已限制发布音乐
+                                    @endif</span>
+                                <span class="label label-info">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canVideo))
+                                        正常
+                                    @else
+                                        已限制发布视频
+                                    @endif</span>
+                                <span class="label label-info">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canComment))
+                                        正常
+                                    @else
+                                        已限制评论
+                                    @endif</span>
                             </p>
 
                             <hr>

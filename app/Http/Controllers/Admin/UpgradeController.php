@@ -26,6 +26,7 @@ class UpgradeController extends Controller
             }
         },function (&$item){
             $item->userName        = User::where("userId", $item['userId'])->value("name");
+            $item->storageSize     = $item->storageSize."M";
             $item->createdDate     = date("Y-m-d H", strtotime($item->created_at));
         }]);
     }

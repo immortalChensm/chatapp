@@ -139,35 +139,35 @@
                                 </span>
                                 <span class="label label-info">
                                     @if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canLogin))
-                                        正常
+                                        可登录
                                     @else
                                         已限制登录
                                     @endif
                                 </span>
                                 <span class="label label-info">
                                     @if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canPost))
-                                        正常
+                                        可发布文章
                                     @else
                                         已限制文章发布
                                     @endif
                                 </span>
                                 <span class="label label-info">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canPhoto))
-                                        正常
+                                        可发布相册
                                     @else
                                         已限制发布相册
                                     @endif</span>
                                 <span class="label label-info">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canMusic))
-                                        正常
+                                        可发布音乐
                                     @else
                                         已限制发布音乐
                                     @endif</span>
                                 <span class="label label-info">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canVideo))
-                                        正常
+                                        可发布视频
                                     @else
                                         已限制发布视频
                                     @endif</span>
                                 <span class="label label-info">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canComment))
-                                        正常
+                                        可评论
                                     @else
                                         已限制评论
                                     @endif</span>

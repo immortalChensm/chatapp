@@ -92,7 +92,7 @@
                     columns: [
                         { data:"id",name:"id",orderable: true,searchable:false },
                         { data:"userName",name:"userName",orderable: false,searchable:true },
-                        { data:"shipNum",name:"name",orderable: false,searchable:true },
+                        { data:"shipNum",name:"shipNum",orderable: false,searchable:true },
                         { data:"storageSize",name:"storageSize",orderable: false},
                         { data:"createdDate",name:"createdDate",orderable: false}
                     ],

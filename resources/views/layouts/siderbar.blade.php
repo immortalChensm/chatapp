@@ -136,6 +136,7 @@
             ||preg_match('/expenditure/',request()->url())
             ||preg_match('/income/',request()->url())
             ||preg_match('/refund/',request()->url())
+            ||preg_match('/upgrade/',request()->url())
 
             ) active @endif">
                 <a href="#">

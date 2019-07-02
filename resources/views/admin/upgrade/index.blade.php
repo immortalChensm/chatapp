@@ -54,7 +54,6 @@
                                     <th>消耗船票张数</th>
                                     <th>空间大小</th>
                                     <th>升级时间</th>
-                                    <th>操作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -66,7 +65,6 @@
                                     <th>消耗船票张数</th>
                                     <th>空间大小</th>
                                     <th>升级时间</th>
-                                    <th>操作</th>
                                 </tr>
                                 </tfoot>
                             </table>

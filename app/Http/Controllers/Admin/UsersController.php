@@ -79,6 +79,6 @@ class UsersController extends Controller
         $data['totalPraiseNum']    = DB::table("user_praises")->whereIn("userId", [$data['userId']])->sum("praiseNum");
         $data['sentMoney']    = DB::table("redpacket")->whereIn("userId", [$data['userId']])->sum("money");
         $data['recvMoney']    = DB::table("users_redpacket")->whereIn("userId", [$data['userId']])->sum("money");
-        $data['refundMoney']    = DB::table("users_refund_redpacket")->whereIn("userId", [$data['userId']])->sum("money");
+        $data['refundMoney']    = DB::table("users_refund_redpackets")->whereIn("userId", [$data['userId']])->sum("money");
     }
 }

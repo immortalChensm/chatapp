@@ -121,7 +121,7 @@
                             <strong><i class="fa fa-pencil margin-r-5"></i> 账号状态</strong>
 
                             <p>
-                                <span style="margin:3px auto;" class="label label-@if($data['isIm']==1)success@else danger @endif">@if($data['isIm']==1)IM账号@else普通账号@endif</span>
+                                <span style="margin:3px auto;" class="label label-@if($data['isIm']==1)success @else danger @endif">@if($data['isIm']==1)IM账号@else普通账号@endif</span>
                                 <span class="label label-success">{{$data['star']}}星级</span>
                                 <span class="label label-success">@if($data['isValiated']==1)已认证@else未认证@endif</span>
                                 <span class="label label-success">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canLogin))可登录@else已限制登录@endif</span>

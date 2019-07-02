@@ -92,7 +92,7 @@
                             <strong><i class="fa fa-map-marker margin-r-5"></i>最近登录IP</strong>
 
                             <p class="text-muted">
-                                @if(isset($data['loginInfo']['loginIp']))
+                                @if(isset(isset($data['loginInfo'])&&$data['loginInfo']['loginIp']))
                                     {{$data['loginInfo']['loginIp']}}
                                     @else
                                     未登录
@@ -102,16 +102,16 @@
 
                             <strong><i class="fa fa-map-marker margin-r-5"></i>最近登录时间</strong>
 
-                            <p class="text-muted"> @if(isset($data['loginInfo']['loginDate']))
+                            <p class="text-muted"> @if(isset($data['loginInfo'])&&isset($data['loginInfo']['loginDate']))
                                     {{$data['loginInfo']['loginDate']}}
                                 @else
-                                    0
+                                    ---
                                 @endif</p>
 
 
                             <strong><i class="fa fa-map-marker margin-r-5"></i>登录次数</strong>
 
-                            <p class="text-muted">@if(isset($data['loginInfo']['loginCount']))
+                            <p class="text-muted">@if(isset($data['loginInfo'])&&isset($data['loginInfo']['loginCount']))
                                     {{$data['loginInfo']['loginCount']}}
                                 @else
                                     0

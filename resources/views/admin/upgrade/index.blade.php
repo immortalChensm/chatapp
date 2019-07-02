@@ -107,7 +107,7 @@
                     language:dataGridlanguage,
                     serverSide: true,
                     ajax: {
-                        url: '/admin/order/get/upgrade',
+                        url: '/admin/get/order/upgrade',
                         type: 'GET'
                     },
                     "searching": false,
@@ -117,7 +117,7 @@
                 window.tableGrid =table;
                 $("#search").on("click",function (e) {
                     var name = $(":input[name=userName]").val();
-                    table.ajax.url( '/admin/order/get/upgrade?name='+name).load();
+                    table.ajax.url( '/admin/get/order/upgrade?name='+name).load();
                 })
 
             })

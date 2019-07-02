@@ -79,11 +79,15 @@
 
                             <strong><i class="fa fa-map-marker margin-r-5"></i>红包支出总额</strong>
 
-                            <p class="text-muted">50元</p>
+                            <p class="text-muted">{{$data['sentMoney']}}元</p>
 
                             <strong><i class="fa fa-map-marker margin-r-5"></i>红包收入总额</strong>
 
-                            <p class="text-muted">500元</p>
+                            <p class="text-muted">{{$data['recvMoney']}}元</p>
+
+                            <strong><i class="fa fa-map-marker margin-r-5"></i>红包退回总额</strong>
+
+                            <p class="text-muted">{{$data['refundMoney']}}元</p>
 
                             <strong><i class="fa fa-map-marker margin-r-5"></i>最近登录位置</strong>
 
@@ -103,9 +107,22 @@
                             <strong><i class="fa fa-pencil margin-r-5"></i> 账号状态</strong>
 
                             <p>
-                                <span class="label label-danger">IM账号</span>
-                                <span class="label label-success">50星级</span>
-                                <span class="label label-info">已认证</span>
+                                <span class="label label-danger">
+                                    @if($data['isIm']==1)
+                                        IM账号
+                                        @else
+                                        普通账号
+                                        @endif
+                                </span>
+                                <span class="label label-success">{{$data['star']}}星级</span>
+                                <span class="label label-info">
+
+                                    @if($data['isValiated']==1)
+                                        已认证
+                                        @else
+                                        未认证
+                                        @endif
+                                </span>
                                 <span class="label label-info">已禁止登录</span>
                                 <span class="label label-info">可以发布文章</span>
                                 <span class="label label-info">可以发布相册</span>

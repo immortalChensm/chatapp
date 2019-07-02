@@ -121,13 +121,7 @@
                             <strong><i class="fa fa-pencil margin-r-5"></i> 账号状态</strong>
 
                             <p>
-                                <span class="label label-success">
-                                    @if($data['isIm']==1)
-                                        IM账号
-                                        @else
-                                        普通账号
-                                        @endif
-                                </span>
+                                <span class="label label-success">@if($data['isIm']==1)IM账号@else普通账号@endif</span>
                                 <span class="label label-success">{{$data['star']}}星级</span>
                                 <span class="label label-success">
 

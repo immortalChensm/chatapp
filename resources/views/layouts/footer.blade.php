@@ -228,10 +228,11 @@
         shadeClose: true,
         shade: false,
         area: ['732px', '90%'],
+        maxmin: true, //开启最大化最小化按钮
         content: 'http://www.baidu.com/' //iframe的url
     });
 
-    
+
 </script>
 @yield("js")
 

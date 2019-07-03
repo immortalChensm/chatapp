@@ -270,12 +270,12 @@
                                     <!-- /.timeline-label -->
                                     <!-- timeline item -->
                                     <li>
-                                        {{--<i class="fa fa-camera bg-purple"></i>--}}
+                                        <i class="fa fa-camera bg-purple"></i>
 
                                         <div class="timeline-item">
                                             {{--<span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>--}}
 
-                                            <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
+                                            <h3 class="timeline-header"><a href="#">{{$data['name']}}</a>的身份证</h3>
 
                                             <div class="timeline-body">
                                                 <img src="http://placehold.it/150x100" alt="..." class="margin">
@@ -286,9 +286,9 @@
                                         </div>
                                     </li>
                                     <!-- END timeline item -->
-                                    {{--<li>--}}
-                                        {{--<i class="fa fa-clock-o bg-gray"></i>--}}
-                                    {{--</li>--}}
+                                    <li>
+                                        <i class="fa fa-clock-o bg-gray"></i>
+                                    </li>
                                 </ul>
                             </div>
                             <!-- /.tab-pane -->

@@ -281,12 +281,12 @@
                                                 @if(!empty($data['idCardFace']))
                                                     <img src="{{$data['idCardFace']}}" alt="..." class="margin">
                                                     @else
-                                                    未上传
+                                                    头像面未上传
                                                     @endif
                                                     @if(!empty($data['idCardWall']))
                                                 <img src="{{$data['idCardWall']}}" alt="..." class="margin">
                                                         @else
-                                                        未上传
+                                                        国徽未上传
                                                         @endif
                                             </div>
                                         </div>

@@ -77,10 +77,27 @@ class UsersController extends Controller
     {
         $data['subscribeNum']   = DB::table("subscribes")->where("userId", $data['userId'])->count("followerId");
         $data['followerNum']    = DB::table("subscribes")->where("followerId", $data['userId'])->count("userId");
-        $data['totalPraiseNum']    = DB::table("user_praises")->whereIn("userId", [$data['userId']])->sum("praiseNum");
-        $data['sentMoney']    = DB::table("redpacket")->whereIn("userId", [$data['userId']])->sum("money");
-        $data['recvMoney']    = DB::table("users_redpacket")->whereIn("userId", [$data['userId']])->sum("money");
+        $data['totalPraiseNum'] = DB::table("user_praises")->whereIn("userId", [$data['userId']])->sum("praiseNum");
+        $data['sentMoney']      = DB::table("redpacket")->whereIn("userId", [$data['userId']])->sum("money");
+        $data['recvMoney']      = DB::table("users_redpacket")->whereIn("userId", [$data['userId']])->sum("money");
         $data['refundMoney']    = DB::table("users_refund_redpackets")->whereIn("userId", [$data['userId']])->sum("money");
-        $data['loginInfo'] = DB::table("users_extend")->where("userId", $data['userId'])->first();
+        $data['loginInfo']      = DB::table("users_extend")->where("userId", $data['userId'])->first();
+        if ($data['isValiated']==1){
+            $result = $this->downloadCosFile([
+                'fileKeyName'=>$data['idCardFrontPic'],
+                'expire'=>config('cos')['expire']
+            ]);
+            if ($result['code']==1){
+                $data['idCardFace'] = $result['data'];
+            }
+            $result = $this->downloadCosFile([
+                'fileKeyName'=>$data['idCardBackPic'],
+                'expire'=>config('cos')['expire']
+            ]);
+            if ($result['code']==1){
+                $data['idCardWall'] = $result['data'];
+            }
+        }
+
     }
 }

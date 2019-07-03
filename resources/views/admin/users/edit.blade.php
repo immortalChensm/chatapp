@@ -278,10 +278,16 @@
                                             <h3 class="timeline-header"><a href="#">{{$data['name']}}</a>的身份证</h3>
 
                                             <div class="timeline-body">
-                                                <img src="http://placehold.it/150x100" alt="..." class="margin">
-                                                <img src="http://placehold.it/150x100" alt="..." class="margin">
-                                                <img src="http://placehold.it/150x100" alt="..." class="margin">
-                                                <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                                @if(!empty($data['idCardFace']))
+                                                    <img src="{{$data['idCardFace']}}" alt="..." class="margin">
+                                                    @else
+                                                    未上传
+                                                    @endif
+                                                    @if(!empty($data['idCardWall']))
+                                                <img src="{{$data['idCardWall']}}" alt="..." class="margin">
+                                                        @else
+                                                        未上传
+                                                        @endif
                                             </div>
                                         </div>
                                     </li>

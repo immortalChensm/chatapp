@@ -224,7 +224,7 @@
 <script>
     layer.open({
         type: 2,
-        title: 'talk',
+        title: '用客户咨询你了',
         shadeClose: true,
         shade: false,
         area: ['732px', '90%'],

@@ -61,7 +61,7 @@ class UsersController extends Controller
     function edit()
     {
         isset(request()->userId)?$data=User::where("userId","=",request()->userId)->first():$data='';
-        !empty($data['headImgUrl'])?$headImgUrl = $data['headImgUrl']:$headImgUrl='defaultlogo.png';
+        !empty($data['headImgUrl'])?$headImgUrl = $data['headImgUrl']:$headImgUrl='other/defaultlogo.png';
         $result = $this->downloadCosFile([
             'fileKeyName'=>$headImgUrl,
             'expire'=>config('cos')['expire']

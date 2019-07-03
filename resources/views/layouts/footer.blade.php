@@ -226,10 +226,12 @@
         type: 2,
         title: 'talk',
         shadeClose: true,
-        shade: 0.1,
-        area: ['600px', '90%'],
+        shade: false,
+        area: ['732px', '90%'],
         content: 'http://www.baidu.com/' //iframe的url
     });
+
+    
 </script>
 @yield("js")
 

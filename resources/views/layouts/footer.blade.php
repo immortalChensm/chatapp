@@ -226,8 +226,8 @@
         type: 2,
         title: 'talk',
         shadeClose: true,
-        shade: 0.8,
-        area: ['380px', '90%'],
+        shade: 0.1,
+        area: ['600px', '90%'],
         content: 'http://www.baidu.com/' //iframe的url
     });
 </script>

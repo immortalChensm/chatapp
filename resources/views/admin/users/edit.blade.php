@@ -266,14 +266,14 @@
                             <div class="tab-pane" id="timeline">
                                 <!-- The timeline -->
                                 <ul class="timeline timeline-inverse">
-                                   
+
                                     <!-- /.timeline-label -->
                                     <!-- timeline item -->
                                     <li>
-                                        <i class="fa fa-camera bg-purple"></i>
+                                        {{--<i class="fa fa-camera bg-purple"></i>--}}
 
                                         <div class="timeline-item">
-                                            <span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>
+                                            {{--<span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>--}}
 
                                             <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
 
@@ -286,9 +286,9 @@
                                         </div>
                                     </li>
                                     <!-- END timeline item -->
-                                    <li>
-                                        <i class="fa fa-clock-o bg-gray"></i>
-                                    </li>
+                                    {{--<li>--}}
+                                        {{--<i class="fa fa-clock-o bg-gray"></i>--}}
+                                    {{--</li>--}}
                                 </ul>
                             </div>
                             <!-- /.tab-pane -->

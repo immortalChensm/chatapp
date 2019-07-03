@@ -1,8 +1,8 @@
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-        <b>Version</b> 2.4.0
+        <b>Version</b> 0.0.1
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
+    <strong>Copyright &copy; 2019-2030 <a href="https://adminlte.io">传联科技</a>.</strong> All rights
     reserved.
 </footer>
 
@@ -199,6 +199,8 @@
 <!-- Add the sidebar's background. This div must be placed
      immediately after the control sidebar -->
 <div class="control-sidebar-bg"></div>
+
+
 </div>
 <!-- ./wrapper -->
 
@@ -219,7 +221,16 @@
 
 <script charset="utf-8" src="{{asset("kindeditor/kindeditor-all-min.js")}}"></script>
 <script charset="utf-8" src="{{asset("kindeditor/lang/zh-CN.js")}}"></script>
-
+<script>
+    layer.open({
+        type: 2,
+        title: 'talk',
+        shadeClose: true,
+        shade: 0.8,
+        area: ['380px', '90%'],
+        content: 'http://www.baidu.com/' //iframe的url
+    });
+</script>
 @yield("js")
 
 </body>

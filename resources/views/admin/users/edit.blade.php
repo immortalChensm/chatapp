@@ -267,7 +267,7 @@
                                 {{--<!-- /.post -->--}}
                             {{--</div>--}}
                             <!-- /.tab-pane -->
-                            <div class="tab-pane" id="timeline">
+                            <div class="active tab-pane" id="timeline">
                                 <!-- The timeline -->
                                 <ul class="timeline timeline-inverse">
 

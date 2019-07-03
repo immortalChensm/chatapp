@@ -89,6 +89,10 @@
 
                             <p class="text-muted">{{$data['refundMoney']}}元</p>
 
+                            <strong><i class="fa fa-map-marker margin-r-5"></i>注册时间</strong>
+
+                            <p class="text-muted">{{$data['created_at']}}</p>
+
                             <strong><i class="fa fa-map-marker margin-r-5"></i>最近登录IP</strong>
 
                             <p class="text-muted">

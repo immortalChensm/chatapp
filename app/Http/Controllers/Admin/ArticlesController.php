@@ -39,7 +39,12 @@ class ArticlesController extends Controller
             }
         },function (&$item){
             $item->tagName     = $item->tag->name;
-            //$item->userId      = User::where("userId","=",$item['userId'])->value("name");
+            if ($item->userType==2){
+                $item->userId      = "平台发布";
+            }else{
+                $item->userId      = User::where("userId","=",$item['userId'])->value("name");
+            }
+
             $item->isShow      = $item->isShow == 0 ? '是' : '否';
             $item->canShared   = $item->canShared == 1 ? '是' : '否';
             $item->isStoraged  = $item->isStoraged == 1 ? '是' : '否';

@@ -5,6 +5,14 @@
 @section("css")
     <link rel="stylesheet" href="{{asset("adminlte/css/common.css")}}">
     <link rel="stylesheet" href="{{asset("adminlte/css/photos.css")}}">
+
+    <link rel="stylesheet" href="{{asset("adminlte/bower_components/bootstrap-daterangepicker/daterangepicker.css")}}">
+    <link rel="stylesheet" href="{{asset("adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css")}}">
+    <link rel="stylesheet" href="{{asset("adminlte/plugins/iCheck/all.css")}}">
+    <link rel="stylesheet" href="{{asset("adminlte/bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css")}}">
+    <link rel="stylesheet" href="{{asset("adminlte/plugins/timepicker/bootstrap-timepicker.min.css")}}">
+    <link rel="stylesheet" href="{{asset("adminlte/bower_components/select2/dist/css/select2.min.css")}}">
+
     <style type="text/css">
         .ui-image .u-close-bg, .ui-image .u-close-text { display: block; }
     </style>
@@ -342,7 +350,7 @@
                                         Flat green skin radio
                                     </label>
                                 </div>
-                                
+
                             </div>
                             <!-- /.tab-pane -->
                         </div>

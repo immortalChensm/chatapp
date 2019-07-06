@@ -6,6 +6,7 @@ use App\Http\Requests\Admin\StorePhotoPost;
 use App\Images;
 use App\Photos;
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
 
 class PhotosController extends Controller

@@ -7,7 +7,7 @@ use App\Http\Requests\Admin\StoreVideoPost;
 use App\Videos;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\User;
 class VideoController extends Controller
 {
     function index()

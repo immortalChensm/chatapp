@@ -6,7 +6,7 @@ use App\Http\Requests\Admin\StoreMusicPost;
 use App\Musics;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\User;
 class MusicsController extends Controller
 {
     /**

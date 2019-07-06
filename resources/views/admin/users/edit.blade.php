@@ -367,7 +367,7 @@
     </div>
     <!-- /.content-wrapper -->
 @section("js")
-
+    <script src="{{asset("adminlte/plugins/iCheck/icheck.min.js")}}"></script>
     <script>
         function store(){
             $.ajax({

@@ -222,16 +222,16 @@
 <script charset="utf-8" src="{{asset("kindeditor/kindeditor-all-min.js")}}"></script>
 <script charset="utf-8" src="{{asset("kindeditor/lang/zh-CN.js")}}"></script>
 <script>
-    layer.open({
-        type: 2,
-        title: '用客户咨询你了',
-        shadeClose: true,
-        shade: false,
-        area: ['732px', '90%'],
-        maxmin: true, //开启最大化最小化按钮
-        min:true,
-        content: 'http://www.baidu.com/' //iframe的url
-    });
+    // layer.open({
+    //     type: 2,
+    //     title: '用客户咨询你了',
+    //     shadeClose: true,
+    //     shade: false,
+    //     area: ['732px', '90%'],
+    //     maxmin: true, //开启最大化最小化按钮
+    //     min:true,
+    //     content: 'http://www.baidu.com/' //iframe的url
+    // });
 
 
 </script>

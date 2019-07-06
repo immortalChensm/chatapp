@@ -20,6 +20,8 @@ class TestController extends Controller
         echo microtime(true);
         //sleep(10);
         echo microtime(true);
+    
+
         return 123;
     }
 

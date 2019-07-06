@@ -217,7 +217,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset("adminlte/dist/js/demo.js")}}"></script>
 <script src="{{asset("adminlte/js/datasheet.js")}}"></script>
-
+///////////////
 <!-- Select2 -->
 <script src="{{asset("adminlte/bower_components/select2/dist/js/select2.full.min.js")}}"></script>
 <!-- InputMask -->
@@ -237,7 +237,7 @@
 <!-- iCheck 1.0.1 -->
 <script src="{{asset("adminlte/plugins/iCheck/icheck.min.js")}}"></script>
 <!-- FastClick -->
-
+/////
 
 <script src="{{asset("layer/layer.js")}}"></script>
 

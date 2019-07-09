@@ -40,7 +40,7 @@
                                 <div class="form-group edit-box">
                                     <label for="exampleInputEmail1">{{$item->item}}</label>
                                     <input type="{{$item->type}}" class="form-control input-max-box" class="edit-box" name="config[{{$item->name}}]" value="{{$item->value}}" placeholder="请输入数据">
-                                    (<mark>{{$item->description}}</mark>)
+                                    (<span>{{$item->description}}</span>)
                                 </div>
                                     @endforeach
 

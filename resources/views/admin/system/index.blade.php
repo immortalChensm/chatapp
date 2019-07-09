@@ -37,11 +37,21 @@
                             {{csrf_field()}}
                             <div class="box-body">
                                 @foreach($data as $item)
-                                <div class="form-group edit-box">
-                                    <label for="exampleInputEmail1">{{$item->item}}</label>
-                                    <input type="{{$item->type}}" class="form-control input-max-box" class="edit-box" name="config[{{$item->name}}]" value="{{$item->value}}" placeholder="请输入数据">
-                                    (<span>{{$item->description}}</span>)
-                                </div>
+                                    @if($item->type=='text')
+                                        <div class="form-group edit-box">
+                                            <label for="exampleInputEmail1">{{$item->item}}</label>
+                                            <input type="{{$item->type}}" class="form-control input-max-box" class="edit-box" name="config[{{$item->name}}]" value="{{$item->value}}" placeholder="请输入数据">
+                                            (<span>{{$item->description}}</span>)
+                                        </div>
+                                        @else
+                                        <div class="form-group edit-box">
+                                            <label for="exampleInputEmail1">{{$item->item}}</label>
+                                            <input type="{{$item->type}}" class="form-control input-max-box" class="edit-box" name="config[{{$item->name}}]" value="{{$item->value}}" placeholder="请输入数据">
+                                            (<span>{{$item->description}}</span>)
+                                        </div>
+                                        @endif
+
+
                                     @endforeach
 
                             </div>

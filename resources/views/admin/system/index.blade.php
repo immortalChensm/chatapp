@@ -48,7 +48,7 @@
                             </div>
                             <div class="box-footer">
                                 <a  class="btn btn-success" onclick="store()">提交</a>
-                                <a href="{{url()->previous()}}" class="btn btn-info">返回</a>
+{{--                                <a href="{{url()->previous()}}" class="btn btn-info">返回</a>--}}
                             </div>
                         </form>
                     </div>

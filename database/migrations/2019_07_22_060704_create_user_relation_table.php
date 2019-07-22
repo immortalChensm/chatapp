@@ -15,6 +15,9 @@ class CreateUserRelationTable extends Migration
     {
         Schema::create('user_relation', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedBigInteger("userId")->index()->comment("传联用户id");
+            $table->string("relationName")->index()->comment("传联关系名称");
+            $table->unsignedBigInteger("relationUserId")->index()->comment("被传联关系用户id");
             $table->timestamps();
         });
     }

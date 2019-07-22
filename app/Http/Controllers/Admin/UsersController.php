@@ -15,36 +15,36 @@ class UsersController extends Controller
         return view("admin.users.index");
     }
 
-    function users(Request $request,User $user)
+    function users(Request $request, User $user)
     {
-        return $this->models(...[$request,$user,function (&$searchItem)use($request){
+        return $this->models(...[$request, $user, function (&$searchItem) use ($request) {
             $searchItem['name']       = $request->name;
             $searchItem['mobile']     = $request->mobile;
             $searchItem['handNum']    = $request->handNum;
             $searchItem['realName']   = $request->realName;
             $searchItem['sex']        = $request->sex;
             $searchItem['isValiated'] = $request->isValiated;
-        },function ($query,&$searchItem){
-            if ($searchItem['name']){
-                $query->where("name","LIKE","%".$searchItem['name']."%");
+        }, function ($query, &$searchItem) {
+            if ($searchItem['name']) {
+                $query->where("name", "LIKE", "%" . $searchItem['name'] . "%");
             }
-            if ($searchItem['mobile']){
-                $query->where("mobile","LIKE","%".$searchItem['mobile']."%");
+            if ($searchItem['mobile']) {
+                $query->where("mobile", "LIKE", "%" . $searchItem['mobile'] . "%");
             }
-            if ($searchItem['handNum']){
-                $query->where("handNum","LIKE","%".$searchItem['handNum']."%");
+            if ($searchItem['handNum']) {
+                $query->where("handNum", "LIKE", "%" . $searchItem['handNum'] . "%");
             }
-            if ($searchItem['realName']){
-                $query->where("realName","LIKE","%".$searchItem['realName']."%");
+            if ($searchItem['realName']) {
+                $query->where("realName", "LIKE", "%" . $searchItem['realName'] . "%");
             }
-            if ($searchItem['sex']){
-                $query->where("sex","=",$searchItem['sex']);
+            if ($searchItem['sex']) {
+                $query->where("sex", "=", $searchItem['sex']);
             }
-            if ($searchItem['isValiated']){
-                $query->where("isValiated","=",$searchItem['isValiated']);
+            if ($searchItem['isValiated']) {
+                $query->where("isValiated", "=", $searchItem['isValiated']);
             }
 
-        },function (&$item){
+        }, function (&$item) {
             $item->sex         = $item->sex == 1 ? '男' : '女';
             $item->isValiated  = $item->isValiated == 1 ? '已认证' : '未认证';
             $item->createdDate = date("Y-m-d H", strtotime($item->created_at));
@@ -53,24 +53,26 @@ class UsersController extends Controller
 
     function remove(User $user)
     {
-        if($user->delete()){
-            return ['code'=>1,'message'=>'删除成功'];
-        }else{return ['code'=>0,'message'=>'删除失败'];}
+        if ($user->delete()) {
+            return ['code' => 1, 'message' => '删除成功'];
+        } else {
+            return ['code' => 0, 'message' => '删除失败'];
+        }
     }
 
     function edit()
     {
-        isset(request()->userId)?$data=User::where("userId","=",request()->userId)->first():$data='';
-        !empty($data['headImgUrl'])?$headImgUrl = $data['headImgUrl']:$headImgUrl='other/defaultlogo.png';
+        isset(request()->userId) ? $data = User::where("userId", "=", request()->userId)->first() : $data = '';
+        !empty($data['headImgUrl']) ? $headImgUrl = $data['headImgUrl'] : $headImgUrl = 'other/defaultlogo.png';
         $result = $this->downloadCosFile([
-            'fileKeyName'=>$headImgUrl,
-            'expire'=>config('cos')['expire']
+            'fileKeyName' => $headImgUrl,
+            'expire'      => config('cos')['expire']
         ]);
-        if ($result['code']==1){
+        if ($result['code'] == 1) {
             $data['headImgUrl'] = $result['data'];
         }
         $this->userProfileHandler($data);
-        return view("admin.users.edit",compact('data'));
+        return view("admin.users.edit", compact('data'));
     }
 
     function userProfileHandler(&$data)
@@ -82,19 +84,19 @@ class UsersController extends Controller
         $data['recvMoney']      = DB::table("users_redpacket")->whereIn("userId", [$data['userId']])->sum("money");
         $data['refundMoney']    = DB::table("users_refund_redpackets")->whereIn("userId", [$data['userId']])->sum("money");
         $data['loginInfo']      = DB::table("users_extend")->where("userId", $data['userId'])->first();
-        if ($data['isValiated']==1){
+        if ($data['isValiated'] == 1) {
             $result = $this->downloadCosFile([
-                'fileKeyName'=>$data['idCardFrontPic'],
-                'expire'=>config('cos')['expire']
+                'fileKeyName' => $data['idCardFrontPic'],
+                'expire'      => config('cos')['expire']
             ]);
-            if ($result['code']==1){
+            if ($result['code'] == 1) {
                 $data['idCardFace'] = $result['data'];
             }
             $result = $this->downloadCosFile([
-                'fileKeyName'=>$data['idCardBackPic'],
-                'expire'=>config('cos')['expire']
+                'fileKeyName' => $data['idCardBackPic'],
+                'expire'      => config('cos')['expire']
             ]);
-            if ($result['code']==1){
+            if ($result['code'] == 1) {
                 $data['idCardWall'] = $result['data'];
             }
         }

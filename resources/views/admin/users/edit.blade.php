@@ -433,7 +433,7 @@
         })
 
         $("#login label").on("click",function (e) {
-           console.log($(this));
+           console.log($(this).html());
         });
 
     </script>

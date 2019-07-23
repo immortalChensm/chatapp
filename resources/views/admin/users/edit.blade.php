@@ -313,12 +313,7 @@
 
                             <div class="tab-pane" id="settings">
                                 <div class="form-group" id="login">
-                                  @if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canLogin))
-                                    <button class="btn btn-success">禁用</button>
-                                    @else
-                                    <button class="btn btn-default">启用</button>
-                                    @endif
-
+                                    <input type="checkbox" name="my-checkbox" checked>
                                     <label>
                                         登录权限
                                     </label>
@@ -432,11 +427,7 @@
             radioClass   : 'iradio_flat-green'
         })
 
-        var flag = false;
-        $("#login label").find("div").attr("aria-checked",flag);
-        $("#login label").on("click",function (e) {
-           console.log($(this).find("div").attr("aria-checked"));
-        });
+        $("[name='my-checkbox']").bootstrapSwitch()
 
     </script>
 

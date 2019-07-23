@@ -219,6 +219,8 @@
 <script src="{{asset("adminlte/js/datasheet.js")}}"></script>
 <script src="{{asset("layer/layer.js")}}"></script>
 
+<script src="{{asset("adminlte/js/bootstrap-switch.js")}}"></script>
+
 <script charset="utf-8" src="{{asset("kindeditor/kindeditor-all-min.js")}}"></script>
 <script charset="utf-8" src="{{asset("kindeditor/lang/zh-CN.js")}}"></script>
 <script>

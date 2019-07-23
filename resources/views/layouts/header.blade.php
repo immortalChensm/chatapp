@@ -11,6 +11,12 @@
     <link rel="stylesheet" href="{{asset("adminlte/bower_components/Ionicons/css/ionicons.min.css")}}">
     <link rel="stylesheet" href="{{asset("adminlte/dist/css/AdminLTE.min.css")}}">
     <link rel="stylesheet" href="{{asset("adminlte/dist/css/skins/_all-skins.min.css")}}">
+
+
+    <link href="{{asset("adminlte/css/bootstrap-switch.css")}}" rel="stylesheet">
+
+
+
     @yield("css")
 
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>

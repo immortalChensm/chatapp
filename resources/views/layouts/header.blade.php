@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{asset("adminlte/dist/css/skins/_all-skins.min.css")}}">
 
 
-    <link href="{{asset("adminlte/css/bootstrap-switch.css")}}" rel="stylesheet">
+    <link href="{{asset("adminlte/css/bootstrap-switch.min.css")}}" rel="stylesheet">
 
 
 

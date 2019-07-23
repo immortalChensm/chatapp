@@ -313,67 +313,42 @@
 
                             <div class="tab-pane" id="settings">
                                 <div class="form-group" id="login">
-                                    <input type="checkbox" name="my-checkbox" checked>
+                                    <input type="checkbox" name="login-checkbox" checked>
                                     <label>
                                         登录权限
                                     </label>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="">
-                                        <div class="iradio_flat-green checked" aria-checked="true" aria-disabled="false" style="position: relative;"><input type="radio" name="r3" class="flat-red" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-                                    </label>
-                                    <label class="">
-                                        <div class="iradio_flat-green" aria-checked="false" aria-disabled="false" style="position: relative;"><input type="radio" name="r3" class="flat-red" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-                                    </label>
+                                    <input type="checkbox" name="post-checkbox" checked>
                                     <label>
                                         文章发布权限
                                     </label>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="">
-                                        <div class="iradio_flat-green" aria-checked="false" aria-disabled="false" style="position: relative;"><input type="radio" name="r3" class="flat-red" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-                                    </label>
-                                    <label class="">
-                                        <div class="iradio_flat-green checked" aria-checked="true" aria-disabled="false" style="position: relative;"><input type="radio" name="r3" class="flat-red" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-                                    </label>
+                                    <input type="checkbox" name="photo-checkbox" checked>
                                     <label>
                                         相册发布权限
                                     </label>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="">
-                                        <div class="iradio_flat-green" aria-checked="false" aria-disabled="false" style="position: relative;"><input type="radio" name="r3" class="flat-red" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-                                    </label>
-                                    <label class="">
-                                        <div class="iradio_flat-green checked" aria-checked="true" aria-disabled="false" style="position: relative;"><input type="radio" name="r3" class="flat-red" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-                                    </label>
+                                    <input type="checkbox" name="music-checkbox" checked>
                                     <label>
                                         音乐发布权限
                                     </label>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="">
-                                        <div class="iradio_flat-green" aria-checked="false" aria-disabled="false" style="position: relative;"><input type="radio" name="r3" class="flat-red" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-                                    </label>
-                                    <label class="">
-                                        <div class="iradio_flat-green checked" aria-checked="true" aria-disabled="false" style="position: relative;"><input type="radio" name="r3" class="flat-red" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-                                    </label>
+                                    <input type="checkbox" name="video-checkbox" checked>
                                     <label>
                                         视频发布权限
                                     </label>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="">
-                                        <div class="iradio_flat-green" aria-checked="false" aria-disabled="false" style="position: relative;"><input type="radio" name="r3" class="flat-red" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-                                    </label>
-                                    <label class="">
-                                        <div class="iradio_flat-green checked" aria-checked="true" aria-disabled="false" style="position: relative;"><input type="radio" name="r3" class="flat-red" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-                                    </label>
+                                    <input type="checkbox" name="comment-checkbox" checked>
                                     <label>
                                         评论权限
                                     </label>
@@ -427,7 +402,27 @@
             radioClass   : 'iradio_flat-green'
         })
 
-        $("[name='my-checkbox']").bootstrapSwitch()
+        $("[name='login-checkbox']").bootstrapSwitch({
+            onText : "启用",      // 设置ON文本  
+            offText : "禁用",    // 设置OFF文本  
+            onColor : "success",// 设置ON文本颜色     (info/success/warning/danger/primary)  
+            offColor : "danger",  // 设置OFF文本颜色        (info/success/warning/danger/primary)  
+            size : "mini",    // 设置控件大小,从小到大  (mini/small/normal/large)  
+            handleWidth:"35",//设置控件宽度
+            // 当开关状态改变时触发  
+            onSwitchChange : function(event, state) {
+                var data = event.target.defaultValue;
+                if (state == true) {
+                    console.log(data);
+                    console.log(event);
+                    console.log(state);
+                } else {
+                    console.log(data);
+                    console.log(event);
+                    console.log(state);
+                }
+            }
+        })
 
     </script>
 

@@ -313,12 +313,8 @@
 
                             <div class="tab-pane" id="settings">
                                 <div class="form-group" id="login">
-                                    <label class="">
-                                        <div class="iradio_flat-green checked" aria-checked="true" aria-disabled="false" style="position: relative;"><input type="radio" name="r3" class="flat-red" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-                                    </label>
-                                    <label class="">
-                                        <div class="iradio_flat-green" aria-checked="false" aria-disabled="false" style="position: relative;"><input type="radio" name="r3" class="flat-red" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-                                    </label>
+                                    <button class="btn btn-success">启用</button>
+                                    <button class="btn btn-primary">禁用</button>
                                     <label>
                                         登录权限
                                     </label>

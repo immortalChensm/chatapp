@@ -425,7 +425,7 @@
             }
         })
         @if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canLogin))
-            $('input[name="login-checkbox"]').bootstrapSwitch('state', false);
+            $('input[name="login-checkbox"]').bootstrapSwitch('toggleState', false);
         @else
 
         @endif

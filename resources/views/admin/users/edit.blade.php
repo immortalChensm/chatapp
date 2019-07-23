@@ -411,10 +411,9 @@
             offColor : "danger",  // 设置OFF文本颜色        (info/success/warning/danger/primary)  
             size : "mini",    // 设置控件大小,从小到大  (mini/small/normal/large)  
             handleWidth:"35",//设置控件宽度
-            state:false,
             // 当开关状态改变时触发  
             onSwitchChange : function(event, state) {
-
+                console.log(state);
                 if (state == true) {
                     setting("canLogin",state?1:0,{{$data['userId']}});
                 } else {
@@ -422,6 +421,8 @@
                 }
             }
         })
+
+        $("[name='login-checkbox']").bootstrapSwitch("state",true);
 
 
     </script>

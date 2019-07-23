@@ -414,6 +414,7 @@
             // 当开关状态改变时触发  
             onSwitchChange : function(event, state) {
                 var data = event.target.data;
+                console.log(event);
                 if (state == true) {
                     setting("canLogin",state?1:0,data);
                 } else {

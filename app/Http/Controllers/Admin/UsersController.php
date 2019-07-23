@@ -75,6 +75,11 @@ class UsersController extends Controller
         return view("admin.users.edit", compact('data'));
     }
 
+    function setting()
+    {
+       return DB::table("user_extends")->where("userId",request("userId"))->update([request("field")=>request("value")]);
+    }
+
     function userProfileHandler(&$data)
     {
         $data['subscribeNum']   = DB::table("subscribes")->where("userId", $data['userId'])->count("followerId");

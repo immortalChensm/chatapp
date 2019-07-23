@@ -372,21 +372,22 @@
 @section("js")
     <script src="{{asset("adminlte/plugins/iCheck/icheck.min.js")}}"></script>
     <script>
-        function store(){
+        function setting(field,value,userId){
             $.ajax({
                 type: 'POST',
                 url: "{{url('admin/system/set')}}",
                 dataType: 'json',
-                data: $('#postForm').serializeArray(),
+                data: {
+                    field:field,
+                    value:value,
+                    userId:userId
+                },
                 success: function(data){
-                    if (data.code == 1){
-                        layer.msg(data.message);
-                        setTimeout(function () {
-                            window.location = "{{url('admin/system/index')}}";
-                        },2000);
+                    if (data == 1){
+                        layer.msg("设置成功");
 
                     }else{
-                        layer.msg(data.message);
+                        layer.msg("设置失败");
                     }
                 },
                 error:function(data){
@@ -414,13 +415,9 @@
             onSwitchChange : function(event, state) {
                 var data = event.target.defaultValue;
                 if (state == true) {
-                    console.log(data);
-                    console.log(event.target.name);
-                    console.log(state);
+                    setting("canLogin",state?1:0,data);
                 } else {
-                    console.log(data);
-                    console.log(event.target.name);
-                    console.log(state);
+                    setting("canLogin",state?1:0,data);
                 }
             }
         })

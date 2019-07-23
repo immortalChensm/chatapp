@@ -77,7 +77,7 @@ class UsersController extends Controller
 
     function setting()
     {
-       return DB::table("user_extends")->where("userId",request("userId"))->update([request("field")=>request("value")]);
+       return DB::table("users_extend")->where("userId",request("userId"))->update([request("field")=>request("value")]);
     }
 
     function userProfileHandler(&$data)

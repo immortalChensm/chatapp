@@ -313,42 +313,42 @@
 
                             <div class="tab-pane" id="settings">
                                 <div class="form-group" id="login">
-                                    <input type="checkbox" name="login-checkbox" checked>
+                                    <input type="checkbox" data="{{$data['userId']}}" name="login-checkbox" checked>
                                     <label>
                                         登录权限
                                     </label>
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="checkbox" name="post-checkbox" checked>
+                                    <input type="checkbox" data="{{$data['userId']}}" name="post-checkbox" checked>
                                     <label>
                                         文章发布权限
                                     </label>
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="checkbox" name="photo-checkbox" checked>
+                                    <input type="checkbox" data="{{$data['userId']}}" name="photo-checkbox" checked>
                                     <label>
                                         相册发布权限
                                     </label>
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="checkbox" name="music-checkbox" checked>
+                                    <input type="checkbox" data="{{$data['userId']}}" name="music-checkbox" checked>
                                     <label>
                                         音乐发布权限
                                     </label>
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="checkbox" name="video-checkbox" checked>
+                                    <input type="checkbox" data="{{$data['userId']}}" name="video-checkbox" checked>
                                     <label>
                                         视频发布权限
                                     </label>
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="checkbox" name="comment-checkbox" checked>
+                                    <input type="checkbox" data="{{$data['userId']}}" name="comment-checkbox" checked>
                                     <label>
                                         评论权限
                                     </label>

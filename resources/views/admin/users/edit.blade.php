@@ -413,7 +413,7 @@
             state:{{$data['loginInfo']->canLogin}}?true:false,
             // 当开关状态改变时触发  
             onSwitchChange : function(event, state) {
-                var data = event.target.defaultValue;
+                var data = event.target.data;
                 if (state == true) {
                     setting("canLogin",state?1:0,data);
                 } else {

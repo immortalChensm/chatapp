@@ -84,6 +84,7 @@ class UsersController extends Controller
         $data['recvMoney']      = DB::table("users_redpacket")->whereIn("userId", [$data['userId']])->sum("money");
         $data['refundMoney']    = DB::table("users_refund_redpackets")->whereIn("userId", [$data['userId']])->sum("money");
         $data['loginInfo']      = DB::table("users_extend")->where("userId", $data['userId'])->first();
+        $data['relationNum']      = DB::table("user_relation")->whereIn("userId", [$data['userId']])->count("userId");
         if ($data['isValiated'] == 1) {
             $result = $this->downloadCosFile([
                 'fileKeyName' => $data['idCardFrontPic'],

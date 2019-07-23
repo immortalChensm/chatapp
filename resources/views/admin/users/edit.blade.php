@@ -57,7 +57,7 @@
                                     <b>关注</b> <a class="pull-right">{{$data['subscribeNum']}}</a>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>好友</b> <a class="pull-right">13,287</a>
+                                    <b>亲友数量</b> <a class="pull-right">{{$data['relationNum']}}</a>
                                 </li>
                             </ul>
 

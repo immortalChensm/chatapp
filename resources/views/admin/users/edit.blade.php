@@ -380,14 +380,15 @@
                 data: {
                     field:field,
                     value:value,
-                    userId:userId
+                    userId:userId,
+                    '_token':"{{csrf_token()}}",
                 },
                 success: function(data){
-                    if (data == 1){
-                        layer.msg("设置成功");
+                    if (data.code == 1){
+                        layer.msg(data.message);
 
                     }else{
-                        layer.msg("设置失败");
+                        layer.msg(data.message);
                     }
                 },
                 error:function(data){

@@ -402,14 +402,14 @@
             radioClass   : 'iradio_flat-green'
         })
 
-        $("[name='login-checkbox'],[name='post-checkbox'],[name='photo-checkbox'],[name='music-checkbox'],[name='video-checkbox'],[name='comment-checkbox']").bootstrapSwitch({
+        $("[name='login-checkbox']").bootstrapSwitch({
             onText : "启用",      // 设置ON文本  
             offText : "禁用",    // 设置OFF文本  
             onColor : "success",// 设置ON文本颜色     (info/success/warning/danger/primary)  
             offColor : "danger",  // 设置OFF文本颜色        (info/success/warning/danger/primary)  
             size : "mini",    // 设置控件大小,从小到大  (mini/small/normal/large)  
             handleWidth:"35",//设置控件宽度
-            state:false,
+            state:'{{$data['loginInfo']->canLogin}}',
             // 当开关状态改变时触发  
             onSwitchChange : function(event, state) {
                 var data = event.target.defaultValue;
@@ -424,11 +424,7 @@
                 }
             }
         })
-        @if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canLogin))
-            $('input[name="login-checkbox"]').bootstrapSwitch('state', true,true);
-        @else
 
-        @endif
 
     </script>
 

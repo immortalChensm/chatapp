@@ -415,11 +415,11 @@
                 var data = event.target.defaultValue;
                 if (state == true) {
                     console.log(data);
-                    console.log(event);
+                    console.log(event.target.name);
                     console.log(state);
                 } else {
                     console.log(data);
-                    console.log(event);
+                    console.log(event.target.name);
                     console.log(state);
                 }
             }

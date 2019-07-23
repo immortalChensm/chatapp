@@ -432,6 +432,8 @@
             radioClass   : 'iradio_flat-green'
         })
 
+        var flag = false;
+        $("#login label").find("div").attr("aria-checked",flag);
         $("#login label").on("click",function (e) {
            console.log($(this).find("div").attr("aria-checked"));
         });

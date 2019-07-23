@@ -313,8 +313,12 @@
 
                             <div class="tab-pane" id="settings">
                                 <div class="form-group" id="login">
-                                    <button class="btn btn-success" style="display: inline-block;margin-right:0px;">启用</button>
-                                    <button class="btn btn-default" style="display: inline-block;margin-left:0px;">禁用</button>
+                                  @if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canLogin))
+                                    <button class="btn btn-success">禁用</button>
+                                    @else
+                                    <button class="btn btn-default">启用</button>
+                                    @endif
+
                                     <label>
                                         登录权限
                                     </label>

@@ -433,7 +433,7 @@
         })
 
         $("#login label").on("click",function (e) {
-           console.log($(this).html());
+           console.log($(this).find("div").attr("aria-checked"));
         });
 
     </script>

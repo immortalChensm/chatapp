@@ -313,8 +313,8 @@
 
                             <div class="tab-pane" id="settings">
                                 <div class="form-group" id="login">
-                                    <button class="btn btn-success">启用</button>
-                                    <button class="btn btn-primary">禁用</button>
+                                    <button class="btn btn-success" style="display: inline-block">启用</button>
+                                    <button class="btn btn-default" style="display: inline-block">禁用</button>
                                     <label>
                                         登录权限
                                     </label>

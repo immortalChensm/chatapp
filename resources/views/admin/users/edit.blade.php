@@ -375,7 +375,7 @@
         function setting(field,value,userId){
             $.ajax({
                 type: 'POST',
-                url: "{{url('admin/system/set')}}",
+                url: "{{url('admin/users/setting')}}",
                 dataType: 'json',
                 data: {
                     field:field,

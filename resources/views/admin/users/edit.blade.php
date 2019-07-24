@@ -136,12 +136,12 @@
                                 <span style="display:inline-block;margin:3px auto;" class="label label-@if($data['isIm']==1)success @else danger @endif">@if($data['isIm']==1)IM账号@else普通账号@endif</span>
                                 <span style="display:inline-block;margin:3px auto;" class="label label-success">{{$data['star']}}星级</span>
                                 <span style="display:inline-block;margin:3px auto;" class="label @if($data['isValiated']==1)label-success @else label-danger @endif">@if($data['isValiated']==1)已认证@else未认证@endif</span>
-                                <span style="display:inline-block;margin:3px auto;" class="label @if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canLogin))label-success @else label-danger @endif">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canLogin))可登录@else已限制登录@endif</span>
-                                <span style="display:inline-block;margin:3px auto;" class="label @if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canPost))label-success @else label-danger @endif">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canPost))可发布文章@else已限制文章发布@endif</span>
-                                <span style="display:inline-block;margin:3px auto;" class="label @if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canPhoto))label-success @else label-danger @endif">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canPhoto))可发布相册@else已限制发布相册@endif</span>
-                                <span style="display:inline-block;margin:3px auto;" class="label @if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canMusic))label-success @else label-danger @endif">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canMusic))可发布音乐@else已限制发布音乐@endif</span>
-                                <span style="display:inline-block;margin:3px auto;" class="label @if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canVideo))label-success @else label-danger @endif">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canVideo))可发布视频@else已限制发布视频@endif</span>
-                                <span style="display:inline-block;margin:3px auto;" class="label @if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canComment))label-success @else label-danger @endif">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canComment))可评论@else已限制评论@endif</span>
+                                <span style="display:inline-block;margin:3px auto;" class="label @if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canLogin)&&$data['loginInfo']->canLogin==1)label-success @else label-danger @endif">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canLogin)&&$data['loginInfo']->canLogin==1)可登录@else已限制登录@endif</span>
+                                <span style="display:inline-block;margin:3px auto;" class="label @if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canPost)&&$data['loginInfo']->canPost==1)label-success @else label-danger @endif">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canPost)&&$data['loginInfo']->canPost==1)可发布文章@else已限制文章发布@endif</span>
+                                <span style="display:inline-block;margin:3px auto;" class="label @if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canPhoto)&&$data['loginInfo']->canPhoto==1)label-success @else label-danger @endif">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canPhoto)&&$data['loginInfo']->canPhoto==1)可发布相册@else已限制发布相册@endif</span>
+                                <span style="display:inline-block;margin:3px auto;" class="label @if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canMusic)&&$data['loginInfo']->canMusic==1)label-success @else label-danger @endif">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canMusic)&&$data['loginInfo']->canMusic==1)可发布音乐@else已限制发布音乐@endif</span>
+                                <span style="display:inline-block;margin:3px auto;" class="label @if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canVideo)&&$data['loginInfo']->canVideo==1)label-success @else label-danger @endif">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canVideo)&&$data['loginInfo']->canVideo==1)可发布视频@else已限制发布视频@endif</span>
+                                <span style="display:inline-block;margin:3px auto;" class="label @if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canComment)&&$data['loginInfo']->canComment==1)label-success @else label-danger @endif">@if(!is_null($data['loginInfo'])&&isset($data['loginInfo']->canComment)&&$data['loginInfo']->canVideo==1)可评论@else已限制评论@endif</span>
                             </p>
 
                             <hr>
@@ -313,42 +313,43 @@
 
                             <div class="tab-pane" id="settings">
                                 <div class="form-group" id="login">
-                                    <input type="checkbox" data="{{$data['userId']}}" name="login-checkbox" checked>
+
+                                    <input type="checkbox"  name="login-checkbox" class="login-checkbox" >
                                     <label>
                                         登录权限
                                     </label>
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="checkbox" data="{{$data['userId']}}" name="post-checkbox" checked>
+                                    <input type="checkbox"  name="post-checkbox" class="post-checkbox">
                                     <label>
                                         文章发布权限
                                     </label>
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="checkbox" data="{{$data['userId']}}" name="photo-checkbox" checked>
+                                    <input type="checkbox" name="photo-checkbox" class="photo-checkbox">
                                     <label>
                                         相册发布权限
                                     </label>
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="checkbox" data="{{$data['userId']}}" name="music-checkbox" checked>
+                                    <input type="checkbox"  name="music-checkbox" class="music-checkbox">
                                     <label>
                                         音乐发布权限
                                     </label>
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="checkbox" data="{{$data['userId']}}" name="video-checkbox" checked>
+                                    <input type="checkbox"  name="video-checkbox" class="video-checkbox">
                                     <label>
                                         视频发布权限
                                     </label>
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="checkbox" data="{{$data['userId']}}" name="comment-checkbox" checked>
+                                    <input type="checkbox"  name="comment-checkbox" class="comment-checkbox">
                                     <label>
                                         评论权限
                                     </label>
@@ -399,33 +400,111 @@
         }
 
 
-        $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-            checkboxClass: 'icheckbox_flat-green',
-            radioClass   : 'iradio_flat-green'
-        })
 
-        $(function () {
-            $("[name='login-checkbox']").bootstrapSwitch({
-                onText : "启用",      // 设置ON文本  
-                offText : "禁用",    // 设置OFF文本  
-                onColor : "success",// 设置ON文本颜色     (info/success/warning/danger/primary)  
-                offColor : "danger",  // 设置OFF文本颜色        (info/success/warning/danger/primary)  
-                size : "mini",    // 设置控件大小,从小到大  (mini/small/normal/large)  
-                handleWidth:"35",//设置控件宽度
-                // 当开关状态改变时触发  
-                onSwitchChange : function(event, state) {
-                    console.log(state);
-                    if (state == true) {
-                        setting("canLogin",state?1:0,{{$data['userId']}});
-                    } else {
-                        setting("canLogin",state?1:0,{{$data['userId']}});
-                    }
-                }
-            });
 
-            $("[name='login-checkbox']").bootstrapSwitch("state",{{$data['loginInfo']->canLogin}}?true:false);
+        new Switch(document.querySelector('.login-checkbox'), {
+            size             : 'default',
+            checked          : {{$data['loginInfo']->canLogin}},
+            onText           : 'Y',
+            offText          : 'N',
+            onSwitchColor    : '#64BD63',
+            offSwitchColor   : '#fff',
+            onJackColor      : '#fff',
+            offJackColor     : '#fff',
+            showText         : false,
+            disabled         : false,
+            onChange         : function(e){
+                console.log(this);
+                setting("canLogin",e?1:0,{{$data['userId']}});
+            },
 
-        })
+        });
+        new Switch(document.querySelector('.post-checkbox'), {
+            size             : 'default',
+            checked          : {{$data['loginInfo']->canPost}},
+            onText           : 'Y',
+            offText          : 'N',
+            onSwitchColor    : '#64BD63',
+            offSwitchColor   : '#fff',
+            onJackColor      : '#fff',
+            offJackColor     : '#fff',
+            showText         : false,
+            disabled         : false,
+            onChange         : function(e){
+                console.log(this);
+                setting("canPost",e?1:0,{{$data['userId']}});
+            },
+
+        });
+        new Switch(document.querySelector('.photo-checkbox'), {
+            size             : 'default',
+            checked          : {{$data['loginInfo']->canPhoto}},
+            onText           : 'Y',
+            offText          : 'N',
+            onSwitchColor    : '#64BD63',
+            offSwitchColor   : '#fff',
+            onJackColor      : '#fff',
+            offJackColor     : '#fff',
+            showText         : false,
+            disabled         : false,
+            onChange         : function(e){
+                console.log(this);
+                setting("canPhoto",e?1:0,{{$data['userId']}});
+            },
+
+        });
+
+        new Switch(document.querySelector('.music-checkbox'), {
+            size             : 'default',
+            checked          : {{$data['loginInfo']->canMusic}},
+            onText           : 'Y',
+            offText          : 'N',
+            onSwitchColor    : '#64BD63',
+            offSwitchColor   : '#fff',
+            onJackColor      : '#fff',
+            offJackColor     : '#fff',
+            showText         : false,
+            disabled         : false,
+            onChange         : function(e){
+                console.log(this);
+                setting("canMusic",e?1:0,{{$data['userId']}});
+            },
+
+        });
+        new Switch(document.querySelector('.video-checkbox'), {
+            size             : 'default',
+            checked          : {{$data['loginInfo']->canVideo}},
+            onText           : 'Y',
+            offText          : 'N',
+            onSwitchColor    : '#64BD63',
+            offSwitchColor   : '#fff',
+            onJackColor      : '#fff',
+            offJackColor     : '#fff',
+            showText         : false,
+            disabled         : false,
+            onChange         : function(e){
+                console.log(this);
+                setting("canVideo",e?1:0,{{$data['userId']}});
+            },
+
+        });
+        new Switch(document.querySelector('.comment-checkbox'), {
+            size             : 'default',
+            checked          : {{$data['loginInfo']->canComment}},
+            onText           : 'Y',
+            offText          : 'N',
+            onSwitchColor    : '#64BD63',
+            offSwitchColor   : '#fff',
+            onJackColor      : '#fff',
+            offJackColor     : '#fff',
+            showText         : false,
+            disabled         : false,
+            onChange         : function(e){
+                console.log(this);
+                setting("canComment",e?1:0,{{$data['userId']}});
+            },
+
+        });
 
     </script>
 

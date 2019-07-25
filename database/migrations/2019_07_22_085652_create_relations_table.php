@@ -18,8 +18,7 @@ class CreateRelationsTable extends Migration
             $table->unsignedBigInteger("userId")->index()->comment("userid");
             $table->text("leftNode")->comment("leftNode");
             $table->text("rightNode")->comment("rightNode");
-
-            $table->timestamps();
+            $table->text("parentNode")->comment("parentNode");
         });
     }
 

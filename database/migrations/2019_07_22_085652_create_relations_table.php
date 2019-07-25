@@ -16,9 +16,9 @@ class CreateRelationsTable extends Migration
         Schema::create('relations', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedBigInteger("userId")->index()->comment("userid");
-            $table->text("leftNode")->comment("leftNode");
-            $table->text("rightNode")->comment("rightNode");
-            $table->text("parentNode")->comment("parentNode");
+            $table->text("leftNode")->nullable()->comment("leftNode");
+            $table->text("rightNode")->nullable()->comment("rightNode");
+            $table->text("parentNode")->nullable()->comment("parentNode");
         });
     }
 

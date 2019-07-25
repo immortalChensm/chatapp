@@ -19,6 +19,7 @@ class CreateRelationsTable extends Migration
             $table->text("leftNode")->nullable()->comment("leftNode");
             $table->text("rightNode")->nullable()->comment("rightNode");
             $table->text("parentNode")->nullable()->comment("parentNode");
+            $table->boolean("nullNode")->nullable()->comment("是否是空框");
         });
     }
 

@@ -22,8 +22,8 @@ class CreateDeathTable extends Migration
             $table->string("locationAddress")->nullable()->comment("常驻地");
             $table->char("usedName",50)->nullable()->comment("小名");
             $table->string("description")->nullable()->comment("个人简介");
-            $table->dateTime("birthday")->default("0")->nullable()->comment("出生");
-            $table->dateTime("deathDay")->default("0")->nullable()->comment("死亡日");
+            $table->dateTime("birthday")->nullable()->comment("出生");
+            $table->dateTime("deathDay")->nullable()->comment("死亡日");
             $table->boolean("sex")->nullable()->default(1)->comment("性别");
             $table->unsignedInteger("userId")->index()->comment("添加人");
             $table->dateTime("addTime")->nullable()->comment("添加时间");

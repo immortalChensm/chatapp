@@ -16,6 +16,7 @@ class CreateDeathTable extends Migration
         Schema::create('death', function (Blueprint $table) {
             $table->increments('id');
             $table->char("name",50)->index()->nullable()->comment("姓名");
+            $table->char("deathUserId")->index()->nullable()->comment("死亡人id");
             $table->string("headImg")->nullable()->comment("头像");
             $table->string("birthAddress")->nullable()->comment("出生地");
             $table->string("locationAddress")->nullable()->comment("常驻地");

@@ -26,7 +26,7 @@
         <ul class="sidebar-menu" data-widget="tree">
 
             <li class="header">管理模块</li>
-            <li class="treeview">
+            <li class="treeview @if(preg_match('/admin/',request()->url())) active @endif">
                 <a href="#">
                     <i class="fa fa-dashboard"></i> <span>传联系统</span>
                     <span class="pull-right-container">
@@ -34,7 +34,7 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{url("/admin")}}"><i class="fa fa-circle-o"></i> 系统首页</a></li>
+                    <li class="@if(preg_match('/admin/',request()->url())) active @endif"><a href="{{url("/admin")}}"><i class="fa fa-circle-o"></i> 系统首页</a></li>
                 </ul>
             </li>
 

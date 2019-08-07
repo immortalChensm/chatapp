@@ -32,9 +32,9 @@
         <!-- Logo -->
         <a href="../../index2.html" class="logo">
 
-            <span class="logo-mini"><b>A</b>LT</span>
+            <span class="logo-mini"><b>传</b>联</span>
 
-            <span class="logo-lg"><b>Admin</b>LTE</span>
+            <span class="logo-lg"><b>Admin</b>管理系统</span>
         </a>
 
         <nav class="navbar navbar-static-top">

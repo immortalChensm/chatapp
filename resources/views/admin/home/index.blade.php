@@ -1,5 +1,4 @@
 @extends("layouts.main")
-
     @section("css")
     <link rel="stylesheet" href="{{asset("adminlte/bower_components/morris.js/morris.css")}}">
     <!-- jvectormap -->
@@ -11,22 +10,10 @@
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="{{asset("adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css")}}">
 
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="{{asset("adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css")}}">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{asset("adminlte/bower_components/font-awesome/css/font-awesome.min.css")}}">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="{{asset("adminlte/bower_components/Ionicons/css/ionicons.min.css")}}">
-    <!-- jvectormap -->
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{asset("adminlte/dist/css/AdminLTE.min.css")}}">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="{{asset("adminlte/dist/css/skins/_all-skins.min.css")}}">
     @endsection
 
 @section("content")
+
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -519,31 +506,14 @@
         <script src="{{asset("adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js")}}"></script>
         <!-- Bootstrap WYSIHTML5 -->
         <script src="{{asset("adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js")}}"></script>
-        <!-- Slimscroll -->
-        <!-- FastClick -->
-
-        <!-- AdminLTE App -->
 
         <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
         <script src="{{asset("adminlte/dist/js/pages/dashboard.js")}}"></script>
         <!-- AdminLTE for demo purposes -->
 
-        <!-- Bootstrap 3.3.7 -->
-        <script src="{{asset("adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js")}}"></script>
-        <!-- FastClick -->
-        <script src="{{asset("adminlte/bower_components/fastclick/lib/fastclick.js")}}"></script>
-        <!-- AdminLTE App -->
-        <script src="{{asset("adminlte/dist/js/adminlte.min.js")}}"></script>
-        <!-- Sparkline -->
-        <!-- jvectormap  -->
-        <!-- SlimScroll -->
-        <script src="{{asset("adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js")}}"></script>
-        <!-- ChartJS -->
-        <script src="{{asset("adminlte/bower_components/chart.js/Chart.js")}}"></script>
         <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
         <script src="{{asset("adminlte/dist/js/pages/dashboard2.js")}}"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="{{asset("adminlte/dist/js/demo.js")}}"></script>
+
         <script>
             // layer.open({
             //     type: 2,
@@ -556,5 +526,7 @@
             //     content: 'http://www.baidu.com/' //iframe的url
             // });
         </script>
+
+
         @endsection
     @endsection

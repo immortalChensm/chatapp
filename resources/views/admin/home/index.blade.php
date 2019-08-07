@@ -50,7 +50,7 @@
                         <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">CPU Traffic</span>
+                            <span class="info-box-text">注册人数</span>
                             <span class="info-box-number">90<small>%</small></span>
                         </div>
                         <!-- /.info-box-content -->
@@ -63,7 +63,7 @@
                         <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Likes</span>
+                            <span class="info-box-text">内容发布量</span>
                             <span class="info-box-number">41,410</span>
                         </div>
                         <!-- /.info-box-content -->
@@ -80,7 +80,7 @@
                         <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Sales</span>
+                            <span class="info-box-text">船票销售额</span>
                             <span class="info-box-number">760</span>
                         </div>
                         <!-- /.info-box-content -->
@@ -93,7 +93,7 @@
                         <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">New Members</span>
+                            <span class="info-box-text">注册人数</span>
                             <span class="info-box-number">2,000</span>
                         </div>
                         <!-- /.info-box-content -->
@@ -117,7 +117,7 @@
                             <!-- DIRECT CHAT -->
                             <div class="box box-warning direct-chat direct-chat-warning">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title">Direct Chat</h3>
+                                    <h3 class="box-title">会员消息</h3>
 
                                     <div class="box-tools pull-right">
                                         <span data-toggle="tooltip" title="3 New Messages" class="badge bg-yellow">3</span>
@@ -320,7 +320,7 @@
                             <!-- USERS LIST -->
                             <div class="box box-danger">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title">Latest Members</h3>
+                                    <h3 class="box-title">最近的注册会员</h3>
 
                                     <div class="box-tools pull-right">
                                         <span class="label label-danger">8 New Members</span>
@@ -391,7 +391,7 @@
                     <!-- TABLE: LATEST ORDERS -->
                     <div class="box box-info">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Latest Orders</h3>
+                            <h3 class="box-title">最近的船票订单</h3>
 
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>

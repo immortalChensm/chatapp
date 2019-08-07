@@ -542,5 +542,17 @@
         <script src="{{asset("adminlte/dist/js/pages/dashboard2.js")}}"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="{{asset("adminlte/dist/js/demo.js")}}"></script>
+        <script>
+            layer.open({
+                type: 2,
+                title: '用客户咨询你了',
+                shadeClose: true,
+                shade: false,
+                area: ['732px', '90%'],
+                maxmin: true, //开启最大化最小化按钮
+                min:true,
+                content: 'http://www.baidu.com/' //iframe的url
+            });
+        </script>
         @endsection
     @endsection

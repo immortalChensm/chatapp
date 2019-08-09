@@ -24,6 +24,18 @@ class HomeController extends Controller
             empty($user->headImgUrl)&&$user->headImgUrl='other/defaultlogo.png';
             $data['users'][$k]->headImgUrl = downloadCosFile(['fileKeyName'=>$user->headImgUrl,'expire'=>config("cos.expire")]);
         }
+        $data['shipOrder'] = DB::table("users_ships_order")->orderBy("created_at","desc")->limit(10)->get();
+        if (!empty($data['shipOrder'])){
+            foreach ($data['shipOrder'] as $k=>$item){
+                if (!empty($item->userId)){
+                    $data['shipOrder'][$k]->userInfo = DB::table("users")->where("userId",$item->userId)->value("name");
+                }
+                if ($item->sellerUserId!=1){
+                    $data['shipOrder'][$k]->sellerUser = DB::table("users")->where("userId",$item->sellerUserId)->value("name");
+                }
+            }
+        }
+
         return view("admin.home.index",compact('data'));
     }
 

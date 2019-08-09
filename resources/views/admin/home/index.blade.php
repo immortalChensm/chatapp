@@ -322,7 +322,7 @@
                                     <ul class="users-list clearfix">
                                         @foreach($data['users'] as $user)
                                         <li>
-                                            <img src="{{$user->headImgUrl}}" alt="User Image">
+                                            <img src="{{$user->headImgUrl['data']}}" alt="User Image">
                                             <a class="users-list-name" href="#">{{$user->name}}</a>
                                             <span class="users-list-date">{{$user->created_at}}</span>
                                         </li>

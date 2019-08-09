@@ -226,7 +226,7 @@
 <script>
 
     function openWin() {
-        var url='http://im.com/';                             //转向网页的地址;
+        var url='http://im.com?account=admin';                             //转向网页的地址;
         var name='传联客服聊天系统';                            //网页名称，可为空;
         var iWidth=1000;                          //弹出窗口的宽度;
         var iHeight=700;                         //弹出窗口的高度;
@@ -239,6 +239,7 @@
     }
 
     $("#message").click(function () {
+
         //window.open("http://im.com/","_blank","toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=1000, height=650");
         openWin();
     });

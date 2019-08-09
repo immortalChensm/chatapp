@@ -376,7 +376,13 @@
                                     @foreach($data['shipOrder'] as $order)
                                     <tr>
                                         <td><a href="">{{$order->id}}</a></td>
-                                        <td>{{$order->sellerUser}}</td>
+                                        <td>
+                                            @if($order->sellerUser==1)
+                                                平台
+                                                @else
+                                                {{$order->sellerUser}}
+                                                @endif
+                                        </td>
                                         <td> @if(empty($order->userInfo))
                                                 暂无
                                             @else

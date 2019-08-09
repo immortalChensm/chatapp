@@ -333,7 +333,7 @@
                                 </div>
                                 <!-- /.box-body -->
                                 <div class="box-footer text-center">
-                                    <a href="javascript:window.href='admin/users'" class="uppercase">查看所有用户</a>
+                                    <a href="/admin/users" class="uppercase">查看所有用户</a>
                                 </div>
                                 <!-- /.box-footer -->
                             </div>
@@ -408,7 +408,7 @@
                         <!-- /.box-body -->
                         <div class="box-footer clearfix">
                             {{--<a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>--}}
-                            <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right" onclick="javascript:window.href='/admin/order/ship'">查看所有</a>
+                            <a href="/admin/order/ship" class="btn btn-sm btn-default btn-flat pull-right" >查看所有</a>
                         </div>
                         <!-- /.box-footer -->
                     </div>

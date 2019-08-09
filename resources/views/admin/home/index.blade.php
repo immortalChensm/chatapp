@@ -38,7 +38,7 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">注册人数</span>
-                            <span class="info-box-number">90<small>%</small></span>
+                            <span class="info-box-number">{{$data['userNum']}}人</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -51,7 +51,7 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">内容发布量</span>
-                            <span class="info-box-number">41,410</span>
+                            <span class="info-box-number">{{$data['articleNum']}}条</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -68,7 +68,7 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">船票销售额</span>
-                            <span class="info-box-number">760</span>
+                            <span class="info-box-number">收入{{$data['shipSale']}}元</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -80,8 +80,8 @@
                         <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">注册人数</span>
-                            <span class="info-box-number">2,000</span>
+                            <span class="info-box-text">空间销售额</span>
+                            <span class="info-box-number">用户消费{{$data['spaceSale']}}张船票</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>

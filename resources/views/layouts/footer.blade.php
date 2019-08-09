@@ -202,7 +202,7 @@
 
 
 </div>
-<!-- ./wrapper -->
+
 
 <!-- jQuery 3 -->
 <script src="{{asset("adminlte/bower_components/jquery/dist/jquery.min.js")}}"></script>
@@ -221,11 +221,27 @@
 <script src="{{asset("layer/layer.js")}}"></script>
 
 
-
 <script charset="utf-8" src="{{asset("kindeditor/kindeditor-all-min.js")}}"></script>
 <script charset="utf-8" src="{{asset("kindeditor/lang/zh-CN.js")}}"></script>
 <script>
 
+    function openWin() {
+        var url='http://im.com/';                             //转向网页的地址;
+        var name='传联客服聊天系统';                            //网页名称，可为空;
+        var iWidth=1000;                          //弹出窗口的宽度;
+        var iHeight=700;                         //弹出窗口的高度;
+        //获得窗口的垂直位置
+        var iTop = (window.screen.availHeight - 30 - iHeight) / 2;
+        //获得窗口的水平位置
+        var iLeft = (window.screen.availWidth - 10 - iWidth) / 2;
+        window.open(url, name, 'height=' + iHeight + ',,innerHeight=' + iHeight + ',width=' + iWidth + ',innerWidth=' + iWidth + ',top=' + iTop + ',left=' + iLeft + ',status=no,toolbar=no,menubar=no,location=no,resizable=no,scrollbars=0,titlebar=no');
+        // window.open("AddScfj.aspx", "newWindows", 'height=100,width=400,top=0,left=0,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no');
+    }
+
+    $("#message").click(function () {
+        //window.open("http://im.com/","_blank","toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=1000, height=650");
+        openWin();
+    });
 
 
 </script>

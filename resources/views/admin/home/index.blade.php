@@ -333,7 +333,7 @@
                                 </div>
                                 <!-- /.box-body -->
                                 <div class="box-footer text-center">
-                                    <a href="javascript:void(0)" class="uppercase">View All Users</a>
+                                    <a href="javascript:window.href='admin/users'" class="uppercase">查看所有用户</a>
                                 </div>
                                 <!-- /.box-footer -->
                             </div>
@@ -372,6 +372,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    @if(!empty($data['shipOrder']))
                                     @foreach($data['shipOrder'] as $order)
                                     <tr>
                                         <td><a href="">{{$order->id}}</a></td>
@@ -395,6 +396,9 @@
                                         <td>{{$order->created_at}}</td>
                                     </tr>
                                         @endforeach
+                                        @else
+                                        暂无数据
+                                        @endif
 
                                     </tbody>
                                 </table>

@@ -14,11 +14,11 @@ class HomeController extends Controller
      */
     function index()
     {
-        $data['userNum'] = DB::table("users")->count("userId");
-        $data['articleNum'] = DB::table("articles")->count("articleId")+DB::table("videos")->count("videoId")+DB::table("musics")->count("musicId")+DB::table("photos")->count("photoId");
-        $data['shipSale'] = DB::table("users_ships_order")->where("userId","=",1)->where("type","=",2)->sum("payMoney");
-        $data['spaceSale'] = DB::table("users_space_order")->sum("shipNum");
-        $data['users'] = DB::table("users")->select(["name","created_at","headImgUrl"])->orderBy("created_at","desc")->limit(8)->get();
+        $data['userNum']    = DB::table("users")->count("userId");
+        $data['articleNum'] = DB::table("articles")->count("articleId") + DB::table("videos")->count("videoId") + DB::table("musics")->count("musicId") + DB::table("photos")->count("photoId");
+        $data['shipSale']   = DB::table("users_ships_order")->where("userId", "=", 1)->where("type", "=", 2)->sum("payMoney");
+        $data['spaceSale']  = DB::table("users_space_order")->sum("shipNum");
+        $data['users']      = DB::table("users")->select(["name", "created_at","headImgUrl"])->orderBy("created_at","desc")->limit(8)->get();
 
         foreach ($data['users'] as $k=>$user){
             empty($user->headImgUrl)&&$user->headImgUrl='other/defaultlogo.png';
@@ -28,10 +28,14 @@ class HomeController extends Controller
         if (!empty($data['shipOrder'])){
             foreach ($data['shipOrder'] as $k=>$item){
                 if (!empty($item->userId)){
-                    $data['shipOrder'][$k]->userInfo = DB::table("users")->where("userId",$item->userId)->value("name");
+                    $data['shipOrder'][$k]->userInfo = DB::table("users")->where("userId","=",$item->userId)->value("name");
+                }else{
+                    $data['shipOrder'][$k]->userInfo = '';
                 }
                 if ($item->sellerUserId!=1){
-                    $data['shipOrder'][$k]->sellerUser = DB::table("users")->where("userId",$item->sellerUserId)->value("name");
+                    $data['shipOrder'][$k]->sellerUser = DB::table("users")->where("userId","=",$item->sellerUserId)->value("name");
+                }else{
+                    $data['shipOrder'][$k]->sellerUser = '';
                 }
             }
         }

@@ -377,7 +377,7 @@
                                     <tr>
                                         <td><a href="">{{$order->id}}</a></td>
                                         <td>
-                                            @if($order->sellerUser==1)
+                                            @if($order->sellerUserId==1)
                                                 平台
                                                 @else
                                                 {{$order->sellerUser}}

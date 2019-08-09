@@ -310,7 +310,7 @@
                                     <h3 class="box-title">最近的注册会员</h3>
 
                                     <div class="box-tools pull-right">
-                                        <span class="label label-danger">8 New Members</span>
+                                        <span class="label label-danger">{{count($data['users'])}}</span>
                                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                         </button>
                                         <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
@@ -320,11 +320,13 @@
                                 <!-- /.box-header -->
                                 <div class="box-body no-padding">
                                     <ul class="users-list clearfix">
+                                        @foreach($data['users'] as $user)
                                         <li>
                                             <img src="{{asset("adminlte/dist/img/user1-128x128.jpg")}}" alt="User Image">
-                                            <a class="users-list-name" href="#">Alexander Pierce</a>
-                                            <span class="users-list-date">Today</span>
+                                            <a class="users-list-name" href="#">{{$user->name}}</a>
+                                            <span class="users-list-date">{{$user->created_at}}</span>
                                         </li>
+                                        @endforeach
                                         <li>
                                             <img src="{{asset("adminlte/dist/img/user8-128x128.jpg")}}" alt="User Image">
                                             <a class="users-list-name" href="#">Norman</a>

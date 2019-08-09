@@ -19,6 +19,10 @@ class HomeController extends Controller
         $data['shipSale'] = DB::table("users_ships_order")->where("userId","=",1)->where("type","=",2)->sum("payMoney");
         $data['spaceSale'] = DB::table("users_space_order")->sum("shipNum");
         $data['users'] = DB::table("users")->select(["name","created_at","headImgUrl"])->orderBy("created_at","desc")->limit(8)->get();
+        foreach ($data['users'] as $k=>$user){
+            empty($user->headImgUrl)&&$user->headImgUrl='other/defaultlogo.png';
+            $data['users'][$k]->headImgUrl = downloadCosFile(['fileKeyName'=>$user->headImgUrl,'expire'=>config("cos.expire")]);
+        }
         return view("admin.home.index",compact('data'));
     }
 

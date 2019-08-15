@@ -57,7 +57,7 @@ class ArticlesController extends Controller
         isset(request()->articleId)?$data=Articles::where("articleId","=",request()->articleId)->first():$data='';
         $tag = ArticleTag::all();
         if ($data){
-            $data['content'] = $this->getCosFileFromArticle($data)->getHtml();
+           // $data['content'] = $this->getCosFileFromArticle($data)->getHtml();
         }
         return view("admin.articles.edit",compact('data','tag'));
     }

@@ -70,21 +70,36 @@ class ArticlesController extends Controller
     private function getCosFileFromArticle($article)
     {
         $articleHtml = QueryList::getInstance()->html($article->content);
-        $articleHtml->find('img')->map(function($img)use($articleHtml){
+        $articleHtml->find('img')->map(function($img)use($articleHtml,$article){
             $src = $img->src;
-            $pattern = '/other(.*)\?/';
-            preg_match_all($pattern,$src,$match);
-            $cosFile = $this->downloadCosFile(
+            if ($article->userType==2&&$src){
+                $pattern = '/other(.*)\?/';//后端图文
+                preg_match_all($pattern,$src,$match);
+                $cosFile = $this->downloadCosFile(
                     [
                         'fileKeyName'=>"other".$match[1][0],
                         'expire'=>config('cos')['expire']
                     ]
                 );
-            if ($cosFile['code']){
-                $html = $articleHtml->getHtml();
-                $html = str_replace($src,$cosFile['data'],$html);
-                $articleHtml->setHtml($html);
+                if ($cosFile['code']){
+                    $html = $articleHtml->getHtml();
+                    $html = str_replace($src,$cosFile['data'],$html);
+                    $articleHtml->setHtml($html);
+                }
+            }else{
+                $cosFile = $this->downloadCosFile(//前端图文
+                    [
+                        'fileKeyName'=>$src,
+                        'expire'=>config('cos')['expire']
+                    ]
+                );
+                if ($cosFile['code']){
+                    $html = $articleHtml->getHtml();
+                    $html = str_replace($src,$cosFile['data'],$html);
+                    $articleHtml->setHtml($html);
+                }
             }
+
         });
 
         return $articleHtml;

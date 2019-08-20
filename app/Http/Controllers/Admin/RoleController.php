@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\ArticleTag;
 use App\Http\Requests\Admin\StoreArticleTagPost;
+use App\Role;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,9 +16,9 @@ class RoleController extends Controller
         return view("admin.role.index");
     }
 
-    function roles(Request $request,ArticleTag $articleTag)
+    function roles(Request $request,Role $role)
     {
-        return $this->models(...[$request,$articleTag,function (&$searchItem)use($request){
+        return $this->models(...[$request,$role,function (&$searchItem)use($request){
             $searchItem['name']   = $request->query->get('name');
         },function ($query,&$searchItem){
             if ($searchItem['name']){
@@ -25,13 +26,10 @@ class RoleController extends Controller
             }
         }]);
     }
-    /**
-     * 标签编辑
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
+
     function edit()
     {
-        isset(request()->tagId)?$data=ArticleTag::where("tagId","=",request()->tagId)->first():$data='';
+        isset(request()->id)?$data=Role::where("id","=",request()->id)->first():$data='';
         return view("admin.role.edit",compact('data'));
     }
 

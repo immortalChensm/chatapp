@@ -1,6 +1,6 @@
 @extends("layouts.main")
 @section("title")
-    文章标签编辑
+    角色管理
     @endsection
 @section("css")
     <link rel="stylesheet" href="{{asset("adminlte/css/common.css")}}">
@@ -11,12 +11,12 @@
 
         <section class="content-header">
             <h1>
-                文章标签管理
+                角色管理
             </h1>
             <ol class="breadcrumb">
                 <li><a href="{{url("/admin")}}"><i class="fa fa-dashboard"></i> 首页</a></li>
-                <li><a href="{{url("/admin/article/tags")}}"><i class="fa"></i> 文章标签管理</a></li>
-                <li class="active">文章标签编辑</li>
+                <li><a href="{{url("/admin/role")}}"><i class="fa"></i> 角色管理</a></li>
+                <li class="active"> 角色编辑</li>
             </ol>
         </section>
 
@@ -38,8 +38,13 @@
                             <div class="box-body">
 
                                 <div class="form-group edit-box">
-                                    <label for="exampleInputEmail1">标签名称</label>
-                                    <input type="text" class="form-control input-max-box" class="edit-box" name="name" value="@if(isset($data['name'])) {{$data['name']}} @endif" placeholder="标签名称">
+                                    <label for="exampleInputEmail1">角色名称</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="name" value="@if(isset($data['name'])) {{$data['name']}} @endif" placeholder="角色名称">
+                                </div>
+
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">角色说明</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" description="name" value="@if(isset($data['description'])) {{$data['description']}} @endif" placeholder="角色说明">
                                 </div>
 
 

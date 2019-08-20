@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ArticleTag extends Model
+class Role extends Model
 {
     //
-    protected $table = "article_tag";
-    public $primaryKey = "tagId";
+    protected $table = "roles";
+    public $primaryKey = "id";
     protected $guarded = [];
 }

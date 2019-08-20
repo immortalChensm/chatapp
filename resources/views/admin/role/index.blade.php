@@ -39,7 +39,7 @@
                                     </span>
                                 </div>
 
-                                <button type="button" class="btn bg-navy margin addBtn" onclick="location.href='{{url("/admin/article/tags/edit")}}'">添加标签</button>
+                                <button type="button" class="btn bg-navy margin addBtn" onclick="location.href='{{url("/admin/role/edit")}}'">添加角色</button>
 
 
                             </h3>
@@ -51,7 +51,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>角色名称</th>
-                                    <th>添加时间</th>
+                                    <th>角色说明</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -61,7 +61,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>角色名称</th>
-                                    <th>添加时间</th>
+                                    <th>角色说明</th>
                                     <th>操作</th>
                                 </tr>
                                 </tfoot>

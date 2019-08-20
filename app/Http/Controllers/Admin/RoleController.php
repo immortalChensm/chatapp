@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\ArticleTag;
 use App\Http\Requests\Admin\StoreArticleTagPost;
+use App\Permissions;
 use App\Role;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -30,7 +31,12 @@ class RoleController extends Controller
     function edit()
     {
         isset(request()->id)?$data=Role::where("id","=",request()->id)->first():$data='';
-        return view("admin.role.edit",compact('data'));
+        $permission = Permissions::all();
+        $formatPermission = [];
+        foreach ($permission as $k=>$item){
+            $formatPermission[$item['group']][] = [$item['id']=>$item['name']];
+        }
+        return view("admin.role.edit",compact('data','formatPermission'));
     }
 
     function store(StoreArticleTagPost $request)

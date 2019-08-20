@@ -47,6 +47,16 @@
                                     <input type="text" class="form-control input-max-box" class="edit-box" description="name" value="@if(isset($data['description'])) {{$data['description']}} @endif" placeholder="角色说明">
                                 </div>
 
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">权限选择</label>
+                                    @foreach($formatPermission as $group=>$item)
+                                        <div>{{$group}}</div>
+                                        @foreach($item as $id=>$name)
+                                            <input type="checkbox" name="check" data="{{$id}}" value="{{$name}}">
+                                            @endforeach
+                                        @endforeach
+                                </div>
+
 
                             </div>
                             <!-- /.box-body -->

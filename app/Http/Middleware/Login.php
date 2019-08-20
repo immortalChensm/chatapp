@@ -46,6 +46,9 @@ class Login
 
                 $permissionList = Permissions::whereIn("id",$permissionIdList)->get(['action']);
             }
+        }else{
+            //return response()->json(['code'=>0,'message'=>'用户发布的相册禁止修改！']);
+            return redirect("/admin/login");
         }
 
 

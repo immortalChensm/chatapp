@@ -25,24 +25,24 @@
 
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title">
+                            {{--<h3 class="box-title">--}}
 
-                                <div class="input-group input-box input-max-box">
-                                    <span class="input-group-addon"><i class="fa">标签名称</i></span>
-                                    <input type="text" class="form-control " name="name" placeholder="标签名称">
-                                </div>
-
-
-                                <div class="search-box" id="search">
-                                    <span class="input-group-btn">
-                                      <button type="button" class="btn btn-info btn-flat searchBtn">搜索</button>
-                                    </span>
-                                </div>
-
-                                <button type="button" class="btn bg-navy margin addBtn" onclick="location.href='{{url("/admin/article/tags/edit")}}'">添加标签</button>
+                                {{--<div class="input-group input-box input-max-box">--}}
+                                    {{--<span class="input-group-addon"><i class="fa">标签名称</i></span>--}}
+                                    {{--<input type="text" class="form-control " name="name" placeholder="标签名称">--}}
+                                {{--</div>--}}
 
 
-                            </h3>
+                                {{--<div class="search-box" id="search">--}}
+                                    {{--<span class="input-group-btn">--}}
+                                      {{--<button type="button" class="btn btn-info btn-flat searchBtn">搜索</button>--}}
+                                    {{--</span>--}}
+                                {{--</div>--}}
+
+                                {{--<button type="button" class="btn bg-navy margin addBtn" onclick="location.href='{{url("/admin/article/tags/edit")}}'">添加标签</button>--}}
+
+
+                            {{--</h3>--}}
                         </div>
 
                         <div class="box-body">
@@ -50,9 +50,9 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>标签名称</th>
-                                    <th>添加时间</th>
-                                    <th>操作</th>
+                                    <th>权限名称</th>
+                                    {{--<th>添加时间</th>--}}
+                                    {{--<th>操作</th>--}}
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -60,9 +60,9 @@
                                 <tfoot>
                                 <tr>
                                     <th>ID</th>
-                                    <th>标签名称</th>
-                                    <th>添加时间</th>
-                                    <th>操作</th>
+                                    <th>权限名称</th>
+                                    {{--<th>添加时间</th>--}}
+                                    {{--<th>操作</th>--}}
                                 </tr>
                                 </tfoot>
                             </table>

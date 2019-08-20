@@ -28,17 +28,23 @@ class Login
 
         $permissionData = Role::whereIn("id",$role)->get(['permissionIds']);
         $permissionId = [];
-        foreach ($permissionData as $item){
-            array_push($permissionId,json_decode($item['permissionIds'],true));
+        if ($permissionData){
+            foreach ($permissionData as $item){
+                array_push($permissionId,json_decode($item['permissionIds'],true));
+            }
         }
+
         $permissionIdList = [];
-        foreach ($permissionId as $k=>$value){
-            if ($value){
-                foreach ($value as $item) {
-                    $permissionIdList[] = $item;
+        if ($permissionId){
+            foreach ($permissionId as $k=>$value){
+                if ($value){
+                    foreach ($value as $item) {
+                        $permissionIdList[] = $item;
+                    }
                 }
             }
         }
+
         $permissionList = Permissions::whereIn("id",$permissionIdList)->get(['action']);
 //        print_r($permissionIdList);
 //        print_r($permissionList->toArray());

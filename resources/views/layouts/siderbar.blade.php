@@ -38,7 +38,12 @@
                 </ul>
             </li>
 
-            <li class="treeview @if(preg_match('/manager/',request()->url())) active @endif">
+            <li class="treeview @if(
+            preg_match('/manager/',request()->url())
+            ||preg_match('/role/',request()->url())
+            ||preg_match('/permission/',request()->url())
+
+            ) active @endif">
                 <a href="#">
                     <i class="fa fa-table"></i> <span>管理员管理</span>
                     <span class="pull-right-container">
@@ -47,8 +52,8 @@
                 </a>
                 <ul class="treeview-menu">
                     <li class="@if(preg_match('/manager/',request()->url())) active @endif"><a href="{{url("admin/managers")}}"><i class="fa fa-circle-o"></i> 管理员列表</a></li>
-                    <li ><a href="{{url("admin/managers")}}"><i class="fa fa-circle-o"></i> 角色列表</a></li>
-                    <li ><a href="{{url("admin/managers")}}"><i class="fa fa-circle-o"></i> 权限列表</a></li>
+                    <li class="@if(preg_match('/role/',request()->url())) active @endif"><a href="{{url("admin/role")}}"><i class="fa fa-circle-o"></i> 角色列表</a></li>
+                    <li class="@if(preg_match('/permission/',request()->url())) active @endif"><a href="{{url("admin/permission")}}"><i class="fa fa-circle-o"></i> 权限列表</a></li>
                 </ul>
             </li>
 

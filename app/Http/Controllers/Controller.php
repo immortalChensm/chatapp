@@ -249,6 +249,11 @@ class Controller extends BaseController
                 $queryCallback($query,$searchItem);
 
             })->orderByRaw("created_at desc,".$orderSql);
+        }else{
+            $data         = $model->where(function ($query) use ($searchItem,$queryCallback) {
+                $queryCallback($query,$searchItem);
+
+            });
         }
 
         $recordsFiltered = $data->count($model->primaryKey);

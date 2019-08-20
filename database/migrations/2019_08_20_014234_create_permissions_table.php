@@ -16,6 +16,8 @@ class CreatePermissionsTable extends Migration
         Schema::create('permissions', function (Blueprint $table) {
             $table->increments('id');
             $table->string("name")->index()->comment("权限名称");
+            $table->string("group")->index()->comment("权限分组");
+            $table->string("action")->index()->comment("权限动作");
         });
     }
 

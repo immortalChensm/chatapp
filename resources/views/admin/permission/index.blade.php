@@ -51,8 +51,8 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>权限名称</th>
-                                    {{--<th>添加时间</th>--}}
-                                    {{--<th>操作</th>--}}
+                                    <th>权限分组</th>
+                                    <th>权限动作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -61,8 +61,8 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>权限名称</th>
-                                    {{--<th>添加时间</th>--}}
-                                    {{--<th>操作</th>--}}
+                                    <th>权限分组</th>
+                                    <th>权限动作</th>
                                 </tr>
                                 </tfoot>
                             </table>
@@ -86,24 +86,25 @@
                 var table = $('#datagrid').DataTable({
                     processing:true,
                     columns: [
-                        { data:"tagId",name:"tagId",orderable: true,searchable:false },
-                        { data:"name",name:"name",orderable: true,searchable:true },
-                        { data:"created_at",name:"created_at"}
+                        { data:"id",name:"id",orderable: true,searchable:false },
+                        { data:"name",name:"name",orderable: true,searchable:false },
+                        { data:"group",name:"group",orderable: true,searchable:false },
+                        { data:"action",name:"action",orderable: true,searchable:false },
                     ],
-                    columnDefs: [ {
-                        "targets": 3,
-                        "render": function ( data, type, row, meta ) {
-
-                            var BtnHtml = "<button type='button' class='btn  btn-success btn-sm update' data='"+row.tagId+"'>修改</button>";
-                            BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm delete' data='"+row.tagId+"' data-name='"+row.name+"'>移除</button>";
-                            return BtnHtml;
-                        }
-                    } ],
+                    // columnDefs: [ {
+                    //     "targets": 3,
+                    //     "render": function ( data, type, row, meta ) {
+                    //
+                    //         // var BtnHtml = "<button type='button' class='btn  btn-success btn-sm update' data='"+row.tagId+"'>修改</button>";
+                    //         // BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm delete' data='"+row.tagId+"' data-name='"+row.name+"'>移除</button>";
+                    //         // return BtnHtml;
+                    //     }
+                    // } ],
                     hover:true,
                     language:dataGridlanguage,
                     serverSide: true,
                     ajax: {
-                        url: '/admin/article/tags/list',
+                        url: '/admin/get/permission',
                         type: 'GET'
                     },
                     "searching": false,
@@ -111,53 +112,12 @@
                     "pageLength": 10
                 });
 
-                $("#search").on("click",function (e) {
-                    var name = $(":input[name=name]").val();
-                    table.ajax.url( '/admin/article/tags/list?name='+name).load();
-                })
+
 
             })
 
 
-            //编辑操作
-            $("#datagrid").on("click",".update",function (e) {
-               location.href = "/admin/article/tags/edit/"+$(this).attr("data");
-            });
-
-            //移除操作
-            $("#datagrid").on("click",".delete",function (e) {
-
-                var dataid = $(this).attr("data");
-                layer.confirm('您确定要删除('+$(this).attr("data-name")+")这个标签吗？", {
-                    btn: ['确认','取消'] //按钮
-                }, function(){
-                    $.ajax({
-                        type: "delete",
-                        url: "{{url('/admin/article/tags/remove/')}}/"+dataid,
-                        dataType: 'json',
-                        data: {
-                            "_token":"{{csrf_token()}}"
-                        },
-                        success: function(data){
-                            if (data.code==1){
-                                layer.msg(data.message);
-                                setTimeout(function () {
-                                    window.location = "{{url('admin/article/tags')}}";
-                                },2000);
-                            }else{
-                                layer.msg(data.message);
-                            }
-                        },
-                        error:function(data){
-
-                        }
-                    });
-
-                }, function(){
-
-                });
-            });
-
+            
 
         </script>
         @endsection

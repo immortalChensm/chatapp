@@ -32,7 +32,7 @@ class RoleController extends Controller
     function edit()
     {
         isset(request()->tagId)?$data=ArticleTag::where("tagId","=",request()->tagId)->first():$data='';
-        return view("admin.articletag.edit",compact('data'));
+        return view("admin.role.edit",compact('data'));
     }
 
     function store(StoreArticleTagPost $request)

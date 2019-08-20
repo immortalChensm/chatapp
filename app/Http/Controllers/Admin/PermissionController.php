@@ -14,7 +14,7 @@ class PermissionController extends Controller
     {
         /** @var Route $route */
         $route = app(Route::class);
-        echo substr($route->getActionName(),strripos($route->getActionName(),"\\")+1);
+        //echo substr($route->getActionName(),strripos($route->getActionName(),"\\")+1);
         return view("admin.permission.index");
     }
 

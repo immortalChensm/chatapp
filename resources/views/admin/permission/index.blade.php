@@ -91,15 +91,6 @@
                         { data:"group",name:"group",orderable: true,searchable:false },
                         { data:"action",name:"action",orderable: true,searchable:false },
                     ],
-                    // columnDefs: [ {
-                    //     "targets": 3,
-                    //     "render": function ( data, type, row, meta ) {
-                    //
-                    //         // var BtnHtml = "<button type='button' class='btn  btn-success btn-sm update' data='"+row.tagId+"'>修改</button>";
-                    //         // BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm delete' data='"+row.tagId+"' data-name='"+row.name+"'>移除</button>";
-                    //         // return BtnHtml;
-                    //     }
-                    // } ],
                     hover:true,
                     language:dataGridlanguage,
                     serverSide: true,

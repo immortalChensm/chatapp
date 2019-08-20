@@ -41,7 +41,7 @@ class ManagerController extends Controller
                 $role.=$itemValue['name'].",";
             }
             $item->role = substr($role,0,-1);
-
+            $item->loginTime = date("Y-m-d H:i:s",$item->loginTime);
         }]);
     }
 

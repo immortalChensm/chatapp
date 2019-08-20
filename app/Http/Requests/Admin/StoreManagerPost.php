@@ -24,18 +24,18 @@ class StoreManagerPost extends FormRequest
      */
     public function rules()
     {
-        if (!empty($this['mid'])){
+        if (!empty($this['userId'])){
             return [
                 'account'=>[
-                    Rule::unique("managers")->ignore($this->get("mid"),"mid"),
+                    Rule::unique("managers")->ignore($this->get("userId"),"userId"),
                 ],
-                'roleId'=>'required',
+                //'roleId'=>'required',
                 'password'=>'nullable|min:6|max:30|confirmed',
             ];
         }else{
             return [
                 'account'=>'required|unique:managers',
-                'roleId'=>'required',
+                //'roleId'=>'required',
                 'password'=>'required|min:6|max:30|confirmed',
             ];
         }
@@ -46,12 +46,12 @@ class StoreManagerPost extends FormRequest
     {
         $message = [
             'account.unique'=>'账号已存在',
-            'roleId.required'=>'请选择一个角色',
+            //'roleId.required'=>'请选择一个角色',
             'password.min'=>'密码位数不得少于6位',
             'password.max'=>'密码位数不得超过30位',
             'password.confirmed'=>'密码与确认密码不一致',
         ];
-        if (!empty($this['mid'])){
+        if (!empty($this['userId'])){
             return $message;
         }else{
             return array_merge($message,[

@@ -244,7 +244,7 @@ class Controller extends BaseController
         $start  = $request->query->get('start');//从多少开始
         $length = $request->query->get('length');//数据长度
         $recordsTotal = $model->count($model->primaryKey);
-        if ($model->getTable()!='permissions'){
+        if (!in_array($model->getTable(),['permissions','roles','managers'])){
             $data         = $model->where(function ($query) use ($searchItem,$queryCallback) {
                 $queryCallback($query,$searchItem);
 

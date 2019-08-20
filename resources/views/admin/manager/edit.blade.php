@@ -34,34 +34,32 @@
                         <!-- form start -->
                         <form role="form" id="postForm">
                             {{csrf_field()}}
-                            @if(isset($data['mid']))
-                                <input type="hidden" name="mid" value="{{$data['mid']}}">
-                                @endif
+
+                                <input type="hidden" name="userId" value="@if(isset($data['userId'])){{$data['userId']}} @endif">
+
                             <div class="box-body">
                                 <div class="form-group edit-box">
                                     <label for="exampleInputEmail1">账号</label>
-                                    <input type="text" class="form-control disabled" @if(isset($data['mid'])) disabled @endif @if(empty($data['mid'])) required="required" @endif id="account" class="edit-box" name="account" value="@if(isset($data['account'])) {{$data['account']}} @endif" placeholder="账号">
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="account" value="@if(isset($data['account'])) {{$data['account']}} @endif" placeholder="账号">
                                 </div>
 
                                 <div class="form-group edit-box">
                                     <label>所属角色</label>
-                                    <select class="form-control" name="roleId" @if(empty($data['mid'])) required="required" @endif>
-                                        <option>option 1</option>
-                                        <option>option 2</option>
-                                        <option>option 3</option>
-                                        <option>option 4</option>
-                                        <option>option 5</option>
+                                    <select class="form-control" multiple="true" name="roleId[]" @if(empty($data['roleId'])) required="required" @endif>
+                                        @foreach($role as $item)
+                                        <option value="{{$item['id']}}" @if(isset($data['roleId'])&&in_array($item['id'],$data['roleId'])) selected @endif>{{$item['name']}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 
                                 <div class="form-group edit-box">
                                     <label for="exampleInputPassword1">密码</label>
-                                    <input type="password" class="form-control" class="edit-box" name="password"  @if(empty($data['mid'])) required="required" @endif placeholder="密码">
+                                    <input type="password" class="form-control" class="edit-box" name="password"  @if(empty($data['userId'])) required="required" @endif placeholder="密码">
                                 </div>
 
                                 <div class="form-group edit-box">
                                     <label for="exampleInputPassword1">确认密码</label>
-                                    <input type="password" class="form-control" class="edit-box" name="password_confirmation"  @if(empty($data['mid'])) required="required" @endif placeholder="确认密码">
+                                    <input type="password" class="form-control" class="edit-box" name="password_confirmation"  @if(empty($data['userId'])) required="required" @endif placeholder="确认密码">
                                 </div>
 
 
@@ -94,7 +92,21 @@
                     dataType: 'json',
                     data: $('#postForm').serializeArray(),
                     success: function(data){
+                        if (data.code == 1){
+                            layer.msg(data.message);
+                            setTimeout(function () {
+                                window.location = "{{url('admin/managers')}}";
+                            },2000);
 
+                        }else if(data.code ==100)
+                        {
+                            for(var field in data.message){
+                                layer.msg(data.message[field][0]);
+                                return ;
+                            }
+                        }else{
+                            layer.msg(data.message);
+                        }
                     },
                     error:function(data){
 

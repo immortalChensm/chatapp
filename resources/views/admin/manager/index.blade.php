@@ -32,15 +32,6 @@
                                     <input type="text" class="form-control " name="account" placeholder="账号">
                                 </div>
 
-                                <div class="input-group input-box">
-                                    <span class="input-group-addon"><i class="fa">登录IP</i></span>
-                                    <input type="text" class="form-control " name="loginIp" placeholder="登录IP">
-                                </div>
-
-                                <div class="input-group input-box">
-                                    <span class="input-group-addon"><i class="fa">登录时间</i></span>
-                                    <input type="text" class="form-control " name="loginTime" placeholder="登录时间">
-                                </div>
 
                                 <div class="search-box" id="search">
                                     <span class="input-group-btn">
@@ -100,7 +91,7 @@
 
                     processing:true,
                     columns: [
-                        { data:"mid",name:"mid",orderable: true,searchable:false },
+                        { data:"userId",name:"userId",orderable: true,searchable:false },
                         { data:"account",name:"account",orderable: true,searchable:true },
                         { data:"role",name:"role",orderable: true,searchable:false },
                         { data:"loginIp",name:"loginIp",orderable: true,searchable:true },
@@ -111,8 +102,8 @@
                         //"data": "download_link",
                         "render": function ( data, type, row, meta ) {
 
-                            var BtnHtml = "<button type='button' class='btn  btn-success btn-sm manager-update' data='"+row.mid+"'>修改</button>";
-                            BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm manager-delete' data='"+row.mid+"' data-account='"+row.account+"'>移除</button>";
+                            var BtnHtml = "<button type='button' class='btn  btn-success btn-sm manager-update' data='"+row.userId+"'>修改</button>";
+                            BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm manager-delete' data='"+row.userId+"' data-account='"+row.account+"'>移除</button>";
                             return BtnHtml;
                         }
                     } ],
@@ -153,9 +144,7 @@
 
                 $("#search").on("click",function (e) {
                     var account = $(":input[name=account]").val();
-                    var loginIp = $(":input[name=loginIp]").val();
-                    var loginTime = $(":input[name=loginTime]").val();
-                    table.ajax.url( '/admin/get/managers?account='+ account+"&loginIp="+loginIp+"&loginTime="+loginTime).load();
+                    table.ajax.url( '/admin/get/managers?account='+ account).load();
                 })
 
             })
@@ -181,7 +170,21 @@
                             "_token":"{{csrf_token()}}"
                         },
                         success: function(data){
+                            if (data.code == 1){
+                                layer.msg(data.message);
+                                setTimeout(function () {
+                                    window.location = "{{url('admin/managers')}}";
+                                },2000);
 
+                            }else if(data.code ==100)
+                            {
+                                for(var field in data.message){
+                                    layer.msg(data.message[field][0]);
+                                    return ;
+                                }
+                            }else{
+                                layer.msg(data.message);
+                            }
                         },
                         error:function(data){
 

@@ -33,7 +33,7 @@
                         <form role="form" id="postForm">
                             {{csrf_field()}}
 
-                            <input type="hidden" name="tagId" value=" @if(isset($data['tagId'])){{$data['tagId']}} @endif">
+                            <input type="hidden" name="id" value=" @if(isset($data['id'])){{$data['id']}} @endif">
 
                             <div class="box-body">
 
@@ -44,16 +44,21 @@
 
                                 <div class="form-group edit-box">
                                     <label for="exampleInputEmail1">角色说明</label>
-                                    <input type="text" class="form-control input-max-box" class="edit-box" description="name" value="@if(isset($data['description'])) {{$data['description']}} @endif" placeholder="角色说明">
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="description" value="@if(isset($data['description'])) {{$data['description']}} @endif" placeholder="角色说明">
                                 </div>
 
-                                <div class="form-group edit-box">
+                                <div class="form-group">
                                     <label for="exampleInputEmail1">权限选择</label>
                                     @foreach($formatPermission as $group=>$item)
-                                        <div>{{$group}}</div>
+                                        <div>
+                                            <input type="checkbox" style="margin: 10px 5px;"  value="{{$group}}" >{{$group}}
+                                        </div>
+
+                                        <div style="margin:1px 0px 1px 15px;">
                                         @foreach($item as $id=>$name)
-                                            <input type="checkbox" name="check" data="{{$id}}" value="{{$name}}">
-                                            @endforeach
+                                            <input type="checkbox" style="margin: 10px 5px;" name="permissionIds[]" data="{{$id}}" value="{{$id}}" >{{$name}}
+                                         @endforeach
+                                        </div>
                                         @endforeach
                                 </div>
 
@@ -82,14 +87,14 @@
             function store(){
                 $.ajax({
                     type: 'POST',
-                    url: "{{url('admin/article/tags/save')}}",
+                    url: "{{url('admin/role/save')}}",
                     dataType: 'json',
                     data: $('#postForm').serializeArray(),
                     success: function(data){
                         if (data.code == 1){
                             layer.msg(data.message);
                            setTimeout(function () {
-                               window.location = "{{url('admin/article/tags')}}";
+                               window.location = "{{url('admin/role')}}";
                            },2000);
 
                         }else if(data.code ==100)
@@ -108,6 +113,37 @@
                 });
 
             }
+
+            $(":input[name=permissionIdGroup]").on("click",function (e) {
+
+                if ($(this)[0].getAttribute("checked")){
+                    $(this)[0].removeAttribute("checked");
+                } else{
+                    $(this)[0].setAttribute("checked",!false);
+                }
+
+
+                for (var i=0;i<$(this).parent("div").next("div").find("input").length;i++){
+                    $(this).parent("div").next("div").find("input").eq(i).attr("checked",$(this)[0].getAttribute("checked"));
+                }
+
+
+            })
+            $(":input[name=permissionId]").on("click",function (e) {
+                if ($(this)[0].getAttribute("checked")){
+                    $(this)[0].removeAttribute("checked");
+                } else{
+                    $(this)[0].setAttribute("checked",!false);
+                }
+                var i=1;
+                for (var j=0;j<$(this).parent().prev("div").find("input").length;j++){
+                    if ($(this).parent().prev("div").find("input").eq(j)[0].getAttribute("checked")==false){
+                        i++;
+                        console.log($(this).parent().prev("div").find("input").eq(j)[0].getAttribute("checked"));
+                    }
+                }
+                console.log(i);
+            })
 
         </script>
 

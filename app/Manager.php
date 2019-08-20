@@ -10,6 +10,8 @@ class Manager extends Model
     protected $table = "managers";
     protected $guarded = [];
 
-    protected $primaryKey = "mid";
+    public $primaryKey = "userId";
+
+    public $timestamps = false;
 
 }

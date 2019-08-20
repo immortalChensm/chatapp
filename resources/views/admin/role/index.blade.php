@@ -28,8 +28,8 @@
                             <h3 class="box-title">
 
                                 <div class="input-group input-box input-max-box">
-                                    <span class="input-group-addon"><i class="fa">标签名称</i></span>
-                                    <input type="text" class="form-control " name="name" placeholder="标签名称">
+                                    <span class="input-group-addon"><i class="fa">角色名称</i></span>
+                                    <input type="text" class="form-control " name="name" placeholder="角色名称">
                                 </div>
 
 
@@ -86,16 +86,16 @@
                 var table = $('#datagrid').DataTable({
                     processing:true,
                     columns: [
-                        { data:"tagId",name:"tagId",orderable: true,searchable:false },
-                        { data:"name",name:"name",orderable: true,searchable:true },
-                        { data:"created_at",name:"created_at"}
+                        { data:"id",name:"id",orderable: true,searchable:false },
+                        { data:"name",name:"name",orderable: true,searchable:false },
+                        { data:"description",name:"description"}
                     ],
                     columnDefs: [ {
                         "targets": 3,
                         "render": function ( data, type, row, meta ) {
 
-                            var BtnHtml = "<button type='button' class='btn  btn-success btn-sm update' data='"+row.tagId+"'>修改</button>";
-                            BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm delete' data='"+row.tagId+"' data-name='"+row.name+"'>移除</button>";
+                            var BtnHtml = "<button type='button' class='btn  btn-success btn-sm update' data='"+row.id+"'>修改</button>";
+                            BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm delete' data='"+row.id+"' data-name='"+row.name+"'>移除</button>";
                             return BtnHtml;
                         }
                     } ],
@@ -103,17 +103,17 @@
                     language:dataGridlanguage,
                     serverSide: true,
                     ajax: {
-                        url: '/admin/article/tags/list',
+                        url: '/admin/get/roles',
                         type: 'GET'
                     },
                     "searching": false,
                     "lengthMenu": [ 10, 25, 50, 75, 100 ],
                     "pageLength": 10
                 });
-
+                //
                 $("#search").on("click",function (e) {
                     var name = $(":input[name=name]").val();
-                    table.ajax.url( '/admin/article/tags/list?name='+name).load();
+                    table.ajax.url( '/admin/get/roles?name='+name).load();
                 })
 
             })
@@ -121,19 +121,19 @@
 
             //编辑操作
             $("#datagrid").on("click",".update",function (e) {
-               location.href = "/admin/article/tags/edit/"+$(this).attr("data");
+               location.href = "/admin/role/edit/"+$(this).attr("data");
             });
 
             //移除操作
             $("#datagrid").on("click",".delete",function (e) {
 
                 var dataid = $(this).attr("data");
-                layer.confirm('您确定要删除('+$(this).attr("data-name")+")这个标签吗？", {
+                layer.confirm('您确定要删除('+$(this).attr("data-name")+")吗？", {
                     btn: ['确认','取消'] //按钮
                 }, function(){
                     $.ajax({
                         type: "delete",
-                        url: "{{url('/admin/article/tags/remove/')}}/"+dataid,
+                        url: "{{url('/admin/role/remove/')}}/"+dataid,
                         dataType: 'json',
                         data: {
                             "_token":"{{csrf_token()}}"
@@ -142,7 +142,7 @@
                             if (data.code==1){
                                 layer.msg(data.message);
                                 setTimeout(function () {
-                                    window.location = "{{url('admin/article/tags')}}";
+                                    window.location = "{{url('admin/role')}}";
                                 },2000);
                             }else{
                                 layer.msg(data.message);

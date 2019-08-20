@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\ArticleTag;
 use App\Http\Requests\Admin\StoreArticleTagPost;
+use App\Http\Requests\Admin\StoreRolePost;
 use App\Permissions;
 use App\Role;
 use Illuminate\Http\Request;
@@ -34,19 +35,28 @@ class RoleController extends Controller
         $permission = Permissions::all();
         $formatPermission = [];
         foreach ($permission as $k=>$item){
-            $formatPermission[$item['group']][] = [$item['id']=>$item['name']];
+            $formatPermission[$item['group']][$item['id']] = $item['name'];
         }
+        if ($data){
+            $data['permissionIds'] = json_decode($data['permissionIds'],true);
+        }
+
         return view("admin.role.edit",compact('data','formatPermission'));
     }
 
-    function store(StoreArticleTagPost $request)
+    function store(StoreRolePost $request)
     {
-        return empty($request->tagId)?(ArticleTag::create($request->except("_token","s"))?['code'=>1,'message'=>'添加成功']:['code'=>0,'message'=>'添加失败']):
-            (ArticleTag::where("tagId","=",$request->tagId)->update(['name'=>$request->name])?['code'=>1,'message'=>'更新成功']:['code'=>0,'message'=>'更新失败']);
+        $request['permissionIds'] = json_encode($request['permissionIds']);
+        return empty($request->id)?(Role::create($request->except("_token","s"))?['code'=>1,'message'=>'添加成功']:['code'=>0,'message'=>'添加失败']):
+            (Role::where("id","=",$request->id)->update([
+                'name'=>$request['name'],
+                'description'=>$request['description'],
+                'permissionIds'=>$request['permissionIds']
+            ])?['code'=>1,'message'=>'更新成功']:['code'=>0,'message'=>'更新失败']);
     }
 
-    function remove(ArticleTag $articleTag)
+    function remove(Role $role)
     {
-        return $this->removeModel($articleTag);
+        return $this->removeModel($role);
     }
 }

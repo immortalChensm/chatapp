@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\StoreManagerPost;
 use App\Manager;
+use App\Role;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class ManagerController extends Controller
 {
@@ -24,47 +26,23 @@ class ManagerController extends Controller
      */
     function managers(Request $request,Manager $manager)
     {
-        $draw        = $request->query->get('draw');
-        $orderColumn = $request->query->get('order')['0']['column'];
-        $orderDir    = $request->query->get('order')['0']['dir'];
-        $fields      = $request->query->get('columns');
-        $fieldName   = [];
-        foreach ($fields as $key=>$item) {
-            $fieldName[$key] = $item['name'];
-        }
-        $orderSql = "";
-        if (isset($orderColumn)) {
-            $orderSql = " {$fieldName[intval($orderColumn)]} " . $orderDir;
-        }
+        return $this->models(...[$request,$manager,function (&$searchItem)use($request){
+            $searchItem['account']   = $request->query->get('account');
 
-        $searchItem['account']   = $request->query->get('account');
-        $searchItem['loginIp']   = $request->query->get('loginIp');
-        $searchItem['loginTime'] = $request->query->get('loginTime');
-
-        $start  = $request->query->get('start');//从多少开始
-        $length = $request->query->get('length');//数据长度
-
-        $recordsTotal = $manager->count("mid");
-        $data         = $manager->where(function ($query) use ($searchItem) {
+        },function ($query,&$searchItem){
             if ($searchItem['account']){
-                $query->where("account","=",$searchItem['account']);
+                $query->where("account","LIKE","%".$searchItem['account']."%");
             }
-            if ($searchItem['loginIp']){
-                $query->where("loginIp","=",$searchItem['loginIp']);
-            }
-            if ($searchItem['loginTime']){
-                $query->where("loginTime","=",$searchItem['loginTime']);
-            }
-        })->orderByRaw($orderSql);
 
-        $recordsFiltered = $data->count("mid");
-        $infos           = $data->skip($start)->take($length)->get();
-        return response()->json([
-            "draw"            => intval($draw),
-            "recordsTotal"    => intval($recordsTotal),
-            "recordsFiltered" => intval($recordsFiltered),
-            "data"            => $infos->toArray()
-        ],200);
+        },function (&$item){
+            $roleName = Role::whereIn("id",json_decode($item['roleId'],true))->get(["name"])->toArray();
+            $role = '';
+            foreach ($roleName as $itemValue){
+                $role.=$itemValue['name'].",";
+            }
+            $item->role = substr($role,0,-1);
+
+        }]);
     }
 
     /**
@@ -73,22 +51,73 @@ class ManagerController extends Controller
      */
     function editManager()
     {
-        isset(request()->mid)?$data=Manager::where("mid","=",request()->mid)->first():$data='';
-        return view("admin.manager.edit",compact('data'));
+        isset(request()->userId)?$data=Manager::where("userId","=",request()->userId)->first():$data='';
+        $role = Role::all(['id','name']);
+        if ($data){
+            $data['roleId'] = json_decode($data['roleId'],true);
+        }
+        return view("admin.manager.edit",compact('data','role'));
     }
 
-    /**
-     * 管理员编辑
-     * @param StoreManagerPost $request
-     */
     function storeManager(StoreManagerPost $request)
     {
-        print_r($request->all());
+        if (empty($request['roleId'])){
+            return ['message'=>'请选择一个角色'];
+        }
+        $request['roleId'] = json_encode($request['roleId']);
+
+        if(empty($request->userId)) {
+            $request['password'] = Hash::make($request['password']);
+            return Manager::create($request->except("_token", "s", "password_confirmation")) ? ['code' => 1, 'message' => '添加成功'] : ['code' => 0, 'message' => '添加失败'];
+
+            }else{
+            if (empty($request['password'])){
+                return Manager::where("userId","=",$request['userId'])->update([
+                    'account'=>$request['account'],
+                    'roleId'=>$request['roleId'],
+                ])?['code'=>1,'message'=>'更新成功']:['code'=>0,'message'=>'更新失败'];
+            }else{
+                $request['password'] = Hash::make($request['password']);
+                return Manager::where("userId","=",$request['userId'])->update([
+                    'account'=>$request['account'],
+                    'roleId'=>$request['roleId'],
+                    'password'=>$request['password'],
+                ])?['code'=>1,'message'=>'更新成功']:['code'=>0,'message'=>'更新失败'];
+            }
+
+        }
+    }
+
+    function login()
+    {
+        return view("admin.manager.login");
+    }
+
+    function loginHandler()
+    {
+        $account = request("account");
+        $password = request("password");
+        if (empty($account)||empty($password)){
+            return ['code'=>0,'message'=>'请填写登录账号或密码'];
+        }else{
+            $data = Manager::where("account",$account)->first();
+            if ($data){
+                if (Hash::check($password,$data['password'])){
+                    session(['loginUser'=>$data->toArray()]);
+                    Manager::where("userId",$data['userId'])->update(['loginIp'=>request()->getClientIp(),'loginTime'=>time()]);
+                    return ['code'=>1,'message'=>'登录成功'];
+                }else{
+                    return ['code'=>0,'message'=>'登录密码填写错误'];
+                }
+            }else{
+                return ['code'=>0,'message'=>'登录账号填写错误'];
+            }
+        }
     }
 
     function removeManager(Manager $manager)
     {
-        print_r($manager->toArray());
+        return $this->removeModel($manager);
     }
 
     function top()

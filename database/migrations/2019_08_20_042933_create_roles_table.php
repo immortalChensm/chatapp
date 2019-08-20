@@ -17,7 +17,7 @@ class CreateRolesTable extends Migration
             $table->increments('id');
             $table->string("name")->index()->comment("角色名称");
             $table->string("description")->comment("角色说明");
-            $table->text("permissionIds")->index()->comment("角色的权限列表");
+            $table->text("permissionIds")->comment("角色的权限列表");
         });
     }
 

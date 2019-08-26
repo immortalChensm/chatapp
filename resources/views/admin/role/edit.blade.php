@@ -150,9 +150,9 @@
             var optionsLength = $('.checkbox-all').find('.checkboxs').length;
             var checkedLength = $('.checkbox-all').find('.checkboxs:checked').length;
             if (checkedLength==optionsLength) {
-                $(this).parents(".auth-box").find('.checkbox-all').prop('checked',true);
+                $('.checkbox-all').prop('checked',true);
             }else {
-                $(this).parents(".auth-box").find('.checkbox-all').prop('checked',false);
+                $('.checkbox-all').prop('checked',false);
             }
 
         </script>

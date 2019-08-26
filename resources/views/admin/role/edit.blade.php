@@ -147,14 +147,18 @@
                 }
             });
 
-            var optionsLength = $('.checkbox-all').parents(".auth-box").find('.checkboxs').length;
-            var checkedLength = $('.checkbox-all').parents(".auth-box").find('.checkboxs:checked').length;
-            //console.log(optionsLength,checkedLength);
-            if (checkedLength==optionsLength) {
-                $('.checkbox-all').prop('checked',true);
-            }else {
-                $('.checkbox-all').prop('checked',false);
+            for(var i=0;i<$('.checkbox-all').length;i++){
+
+                var optionsLength = $('.checkbox-all').eq(i).parents(".auth-box").find('.checkboxs').length;
+                var checkedLength = $('.checkbox-all').eq(i).parents(".auth-box").find('.checkboxs:checked').length;
+                console.log(optionsLength,checkedLength);
+                if (checkedLength==optionsLength) {
+                    $('.checkbox-all').eq(i).prop('checked',true);
+                }else {
+                    $('.checkbox-all').eq(i).prop('checked',false);
+                }
             }
+
 
         </script>
 

@@ -49,18 +49,30 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">权限选择</label>
-                                    @foreach($formatPermission as $group=>$item)
-                                        <div>
-                                            <input type="checkbox" style="margin: 10px 5px;"  value="{{$group}}" >{{$group}}
-                                        </div>
+                                    {{--@foreach($formatPermission as $group=>$item)--}}
+                                        {{--<div>--}}
+                                            {{--<input type="checkbox" style="margin: 10px 5px;"  value="{{$group}}" >{{$group}}--}}
+                                        {{--</div>--}}
 
-                                        <div style="margin:1px 0px 1px 15px;">
+                                        {{--<div style="margin:1px 0px 1px 15px;">--}}
+                                        {{--@foreach($item as $id=>$name)--}}
+                                            {{--<input type="checkbox" style="margin: 10px 5px;" name="permissionIds[]" data="{{$id}}" value="{{$id}}" >{{$name}}--}}
+                                         {{--@endforeach--}}
+                                        {{--</div>--}}
+                                        {{--@endforeach--}}
+                                    @foreach($formatPermission as $group=>$item)
+                                    <div class="auth-box">
+                                        <p><label><input class="checkbox-all" type="checkbox" value="all">{{$group}}</label></p>
                                         @foreach($item as $id=>$name)
-                                            <input type="checkbox" style="margin: 10px 5px;" name="permissionIds[]" data="{{$id}}" value="{{$id}}" >{{$name}}
-                                         @endforeach
-                                        </div>
+                                        <label><input class="checkboxs" type="checkbox" value="{{$id}}">{{$name}}</label>
                                         @endforeach
+                                    </div>
+                                    @endforeach
+
                                 </div>
+
+
+
 
 
                             </div>
@@ -114,36 +126,26 @@
 
             }
 
-            $(":input[name=permissionIdGroup]").on("click",function (e) {
-
-                if ($(this)[0].getAttribute("checked")){
-                    $(this)[0].removeAttribute("checked");
-                } else{
-                    $(this)[0].setAttribute("checked",!false);
+            //全选函数
+            $('.checkbox-all').click(function(){
+                if($(this).prop('checked')){
+                    $(this).parents(".auth-box").find('.checkboxs').prop('checked',true);
+                }else{
+                    $(this).parents(".auth-box").find('.checkboxs').prop('checked',false);
                 }
+            });
 
 
-                for (var i=0;i<$(this).parent("div").next("div").find("input").length;i++){
-                    $(this).parent("div").next("div").find("input").eq(i).attr("checked",$(this)[0].getAttribute("checked"));
+            //单选函数
+            $('.checkboxs').change(function () {
+                var optionsLength = $(this).parents(".auth-box").find('.checkboxs').length;
+                var checkedLength = $(this).parents(".auth-box").find('.checkboxs:checked').length;
+                if (checkedLength==optionsLength) {
+                    $(this).parents(".auth-box").find('.checkbox-all').prop('checked',true);
+                }else {
+                    $(this).parents(".auth-box").find('.checkbox-all').prop('checked',false);
                 }
-
-
-            })
-            $(":input[name=permissionId]").on("click",function (e) {
-                if ($(this)[0].getAttribute("checked")){
-                    $(this)[0].removeAttribute("checked");
-                } else{
-                    $(this)[0].setAttribute("checked",!false);
-                }
-                var i=1;
-                for (var j=0;j<$(this).parent().prev("div").find("input").length;j++){
-                    if ($(this).parent().prev("div").find("input").eq(j)[0].getAttribute("checked")==false){
-                        i++;
-                        console.log($(this).parent().prev("div").find("input").eq(j)[0].getAttribute("checked"));
-                    }
-                }
-                console.log(i);
-            })
+            });
 
         </script>
 

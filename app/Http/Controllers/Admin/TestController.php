@@ -17,11 +17,12 @@ class TestController extends Controller
 
     function index()
     {
-        echo microtime(true);
+        //echo microtime(true);
         //sleep(10);
-        echo microtime(true);
+        //echo microtime(true);
     
-
+        $a = new Request($_GET,$_POST);
+        print_r($a->all());
         return 123;
     }
 

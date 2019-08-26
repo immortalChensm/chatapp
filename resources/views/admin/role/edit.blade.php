@@ -64,7 +64,7 @@
                                     <div class="auth-box">
                                         <p><label><input class="checkbox-all" type="checkbox" value="all">{{$group}}</label></p>
                                         @foreach($item as $id=>$name)
-                                        <label><input class="checkboxs" type="checkbox" value="{{$id}}">{{$name}}</label>
+                                        <label><input class="checkboxs" type="checkbox" name="permissionIds[]" value="{{$id}}">{{$name}}</label>
                                         @endforeach
                                     </div>
                                     @endforeach

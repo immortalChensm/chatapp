@@ -149,6 +149,7 @@
 
             var optionsLength = $('.checkbox-all').find('.checkboxs').length;
             var checkedLength = $('.checkbox-all').find('.checkboxs:checked').length;
+            consoe.log(optionsLength,checkedLength);
             if (checkedLength==optionsLength) {
                 $('.checkbox-all').prop('checked',true);
             }else {

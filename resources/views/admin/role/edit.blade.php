@@ -147,9 +147,9 @@
                 }
             });
 
-            var optionsLength = $('.checkbox-all').find('.checkboxs').length;
-            var checkedLength = $('.checkbox-all').find('.checkboxs:checked').length;
-            console.log(optionsLength,checkedLength);
+            var optionsLength = $('.checkbox-all').parents(".auth-box").find('.checkboxs').length;
+            var checkedLength = $('.checkbox-all').parents(".auth-box").find('.checkboxs:checked').length;
+            //console.log(optionsLength,checkedLength);
             if (checkedLength==optionsLength) {
                 $('.checkbox-all').prop('checked',true);
             }else {

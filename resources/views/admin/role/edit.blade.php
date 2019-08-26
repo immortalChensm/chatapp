@@ -64,7 +64,7 @@
                                     <div class="auth-box">
                                         <p><label><input class="checkbox-all" type="checkbox" value="all">{{$group}}</label></p>
                                         @foreach($item as $id=>$name)
-                                        <label><input class="checkboxs" type="checkbox" name="permissionIds[]" value="{{$id}}" @if(in_array($id,$data['permissionIds'])) checked="true" @endif>{{$name}}</label>
+                                        <label><input class="checkboxs" type="checkbox" name="permissionIds[]" value="{{$id}}" @if(isset($data['permissionIds'])&&in_array($id,$data['permissionIds'])) checked="true" @endif>{{$name}}</label>
                                         @endforeach
                                     </div>
                                     @endforeach

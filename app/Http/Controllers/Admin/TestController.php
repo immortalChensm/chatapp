@@ -21,8 +21,9 @@ class TestController extends Controller
         //sleep(10);
         //echo microtime(true);
     
-        $a = new Request($_GET,$_POST);
-        print_r($a->all());
+        //$a = new Request($_GET,$_POST);
+        //print_r($a->all());
+        print_r($_FILES);
         return 123;
     }
 

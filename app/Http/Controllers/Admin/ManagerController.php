@@ -105,6 +105,10 @@ class ManagerController extends Controller
                 if (Hash::check($password,$data['password'])){
                     session(['loginUser'=>$data->toArray()]);
                     Manager::where("userId",$data['userId'])->update(['loginIp'=>request()->getClientIp(),'loginTime'=>time()]);
+
+                    //客服账号登录
+                    $customer = $this->getApi('POST','api/im/kefu/login',[]);
+                    session(['imToken'=>$customer['result']]);
                     return ['code'=>1,'message'=>'登录成功'];
                 }else{
                     return ['code'=>0,'message'=>'登录密码填写错误'];

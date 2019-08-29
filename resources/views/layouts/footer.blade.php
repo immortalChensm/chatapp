@@ -226,7 +226,7 @@
 <script>
 
     function openWin() {
-        var url='http://im.com?account=admin';                             //转向网页的地址;
+        var url='http://47.110.136.62:8092/index.html?account={{session('imToken')}}';                             //转向网页的地址;
         var name='传联客服聊天系统';                            //网页名称，可为空;
         var iWidth=1000;                          //弹出窗口的宽度;
         var iHeight=700;                         //弹出窗口的高度;

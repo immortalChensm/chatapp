@@ -90,7 +90,12 @@ class ManagerController extends Controller
 
     function login()
     {
-        return view("admin.manager.login");
+        if (session()->exists("loginUser")){
+            return redirect("/admin");
+        }else{
+            return view("admin.manager.login");
+        }
+
     }
 
     function loginHandler()
@@ -116,6 +121,16 @@ class ManagerController extends Controller
             }else{
                 return ['code'=>0,'message'=>'登录账号填写错误'];
             }
+        }
+    }
+
+    function logoutHandler()
+    {
+        if (session()->exists("loginUser")){
+            session()->flush();
+            return view("admin.manager.login");
+        }else{
+            return view("admin.manager.login");
         }
     }
 

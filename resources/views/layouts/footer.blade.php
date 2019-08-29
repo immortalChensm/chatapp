@@ -244,6 +244,12 @@
         openWin();
     });
 
+    function logout()
+    {
+        window.location.href='/admin/logout';
+
+    }
+
 
 </script>
 @yield("js")

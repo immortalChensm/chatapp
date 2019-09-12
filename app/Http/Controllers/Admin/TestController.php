@@ -23,7 +23,8 @@ class TestController extends Controller
     
         //$a = new Request($_GET,$_POST);
         //print_r($a->all());
-        print_r($_FILES);
+        //print_r($_FILES);
+        print_r($_POST);
         return 123;
     }
 

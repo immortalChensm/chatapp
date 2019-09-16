@@ -291,12 +291,12 @@
 
                                             <div class="timeline-body">
                                                 @if(!empty($data['idCardFace']))
-                                                    <img src="{{$data['idCardFace']}}" alt="..." class="margin">
+                                                    <img src="{{$data['idCardFace']}}" alt="..." class="margin" width="500px" height="450px">
                                                     @else
                                                     头像面未上传
                                                     @endif
                                                     @if(!empty($data['idCardWall']))
-                                                <img src="{{$data['idCardWall']}}" alt="..." class="margin">
+                                                <img src="{{$data['idCardWall']}}" alt="..." class="margin" width="500px" height="450px">
                                                         @else
                                                         国徽未上传
                                                         @endif

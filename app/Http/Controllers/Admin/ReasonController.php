@@ -43,6 +43,18 @@ class ReasonController extends Controller
         }]);
     }
 
+    /**
+     * 消息发送接口【警告用】
+     * @param Request $request
+     * @return array
+     */
+    function sendMessage(Request $request)
+    {
+        if (empty($request['content']))return ['code'=>0,'message'=>'请填写消息内容'];
+        $result = $this->getApi("POST","api/im/sendMsg",request()->except(['s','_token']));
+        return ['code'=>1,'message'=>$result];
+    }
+
     function removeReport(Reports $reports)
     {
         return $this->removeModel($reports);

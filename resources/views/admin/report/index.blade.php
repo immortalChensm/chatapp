@@ -102,7 +102,7 @@
 
                             var BtnHtml = "";
                             BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm delete' data='"+row.id+"' data-name='"+row.reason+"'>移除</button>";
-                            BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm send' data='"+row.userId+"' data-name='"+row.reason+"'>警告</button>";
+                            BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm send' data='"+row.reportedUserId+"' data-name='"+row.reason+"'>警告</button>";
                             return BtnHtml;
                         }
                     } ],

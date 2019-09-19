@@ -154,7 +154,7 @@
                             },
                             success: function(data){
                                 if (data.code==1){
-                                    layer.msg(data.message.result.ActionStatus);
+                                    layer.msg("操作成功");
                                 }else{
                                     layer.msg(data.message);
                                 }
@@ -163,6 +163,7 @@
 
                             }
                         });
+
 
                     }
                     ,cancel: function(){

@@ -113,6 +113,7 @@
                             var BtnHtml = "";
                             BtnHtml+= "  <button type='button' class='fa fa-remove btn  btn-danger btn-sm delete' data='"+row.GroupId+"' data-title='"+row.Name+"' data-user='"+row.GroupId+"'>解散群</button>";
                             BtnHtml+= "  <button type='button' class='fa fa-info btn  btn-success btn-sm send' data='"+row.GroupId+"' data-title='"+row.Name+"' data-user='"+row.GroupId+"'>发送消息</button>";
+                            BtnHtml+= "  <button type='button' class='fa fa-info btn  btn-success btn-sm warn' data='"+row.Owner_Account+"' data-title='"+row.Name+"' data-user='"+row.GroupId+"'>警告群主</button>";
                             return BtnHtml;
                         }
                     } ],
@@ -192,6 +193,53 @@
                 });
            });
 
+            $("#datagrid").on("click",".warn",function (e) {
+                var userId = $(this).attr("data");
+                layer.open({
+                    type:0,
+                    area: ['540px', '240px'],
+                    content: "<textarea class='form-control' style='height:100px' name='text' placeholder='警告内容'></textarea>"
+                    ,btn: ['提交', '取消']
+                    ,btn1: function(index, layero){
+                        //按钮【按钮一】的回调
+
+                        var message = $(layero).find(":input[name=text]").val();
+                        if (message.length==0){
+                            layer.msg("请填写消息内容");
+                            return false;
+                        }
+                        $.ajax({
+                            type: "post",
+                            url: "{{url('/admin/customer/sendMsg')}}",
+                            dataType: 'json',
+                            data: {
+                                "_token":"{{csrf_token()}}",
+                                content:message,
+                                userId:userId,
+                                msgType:6,
+                                title:'系统警告',
+                            },
+                            success: function(data){
+                                if (data.code==1){
+                                    layer.msg("操作成功");
+                                }else{
+                                    layer.msg(data.message);
+                                }
+                            },
+                            error:function(data){
+
+                            }
+                        });
+
+
+                    }
+                    ,cancel: function(){
+                        //右上角关闭回调
+
+                        //return false 开启该代码可禁止点击该按钮关闭
+                    }
+                });
+            });
             //移除操作
             $("#datagrid").on("click",".delete",function (e) {
                 var title = $(":input[name=name]").val();

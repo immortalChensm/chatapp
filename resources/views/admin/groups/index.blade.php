@@ -193,7 +193,7 @@
                 });
            });
 
-            $("#datagrid").on("click",".warn",function (e) {
+          $("#datagrid").on("click",".warn",function (e) {
                 var userId = $(this).attr("data");
                 layer.open({
                     type:0,

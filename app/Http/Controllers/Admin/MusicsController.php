@@ -89,7 +89,10 @@ class MusicsController extends Controller
         }else {
             return Musics::create(array_merge($prepareData,[
                 'userId'       => 1,
-                'userType'     => 2
+                'userType'     => 2,
+                'isShared'=>1,
+                'sharedLocation'=>'12',
+                'isShow'=>1
             ])) ? ['code' => 1, 'message' => '添加成功'] : ['code' => 0, 'message' => '添加失败'];
         }
     }

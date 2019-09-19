@@ -84,7 +84,10 @@ class VideoController extends Controller
         }else {
             $addRet = Videos::create(array_merge($prepareData,[
                 'userId'       => 1,
-                'userType'     => 2
+                'userType'     => 2,
+                'isShared'=>1,
+                'sharedLocation'=>'12',
+                'isShow'=>1
             ]));
             if ($addRet){
                 event(new addVideo(['videoId'=>$addRet['videoId'],'uriKey'=>$addRet['uriKey']]));

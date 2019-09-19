@@ -110,7 +110,10 @@ class PhotosController extends Controller
         }else{
                 if ($photo = Photos::create(array_merge($prepareData,[
                     'userId'=>1,
-                    'userType'=>2
+                    'userType'=>2,
+                    'isShared'=>1,
+                    'sharedLocation'=>'12',
+                    'isShow'=>1
                 ]))){
                     return $this->insertImageFile($request,$photo,'insert')?['code'=>1,'message'=>'添加成功']:['code'=>1,'message'=>'添加失败'];
 

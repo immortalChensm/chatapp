@@ -43,8 +43,9 @@ class ArticlesController extends Controller
                 $item->userId      = "平台发布";
                 $item->userIdMsg = 0;
             }else{
-                $item->userId      = User::where("userId","=",$item['userId'])->value("name");
                 $item->userIdMsg = $item['userId'];
+                $item->userId      = User::where("userId","=",$item['userId'])->value("name");
+
             }
 
 

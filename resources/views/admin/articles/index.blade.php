@@ -251,9 +251,9 @@
                         },
                         success: function(data){
                             if (data.code==1){
-                                layer.msg("操作成功");
+                                //layer.msg("操作成功");
                             }else{
-                                layer.msg(data.message);
+                                //layer.msg(data.message);
                             }
                         },
                         error:function(data){

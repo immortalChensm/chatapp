@@ -126,8 +126,8 @@
 
                             var BtnHtml = "<button type='button' class='btn  btn-success btn-sm update' data='"+row.musicId+"'>修改</button>";
                             BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm delete' data='"+row.musicId+"' data-name='"+row.title+"' data-user='"+row.userType+"'>移除</button>";
-                            BtnHtml+= "  <button type='button' class='fa fa-eye btn  btn-danger btn-sm isShow' data='"+row.musicId+"' data-title='"+row.title+"' data-user='"+row.userType+"'>屏蔽</button>";
-                            BtnHtml+= "  <button type='button' class='fa fa-share btn  btn-danger btn-sm disableShare' data='"+row.musicId+"' data-title='"+row.title+"' data-user='"+row.userType+"'>分享</button>";
+                            BtnHtml+= "  <button type='button' class='fa fa-eye btn  btn-danger btn-sm isShow' data='"+row.musicId+"' data-title='"+row.title+"' data-user='"+row.userType+"' data-userId='"+row.userIdMsg+"' data-show='"+row.isShowFlag+"'>屏蔽</button>";
+                            BtnHtml+= "  <button type='button' class='fa fa-share btn  btn-danger btn-sm disableShare' data='"+row.musicId+"' data-title='"+row.title+"' data-user='"+row.userType+"' data-userId='"+row.userIdMsg+"' data-share='"+row.canSharedFlag+"'>分享</button>";
                             BtnHtml+= "  <button type='button' class='fa fa-music btn  success btn-sm playMusic' data='"+row.musicId+"' data-title='"+row.title+"'>播放</button>";
                             BtnHtml+= "  <button type='button' class='fa fa-hand-pointer-o btn  btn-danger btn-sm top' data='"+row.musicId+"' data-title='"+row.title+"' data-user='"+row.userType+"'>置顶</button>";
                             return BtnHtml;
@@ -209,6 +209,12 @@
                 var type=1;
                 var title = $(":input[name=title]").val();
                 var singer = $(":input[name=singer]").val();
+                var userId = $(this).attr("data-userId");
+                var articleTitle = $(this).attr("data-title");
+
+                var show = $(this).attr("data-show");
+                var share = $(this).attr("data-share");
+
                 if ($(this).hasClass("disableShare"))type=2;
                 $.ajax({
                     type: "put",
@@ -232,6 +238,58 @@
 
                     }
                 });
+
+                if (userId!=0){
+                    if (show==1){
+                        $.ajax({
+                            type: "post",
+                            url: "{{url('/admin/customer/sendMsg')}}",
+                            dataType: 'json',
+                            data: {
+                                "_token":"{{csrf_token()}}",
+                                content:"你发布的<<"+articleTitle+">>内容存在违规系统已屏蔽",
+                                userId:userId,
+                                msgType:6,
+                                title:'系统警告',
+                            },
+                            success: function(data){
+                                if (data.code==1){
+                                    //layer.msg("操作成功");
+                                }else{
+                                    //layer.msg(data.message);
+                                }
+                            },
+                            error:function(data){
+
+                            }
+                        });
+                    }
+                    if (share==1){
+                        $.ajax({
+                            type: "post",
+                            url: "{{url('/admin/customer/sendMsg')}}",
+                            dataType: 'json',
+                            data: {
+                                "_token":"{{csrf_token()}}",
+                                content:"你发布的<<"+articleTitle+">>内容存在违规系统已禁止分享",
+                                userId:userId,
+                                msgType:6,
+                                title:'系统警告',
+                            },
+                            success: function(data){
+                                if (data.code==1){
+                                    //layer.msg("操作成功");
+                                }else{
+                                    //layer.msg(data.message);
+                                }
+                            },
+                            error:function(data){
+
+                            }
+                        });
+                    }
+
+                }
             });
 
             //playMusic

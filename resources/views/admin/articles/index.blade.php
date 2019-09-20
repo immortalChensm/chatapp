@@ -249,7 +249,7 @@
                             dataType: 'json',
                             data: {
                                 "_token":"{{csrf_token()}}",
-                                content:articleTitle+"内容存在违规系统已屏蔽",
+                                content:"你发布的<<"+articleTitle+">>内容存在违规系统已屏蔽",
                                 userId:userId,
                                 msgType:6,
                                 title:'系统警告',
@@ -273,7 +273,7 @@
                             dataType: 'json',
                             data: {
                                 "_token":"{{csrf_token()}}",
-                                content:articleTitle+"内容存在违规系统已禁止分享",
+                                content:"你发布的<<"+articleTitle+">>内容存在违规系统已禁止分享",
                                 userId:userId,
                                 msgType:6,
                                 title:'系统警告',

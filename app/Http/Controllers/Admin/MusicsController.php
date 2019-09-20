@@ -33,10 +33,14 @@ class MusicsController extends Controller
         },function (&$item){
             if ($item->userType==2){
                 $item->userId      = "平台发布";
+                $item->userIdMsg = 0;
             }else{
+                $item->userIdMsg = $item['userId'];
                 $item->userId      = User::where("userId","=",$item['userId'])->value("name");
             }
+            $item->isShowFlag      = $item->isShow ;
             $item->isShow      = $item->isShow == 0 ? '是' : '否';
+            $item->canSharedFlag   = $item->canShared;
             $item->canShared  = $item->canShared == 1 ? '是' : '否';
             $item->createdDate = date("Y-m-d H", strtotime($item->created_at));
         }]);

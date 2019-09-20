@@ -136,8 +136,8 @@
                         "render": function ( data, type, row, meta ) {
                             var BtnHtml = "<button type='button' class='fa fa-edit btn  btn-success btn-sm update' data='"+row.articleId+"' data-user='"+row.userType+"'>修改</button>";
                             BtnHtml+= "  <button type='button' class='fa fa-remove btn  btn-danger btn-sm delete' data='"+row.articleId+"' data-title='"+row.title+"' data-user='"+row.userType+"'>移除</button>";
-                            BtnHtml+= "  <button type='button' class='fa fa-eye btn  btn-danger btn-sm isShow' data='"+row.articleId+"' data-title='"+row.title+"' data-user='"+row.userType+"'>屏蔽</button>";
-                            BtnHtml+= "  <button type='button' class='fa fa-share btn  btn-danger btn-sm disableShare' data='"+row.articleId+"' data-title='"+row.title+"' data-user='"+row.userType+"'>分享</button>";
+                            BtnHtml+= "  <button type='button' class='fa fa-eye btn  btn-danger btn-sm isShow' data='"+row.articleId+"' data-title='"+row.title+"' data-user='"+row.userType+"' data-userId='"+row.userIdMsg+"'>屏蔽</button>";
+                            BtnHtml+= "  <button type='button' class='fa fa-share btn  btn-danger btn-sm disableShare' data='"+row.articleId+"' data-title='"+row.title+"' data-user='"+row.userType+"' data-userId='"+row.userIdMsg+"'>分享</button>";
                             BtnHtml+= "  <button type='button' class='fa fa-hand-pointer-o btn  btn-danger btn-sm top' data='"+row.articleId+"' data-title='"+row.title+"' data-user='"+row.userType+"'>置顶</button>";
                             return BtnHtml;
                         }
@@ -208,6 +208,7 @@
             //屏蔽操作
             $("#datagrid").on("click",".isShow,.disableShare",function (e) {
                 var dateId = $(this).attr("data");
+                var userId = $(this).attr("data-userId");
                 var type=1;
                 var title = $(":input[name=title]").val();
                 var tagId = $(":input[name=tagId]").val();
@@ -235,6 +236,32 @@
 
                     }
                 });
+
+                if (userId){
+                    $.ajax({
+                        type: "post",
+                        url: "{{url('/admin/customer/sendMsg')}}",
+                        dataType: 'json',
+                        data: {
+                            "_token":"{{csrf_token()}}",
+                            content:title+"内容存在违规系统已"+(type==1?"屏蔽":"禁止分享"),
+                            userId:userId,
+                            msgType:6,
+                            title:'系统警告',
+                        },
+                        success: function(data){
+                            if (data.code==1){
+                                layer.msg("操作成功");
+                            }else{
+                                layer.msg(data.message);
+                            }
+                        },
+                        error:function(data){
+
+                        }
+                    });
+                }
+
             });
 
             //置顶操作

@@ -41,9 +41,12 @@ class ArticlesController extends Controller
             $item->tagName     = $item->tag->name;
             if ($item->userType==2){
                 $item->userId      = "平台发布";
+                $item->userIdMsg = 0;
             }else{
                 $item->userId      = User::where("userId","=",$item['userId'])->value("name");
+                $item->userIdMsg = $item['userId'];
             }
+
 
             $item->isShow      = $item->isShow == 0 ? '是' : '否';
             $item->canShared   = $item->canShared == 1 ? '是' : '否';

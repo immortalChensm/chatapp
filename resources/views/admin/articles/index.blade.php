@@ -242,6 +242,8 @@
                 });
 
                 if (userId){
+                    alert(show);
+                    alert(share);
                     if (show){
                         $.ajax({
                             type: "post",

@@ -40,11 +40,11 @@ class ArticlesController extends Controller
         },function (&$item){
             $item->tagName     = $item->tag->name;
             if ($item->userType==2){
-                $item->userId      = "平台发布";
+                //$item->userId      = "平台发布";
                 $item->userIdMsg = 0;
             }else{
                 $item->userIdMsg = $item['userId'];
-                $item->userId      = User::where("userId","=",$item['userId'])->value("name");
+                //$item->userId      = User::where("userId","=",$item['userId'])->value("name");
 
             }
 

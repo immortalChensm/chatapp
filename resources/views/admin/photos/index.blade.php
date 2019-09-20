@@ -117,8 +117,8 @@
 
                             var BtnHtml = "<button type='button' class='btn  btn-success btn-sm update' data='"+row.photoId+"'>修改</button>";
                             BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm delete' data='"+row.photoId+"' data-name='"+row.title+"' data-user='"+row.userType+"'>移除</button>";
-                            BtnHtml+= "  <button type='button' class='fa fa-eye btn  btn-danger btn-sm isShow' data='"+row.photoId+"' data-title='"+row.title+"' data-user='"+row.userType+"' data-userId='"+row.userIdMsg+"' data-show='"+row.isShowFlag+"'>屏蔽</button>";
-                            BtnHtml+= "  <button type='button' class='fa fa-share btn  btn-danger btn-sm disableShare' data='"+row.photoId+"' data-title='"+row.title+"' data-user='"+row.userType+"' data-userId='"+row.userIdMsg+"' data-share='"+row.canSharedFlag+"'>分享</button>";
+                            BtnHtml+= "  <button type='button' class='fa fa-eye btn  btn-danger btn-sm isShow' data-btn='isShow' data='"+row.photoId+"' data-title='"+row.title+"' data-user='"+row.userType+"' data-userId='"+row.userIdMsg+"' data-show='"+row.isShowFlag+"'>屏蔽</button>";
+                            BtnHtml+= "  <button type='button' class='fa fa-share btn  btn-danger btn-sm disableShare' data-btn='disableShare' data='"+row.photoId+"' data-title='"+row.title+"' data-user='"+row.userType+"' data-userId='"+row.userIdMsg+"' data-share='"+row.canSharedFlag+"'>分享</button>";
                             BtnHtml+= "  <button type='button' class='fa fa-hand-pointer-o btn  btn-danger btn-sm top' data='"+row.photoId+"' data-title='"+row.title+"' data-user='"+row.userType+"'>置顶</button>";
                             return BtnHtml;
                         }
@@ -201,7 +201,7 @@
 
                 var userId = $(this).attr("data-userId");
                 var articleTitle = $(this).attr("data-title");
-
+                var action = $(this).attr("data-btn");
                 var show = $(this).attr("data-show");
                 var share = $(this).attr("data-share");
                 $.ajax({
@@ -227,55 +227,7 @@
                     }
                 });
 
-                if (userId!=0){
-
-                        $.ajax({
-                            type: "post",
-                            url: "{{url('/admin/customer/sendMsg')}}",
-                            dataType: 'json',
-                            data: {
-                                "_token":"{{csrf_token()}}",
-                                content:(show==1?"你发布的<<"+articleTitle+">>内容存在违规系统已屏蔽":"你发布的<<"+articleTitle+">>内容已解除屏蔽"),
-                                userId:userId,
-                                msgType:6,
-                                title:'系统警告',
-                            },
-                            success: function(data){
-                                if (data.code==1){
-                                    //layer.msg("操作成功");
-                                }else{
-                                    //layer.msg(data.message);
-                                }
-                            },
-                            error:function(data){
-
-                            }
-                        });
-
-                        $.ajax({
-                            type: "post",
-                            url: "{{url('/admin/customer/sendMsg')}}",
-                            dataType: 'json',
-                            data: {
-                                "_token":"{{csrf_token()}}",
-                                content:(share==1?"你发布的<<"+articleTitle+">>内容存在违规系统已禁止分享":"你发布的<<"+articleTitle+">>内容已解除分享功能"),
-                                userId:userId,
-                                msgType:6,
-                                title:'系统警告',
-                            },
-                            success: function(data){
-                                if (data.code==1){
-                                    //layer.msg("操作成功");
-                                }else{
-                                    //layer.msg(data.message);
-                                }
-                            },
-                            error:function(data){
-
-                            }
-                        });
-                    }
-
+                sendMessageToUserWhenShowOrShareAction(userId,action,show,share,articleTitle);
             });
 
 

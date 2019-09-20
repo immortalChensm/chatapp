@@ -240,14 +240,35 @@
                 });
 
                 if (userId!=0){
-                    if (show==1){
                         $.ajax({
                             type: "post",
                             url: "{{url('/admin/customer/sendMsg')}}",
                             dataType: 'json',
                             data: {
                                 "_token":"{{csrf_token()}}",
-                                content:"你发布的<<"+articleTitle+">>内容存在违规系统已屏蔽",
+                                content:(show==1?"你发布的<<"+articleTitle+">>内容存在违规系统已屏蔽":"你发布的<<"+articleTitle+">>内容已解除屏蔽"),
+                                userId:userId,
+                                msgType:6,
+                                title:'系统警告',
+                            },
+                            success: function(data){
+                                if (data.code==1){
+                                    //layer.msg("操作成功");
+                                }else{
+                                    //layer.msg(data.message);
+                                }
+                            },
+                            error:function(data){
+
+                            }
+                        });
+                        $.ajax({
+                            type: "post",
+                            url: "{{url('/admin/customer/sendMsg')}}",
+                            dataType: 'json',
+                            data: {
+                                "_token":"{{csrf_token()}}",
+                                content:(share==1?"你发布的<<"+articleTitle+">>内容存在违规系统已禁止分享":"你发布的<<"+articleTitle+">>内容已解除分享功能"),
                                 userId:userId,
                                 msgType:6,
                                 title:'系统警告',
@@ -264,32 +285,7 @@
                             }
                         });
                     }
-                    if (share==1){
-                        $.ajax({
-                            type: "post",
-                            url: "{{url('/admin/customer/sendMsg')}}",
-                            dataType: 'json',
-                            data: {
-                                "_token":"{{csrf_token()}}",
-                                content:"你发布的<<"+articleTitle+">>内容存在违规系统已禁止分享",
-                                userId:userId,
-                                msgType:6,
-                                title:'系统警告',
-                            },
-                            success: function(data){
-                                if (data.code==1){
-                                    //layer.msg("操作成功");
-                                }else{
-                                    //layer.msg(data.message);
-                                }
-                            },
-                            error:function(data){
 
-                            }
-                        });
-                    }
-
-                }
             });
 
             //playMusic

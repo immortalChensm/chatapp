@@ -241,10 +241,8 @@
                     }
                 });
 
-                if (userId){
-                    alert(show);
-                    alert(share);
-                    if (show){
+                if (userId!=0){
+                    if (show==1){
                         $.ajax({
                             type: "post",
                             url: "{{url('/admin/customer/sendMsg')}}",
@@ -268,7 +266,7 @@
                             }
                         });
                     }
-                    if (share){
+                    if (share==1){
                         $.ajax({
                             type: "post",
                             url: "{{url('/admin/customer/sendMsg')}}",

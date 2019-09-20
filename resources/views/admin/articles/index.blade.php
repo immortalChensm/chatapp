@@ -209,6 +209,7 @@
             $("#datagrid").on("click",".isShow,.disableShare",function (e) {
                 var dateId = $(this).attr("data");
                 var userId = $(this).attr("data-userId");
+                var articleTitle = $(this).attr("data-title");
 
                 var show = $(this).attr("data-show");
                 var share = $(this).attr("data-share");
@@ -240,29 +241,56 @@
                     }
                 });
 
-                if (userId&&(show||share)){
-                    $.ajax({
-                        type: "post",
-                        url: "{{url('/admin/customer/sendMsg')}}",
-                        dataType: 'json',
-                        data: {
-                            "_token":"{{csrf_token()}}",
-                            content:title+"内容存在违规系统已"+(type==1?"屏蔽":"禁止分享"),
-                            userId:userId,
-                            msgType:6,
-                            title:'系统警告',
-                        },
-                        success: function(data){
-                            if (data.code==1){
-                                //layer.msg("操作成功");
-                            }else{
-                                //layer.msg(data.message);
-                            }
-                        },
-                        error:function(data){
+                if (userId){
+                    if (show){
+                        $.ajax({
+                            type: "post",
+                            url: "{{url('/admin/customer/sendMsg')}}",
+                            dataType: 'json',
+                            data: {
+                                "_token":"{{csrf_token()}}",
+                                content:articleTitle+"内容存在违规系统已屏蔽",
+                                userId:userId,
+                                msgType:6,
+                                title:'系统警告',
+                            },
+                            success: function(data){
+                                if (data.code==1){
+                                    //layer.msg("操作成功");
+                                }else{
+                                    //layer.msg(data.message);
+                                }
+                            },
+                            error:function(data){
 
-                        }
-                    });
+                            }
+                        });
+                    }
+                    if (share){
+                        $.ajax({
+                            type: "post",
+                            url: "{{url('/admin/customer/sendMsg')}}",
+                            dataType: 'json',
+                            data: {
+                                "_token":"{{csrf_token()}}",
+                                content:articleTitle+"内容存在违规系统已禁止分享",
+                                userId:userId,
+                                msgType:6,
+                                title:'系统警告',
+                            },
+                            success: function(data){
+                                if (data.code==1){
+                                    //layer.msg("操作成功");
+                                }else{
+                                    //layer.msg(data.message);
+                                }
+                            },
+                            error:function(data){
+
+                            }
+                        });
+                    }
+
                 }
 
             });

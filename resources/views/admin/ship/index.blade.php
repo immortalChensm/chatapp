@@ -110,7 +110,7 @@
                 var table = $('#datagrid').DataTable({
                     processing:true,
                     columns: [
-                        { data:"id",name:"id",orderable: true,searchable:false },
+                        { data:"orderNo",name:"orderNo",orderable: true,searchable:false },
                         { data:"userName",name:"userName",orderable: true,searchable:true },
                         { data:"sellerUserName",name:"sellerUserName",orderable: false,searchable:false },
                         { data:"typeName",name:"typeName",orderable: false,searchable:false },

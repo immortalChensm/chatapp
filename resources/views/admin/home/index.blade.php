@@ -189,7 +189,7 @@
                                                {{$order->userInfo}}
                                             @endif</td>
                                         <td><span class="label label-success">
-                                                @if(empty($order->userInfo)&&$order->state==0)
+                                                @if(empty($order->userInfo)||$order->state==0)
                                                     未售出去
                                                     @else
                                                     已销售

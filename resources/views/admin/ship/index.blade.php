@@ -63,28 +63,30 @@
                             <table id="datagrid" class="table table-bordered table-striped table-hover">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>订单号</th>
                                     <th>买家</th>
                                     <th>卖家</th>
                                     <th>船票类别</th>
                                     <th>购买/出售数量</th>
                                     <th>购买/出售金额</th>
                                     <th>售出时间</th>
-                                    <th>状态</th>
+                                    <th>支付状态</th>
+                                    <th>支付方式</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>订单号</th>
                                     <th>买家</th>
                                     <th>卖家</th>
                                     <th>船票类别</th>
                                     <th>购买/出售数量</th>
                                     <th>购买/出售金额</th>
                                     <th>售出时间</th>
-                                    <th>状态</th>
+                                    <th>支付状态</th>
+                                    <th>支付方式</th>
                                 </tr>
                                 </tfoot>
                             </table>
@@ -116,6 +118,7 @@
                         { data:"payMoney",name:"payMoney",orderable: false,searchable:false },
                         { data:"createdDate",name:"createdDate",orderable: false,searchable:false },
                         { data:"statusName",name:"statusName",orderable: false,searchable:false }
+                        { data:"payType",name:"payType",payType: false,searchable:false }
                     ],
                     columnDefs: [ {
                         // "targets": 8,

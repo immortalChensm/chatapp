@@ -117,7 +117,7 @@
                         { data:"shipNum",name:"shipNum",orderable: false,searchable:false },
                         { data:"payMoney",name:"payMoney",orderable: false,searchable:false },
                         { data:"createdDate",name:"createdDate",orderable: false,searchable:false },
-                        { data:"statusName",name:"statusName",orderable: false,searchable:false }
+                        { data:"statusName",name:"statusName",orderable: false,searchable:false },
                         { data:"payType",name:"payType",orderable: false,searchable:false }
                     ],
                     columnDefs: [ {

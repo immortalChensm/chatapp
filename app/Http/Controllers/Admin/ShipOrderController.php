@@ -45,7 +45,7 @@ class ShipOrderController extends Controller
                 $item->sellerUserName = property_exists($item->seller,'realName')?$item->seller->realName:$item->seller->name;
             }
             $item->typeName = ($item->type==1)?'商户':'平台';
-            $item->payType = ($item->payType==1)?'账号余额':($item->payType==2)?'微信':'支付宝';
+            $item->payType = ($item->payType==3)?'支付宝':($item->payType==2)?'微信':'账户余额';
 
             if (isset($item->buyer)){
                 $item->userName = property_exists($item->buyer,'realName')?$item->buyer->realName:$item->buyer->name;

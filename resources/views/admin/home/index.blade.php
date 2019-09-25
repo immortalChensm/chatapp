@@ -161,20 +161,21 @@
                                 <table class="table no-margin">
                                     <thead>
                                     <tr>
-                                        <th>船票订单 ID</th>
+                                        <th>订单号</th>
                                         <th>卖方</th>
                                         <th>买方</th>
-                                        <th>交易状态</th>
+                                        <th>订单状态</th>
                                         <th>交易船票张数</th>
                                         <th>交易金额</th>
                                         <th>交易时间</th>
+                                        <th>支付方式</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @if(!empty($data['shipOrder'])&&count($data['shipOrder'])>0)
                                     @foreach($data['shipOrder'] as $order)
                                     <tr>
-                                        <td><a href="">{{$order->id}}</a></td>
+                                        <td><a href="">{{$order->orderNo}}</a></td>
                                         <td>
                                             @if($order->sellerUserId==1)
                                                 平台
@@ -183,12 +184,12 @@
                                                 @endif
                                         </td>
                                         <td> @if(empty($order->userInfo))
-                                                暂无
+                                                暂无买家
                                             @else
                                                {{$order->userInfo}}
                                             @endif</td>
                                         <td><span class="label label-success">
-                                                @if(empty($order->userInfo))
+                                                @if(empty($order->userInfo)&&$order->state==0)
                                                     未售出去
                                                     @else
                                                     已销售
@@ -199,6 +200,16 @@
                                         </td>
                                         <td>{{$order->payMoney}}</td>
                                         <td>{{$order->created_at}}</td>
+
+                                        <td>
+                                            @if($order->payType==1)
+                                                账号支付
+                                                @elseif($order->payType==2)
+                                                微信
+                                                @else
+                                                支付宝
+                                                @endif
+                                        </td>
                                     </tr>
                                         @endforeach
                                         @else

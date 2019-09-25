@@ -190,9 +190,9 @@
                                             @endif</td>
                                         <td><span class="label label-success">
                                                 @if(empty($order->userInfo)||$order->state==0)
-                                                    未售出去
+                                                    未付款
                                                     @else
-                                                    已销售
+                                                    已付款
                                                     @endif
                                             </span></td>
                                         <td>

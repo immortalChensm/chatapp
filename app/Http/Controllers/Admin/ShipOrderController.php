@@ -46,14 +46,17 @@ class ShipOrderController extends Controller
             }
             $item->typeName = ($item->type==1)?'商户':'平台';
             $item->payType = ($item->payType==1)?'账号余额':($item->payType==2)?'微信':'支付宝';
+
+            $item->userName = property_exists($item->buyer,'realName')?$item->buyer->realName:$item->buyer->name;
+            $item->createdDate = date("Y-m-d H", strtotime($item->created_at));
             if ($item->userId&&$item->state==1){
-                $item->userName = property_exists($item->buyer,'realName')?$item->buyer->realName:$item->buyer->name;
+                //$item->userName = property_exists($item->buyer,'realName')?$item->buyer->realName:$item->buyer->name;
                 $item->statusName = "已支付";
                 $item->createdDate = date("Y-m-d H", strtotime($item->created_at));
             }else{
-                $item->userName = "";
+                //$item->userName = "";
                 $item->statusName = "未支付";
-                $item->createdDate = "";
+                
             }
 
         }]);

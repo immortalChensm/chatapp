@@ -355,6 +355,13 @@
                                     </label>
                                 </div>
 
+                                <div class="form-group">
+                                    <input type="checkbox"  name="customer-checkbox" class="customer-checkbox">
+                                    <label>
+                                        设置为客服账号
+                                    </label>
+                                </div>
+
                             </div>
                             <!-- /.tab-pane -->
                         </div>
@@ -400,6 +407,23 @@
         }
 
 
+        new Switch(document.querySelector('.customer-checkbox'), {
+            size             : 'default',
+            checked          : {{$data['loginInfo']->customer}},
+            onText           : 'Y',
+            offText          : 'N',
+            onSwitchColor    : '#64BD63',
+            offSwitchColor   : '#fff',
+            onJackColor      : '#fff',
+            offJackColor     : '#fff',
+            showText         : false,
+            disabled         : false,
+            onChange         : function(e){
+                console.log(this);
+                setting("customer",e?1:0,{{$data['userId']}});
+            },
+
+        });
 
 
         new Switch(document.querySelector('.login-checkbox'), {

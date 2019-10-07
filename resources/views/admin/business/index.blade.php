@@ -67,6 +67,7 @@
                                     <th>联系电话</th>
                                     <th>联系地址</th>
                                     <th>提交时间</th>
+                                    <th>状态</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -81,6 +82,7 @@
                                     <th>联系电话</th>
                                     <th>联系地址</th>
                                     <th>提交时间</th>
+                                    <th>状态</th>
                                     <th>操作</th>
                                 </tr>
                                 </tfoot>
@@ -112,15 +114,16 @@
                         { data:"mobile",name:"content",orderable: false},
                         { data:"address",name:"replyUserName",orderable: false},
                         { data:"createdDate",name:"createdDate",orderable: false}
+                        { data:"state",name:"state",orderable: false}
                     ],
                     columnDefs: [ {
-                        "targets": 7,
+                        "targets": 8,
                         "render": function ( data, type, row, meta ) {
 
                             var BtnHtml = "";
                             BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm delete' data='"+row.id+"' data-name='"+row.userName+"'>移除</button>";
-                            BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm handle' data='"+row.id+"' data-type='1'>已排班</button>";
-                            BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm finish' data='"+row.id+"' data-type='2'>已结账</button>";
+                            BtnHtml+= "  <button type='button' class='btn  btn-success btn-sm handle' data='"+row.id+"' data-name='"+row.userName+"' data-type='1'>已排班</button>";
+                            BtnHtml+= "  <button type='button' class='btn  btn-success btn-sm finish' data='"+row.id+"' data-name='"+row.userName+"' data-type='2'>已结账</button>";
                             return BtnHtml;
                         }
                     } ],

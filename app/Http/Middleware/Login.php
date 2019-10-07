@@ -51,7 +51,7 @@ class Login
                         $permissionListName[] = $v;
                     }
                 }
-                if (!in_array($action,$permissionListName)){
+                if (!in_array($action,$permissionListName)&&($action!='ManagerController@logoutHandler'||$action!='HomeController@index')){
                     return response()->json(['code'=>0,'message'=>'你的账号没有操作权限1']);
                 }
 

@@ -174,7 +174,7 @@
                             },
                             success: function(data){
                                 if (data.code==1){
-                                    layer.msg(data.message.result.ActionStatus);
+                                    layer.msg(data.message);
                                 }else{
                                     layer.msg(data.message);
                                 }

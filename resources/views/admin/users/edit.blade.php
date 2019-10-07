@@ -355,12 +355,12 @@
                                     </label>
                                 </div>
 
-                                <div class="form-group">
-                                    <input type="checkbox"  name="customer-checkbox" class="customer-checkbox">
-                                    <label>
-                                        设置为客服账号
-                                    </label>
-                                </div>
+                                {{--<div class="form-group">--}}
+                                    {{--<input type="checkbox"  name="customer-checkbox" class="customer-checkbox">--}}
+                                    {{--<label>--}}
+                                        {{--设置为客服账号--}}
+                                    {{--</label>--}}
+                                {{--</div>--}}
 
                             </div>
                             <!-- /.tab-pane -->

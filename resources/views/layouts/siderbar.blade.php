@@ -51,9 +51,15 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
+                    @if(in_array("admin/managers",session("permission")))
                     <li class="@if(preg_match('/manager/',request()->url())) active @endif"><a href="{{url("admin/managers")}}"><i class="fa fa-circle-o"></i> 管理员列表</a></li>
+                    @endif
+                    @if(in_array("admin/role",session("permission")))
                     <li class="@if(preg_match('/role/',request()->url())) active @endif"><a href="{{url("admin/role")}}"><i class="fa fa-circle-o"></i> 角色列表</a></li>
+                    @endif
+                        @if(in_array("admin/role",session("admin/permission")))
                     <li class="@if(preg_match('/permission/',request()->url())) active @endif"><a href="{{url("admin/permission")}}"><i class="fa fa-circle-o"></i> 权限列表</a></li>
+                        @endif
                 </ul>
             </li>
             @endif
@@ -67,8 +73,10 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li @if(preg_match('/articles/',request()->url())) class="active" @endif ><a href="{{url("admin/articles")}}"><i class="fa fa-circle-o"></i> 文章列表</a></li>
-                    <li @if(preg_match('/article\/tags/',request()->url())) class="active" @endif ><a href="{{url("admin/article/tags")}}"><i class="fa fa-circle-o"></i> 文章标签</a></li>
+                    @if(in_array("admin/articles",session("permission")))
+                    <li @if(preg_match('/articles/',request()->url())) class="active" @endif ><a href="{{url("admin/articles")}}"><i class="fa fa-circle-o"></i> 文章列表</a></li>@endif
+                        @if(in_array("admin/article/tags",session("permission")))
+                    <li @if(preg_match('/article\/tags/',request()->url())) class="active" @endif ><a href="{{url("admin/article/tags")}}"><i class="fa fa-circle-o"></i> 文章标签</a></li>@endif
                 </ul>
             </li>
             @endif

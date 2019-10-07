@@ -48,7 +48,10 @@ class Login
                 $permissionListUri = [];
                 foreach ($permissionList as $item){
                     $temp = explode(",",$item['action']);
-                    $permissionListUri[$item['group']] = $item['uri'];
+                    if (!empty($item['uri'])){
+                        $permissionListUri[$item['group']][] = $item['uri'];
+                    }
+
                     foreach ($temp as $v) {
                         $permissionListName[] = $v;
                     }

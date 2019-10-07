@@ -59,6 +59,7 @@ class Login
                 $permissionListName[] = "ManagerController@logoutHandler";
                 $permissionListName[] = "HomeController@index";
                 session(['permission'=>$permissionListUri]);
+                print_r(array_values(session("permission")));
                 if (!in_array($action,$permissionListName)){
                     return response()->json(['code'=>0,'message'=>'你的账号没有操作权限1']);
                 }

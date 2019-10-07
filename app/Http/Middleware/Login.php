@@ -45,7 +45,7 @@ class Login
                 if (empty($permissionList)&&($action!='ManagerController@logoutHandler'||$action!='HomeController@index'))return response()->json(['code'=>0,'message'=>'你的账号没有操作权限2']);
 
                 $permissionListName = [];
-                print_r($permissionList);
+                print_r($permissionList->toArray());
                 foreach ($permissionList as $item){
                     $temp = explode(",",$item);
                     foreach ($temp as $v) {

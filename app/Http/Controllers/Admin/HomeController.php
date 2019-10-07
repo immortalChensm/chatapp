@@ -20,7 +20,7 @@ class HomeController extends Controller
         $data['spaceSale']  = DB::table("users_space_order")->sum("shipNum");
         $data['users']      = DB::table("users")->select(["name", "created_at","headImgUrl"])->orderBy("created_at","desc")->limit(8)->get();
         $businessTotal      = DB::table("users_business")->select(["id", "state"])->count("id");
-        $businessOk      = DB::table("users_business")->where("state","=",2)->select(["id", "state"])->count("id");
+        $businessOk      = DB::table("users_business")->where("state","=",1)->select(["id", "state"])->count("id");
         $data['business'] = $businessOk/$businessTotal*100;
         foreach ($data['users'] as $k=>$user){
             empty($user->headImgUrl)&&$user->headImgUrl='other/defaultlogo.png';

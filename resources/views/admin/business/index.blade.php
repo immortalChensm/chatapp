@@ -113,7 +113,7 @@
                         { data:"name",name:"name",orderable: false,searchable:true },
                         { data:"mobile",name:"content",orderable: false},
                         { data:"address",name:"replyUserName",orderable: false},
-                        { data:"createdDate",name:"createdDate",orderable: false}
+                        { data:"createdDate",name:"createdDate",orderable: false},
                         { data:"state",name:"state",orderable: false}
                     ],
                     columnDefs: [ {

@@ -18,10 +18,6 @@ class Login
      */
     public function handle($request, Closure $next)
     {
-//        $photo = Photos::where("photoId","=",$request->photoId)->first();
-//        if ($photo->userType==1){
-//            return response()->json(['code'=>0,'message'=>'用户发布的相册禁止修改！']);
-//        }
         //取得登录账号的权限
         if (session()->exists("loginUser")){
             $loginUser = session("loginUser");
@@ -43,29 +39,27 @@ class Login
                         }
                     }
                 }
-
-                $permissionList = Permissions::whereIn("id",$permissionIdList)->get(['action']);
                 $route = app(Route::class);
-                echo substr($route->getActionName(),strripos($route->getActionName(),"\\")+1);
+                $action = substr($route->getActionName(),strripos($route->getActionName(),"\\")+1);
+                $permissionList = Permissions::whereIn("id",$permissionIdList)->get(['action']);
+                if (empty($permissionList)&&($action!='ManagerController@logoutHandler'||$action!='HomeController@index'))return response()->json(['code'=>0,'message'=>'你的账号没有操作权限']);
+
+                $permissionListName = [];
+                foreach ($permissionList as $item){
+                    $temp = explode(",",$item);
+                    foreach ($temp as $v) {
+                        $permissionListName[] = $v;
+                    }
+                }
+                if (!in_array($action,$permissionListName)){
+                    return response()->json(['code'=>0,'message'=>'你的账号没有操作权限']);
+                }
 
             }
         }else{
-            //return response()->json(['code'=>0,'message'=>'用户发布的相册禁止修改！']);
             return redirect("/admin/login");
         }
 
-
-
-//        print_r($permissionIdList);
-//        print_r($permissionList->toArray());
-        /** @var Route $route */
-        $route = app(Route::class);
-        if(substr($route->getActionName(),strripos($route->getActionName(),"\\")+1)){
-
-        }else{
-
-        }
-        //print_r(session("loginUser"));
         return $next($request);
     }
 }

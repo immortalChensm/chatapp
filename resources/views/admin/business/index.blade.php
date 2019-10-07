@@ -68,6 +68,7 @@
                                     <th>联系地址</th>
                                     <th>提交时间</th>
                                     <th>状态</th>
+                                    <th>备注</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -83,6 +84,7 @@
                                     <th>联系地址</th>
                                     <th>提交时间</th>
                                     <th>状态</th>
+                                    <th>备注</th>
                                     <th>操作</th>
                                 </tr>
                                 </tfoot>
@@ -114,14 +116,16 @@
                         { data:"mobile",name:"content",orderable: false},
                         { data:"address",name:"replyUserName",orderable: false},
                         { data:"createdDate",name:"createdDate",orderable: false},
-                        { data:"state",name:"state",orderable: false}
+                        { data:"state",name:"state",orderable: false},
+                        { data:"mark",name:"mark",orderable: false}
                     ],
                     columnDefs: [ {
-                        "targets": 8,
+                        "targets": 9,
                         "render": function ( data, type, row, meta ) {
 
                             var BtnHtml = "";
                             BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm delete' data='"+row.id+"' data-name='"+row.userName+"'>移除</button>";
+                            BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm mark' data='"+row.id+"' data-name='"+row.userName+"'>备注</button>";
                             if (row.state=='待处理'){
                                 BtnHtml+= "  <button type='button' class='btn  btn-success btn-sm handle' data='"+row.id+"' data-name='"+row.userName+"' data-type='1'>已排班</button>";
                                 BtnHtml+= "  <button type='button' class='btn  btn-success btn-sm finish' data='"+row.id+"' data-name='"+row.userName+"' data-type='2'>已结账</button>";
@@ -154,6 +158,50 @@
 
             })
 
+            $("#datagrid").on("click",".mark",function (e) {
+                var dataid = $(this).attr("data");
+                layer.open({
+                    type:0,
+                    area: ['540px', '240px'],
+                    content: "<textarea class='form-control' style='height:100px' name='text' placeholder='备注内容'></textarea>"
+                    ,btn: ['提交', '取消']
+                    ,btn1: function(index, layero){
+                        //按钮【按钮一】的回调
+
+                        var message = $(layero).find(":input[name=text]").val();
+                        if (message.length==0){
+                            layer.msg("请填写备注内容");
+                            return false;
+                        }
+                        $.ajax({
+                            type: "post",
+                            url: "{{url('/admin/order/business/mark/')}}/"+dataid,
+                            dataType: 'json',
+                            data: {
+                                "_token":"{{csrf_token()}}",
+                                mark:message,
+                            },
+                            success: function(data){
+                                if (data.code==1){
+                                    layer.msg(data.message.result.ActionStatus);
+                                }else{
+                                    layer.msg(data.message);
+                                }
+                            },
+                            error:function(data){
+
+                            }
+                        });
+
+                    }
+                    ,cancel: function(){
+                        //右上角关闭回调
+
+                        //return false 开启该代码可禁止点击该按钮关闭
+                    }
+                });
+            });
+
             $("#datagrid").on("click",".handle,.finish",function (e) {
                 var type = $(this).attr("data-type");
                 var dataid = $(this).attr("data");
@@ -171,6 +219,9 @@
                         success: function(data){
                             if (data.code==1){
                                 layer.msg(data.message);
+                                var name = $(":input[name=userName]").val();
+                                var type = $(":input[name=type]").val();
+                                table.ajax.url( '/admin/order/get/business?name='+name+"&type="+type).load();
                             }else{
                                 layer.msg(data.message);
                             }

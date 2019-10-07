@@ -53,4 +53,10 @@ class BusinessController extends Controller
     {
         return $business->update(['state'=>request('type')])?['code'=>1,'message'=>'操作成功']:['code'=>0,'message'=>'操作失败'];
     }
+
+    function mark(Business $business)
+    {
+        $business->update(['mark'=>request("mark")]);
+        return ['code'=>1,'message'=>'操作成功'];
+    }
 }

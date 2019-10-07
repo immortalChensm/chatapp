@@ -21,7 +21,7 @@ class HomeController extends Controller
         $data['users']      = DB::table("users")->select(["name", "created_at","headImgUrl"])->orderBy("created_at","desc")->limit(8)->get();
         $businessTotal      = DB::table("users_business")->select(["id", "state"])->count("id");
         $businessOk      = DB::table("users_business")->where("state","=",1)->select(["id", "state"])->count("id");
-        $data['business'] = $businessOk/$businessTotal*100;
+        $data['business'] = round($businessOk/$businessTotal*100,1);
         foreach ($data['users'] as $k=>$user){
             empty($user->headImgUrl)&&$user->headImgUrl='other/defaultlogo.png';
             $data['users'][$k]->headImgUrl = downloadCosFile(['fileKeyName'=>$user->headImgUrl,'expire'=>config("cos.expire")]);

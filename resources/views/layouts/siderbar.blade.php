@@ -37,7 +37,7 @@
                 </ul>
             </li>
 
-            @if(count(session("permission")['管理员管理'])!=0)
+            @if(array_key_exists(session("permission"),'管理员管理'))
             <li class="treeview @if(
             preg_match('/manager/',request()->url())
             ||preg_match('/role/',request()->url())

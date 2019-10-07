@@ -42,7 +42,15 @@ class Login
                 $route = app(Route::class);
                 $action = substr($route->getActionName(),strripos($route->getActionName(),"\\")+1);
                 $permissionList = Permissions::whereIn("id",$permissionIdList)->get(['action','group','uri']);
-                if (empty($permissionList)&&($action!='ManagerController@logoutHandler'||$action!='HomeController@index'))return response()->json(['code'=>0,'message'=>'你的账号没有操作权限2']);
+                if (empty($permissionList)&&($action!='ManagerController@logoutHandler'||$action!='HomeController@index')){
+                    if (request()->ajax()){
+                        return response()->json(['code'=>0,'message'=>'你的账号没有操作权限']);
+                    }else{
+                        return response()
+                            ->view('404', "你的账号没有操作权限", 200)
+                            ->header('Content-Type', "text/html");
+                    }
+                }
 
                 $permissionListName = [];
                 $permissionListUri = [];
@@ -60,7 +68,14 @@ class Login
                 $permissionListName[] = "HomeController@index";
                 session(['permission'=>$permissionListUri]);
                 if (!in_array($action,$permissionListName)){
-                    return response()->json(['code'=>0,'message'=>'你的账号没有操作权限1']);
+                    if (request()->ajax()){
+                        return response()->json(['code'=>0,'message'=>'你的账号没有操作权限']);
+                    }else{
+                        return response()
+                            ->view('404', "你的账号没有操作权限", 200)
+                            ->header('Content-Type', "text/html");
+                    }
+
                 }
 
             }

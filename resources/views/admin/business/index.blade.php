@@ -184,6 +184,9 @@
                             success: function(data){
                                 if (data.code==1){
                                     layer.msg(data.message);
+                                    var name = $(":input[name=userName]").val();
+                                    var type = $(":input[name=type]").val();
+                                    table.ajax.url( '/admin/order/get/business?name='+name+"&type="+type).load();
                                 }else{
                                     layer.msg(data.message);
                                 }

@@ -125,7 +125,7 @@
 
                             var BtnHtml = "";
                             BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm delete' data='"+row.id+"' data-name='"+row.userName+"'>移除</button>";
-                            BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm mark' data='"+row.id+"' data-name='"+row.userName+"'>备注</button>";
+                            BtnHtml+= "  <button type='button' class='btn  btn-info btn-sm mark' data='"+row.id+"' data-name='"+row.userName+"'>备注</button>";
                             if (row.state=='待处理'){
                                 BtnHtml+= "  <button type='button' class='btn  btn-success btn-sm handle' data='"+row.id+"' data-name='"+row.userName+"' data-type='1'>已排班</button>";
                                 BtnHtml+= "  <button type='button' class='btn  btn-success btn-sm finish' data='"+row.id+"' data-name='"+row.userName+"' data-type='2'>已结账</button>";

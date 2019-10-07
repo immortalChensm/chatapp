@@ -122,12 +122,12 @@
 
                             var BtnHtml = "";
                             BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm delete' data='"+row.id+"' data-name='"+row.userName+"'>移除</button>";
-                            if (row.state==0){
+                            if (row.state=='待处理'){
                                 BtnHtml+= "  <button type='button' class='btn  btn-success btn-sm handle' data='"+row.id+"' data-name='"+row.userName+"' data-type='1'>已排班</button>";
                                 BtnHtml+= "  <button type='button' class='btn  btn-success btn-sm finish' data='"+row.id+"' data-name='"+row.userName+"' data-type='2'>已结账</button>";
-                            } else if (row.state==1){
+                            } else if (row.state=='已排班'){
                                 BtnHtml+= "  <button type='button' class='btn  btn-success btn-sm finish' data='"+row.id+"' data-name='"+row.userName+"' data-type='2'>已结账</button>";
-                            } else if (row.state==2){
+                            } else if (row.state=='已结账'){
                                 BtnHtml+= "  <button type='button' class='btn  btn-success btn-sm handle' data='"+row.id+"' data-name='"+row.userName+"' data-type='1'>已排班</button>";
                             }
 

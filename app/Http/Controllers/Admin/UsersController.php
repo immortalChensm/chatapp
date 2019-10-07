@@ -86,12 +86,15 @@ class UsersController extends Controller
            'canVideo'=>(request("value")==1?"系统已解除你的视频发布限制":"系统已禁止你发布视频功能"),
            'canComment'=>(request("value")==1?"系统已解除你的评论限制":"系统已禁止你评论功能"),
        ];
-       $this->getApi("POST","api/im/sendMsg",[
-                         'content'=>$msgTitle[request("field")],
-                         'userId'=>request("userId"),
-                         'msgType'=>6,
-                         'title'=>"系统警告",
+       if (in_array(request("field"),$msgTitle)){
+           $this->getApi("POST","api/im/sendMsg",[
+               'content'=>$msgTitle[request("field")],
+               'userId'=>request("userId"),
+               'msgType'=>6,
+               'title'=>"系统警告",
            ]);
+       }
+
        return ['code' => 1, 'message' => '设置成功'];
     }
 

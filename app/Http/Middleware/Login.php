@@ -72,7 +72,7 @@ class Login
                         return response()->json(['code'=>0,'message'=>'你的账号没有操作权限']);
                     }else{
                         return response()
-                            ->view('404', "你的账号没有操作权限", 200)
+                            ->view('_404', "你的账号没有操作权限", 200)
                             ->header('Content-Type', "text/html");
                     }
 

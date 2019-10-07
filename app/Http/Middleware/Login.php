@@ -45,6 +45,9 @@ class Login
                 }
 
                 $permissionList = Permissions::whereIn("id",$permissionIdList)->get(['action']);
+                $route = app(Route::class);
+                echo substr($route->getActionName(),strripos($route->getActionName(),"\\")+1);
+
             }
         }else{
             //return response()->json(['code'=>0,'message'=>'用户发布的相册禁止修改！']);

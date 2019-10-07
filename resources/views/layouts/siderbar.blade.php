@@ -51,13 +51,13 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    @if(in_array("admin/managers",session("permission")))
+                    @if(in_array("admin/managers",array_values(session("permission"))))
                     <li class="@if(preg_match('/manager/',request()->url())) active @endif"><a href="{{url("admin/managers")}}"><i class="fa fa-circle-o"></i> 管理员列表</a></li>
                     @endif
-                    @if(in_array("admin/role",session("permission")))
+                    @if(in_array("admin/role",array_values(session("permission"))))
                     <li class="@if(preg_match('/role/',request()->url())) active @endif"><a href="{{url("admin/role")}}"><i class="fa fa-circle-o"></i> 角色列表</a></li>
                     @endif
-                        @if(in_array("admin/role",session("admin/permission")))
+                        @if(in_array("admin/role",array_values(session("permission"))))
                     <li class="@if(preg_match('/permission/',request()->url())) active @endif"><a href="{{url("admin/permission")}}"><i class="fa fa-circle-o"></i> 权限列表</a></li>
                         @endif
                 </ul>
@@ -73,9 +73,9 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    @if(in_array("admin/articles",session("permission")))
+                    @if(in_array("admin/articles",array_values(session("permission"))))
                     <li @if(preg_match('/articles/',request()->url())) class="active" @endif ><a href="{{url("admin/articles")}}"><i class="fa fa-circle-o"></i> 文章列表</a></li>@endif
-                        @if(in_array("admin/article/tags",session("permission")))
+                        @if(in_array("admin/article/tags",array_values(session("permission"))))
                     <li @if(preg_match('/article\/tags/',request()->url())) class="active" @endif ><a href="{{url("admin/article/tags")}}"><i class="fa fa-circle-o"></i> 文章标签</a></li>@endif
                 </ul>
             </li>

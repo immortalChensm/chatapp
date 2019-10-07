@@ -75,7 +75,7 @@
                 <ul class="treeview-menu">
                     @if(in_array("admin/articles",array_values(session("permission"))))
                         @php
-                        print_r(array_values(session("permission"));
+                        print_r(array_values(session("permission"))
                         @endphp
                     <li @if(preg_match('/articles/',request()->url())) class="active" @endif ><a href="{{url("admin/articles")}}"><i class="fa fa-circle-o"></i> 文章列表</a></li>@endif
                         @if(in_array("admin/article/tags",array_values(session("permission"))))

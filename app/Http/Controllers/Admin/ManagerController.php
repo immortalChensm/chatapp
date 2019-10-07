@@ -128,9 +128,10 @@ class ManagerController extends Controller
     {
         if (session()->exists("loginUser")){
             session()->flush();
-            return view("admin.manager.login");
+            //return view("admin.manager.login");
+            return redirect("/admin/login");
         }else{
-            return view("admin.manager.login");
+            return redirect("/admin/login");
         }
     }
 

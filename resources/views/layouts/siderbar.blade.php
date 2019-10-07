@@ -73,12 +73,9 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    @if(in_array("admin/articles",array_values(session("permission"))))
-                        @php
-                        print_r(array_values(session("permission")));
-                        @endphp
+                    @if(in_array("admin/articles",session("permission")['文章管理']))
                     <li @if(preg_match('/articles/',request()->url())) class="active" @endif ><a href="{{url("admin/articles")}}"><i class="fa fa-circle-o"></i> 文章列表</a></li>@endif
-                        @if(in_array("admin/article/tags",array_values(session("permission"))))
+                        @if(in_array("admin/article/tags",session("permission")['文章管理']))
                     <li @if(preg_match('/article\/tags/',request()->url())) class="active" @endif ><a href="{{url("admin/article/tags")}}"><i class="fa fa-circle-o"></i> 文章标签</a></li>@endif
                 </ul>
             </li>

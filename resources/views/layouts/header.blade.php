@@ -49,12 +49,12 @@
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                     <!-- Messages: style can be found in dropdown.less-->
-                    {{--<li class="dropdown user user-menu">--}}
-                        {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown">--}}
-                            {{--<img src="{{asset("adminlte/dist/img/chat.jpg")}}" class="user-image" alt="User Image">--}}
-                            {{--<span class="hidden-xs" id="message">客服系统</span>--}}
-                        {{--</a>--}}
-                    {{--</li>--}}
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="{{asset("adminlte/dist/img/chat.jpg")}}" class="user-image" alt="User Image">
+                            <span class="hidden-xs" id="message">客服系统</span>
+                        </a>
+                    </li>
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="{{asset("adminlte/dist/img/user2-160x160.jpg")}}" class="user-image" alt="User Image">

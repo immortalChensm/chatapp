@@ -58,6 +58,7 @@
             </li>
             @endif
 
+            @if(array_key_exists('文章管理',session("permission")))
             <li class="treeview @if(preg_match('/articles|tags/',request()->url())) active @endif">
                 <a href="#">
                     <i class="fa fa-book"></i> <span>文章管理</span>
@@ -70,7 +71,9 @@
                     <li @if(preg_match('/article\/tags/',request()->url())) class="active" @endif ><a href="{{url("admin/article/tags")}}"><i class="fa fa-circle-o"></i> 文章标签</a></li>
                 </ul>
             </li>
+            @endif
 
+            @if(array_key_exists('相册管理',session("permission")))
             <li class="treeview @if(preg_match('/photos/',request()->url())) active @endif">
                 <a href="#">
                     <i class="fa fa-file-image-o"></i> <span>相册管理</span>
@@ -82,7 +85,9 @@
                     <li @if(preg_match('/photos/',request()->url())) class="active" @endif  ><a href="{{url("admin/photos")}}"><i class="fa fa-circle-o"></i> 相册列表</a></li>
                 </ul>
             </li>
+            @endif
 
+            @if(array_key_exists('视频管理',session("permission")))
             <li class="treeview @if(preg_match('/videos/',request()->url())) active @endif">
                 <a href="#">
                     <i class="fa fa-file-video-o"></i> <span>视频管理</span>
@@ -94,7 +99,9 @@
                     <li @if(preg_match('/videos/',request()->url())) class="active" @endif><a href="{{url("admin/videos")}}"><i class="fa fa-circle-o"></i> 视频列表</a></li>
                 </ul>
             </li>
+            @endif
 
+            @if(array_key_exists('音乐管理',session("permission")))
             <li class="treeview @if(preg_match('/musics/',request()->url())) active @endif">
                 <a href="#">
                     <i class="fa fa-music"></i> <span>音乐管理</span>
@@ -106,7 +113,9 @@
                     <li @if(preg_match('/musics/',request()->url())) class="active" @endif><a href="{{url("admin/musics")}}"><i class="fa fa-circle-o"></i> 音乐列表</a></li>
                 </ul>
             </li>
+            @endif
 
+            @if(array_key_exists('群组管理',session("permission")))
             <li class="treeview @if(preg_match('/groups/',request()->url())) active @endif">
                 <a href="#">
                     <i class="fa  fa-group (alias)"></i> <span>群组管理</span>
@@ -118,7 +127,9 @@
                     <li @if(preg_match('/groups/',request()->url())) class="active" @endif ><a href="{{url("admin/groups")}}"><i class="fa fa-circle-o"></i> 群组列表</a></li>
                 </ul>
             </li>
+            @endif
 
+            @if(array_key_exists('用户管理',session("permission")))
             <li class="treeview @if(preg_match('/users/',request()->url())) active @endif">
                 <a href="#">
                     <i class="fa fa-user"></i> <span>用户管理</span>
@@ -130,7 +141,9 @@
                     <li @if(preg_match('/users/',request()->url())) class="active" @endif><a href="{{url("admin/users")}}"><i class="fa fa-circle-o"></i> 用户列表</a></li>
                 </ul>
             </li>
+            @endif
 
+            @if(array_key_exists('订单管理',session("permission")))
             <li class="treeview @if(preg_match('/business/',request()->url())||preg_match('/ship/',request()->url())
             ||preg_match('/ship/',request()->url())
             ||preg_match('/given/',request()->url())
@@ -164,7 +177,9 @@
                     <li @if(preg_match('/upgrade/',request()->url())) class="active" @endif ><a href="{{url("admin/order/upgrade")}}"><i class="fa fa-circle-o"></i> 用户升级列表</a></li>
                 </ul>
             </li>
+            @endif
 
+            @if(array_key_exists('评论管理',session("permission")))
             <li class="treeview  @if(preg_match('/comments/',request()->url())||preg_match('/replies/',request()->url())) active @endif">
                 <a href="#">
                     <i class="fa  fa-comments"></i> <span>评论管理</span>
@@ -177,7 +192,9 @@
                     <li @if(preg_match('/replies/',request()->url())) class="active" @endif><a href="{{url("admin/replies")}}"><i class="fa fa-circle-o"></i> 回复列表</a></li>
                 </ul>
             </li>
+            @endif
 
+            @if(array_key_exists('举报管理',session("permission")))
             <li class="treeview  @if(preg_match('/reports/',request()->url())
             ||preg_match('/reasons/',request()->url())
             ||preg_match('/reportUsers/',request()->url())
@@ -196,8 +213,9 @@
                     <li @if(preg_match('/reasons/',request()->url())) class="active" @endif><a href="{{url("admin/report/reasons")}}"><i class="fa fa-circle-o"></i> 举报原因列表</a></li>
                 </ul>
             </li>
+            @endif
 
-
+            @if(array_key_exists('系统设置',session("permission")))
             <li class="treeview @if(preg_match('/system/',request()->url())) active @endif">
                 <a href="#">
                     <i class="fa fa-wrench"></i> <span>系统设置</span>
@@ -210,7 +228,7 @@
                     <li @if(preg_match('/top/',request()->url())) class="active" @endif><a href="{{url("admin/system/top")}}"><i class="fa fa-circle-o"></i> 置顶记录</a></li>
                 </ul>
             </li>
-
+            @endif
 
         </ul>
     </section>

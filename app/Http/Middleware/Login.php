@@ -51,6 +51,8 @@ class Login
                         $permissionListName[] = $v;
                     }
                 }
+                echo $action."<br />";
+                print_r($permissionListName);
                 if (!in_array($action,$permissionListName)){
                     return response()->json(['code'=>0,'message'=>'你的账号没有操作权限1']);
                 }

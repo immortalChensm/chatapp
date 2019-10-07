@@ -21,8 +21,7 @@
               </span>
             </div>
         </form>
-        <!-- /.search form -->
-        <!-- sidebar menu: : style can be found in sidebar.less -->
+
         <ul class="sidebar-menu" data-widget="tree">
 
             <li class="header">管理模块</li>
@@ -197,29 +196,6 @@
                 </ul>
             </li>
 
-            {{--<li class="treeview">--}}
-                {{--<a href="#">--}}
-                    {{--<i class="fa fa-commenting"></i> <span>客服管理</span>--}}
-                    {{--<span class="pull-right-container">--}}
-                  {{--<i class="fa fa-angle-left pull-right"></i>--}}
-                {{--</span>--}}
-                {{--</a>--}}
-                {{--<ul class="treeview-menu">--}}
-                    {{--<li ><a href="{{url("admin/managers")}}"><i class="fa fa-circle-o"></i> 客服设置</a></li>--}}
-                {{--</ul>--}}
-            {{--</li>--}}
-
-            {{--<li class="treeview">--}}
-                {{--<a href="#">--}}
-                    {{--<i class="fa fa-trademark"></i> <span>广告管理</span>--}}
-                    {{--<span class="pull-right-container">--}}
-                  {{--<i class="fa fa-angle-left pull-right"></i>--}}
-                {{--</span>--}}
-                {{--</a>--}}
-                {{--<ul class="treeview-menu">--}}
-                    {{--<li><a href="{{url("admin/managers")}}"><i class="fa fa-circle-o"></i> 广告列表</a></li>--}}
-                {{--</ul>--}}
-            {{--</li>--}}
 
             <li class="treeview @if(preg_match('/system/',request()->url())) active @endif">
                 <a href="#">
@@ -230,7 +206,6 @@
                 </a>
                 <ul class="treeview-menu">
                     <li @if(preg_match('/index/',request()->url())) class="active" @endif><a href="{{url("admin/system/index")}}"><i class="fa fa-circle-o"></i> 网站设置</a></li>
-                    {{--<li @if(preg_match('/about/',request()->url())) class="active" @endif><a href="{{url("admin/about")}}"><i class="fa fa-circle-o"></i> 关于我们</a></li>--}}
                     <li @if(preg_match('/top/',request()->url())) class="active" @endif><a href="{{url("admin/system/top")}}"><i class="fa fa-circle-o"></i> 置顶记录</a></li>
                 </ul>
             </li>

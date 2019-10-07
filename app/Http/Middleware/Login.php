@@ -45,14 +45,18 @@ class Login
                 if (empty($permissionList)&&($action!='ManagerController@logoutHandler'||$action!='HomeController@index'))return response()->json(['code'=>0,'message'=>'你的账号没有操作权限2']);
 
                 $permissionListName = [];
+                $permissionListUri = [];
                 foreach ($permissionList as $item){
                     $temp = explode(",",$item['action']);
+                    $permissionListUri[$item['group']] = $item['uri'];
                     foreach ($temp as $v) {
                         $permissionListName[] = $v;
                     }
                 }
+                print_r($permissionListUri);
                 $permissionListName[] = "ManagerController@logoutHandler";
                 $permissionListName[] = "HomeController@index";
+                session(['permission'=>$permissionListUri]);
                 if (!in_array($action,$permissionListName)){
                     return response()->json(['code'=>0,'message'=>'你的账号没有操作权限1']);
                 }

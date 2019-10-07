@@ -46,9 +46,7 @@ class Login
                     if (request()->ajax()){
                         return response()->json(['code'=>0,'message'=>'你的账号没有操作权限']);
                     }else{
-                        return response()
-                            ->view('_404', "你的账号没有操作权限", 200)
-                            ->header('Content-Type', "text/html");
+                        return response()->make('你的账号没有操作权限',200);
                     }
                 }
 
@@ -71,9 +69,7 @@ class Login
                     if (request()->ajax()){
                         return response()->json(['code'=>0,'message'=>'你的账号没有操作权限']);
                     }else{
-                        return response()
-                            ->view('_404', "你的账号没有操作权限", 200)
-                            ->header('Content-Type', "text/html");
+                        return response()->make('你的账号没有操作权限',200);
                     }
 
                 }

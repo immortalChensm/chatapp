@@ -119,6 +119,8 @@
 
                             var BtnHtml = "";
                             BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm delete' data='"+row.id+"' data-name='"+row.userName+"'>移除</button>";
+                            BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm handle' data='"+row.id+"' data-type='1'>已排班</button>";
+                            BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm finish' data='"+row.id+"' data-type='2'>已结账</button>";
                             return BtnHtml;
                         }
                     } ],
@@ -141,6 +143,37 @@
                 })
 
             })
+
+            $("#datagrid").on("click",".handle,.finish",function (e) {
+                var type = $(this).attr("data-type");
+                var dataid = $(this).attr("data");
+                layer.confirm('您确定要处理('+$(this).attr("data-name")+")的状态吗？", {
+                    btn: ['确认','取消'] //按钮
+                }, function(){
+                    $.ajax({
+                        type: "post",
+                        url: "{{url('/admin/order/business/state/')}}/"+dataid,
+                        dataType: 'json',
+                        data: {
+                            "_token":"{{csrf_token()}}",
+                            type:type
+                        },
+                        success: function(data){
+                            if (data.code==1){
+                                layer.msg(data.message);
+                            }else{
+                                layer.msg(data.message);
+                            }
+                        },
+                        error:function(data){
+
+                        }
+                    });
+
+                }, function(){
+
+                });
+            });
 
             //移除操作
             $("#datagrid").on("click",".delete",function (e) {

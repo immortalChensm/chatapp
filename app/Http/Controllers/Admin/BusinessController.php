@@ -41,4 +41,9 @@ class BusinessController extends Controller
     {
         return $this->removeModel($business,1);
     }
+
+    function state(Business $business)
+    {
+        return $business->update(['state'=>request('type')])?['code'=>1,'message'=>'操作成功']:['code'=>0,'message'=>'操作失败'];
+    }
 }

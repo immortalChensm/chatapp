@@ -41,7 +41,7 @@ class Login
                 }
                 $route = app(Route::class);
                 $action = substr($route->getActionName(),strripos($route->getActionName(),"\\")+1);
-                $permissionList = Permissions::whereIn("id",$permissionIdList)->get(['action']);
+                $permissionList = Permissions::whereIn("id",$permissionIdList)->get(['action','group','uri']);
                 if (empty($permissionList)&&($action!='ManagerController@logoutHandler'||$action!='HomeController@index'))return response()->json(['code'=>0,'message'=>'你的账号没有操作权限2']);
 
                 $permissionListName = [];

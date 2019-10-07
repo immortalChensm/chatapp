@@ -56,7 +56,6 @@ class Login
                         $permissionListName[] = $v;
                     }
                 }
-                print_r($permissionListUri);
                 $permissionListName[] = "ManagerController@logoutHandler";
                 $permissionListName[] = "HomeController@index";
                 session(['permission'=>$permissionListUri]);

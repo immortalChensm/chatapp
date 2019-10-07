@@ -37,6 +37,7 @@
                 </ul>
             </li>
 
+            @if(count(session("permission")['管理员管理'])!=0)
             <li class="treeview @if(
             preg_match('/manager/',request()->url())
             ||preg_match('/role/',request()->url())
@@ -55,7 +56,7 @@
                     <li class="@if(preg_match('/permission/',request()->url())) active @endif"><a href="{{url("admin/permission")}}"><i class="fa fa-circle-o"></i> 权限列表</a></li>
                 </ul>
             </li>
-
+            @endif
 
             <li class="treeview @if(preg_match('/articles|tags/',request()->url())) active @endif">
                 <a href="#">

@@ -51,13 +51,13 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    @if(in_array("admin/managers",array_values(session("permission"))))
+                    @if(in_array("admin/managers",session("permission")['管理员管理']))
                     <li class="@if(preg_match('/manager/',request()->url())) active @endif"><a href="{{url("admin/managers")}}"><i class="fa fa-circle-o"></i> 管理员列表</a></li>
                     @endif
-                    @if(in_array("admin/role",array_values(session("permission"))))
+                    @if(in_array("admin/role",session("permission")['管理员管理']))
                     <li class="@if(preg_match('/role/',request()->url())) active @endif"><a href="{{url("admin/role")}}"><i class="fa fa-circle-o"></i> 角色列表</a></li>
                     @endif
-                        @if(in_array("admin/role",array_values(session("permission"))))
+                        @if(in_array("admin/role",session("permission")['管理员管理']))
                     <li class="@if(preg_match('/permission/',request()->url())) active @endif"><a href="{{url("admin/permission")}}"><i class="fa fa-circle-o"></i> 权限列表</a></li>
                         @endif
                 </ul>
@@ -90,7 +90,8 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li @if(preg_match('/photos/',request()->url())) class="active" @endif  ><a href="{{url("admin/photos")}}"><i class="fa fa-circle-o"></i> 相册列表</a></li>
+                    @if(in_array("admin/photos",session("permission")['相册管理']))
+                    <li @if(preg_match('/photos/',request()->url())) class="active" @endif  ><a href="{{url("admin/photos")}}"><i class="fa fa-circle-o"></i> 相册列表</a></li>@endif
                 </ul>
             </li>
             @endif
@@ -104,7 +105,8 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li @if(preg_match('/videos/',request()->url())) class="active" @endif><a href="{{url("admin/videos")}}"><i class="fa fa-circle-o"></i> 视频列表</a></li>
+                    @if(in_array("admin/videos",session("permission")['视频管理']))
+                    <li @if(preg_match('/videos/',request()->url())) class="active" @endif><a href="{{url("admin/videos")}}"><i class="fa fa-circle-o"></i> 视频列表</a></li>@endif
                 </ul>
             </li>
             @endif
@@ -118,7 +120,8 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li @if(preg_match('/musics/',request()->url())) class="active" @endif><a href="{{url("admin/musics")}}"><i class="fa fa-circle-o"></i> 音乐列表</a></li>
+                    @if(in_array("admin/musics",session("permission")['音乐管理']))
+                    <li @if(preg_match('/musics/',request()->url())) class="active" @endif><a href="{{url("admin/musics")}}"><i class="fa fa-circle-o"></i> 音乐列表</a></li>@endif
                 </ul>
             </li>
             @endif
@@ -132,7 +135,8 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li @if(preg_match('/groups/',request()->url())) class="active" @endif ><a href="{{url("admin/groups")}}"><i class="fa fa-circle-o"></i> 群组列表</a></li>
+                    @if(in_array("admin/groups",session("permission")['群组管理']))
+                    <li @if(preg_match('/groups/',request()->url())) class="active" @endif ><a href="{{url("admin/groups")}}"><i class="fa fa-circle-o"></i> 群组列表</a></li>@endif
                 </ul>
             </li>
             @endif
@@ -146,7 +150,8 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li @if(preg_match('/users/',request()->url())) class="active" @endif><a href="{{url("admin/users")}}"><i class="fa fa-circle-o"></i> 用户列表</a></li>
+                    @if(in_array("admin/users",session("permission")['用户管理']))
+                    <li @if(preg_match('/users/',request()->url())) class="active" @endif><a href="{{url("admin/users")}}"><i class="fa fa-circle-o"></i> 用户列表</a></li>@endif
                 </ul>
             </li>
             @endif
@@ -172,17 +177,28 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li @if(preg_match('/business/',request()->url())) class="active" @endif ><a href="{{url("admin/order/business")}}"><i class="fa fa-circle-o"></i> 用户业务列表</a></li>
-                    <li @if(preg_match('/ship/',request()->url())) class="active" @endif ><a href="{{url("admin/order/ship")}}"><i class="fa fa-circle-o"></i> 船票订单列表</a></li>
-                    <li @if(preg_match('/given/',request()->url())) class="active" @endif ><a href="{{url("admin/order/given")}}"><i class="fa fa-circle-o"></i> 船票赠送列表</a></li>
-                    <li @if(preg_match('/storage/',request()->url())) class="active" @endif ><a href="{{url("admin/order/storage")}}"><i class="fa fa-circle-o"></i> 空间订单列表</a></li>
-                    <li @if(preg_match('/recharge/',request()->url())) class="active" @endif ><a href="{{url("admin/order/recharge")}}"><i class="fa fa-circle-o"></i> 用户充值列表</a></li>
-                    <li @if(preg_match('/withdrawal/',request()->url())) class="active" @endif ><a href="{{url("admin/order/withdrawal")}}"><i class="fa fa-circle-o"></i> 用户提现列表</a></li>
-                    <li @if(preg_match('/transfer/',request()->url())) class="active" @endif ><a href="{{url("admin/order/transfer")}}"><i class="fa fa-circle-o"></i> 用户转账列表</a></li>
-                    <li @if(preg_match('/expenditure/',request()->url())) class="active" @endif ><a href="{{url("admin/order/expenditure")}}"><i class="fa fa-circle-o"></i> 红包支出列表</a></li>
-                    <li @if(preg_match('/income/',request()->url())) class="active" @endif ><a href="{{url("admin/order/income")}}"><i class="fa fa-circle-o"></i> 红包收入列表</a></li>
-                    <li @if(preg_match('/refund/',request()->url())) class="active" @endif ><a href="{{url("admin/order/refund")}}"><i class="fa fa-circle-o"></i> 红包退还列表</a></li>
-                    <li @if(preg_match('/upgrade/',request()->url())) class="active" @endif ><a href="{{url("admin/order/upgrade")}}"><i class="fa fa-circle-o"></i> 用户升级列表</a></li>
+                    @if(in_array("admin/order/business",session("permission")['订单管理']))
+                    <li @if(preg_match('/business/',request()->url())) class="active" @endif ><a href="{{url("admin/order/business")}}"><i class="fa fa-circle-o"></i> 用户业务列表</a></li>@endif
+                        @if(in_array("admin/order/ship",session("permission")['订单管理']))
+                    <li @if(preg_match('/ship/',request()->url())) class="active" @endif ><a href="{{url("admin/order/ship")}}"><i class="fa fa-circle-o"></i> 船票订单列表</a></li>@endif
+                            @if(in_array("admin/order/given",session("permission")['订单管理']))
+                    <li @if(preg_match('/given/',request()->url())) class="active" @endif ><a href="{{url("admin/order/given")}}"><i class="fa fa-circle-o"></i> 船票赠送列表</a></li>@endif
+                                @if(in_array("admin/order/storage",session("permission")['订单管理']))
+                    <li @if(preg_match('/storage/',request()->url())) class="active" @endif ><a href="{{url("admin/order/storage")}}"><i class="fa fa-circle-o"></i> 空间订单列表</a></li>@endif
+                                    @if(in_array("admin/order/recharge",session("permission")['订单管理']))
+                    <li @if(preg_match('/recharge/',request()->url())) class="active" @endif ><a href="{{url("admin/order/recharge")}}"><i class="fa fa-circle-o"></i> 用户充值列表</a></li>@endif
+                                        @if(in_array("admin/order/withdrawal",session("permission")['订单管理']))
+                    <li @if(preg_match('/withdrawal/',request()->url())) class="active" @endif ><a href="{{url("admin/order/withdrawal")}}"><i class="fa fa-circle-o"></i> 用户提现列表</a></li>@endif
+                                            @if(in_array("admin/order/transfer",session("permission")['订单管理']))
+                    <li @if(preg_match('/transfer/',request()->url())) class="active" @endif ><a href="{{url("admin/order/transfer")}}"><i class="fa fa-circle-o"></i> 用户转账列表</a></li>@endif
+                                                @if(in_array("admin/order/expenditure",session("permission")['订单管理']))
+                    <li @if(preg_match('/expenditure/',request()->url())) class="active" @endif ><a href="{{url("admin/order/expenditure")}}"><i class="fa fa-circle-o"></i> 红包支出列表</a></li>@endif
+                                                    @if(in_array("admin/order/income",session("permission")['订单管理']))
+                    <li @if(preg_match('/income/',request()->url())) class="active" @endif ><a href="{{url("admin/order/income")}}"><i class="fa fa-circle-o"></i> 红包收入列表</a></li>@endif
+                                                        @if(in_array("admin/order/refund",session("permission")['订单管理']))
+                    <li @if(preg_match('/refund/',request()->url())) class="active" @endif ><a href="{{url("admin/order/refund")}}"><i class="fa fa-circle-o"></i> 红包退还列表</a></li>@endif
+                                                            @if(in_array("admin/order/upgrade",session("permission")['订单管理']))
+                    <li @if(preg_match('/upgrade/',request()->url())) class="active" @endif ><a href="{{url("admin/order/upgrade")}}"><i class="fa fa-circle-o"></i> 用户升级列表</a></li>@endif
                 </ul>
             </li>
             @endif
@@ -196,8 +212,10 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li @if(preg_match('/comments/',request()->url())) class="active" @endif><a href="{{url("admin/comments")}}"><i class="fa fa-circle-o"></i> 评论列表</a></li>
-                    <li @if(preg_match('/replies/',request()->url())) class="active" @endif><a href="{{url("admin/replies")}}"><i class="fa fa-circle-o"></i> 回复列表</a></li>
+                    @if(in_array("admin/comments",session("permission")['评论管理']))
+                    <li @if(preg_match('/comments/',request()->url())) class="active" @endif><a href="{{url("admin/comments")}}"><i class="fa fa-circle-o"></i> 评论列表</a></li>@endif
+                        @if(in_array("admin/replies",session("permission")['评论管理']))
+                    <li @if(preg_match('/replies/',request()->url())) class="active" @endif><a href="{{url("admin/replies")}}"><i class="fa fa-circle-o"></i> 回复列表</a></li>@endif
                 </ul>
             </li>
             @endif
@@ -215,10 +233,14 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li @if(preg_match('/reports/',request()->url())) class="active" @endif><a href="{{url("admin/reports")}}"><i class="fa fa-circle-o"></i> 举报内容列表</a></li>
-                    <li @if(preg_match('/reportUsers/',request()->url())) class="active" @endif><a href="{{url("admin/reportUsers")}}"><i class="fa fa-circle-o"></i> 举报用户列表</a></li>
-                    <li @if(preg_match('/reportGroups/',request()->url())) class="active" @endif><a href="{{url("admin/reportGroups")}}"><i class="fa fa-circle-o"></i> 举报群组列表</a></li>
-                    <li @if(preg_match('/reasons/',request()->url())) class="active" @endif><a href="{{url("admin/report/reasons")}}"><i class="fa fa-circle-o"></i> 举报原因列表</a></li>
+                    @if(in_array("admin/reports",session("permission")['举报管理']))
+                    <li @if(preg_match('/reports/',request()->url())) class="active" @endif><a href="{{url("admin/reports")}}"><i class="fa fa-circle-o"></i> 举报内容列表</a></li>@endif
+                        @if(in_array("admin/reportUsers",session("permission")['举报管理']))
+                    <li @if(preg_match('/reportUsers/',request()->url())) class="active" @endif><a href="{{url("admin/reportUsers")}}"><i class="fa fa-circle-o"></i> 举报用户列表</a></li>@endif
+                            @if(in_array("admin/reportGroups",session("permission")['举报管理']))
+                    <li @if(preg_match('/reportGroups/',request()->url())) class="active" @endif><a href="{{url("admin/reportGroups")}}"><i class="fa fa-circle-o"></i> 举报群组列表</a></li>@endif
+                                @if(in_array("admin/report/reasons",session("permission")['举报管理']))
+                    <li @if(preg_match('/reasons/',request()->url())) class="active" @endif><a href="{{url("admin/report/reasons")}}"><i class="fa fa-circle-o"></i> 举报原因列表</a></li>@endif
                 </ul>
             </li>
             @endif
@@ -232,8 +254,10 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li @if(preg_match('/index/',request()->url())) class="active" @endif><a href="{{url("admin/system/index")}}"><i class="fa fa-circle-o"></i> 网站设置</a></li>
-                    <li @if(preg_match('/top/',request()->url())) class="active" @endif><a href="{{url("admin/system/top")}}"><i class="fa fa-circle-o"></i> 置顶记录</a></li>
+                    @if(in_array("admin/system/index",session("permission")['系统设置']))
+                    <li @if(preg_match('/index/',request()->url())) class="active" @endif><a href="{{url("admin/system/index")}}"><i class="fa fa-circle-o"></i> 网站设置</a></li>@endif
+                        @if(in_array("admin/system/top",session("permission")['系统设置']))
+                    <li @if(preg_match('/top/',request()->url())) class="active" @endif><a href="{{url("admin/system/top")}}"><i class="fa fa-circle-o"></i> 置顶记录</a></li>@endif
                 </ul>
             </li>
             @endif

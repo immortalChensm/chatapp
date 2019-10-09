@@ -113,6 +113,7 @@ class ManagerController extends Controller
 
                     //客服账号登录
                     $customer = $this->getApi('POST','api/im/kefu/login',[]);
+
                     session(['imToken'=>$customer['result']]);
                     return ['code'=>1,'message'=>'登录成功'];
                 }else{

@@ -203,6 +203,8 @@
 
 </div>
 
+@include ("layouts.im")
+
 
 <!-- jQuery 3 -->
 <script src="{{asset("adminlte/bower_components/jquery/dist/jquery.min.js")}}"></script>
@@ -210,7 +212,7 @@
 <!-- Bootstrap 3.3.7 -->
 <script src="{{asset("adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js")}}"></script>
 <!-- SlimScroll -->
-<script src="{{asset("adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js")}}"></script>
+{{--<script src="{{asset("adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js")}}"></script>--}}
 <!-- FastClick -->
 <script src="{{asset("adminlte/bower_components/fastclick/lib/fastclick.js")}}"></script>
 <!-- AdminLTE App -->
@@ -224,6 +226,7 @@
 <script charset="utf-8" src="{{asset("kindeditor/kindeditor-all-min.js")}}"></script>
 <script charset="utf-8" src="{{asset("kindeditor/lang/zh-CN.js")}}"></script>
 <script>
+
 
     function openWin() {
         var url='http://47.110.136.62:8092/index.html?account={{session('imToken')}}';                             //转向网页的地址;
@@ -308,6 +311,7 @@
 
 
 </script>
+
 @yield("js")
 
 </body>

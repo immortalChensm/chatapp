@@ -15,7 +15,11 @@
 
     <link href="{{asset("adminlte/css/switch.css")}}" rel="stylesheet">
 
-
+    {{--<link href="{{asset("H5/css/bootstrap.css")}}" rel="stylesheet" type="text/css">--}}
+    {{--<link href="{{asset("H5/css/jquery-ui.css")}}" rel="stylesheet" type="text/css">--}}
+    {{--<link href="{{asset("H5/css/webim_demo.css")}}" rel="stylesheet" type="text/css">--}}
+    {{--<link href="{{asset("H5/css/bootstrap-table.css")}}" rel="stylesheet" type="text/css">--}}
+    <link href="{{asset("H5/css/im.css")}}" rel="stylesheet" type="text/css">
 
     @yield("css")
 
@@ -46,55 +50,31 @@
                 <span class="icon-bar"></span>
             </a>
 
+
+
             <div class="navbar-custom-menu">
+
+
                 <ul class="nav navbar-nav">
-                    <!-- Messages: style can be found in dropdown.less-->
-                    <li class="dropdown user user-menu">
+
+                    <li class="dropdown messages-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="{{asset("adminlte/dist/img/chat.jpg")}}" class="user-image" alt="User Image">
-                            <span class="hidden-xs" id="message">客服系统</span>
+                            <i class="fa fa-envelope-o"></i>
+                            <span class="label label-success" id="webimMessage">0</span>
                         </a>
+                        <ul class="dropdown-menu">
+                            <li class="header" >You have 4 messages</li>
+
+                            <li class="footer"><a href="#">See All Messages</a></li>
+                        </ul>
                     </li>
+
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="{{asset("adminlte/dist/img/user2-160x160.jpg")}}" class="user-image" alt="User Image">
                             <span class="hidden-xs" onclick="logout();">退出系统</span>
                         </a>
-                        {{--<ul class="dropdown-menu">--}}
-                            {{--<!-- User image -->--}}
-                            {{--<li class="user-header">--}}
-                                {{--<img src="{{asset("adminlte/dist/img/user2-160x160.jpg")}}" class="img-circle" alt="User Image">--}}
 
-                                {{--<p>--}}
-                                    {{--Alexander Pierce - Web Developer--}}
-                                    {{--<small>Member since Nov. 2012</small>--}}
-                                {{--</p>--}}
-                            {{--</li>--}}
-                            {{--<!-- Menu Body -->--}}
-                            {{--<li class="user-body">--}}
-                                {{--<div class="row">--}}
-                                    {{--<div class="col-xs-4 text-center">--}}
-                                        {{--<a href="#">Followers</a>--}}
-                                    {{--</div>--}}
-                                    {{--<div class="col-xs-4 text-center">--}}
-                                        {{--<a href="#">Sales</a>--}}
-                                    {{--</div>--}}
-                                    {{--<div class="col-xs-4 text-center">--}}
-                                        {{--<a href="#">Friends</a>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                                {{--<!-- /.row -->--}}
-                            {{--</li>--}}
-                            {{--<!-- Menu Footer-->--}}
-                            {{--<li class="user-footer">--}}
-                                {{--<div class="pull-left">--}}
-                                    {{--<a href="#" class="btn btn-default btn-flat">Profile</a>--}}
-                                {{--</div>--}}
-                                {{--<div class="pull-right">--}}
-                                    {{--<a href="#" class="btn btn-default btn-flat">Sign out</a>--}}
-                                {{--</div>--}}
-                            {{--</li>--}}
-                        {{--</ul>--}}
                     </li>
                     <!-- Control Sidebar Toggle Button -->
                     <li>
@@ -102,6 +82,7 @@
                     </li>
                 </ul>
             </div>
+
         </nav>
     </header>
     <!-- Left side column. contains the logo and sidebar -->

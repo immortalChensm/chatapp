@@ -49,6 +49,7 @@ class UsersController extends Controller
             $item->isValiated  = $item->isValiated == 1 ? '已认证' : '未认证';
             $item->createdDate = date("Y-m-d H", strtotime($item->created_at));
             $imFriends = session("imFriends");
+            print_r($imFriends);
             if (in_array($item->userId,$imFriends)){
                 $item->chatBtn = 1;
             }else{

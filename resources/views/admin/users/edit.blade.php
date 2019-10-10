@@ -405,7 +405,7 @@
             });
 
         }
-        
+
 
 
         new Switch(document.querySelector('.login-checkbox'), {

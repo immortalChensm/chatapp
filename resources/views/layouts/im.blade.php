@@ -98,6 +98,87 @@
 
 <script type="text/javascript">
 
+    function resolveMsgSession(userMsg)
+    {
+        //var userMsg = (msgList[msgList.length-1]);
+       // console.log(userMsg);
+        var sessUserId = "#msgDiv_"+userMsg['sess']['_impl']['id'];
+        var msgTime = formatMsgTimeStamp(userMsg.time);
+        switch(userMsg['elems'][0]['type']){
+            case "TIMTextElem":
+                var expr = /\[[^[\]]{1,3}\]/mg;
+                var msgContent = userMsg['elems'][0]['content']['text'];
+                var emotions = userMsg['elems'][0]['content']['text'].match(expr);
+                if (emotions) {
+                    msgContent = '[表情]';
+                }else{
+                    msgContent = userMsg['elems'][0]['content']['text'].substr(0,5)+'...';
+                }
+                $(sessUserId).html(msgContent+"<div class='msgTime'>"+msgTime+"</div>");
+                break;
+            case "TIMImageElem":
+                $(sessUserId).html("[图片]"+"<div class='msgTime'>"+msgTime+"</div>");
+                break;
+            case "TIMFileElem":
+                $(sessUserId).html("[文件]"+"<div class='msgTime'>"+msgTime+"</div>");
+                break;
+            case "TIMVideoFileElem":
+                $(sessUserId).html("[视频]"+"<div class='msgTime'>"+msgTime+"</div>");
+                break;
+            case "TIMSoundElem":
+                $(sessUserId).html("[语音]"+"<div class='msgTime'>"+msgTime+"</div>");
+                break;
+            case "TIMFaceElem":
+                $(sessUserId).html("[表情]"+"<div class='msgTime'>"+msgTime+"</div>");
+                break;
+            case "TIMLocationElem":
+                $(sessUserId).html("[位置]"+"<div class='msgTime'>"+msgTime+"</div>");
+                break;
+            default:
+                $(sessUserId).html("[消息]"+"<div class='msgTime'>"+msgTime+"</div>");
+                break;
+        }
+    }
+    function formatMsgTimeStamp(time){
+        if (!time)
+            return;
+        //ar lastTime = sessionStorage.getItem('lastTimeLine');
+        var msgTimeStamp = new Date(time * 1000);//历史信息毫秒时间戳
+        var year = msgTimeStamp.getFullYear();
+        var mou = msgTimeStamp.getMonth()+1;
+        var day = msgTimeStamp.getDate();
+        var hours = msgTimeStamp.getHours();
+        var minutes = msgTimeStamp.getMinutes();
+        var curTimeStamp = new Date();//当前毫秒时间戳
+        var curYear = curTimeStamp.getFullYear();
+        var curDate = (curTimeStamp.getMonth()+1) + curTimeStamp.getDate();//当前月份+天数
+        var msgDate = mou + day;//历史消息月份+天数
+        hours < 10 ? hours = '0' + hours : null;
+        minutes < 10 ? minutes = '0' + minutes : null;
+        day < 10 ? day = '0' + day : null;
+        mou < 10 ? mou = '0' + mou : null;
+        var newTime = '';
+        var leadTime = curDate - msgDate;
+        switch (leadTime) {
+            case 0:
+                newTime = hours + ':' +minutes ;
+                break;
+            case 1:
+                newTime = '昨天 ' + hours + ':' +minutes ;
+                break;
+            case 2:
+                newTime = '前天 ' + hours + ':' +minutes ;
+                break;
+            default:
+                newTime = mou + '-' + day + ' ' + hours + ':' +minutes ;
+                break;
+        }
+        if (curYear-year>1) {
+            newTime = year + '-' + mou + '-' + day + ' ' + hours + ':' +minutes ;
+        }
+        return newTime;
+    }
+
     function getQueryVariable(variable)
     {
         var query = window.location.search.substring(1);

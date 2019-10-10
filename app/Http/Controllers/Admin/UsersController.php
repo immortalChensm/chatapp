@@ -54,6 +54,11 @@ class UsersController extends Controller
             }else{
                 $item->chatBtn = 0;
             }
+            $item->password = 0;
+            $item->payPassword = 0;
+            $item->idCard = 0;
+            $item->idCardFrontPic = 0;
+            $item->idCardBackPic = 0;
         }]);
     }
 

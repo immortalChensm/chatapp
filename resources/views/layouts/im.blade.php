@@ -415,7 +415,7 @@
             })
         },
         reset: function () {
-            //msgflow.onscroll = null;
+            msgflow.onscroll = null;
         }
     };
 

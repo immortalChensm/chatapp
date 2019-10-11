@@ -381,30 +381,34 @@
 
 
     //var msgflow = document.getElementsByClassName("msgflow")[0];
-    var msgflow = $(".msgflow").eq(0);
-    // var bindScrollHistoryEvent = {
-    //     init: function () {
-    //         msgflow.onscroll = function () {
-    //             if (msgflow.scrollTop == 0) {
-    //                 msgflow.scrollTop = 10;
-    //                 if (selType == webim.SESSION_TYPE.C2C) {
-    //                     getPrePageC2CHistoryMsgs();
-    //                 } else {
-    //                     getPrePageGroupHistoryMsgs();
-    //                 }
+    var msgflow = $(".msgflow");
+    // if (msgflow!=undefined){
+    //     var bindScrollHistoryEvent = {
+    //         init: function () {
+    //             msgflow.onscroll = function () {
+    //                 if (msgflow.scrollTop == 0) {
+    //                     msgflow.scrollTop = 10;
+    //                     if (selType == webim.SESSION_TYPE.C2C) {
+    //                         getPrePageC2CHistoryMsgs();
+    //                     } else {
+    //                         getPrePageGroupHistoryMsgs();
+    //                     }
     //
+    //                 }
     //             }
+    //         },
+    //         reset: function () {
+    //             msgflow.onscroll = null;
     //         }
-    //     },
-    //     reset: function () {
-    //         //msgflow.onscroll = null;
-    //     }
-    // };
+    //     };
+    // }
+
     var bindScrollHistoryEvent = {
         init: function () {
-            $(msgflow).scroll(function () {
-                if (msgflow.scrollTop == 0) {
-                    msgflow.scrollTop = 10;
+            $(".msgflow").scroll(function () {
+
+                if ($(".msgflow").get(0).scrollTop == 0) {
+                    $(".msgflow").get(0).scrollTop=10;
                     if (selType == webim.SESSION_TYPE.C2C) {
                         getPrePageC2CHistoryMsgs();
                     } else {
@@ -412,10 +416,12 @@
                     }
 
                 }
+
             })
+
         },
         reset: function () {
-            msgflow.onscroll = null;
+            $(".msgflow").off();
         }
     };
 

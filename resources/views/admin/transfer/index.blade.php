@@ -29,7 +29,7 @@
 
                                 <div class="input-group input-box input-max-box">
                                     <span class="input-group-addon"><i class="fa">转账用户</i></span>
-                                    <input type="text" class="form-control " name="userName" placeholder="升级用户">
+                                    <input type="text" class="form-control " name="userName" placeholder="转账用户">
                                 </div>
 
 

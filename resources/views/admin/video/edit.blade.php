@@ -236,7 +236,7 @@
                                 '</div>';
                         });
                     }
-
+console.log((Math.round(e.loaded / e.total * 10000) / 100));
                     $("#upload-image-view").find("div.progress div").css("width",(Math.round(e.loaded / e.total * 10000) / 100) + '%');
                     $("#upload-image-view").find("div.progress div").text((Math.round(e.loaded / e.total * 10000) / 100) + '%');
 

@@ -113,10 +113,10 @@ class ManagerController extends Controller
 
                     //客服账号登录
                     //登录成功后，获取该客服账号的好友列表【专业版限制为3000个好友】
-                    $customer = $this->getApi('POST','api/im/kefu/login',[]);
-                    $friends = $this->getApi('POST','api/user/friends/admin',[]);
-                    session(['imToken'=>$customer['result']]);
-                    session(['imFriends'=>$friends['result']['data']]);
+                   // $customer = $this->getApi('POST','api/im/kefu/login',[]);
+                   // $friends = $this->getApi('POST','api/user/friends/admin',[]);
+                   // session(['imToken'=>$customer['result']]);
+                   // session(['imFriends'=>$friends['result']['data']]);
                     return ['code'=>1,'message'=>'登录成功'];
                 }else{
                     return ['code'=>0,'message'=>'登录密码填写错误'];

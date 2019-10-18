@@ -64,6 +64,8 @@ class Login
                 }
                 $permissionListName[] = "ManagerController@logoutHandler";
                 $permissionListName[] = "HomeController@index";
+                $permissionListName[] = "ArticlesController@send";
+                $permissionListName[] = "ArticlesController@test";
                 session(['permission'=>$permissionListUri]);
                 if (!in_array($action,$permissionListName)){
                     if (request()->ajax()){

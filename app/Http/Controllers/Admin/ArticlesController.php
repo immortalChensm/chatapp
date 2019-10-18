@@ -23,6 +23,11 @@ class ArticlesController extends Controller
         return view("admin.articles.index",compact('tag'));
     }
 
+    function test()
+    {
+        return view("admin.articles.test");
+    }
+
     function articles(Request $request,Articles $articles)
     {
         return $this->models(...[$request,$articles,function (&$searchItem)use($request){
@@ -127,6 +132,13 @@ class ArticlesController extends Controller
         }
         return empty($request->articleId)?(Articles::create(array_merge($request->except("_token","s"),['isShared'=>1,'userId'=>1,'userType'=>2,'isShared'=>1,'sharedLocation'=>'12','isShow'=>1]))?['code'=>1,'message'=>'文章添加成功']:['code'=>0,'message'=>'文章添加失败']):
             (Articles::where("articleId","=",$request->articleId)->update(array_merge($request->except("_token","s"),['userId'=>1]))?['code'=>1,'message'=>'文章更新成功']:['code'=>0,'message'=>'文章更新失败']);
+    }
+
+    function send(Request $request)
+    {
+        if (empty($request['content']))return ['code'=>0,'message'=>'请填写消息内容'];
+        $result = $this->getApi("POST","api/im/sendMsg",request()->except(['s','_token']));
+        return ['code'=>1,'message'=>$result];
     }
 
     function remove(Articles $articles)

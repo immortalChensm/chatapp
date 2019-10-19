@@ -70,7 +70,7 @@ class ShipOrderController extends Controller
 
             }
             //有买家购买
-            if (!empty($item->sellerUserId)){
+            if (!empty($item->userId)){
                 $item->shipNum = $item->shipNum."/".$item->shipNum;
                 $item->payMoney =  $item->payMoney."/".$item->payMoney;
                 $item->createdDate =  date("Y-m-d H", strtotime($item->created_at))."/".date("Y-m-d H", strtotime($item->updated_at));

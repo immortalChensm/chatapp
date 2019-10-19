@@ -69,6 +69,16 @@ class ShipOrderController extends Controller
                 $item->statusName = "未支付";
 
             }
+            //有买家购买
+            if (!empty($item->sellerUserId)){
+                $item->shipNum = $item->shipNum."/".$item->shipNum;
+                $item->payMoney =  $item->payMoney."/".$item->payMoney;
+                $item->createdDate =  date("Y-m-d H", strtotime($item->created_at))."/".date("Y-m-d H", strtotime($item->updated_at));
+            }else{
+                $item->shipNum = "0/".$item->shipNum;
+                $item->payMoney =  "0/".$item->payMoney;
+                $item->createdDate =  "0/".date("Y-m-d H", strtotime($item->updated_at));
+            }
 
         }]);
     }

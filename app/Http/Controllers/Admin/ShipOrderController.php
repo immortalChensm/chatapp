@@ -74,10 +74,12 @@ class ShipOrderController extends Controller
                 $item->shipNum = $item->shipNum."/".$item->shipNum;
                 $item->payMoney =  $item->payMoney."/".$item->payMoney;
                 $item->createdDate =  date("Y-m-d H", strtotime($item->created_at))."/".date("Y-m-d H", strtotime($item->updated_at));
+                $item->statusName = "已支付/已售出";
             }else{
                 $item->shipNum = "0/".$item->shipNum;
                 $item->payMoney =  "0/".$item->payMoney;
                 $item->createdDate =  "0/".date("Y-m-d H", strtotime($item->updated_at));
+                $item->statusName = "未购买/出售中";
             }
 
         }]);

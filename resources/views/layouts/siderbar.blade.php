@@ -74,7 +74,7 @@
                 </a>
                 <ul class="treeview-menu">
 
-                    <li  ><a href="{{url("admin/articles/test")}}"><i class="fa fa-circle-o"></i> 文章test</a></li>
+{{--                    <li  ><a href="{{url("admin/articles/test")}}"><i class="fa fa-circle-o"></i> 文章test</a></li>--}}
 
                     @if(in_array("admin/articles",session("permission")['文章管理']))
                     <li @if(preg_match('/articles/',request()->url())) class="active" @endif ><a href="{{url("admin/articles")}}"><i class="fa fa-circle-o"></i> 文章列表</a></li>@endif

@@ -103,7 +103,7 @@
                     autoWidth: true,
                     columns: [
                         { data:"videoId",name:"videoId",orderable: true,searchable:false },
-                        { data:"title",name:"title",orderable: true,searchable:true,width:'10%' },
+                        { data:"title",name:"title",orderable: true,searchable:true,width:'20%' },
                         { data:"userId",name:"userId",orderable: false,searchable:true },
                         { data:"commentCount",name:"commentCount",orderable: true,searchable:true },
                         { data:"readCount",name:"readCount",orderable: true,searchable:true },

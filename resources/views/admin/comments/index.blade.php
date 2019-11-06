@@ -110,7 +110,7 @@
                     columns: [
                         { data:"id",name:"id",orderable: true,searchable:false },
                         { data:"userName",name:"userName",orderable: false,searchable:true },
-                        { data:"content",name:"content",orderable: false,width:'10%'},
+                        { data:"content",name:"content",orderable: false,width:'20%'},
                         { data:"title",name:"title",orderable: false,width:'10%'},
                         { data:"typeName",name:"typeName",orderable: false},
                         { data:"commentUserName",name:"commentUserName",orderable: false},

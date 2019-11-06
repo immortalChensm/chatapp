@@ -120,7 +120,7 @@
                     autoWidth: true,
                     columns: [
                         { data:"articleId",name:"articleId",orderable: true,searchable:false },
-                        { data:"title",name:"title",orderable: true,searchable:true,width:'25%' },
+                        { data:"title",name:"title",orderable: true,searchable:true,width:'20%' },
                         { data:"tagName",name:"tagName",orderable: false,searchable:false },
                         { data:"userId",name:"userId",orderable: false,searchable:true },
                         { data:"commentCount",name:"commentCount",orderable: true,searchable:true },

@@ -97,10 +97,11 @@
             $(function () {
                 var table = $('#datagrid').DataTable({
                     processing:true,
+                    autoWidth: true,
                     columns: [
                         { data:"id",name:"id",orderable: true,searchable:false },
                         { data:"userName",name:"userName",orderable: false,searchable:true },
-                        { data:"content",name:"content",orderable: false},
+                        { data:"content",name:"content",orderable: false,width:'10%' },
                         { data:"replyUserName",name:"replyUserName",orderable: false},
                         { data:"isShow",name:"isShow",orderable: false},
                         { data:"createdDate",name:"createdDate",orderable: false}

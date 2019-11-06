@@ -89,6 +89,7 @@
             $(function () {
                 var table = $('#datagrid').DataTable({
                     processing:true,
+                    autoWidth: true,
                     columns: [
                         { data:"orderNo",name:"orderNo",orderable: true,searchable:false },
                         { data:"userName",name:"userName",orderable: false,searchable:true },

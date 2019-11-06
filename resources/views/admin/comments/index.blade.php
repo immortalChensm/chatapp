@@ -106,11 +106,12 @@
             $(function () {
                 var table = $('#datagrid').DataTable({
                     processing:true,
+                    autoWidth: true,
                     columns: [
                         { data:"id",name:"id",orderable: true,searchable:false },
                         { data:"userName",name:"userName",orderable: false,searchable:true },
-                        { data:"content",name:"content",orderable: false},
-                        { data:"title",name:"title",orderable: false},
+                        { data:"content",name:"content",orderable: false,width:'10%'},
+                        { data:"title",name:"title",orderable: false,width:'10%'},
                         { data:"typeName",name:"typeName",orderable: false},
                         { data:"commentUserName",name:"commentUserName",orderable: false},
                         { data:"commentPraise",name:"commentPraise",orderable: false},

@@ -42,6 +42,7 @@
                                     <th>置顶数据标题</th>
                                     <th>置顶时间</th>
                                 </tr>
+                                @if(!empty($data))
                                 <tr>
                                     <td>{{$data->id}}</td>
                                     <td>{{$data->topId}}</td>
@@ -49,6 +50,9 @@
                                     <td>{{$data->title}}</td>
                                     <td>{{$data->created_at}}</td>
                                 </tr>
+                                    @else
+                                    <tr>暂无数据</tr>
+                                    @endif
                                 </tbody></table>
                         </div>
                     </div>

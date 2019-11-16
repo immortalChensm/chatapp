@@ -14,6 +14,7 @@ class HomeController extends Controller
      */
     function index()
     {
+        set_error_handler(function(){});
         $data['userNum']    = DB::table("users")->count("userId");
         $data['articleNum'] = DB::table("articles")->count("articleId") + DB::table("videos")->count("videoId") + DB::table("musics")->count("musicId") + DB::table("photos")->count("photoId");
         $data['shipSale']   = DB::table("users_ships_order")->where("sellerUserId", "=", 1)->where("type", "=", 2)->sum("payMoney");
@@ -21,7 +22,12 @@ class HomeController extends Controller
         $data['users']      = DB::table("users")->select(["name", "created_at","headImgUrl"])->orderBy("created_at","desc")->limit(8)->get();
         $businessTotal      = DB::table("users_business")->select(["id", "state"])->count("id");
         $businessOk      = DB::table("users_business")->where("state","=",1)->select(["id", "state"])->count("id");
-        $data['business'] = round($businessOk/$businessTotal*100,1);
+        if ($businessOk&&$businessTotal){
+            $data['business'] = round(($businessOk/$businessTotal)*100,1);
+        }else{
+            $data['business'] = 0;
+        }
+
         foreach ($data['users'] as $k=>$user){
             empty($user->headImgUrl)&&$user->headImgUrl='other/defaultlogo.png';
             $data['users'][$k]->headImgUrl = downloadCosFile(['fileKeyName'=>$user->headImgUrl,'expire'=>config("cos.expire")]);
@@ -41,7 +47,7 @@ class HomeController extends Controller
                 }
             }
         }
-
+        restore_error_handler();
         return view("admin.home.index",compact('data'));
     }
 

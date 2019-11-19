@@ -73,7 +73,13 @@ class ShipOrderController extends Controller
             if (!empty($item->userId)){
                 $item->shipNum = $item->shipNum."/".$item->shipNum;
                 $item->payMoney =  $item->payMoney."/".$item->payMoney;
-                $item->createdDate =  date("Y-m-d H", strtotime($item->created_at))."/".date("Y-m-d H", strtotime($item->updated_at));
+
+                if ($item->sellerUserId==1){
+                    $item->createdDate =  date("Y-m-d H", strtotime($item->created_at))."/".date("Y-m-d H", strtotime($item->created_at));
+                }else{
+                    $item->createdDate =  date("Y-m-d H", strtotime($item->created_at))."/".date("Y-m-d H", strtotime($item->updated_at));
+                }
+
                 if ($item->state==1){
                     $item->statusName = "已支付/已售出";
                 }else{

@@ -34,7 +34,7 @@ class ReportUsersController extends Controller
                 $item->userName  = "";
             }
             if (isset($item->reportUserName->realName)){
-                $item->reportUserName  = $item->userName->realName;
+                $item->reportUserName  = $item->reportUserName->realName;
             }
             if (isset($item->reportUserName->name)){
                 $item->reportUserName  = $item->userName->name;

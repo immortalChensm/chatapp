@@ -355,6 +355,13 @@
                                     </label>
                                 </div>
 
+                                <div class="form-group">
+                                    <input type="checkbox"  name="share-checkbox" class="share-checkbox">
+                                    <label>
+                                        分享权限
+                                    </label>
+                                </div>
+
                                 {{--<div class="form-group">--}}
                                     {{--<input type="checkbox"  name="customer-checkbox" class="customer-checkbox">--}}
                                     {{--<label>--}}
@@ -508,6 +515,24 @@
             onChange         : function(e){
                 console.log(this);
                 setting("canComment",e?1:0,{{$data['userId']}});
+            },
+
+        });
+
+        new Switch(document.querySelector('.share-checkbox'), {
+            size             : 'default',
+            checked          : {{$data['loginInfo']->canShare}},
+            onText           : 'Y',
+            offText          : 'N',
+            onSwitchColor    : '#64BD63',
+            offSwitchColor   : '#fff',
+            onJackColor      : '#fff',
+            offJackColor     : '#fff',
+            showText         : false,
+            disabled         : false,
+            onChange         : function(e){
+                console.log(this);
+                setting("canShare",e?1:0,{{$data['userId']}});
             },
 
         });

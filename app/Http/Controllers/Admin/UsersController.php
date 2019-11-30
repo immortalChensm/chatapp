@@ -96,6 +96,7 @@ class UsersController extends Controller
            'canMusic'=>(request("value")==1?"系统已解除你的音乐发布限制":"系统已禁止你发布音乐功能"),
            'canVideo'=>(request("value")==1?"系统已解除你的视频发布限制":"系统已禁止你发布视频功能"),
            'canComment'=>(request("value")==1?"系统已解除你的评论限制":"系统已禁止你评论功能"),
+           'canShare'=>(request("value")==1?"系统已解除你的分享限制":"系统已禁止你的分享功能"),
        ];
        if (in_array(request("field"),$msgTitle)){
            $this->getApi("POST","api/im/sendMsg",[

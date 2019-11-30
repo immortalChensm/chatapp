@@ -111,7 +111,7 @@ class UsersController extends Controller
 
     function userProfileHandler(&$data)
     {
-        $data['subscribeNum']   = DB::table("subscribes")->where("userId", $data['userId'])->where("followerId",0,"<>")->count("followerId");
+        $data['subscribeNum']   = DB::table("subscribes")->where("userId", $data['userId'])->where("followerId","<>",0)->count("followerId");
         $data['followerNum']    = DB::table("subscribes")->where("followerId", $data['userId'])->count("userId");
         $data['totalPraiseNum'] = DB::table("user_praises")->whereIn("userId", [$data['userId']])->sum("praiseNum");
         $data['sentMoney']      = DB::table("redpacket")->whereIn("userId", [$data['userId']])->sum("money");

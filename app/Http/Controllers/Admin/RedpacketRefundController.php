@@ -27,7 +27,7 @@ class RedpacketRefundController extends Controller
                 $query->where("userId","=",$searchItem['userId']);
             }
         },function (&$item){
-            $item->userName = property_exists($item->user,'realName')?$item->user->realName:$item->user->name;
+            $item->userName = (isset($item->user)&&property_exists($item->user,'realName'))?$item->user->realName:"";
             $item->sendMoney = $item->redpacket->money;
             $item->message = $item->redpacket->message;
             $item->num = $item->redpacket->num;

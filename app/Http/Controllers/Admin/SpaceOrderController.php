@@ -27,7 +27,7 @@ class SpaceOrderController extends Controller
                 $query->where("userId","=",$searchItem['userId']);
             }
         },function (&$item){
-            $item->userName = property_exists($item->buyer,'realName')?$item->buyer->realName:$item->buyer->name;
+            $item->userName = (isset($item->buyer)&&property_exists($item->buyer,'realName'))?$item->buyer->realName:"";
             $item->spaceNum = $item->storageSize/1024;
             $item->sellerUserName = "平台";
             $item->buyDate = date("Y-m-d H:i:s", $item->buyTime);

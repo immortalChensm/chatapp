@@ -29,7 +29,7 @@ class RedPacketOrderController extends Controller
                 $query->where("userId","=",$searchItem['userId']);
             }
         },function (&$item){
-            $item->userName = property_exists($item->sender,'realName')?$item->sender->realName:$item->sender->name;
+            $item->userName = (isset($item->sender)&&property_exists($item->sender,'realName'))?$item->sender->realName:"";
             $item->createdDate = date("Y-m-d H:i:s", strtotime($item->created_at));
             if (time()>=strtotime($item->created_at)+24*3600){
                 $item->expired = "是";

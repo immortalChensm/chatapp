@@ -37,7 +37,7 @@ class ShipGivenController extends Controller
 
         },function (&$item){
             $item->userName = (isset($item->user)&&property_exists($item->user,'realName'))?$item->user->realName:"";
-            $item->givenUserName = property_exists($item->giver,'realName')?$item->giver->realName:$item->giver->name;
+            $item->givenUserName = (isset($item->giver)&&property_exists($item->giver,'realName'))?$item->giver->realName:"";
             $item->createdDate = date("Y-m-d H", strtotime($item->created_at));
         }]);
     }

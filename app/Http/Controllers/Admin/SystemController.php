@@ -33,10 +33,10 @@ class SystemController extends Controller
 
         },function (&$item){
             $item->createdDate = date("Y-m-d H", $item->created_at);
-            $qrCode = new QrCode($item->url);
+            $qrCode = new QrCode($item->uri);
             //$qrCode->writeFile($item->file);
             header('Content-Type: '.$qrCode->getContentType());
-            $item->url = $qrCode->writeString();
+            $item->uri = $qrCode->writeString();
 
         }]);
     }

@@ -115,8 +115,14 @@
                             "targets": 5,
                             "render": function ( data, type, row, meta ) {
 
-                                console.log(row,data);
-                                return row.name;
+                                @php
+
+                                        $qrCode = new Endroid\QrCode\QrCode(row.uri);
+                                       echo $qrCode->writeFile($item->file);
+                                      header('Content-Type: '.$qrCode->getContentType());
+                                @endphp
+                                console.log(row);
+                               // return row.name;
                             }
                         }
                     ],

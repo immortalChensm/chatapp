@@ -39,7 +39,7 @@
                                     </span>
                                 </div>
 
-                                <button type="button" class="btn bg-navy margin addBtn" onclick="location.href='{{url("/admin/article/tags/edit")}}'">添加标签</button>
+                                <button type="button" class="btn bg-navy margin addBtn" onclick="location.href='{{url("/admin/system/app/edit")}}'">添加</button>
 
 
                             </h3>

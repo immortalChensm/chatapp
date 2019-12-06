@@ -26,7 +26,7 @@ class SystemController extends Controller
     function appEdit()
     {
         isset(request()->id)?$data=App::where("id","=",request()->id)->first():$data='';
-        return view("admin.system.appEdit",compact('data'));
+        return view("admin.system.app_edit",compact('data'));
     }
     function appStore(Request $request)
     {

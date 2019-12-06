@@ -134,13 +134,12 @@
 
 
             $("#datagrid").on("click",".qrcode",function (e) {
-                $(this).find("div").show();
-                $(this).find(".minImg").hide();
+                $(this).hide();
+                $(this).next(".sourceImg").show();
             });
             $("#datagrid").on("click",".sourceImg",function (e) {
                 $(this).hide();
-                console.log($(this));
-                $(this).parent("div").find(".minImg").show();
+                $(this).prev(".qrcode").show();
             });
             //编辑操作
             $("#datagrid").on("click",".update",function (e) {

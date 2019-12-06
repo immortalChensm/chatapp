@@ -112,7 +112,7 @@
                         }
                     } ,
                         {
-                            "targets": 21,
+                            "targets": 5,
                             "render": function ( data, type, row, meta ) {
 
                                 console.log(row,data);

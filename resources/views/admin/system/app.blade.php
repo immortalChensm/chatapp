@@ -110,20 +110,7 @@
                             BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm delete' data='"+row.id+"' data-name='"+row.name+"'>移除</button>";
                             return BtnHtml;
                         }
-                    } ,
-                        {
-                            "targets": 5,
-                            "render": function ( data, type, row, meta ) {
-                                var uri = row.uri;
-                                return '<img src="<?php
-                                    $uri="<script>document.writeln(uri);</script>";
-                                    $qrCode = new Endroid\QrCode\QrCode($uri);
-
-                                    header('Content-Type: '.$qrCode->getContentType());
-                                    echo $qrCode->writeString();?>"/>';
-
-                            }
-                        }
+                    }
                     ],
                     hover:true,
                     language:dataGridlanguage,

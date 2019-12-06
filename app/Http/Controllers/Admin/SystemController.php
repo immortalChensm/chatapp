@@ -60,7 +60,7 @@ class SystemController extends Controller
 
         }else {
             return App::create(array_merge($prepareData,[
-                'date'       => time()
+                'created_at'       => time()
             ])) ? ['code' => 1, 'message' => '添加成功'] : ['code' => 0, 'message' => '添加失败'];
         }
     }

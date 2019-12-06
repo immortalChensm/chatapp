@@ -53,7 +53,7 @@ class SystemController extends Controller
                 'fileKeyName' => $prepareData['uri'],
                 'expire'      => config('cos')['expire']
             ])['data'];
-
+echo $uri;
             $file = "public/attached/" . $request->uri;
             file_put_contents($file, file_get_contents($uri));
             $prepareData['uri'] = $file;

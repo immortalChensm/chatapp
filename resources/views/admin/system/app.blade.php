@@ -116,6 +116,7 @@
                             "render": function ( data, type, row, meta ) {
 
                                 console.log(row,data);
+                                return row.name;
                             }
                         }
                     ],

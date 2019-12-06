@@ -181,7 +181,7 @@
                 view: boxView,
                 //将auto配置为false以手动上传
                 auto: true,
-                allows: "*",
+                //allows: "*",
                 //accept: "*",        //指定浏览器接受的文件类型 eg:image/*,video/*  =>  IE9及以下不支持
                 upName: "imgFile",
                 on: {

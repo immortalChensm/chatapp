@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
-
+use Endroid\QrCode\QrCode;
 class SystemController extends Controller
 {
     //
@@ -33,6 +33,11 @@ class SystemController extends Controller
 
         },function (&$item){
             $item->createdDate = date("Y-m-d H", $item->created_at);
+            $qrCode = new QrCode($item->url);
+            //$qrCode->writeFile($item->file);
+            header('Content-Type: '.$qrCode->getContentType());
+            $item->url = $qrCode->writeString();
+
         }]);
     }
     function appEdit()
@@ -49,6 +54,7 @@ class SystemController extends Controller
                             'uri'         => $request->uri,
                             'file'         => $request->file,
                             'platform'    => $request->platform];
+
 
             if (isset($request->id)) {
                 $result = App::where("id", "=", $request->id)->update($prepareData) ? ['code' => 1, 'message' => '更新成功'] : ['code' => 0, 'message' => '更新失败'];

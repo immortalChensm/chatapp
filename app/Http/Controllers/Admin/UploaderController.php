@@ -14,7 +14,10 @@ class UploaderController extends Controller
     function removeFile()
     {
         if (isset(request()->file)){
+            set_error_handler(function(){});
+            if (file_exists(request()->file))
             unlink(request()->file);
+            restore_error_handler();
             return response()->json(['code'=>1,'message'=>'移除成功']);
         }else{
             if ($this->removeCosFile(['key'=>request()->fileKeyName])['code']==1){

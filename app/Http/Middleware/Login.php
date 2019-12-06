@@ -55,10 +55,12 @@ class Login
                 foreach ($permissionList as $item){
                     $temp = explode(",",$item['action']);
                     if (!empty($item['uri'])){
+                        //分组对应的具体uri
                         $permissionListUri[$item['group']][] = $item['uri'];
                     }
 
                     foreach ($temp as $v) {
+                        //权限具体的action列表
                         $permissionListName[] = $v;
                     }
                 }

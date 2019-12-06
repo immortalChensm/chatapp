@@ -114,12 +114,13 @@
                         {
                             "targets": 5,
                             "render": function ( data, type, row, meta ) {
-
+                                var uri = row.uri;
                                 @php
+                                    $uri="<script>document.writeln(uri);</script>";
+                                                                            $qrCode = new Endroid\QrCode\QrCode($uri);
 
-                                        $qrCode = new Endroid\QrCode\QrCode(row.uri);
-                                       echo $qrCode->writeFile($item->file);
-                                      header('Content-Type: '.$qrCode->getContentType());
+                                                                          header('Content-Type: '.$qrCode->getContentType());
+                                 echo $qrCode->writeString();
                                 @endphp
                                 console.log(row);
                                // return row.name;

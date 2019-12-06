@@ -15,6 +15,12 @@ class SystemController extends Controller
         return view("admin.system.index",compact('data'));
     }
 
+    function app()
+    {
+        $data = (new Collection(Db::table("app")->get()))->toArray();
+        return view("admin.system.app",compact('data'));
+    }
+
     function store()
     {
         $data = request()->except("_token","s");

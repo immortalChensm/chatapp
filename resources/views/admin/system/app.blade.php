@@ -131,10 +131,15 @@
 
             })
 
-            
+
 
             $("#datagrid").on("click",".qrcode",function (e) {
                 $(this).find("div").show();
+                $(this).find(".minImg").hide();
+            });
+            $("#datagrid").on("click",".sourceImg",function (e) {
+                $(this).hide();
+                $(this).parent("div").find(".minImg").show();
             });
             //编辑操作
             $("#datagrid").on("click",".update",function (e) {

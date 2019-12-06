@@ -36,7 +36,7 @@ class SystemController extends Controller
             $qrCode = new QrCode($item->uri);
             $file = substr($item->file,0,-3)."png";
             $qrCode->writeFile($file);
-            $item->uri = $file;
+            $item->uri = "<img src='$file'/>";
             //header('Content-Type: '.$qrCode->getContentType());
            // $item->uri = $qrCode->writeString();
 

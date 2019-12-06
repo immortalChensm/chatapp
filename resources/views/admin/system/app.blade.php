@@ -115,15 +115,13 @@
                             "targets": 5,
                             "render": function ( data, type, row, meta ) {
                                 var uri = row.uri;
-
-                                console.log(row);
-                                var arr="<?php
+                                return "<?php
                                     $uri="<script>document.writeln(uri);</script>";
                                     $qrCode = new Endroid\QrCode\QrCode($uri);
 
                                     header('Content-Type: '.$qrCode->getContentType());
-                                    echo $qrCode->writeString(); $arr;?>"
-                               return arr;
+                                    echo $qrCode->writeString();?>"
+
                             }
                         }
                     ],

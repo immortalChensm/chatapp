@@ -110,7 +110,15 @@
                             BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm delete' data='"+row.id+"' data-name='"+row.name+"'>移除</button>";
                             return BtnHtml;
                         }
-                    } ],
+                    } ,
+                        {
+                            "targets": 21,
+                            "render": function ( data, type, row, meta ) {
+
+                                console.log(row,data);
+                            }
+                        }
+                    ],
                     hover:true,
                     language:dataGridlanguage,
                     serverSide: true,

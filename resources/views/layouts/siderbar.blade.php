@@ -259,7 +259,8 @@
                     <li @if(preg_match('/index/',request()->url())) class="active" @endif><a href="{{url("admin/system/index")}}"><i class="fa fa-circle-o"></i> 网站设置</a></li>@endif
                         @if(in_array("admin/system/top",session("permission")['系统设置']))
                     <li @if(preg_match('/top/',request()->url())) class="active" @endif><a href="{{url("admin/system/top")}}"><i class="fa fa-circle-o"></i> 置顶记录</a></li>@endif
-{{--                    <li @if(preg_match('/top/',request()->url())) class="active" @endif><a href="{{url("admin/system/app")}}"><i class="fa fa-circle-o"></i> APP更新</a></li>@endif--}}
+                        @if(in_array("admin/system/app",session("permission")['系统设置']))
+                            <li @if(preg_match('/app/',request()->url())) class="active" @endif><a href="{{url("admin/system/app")}}"><i class="fa fa-circle-o"></i> APP应用配置</a></li>@endif
                 </ul>
             </li>
             @endif

@@ -42,29 +42,31 @@ class SystemController extends Controller
     }
     function appStore(Request $request)
     {
-        if (isset($request->name)&&isset($request->platform)&&isset($request->version)&&isset($request->uri))
-        $prepareData = [ 'name'        => $request->name,
-                         'description' => $request->description,
-                         'version' => $request->version,
-                         'uri'       => $request->uri,
-                         'platform'       => $request->platform];
+        if (isset($request->name)&&isset($request->platform)&&isset($request->version)&&isset($request->uri)) {
+            $prepareData = ['name'        => $request->name,
+                            'description' => $request->description,
+                            'version'     => $request->version,
+                            'uri'         => $request->uri,
+                            'platform'    => $request->platform];
 
-        $uri = $this->downloadCosFile([
-            'fileKeyName'=>$prepareData['uri'],
-            'expire'=>config('cos')['expire']
-        ])['data'];
+            $uri = $this->downloadCosFile([
+                'fileKeyName' => $prepareData['uri'],
+                'expire'      => config('cos')['expire']
+            ])['data'];
 
-        $file = "public/attached/".$request->uri;
-        file_put_contents($file,file_get_contents($uri));
-        $prepareData['uri'] = $file;
-        if (isset($request->id)){
-            $result = App::where("id","=",$request->id)->update($prepareData)?['code' => 1, 'message' => '更新成功'] : ['code' => 0, 'message' => '更新失败'];
-            return $result;
-
-        }else {
-            return App::create(array_merge($prepareData,[
-                'created_at'       => time()
-            ])) ? ['code' => 1, 'message' => '添加成功'] : ['code' => 0, 'message' => '添加失败'];
+            $file = "public/attached/" . $request->uri;
+            file_put_contents($file, file_get_contents($uri));
+            $prepareData['uri'] = $file;
+            if (isset($request->id)) {
+                $result = App::where("id", "=", $request->id)->update($prepareData) ? ['code' => 1, 'message' => '更新成功'] : ['code' => 0, 'message' => '更新失败'];
+                return $result;
+            } else {
+                return App::create(array_merge($prepareData, [
+                    'created_at' => time()
+                ])) ? ['code' => 1, 'message' => '添加成功'] : ['code' => 0, 'message' => '添加失败'];
+            }
+        }else{
+            return ['code' => 0, 'message' => '参数错误'];
         }
     }
 

@@ -139,6 +139,7 @@
             });
             $("#datagrid").on("click",".sourceImg",function (e) {
                 $(this).hide();
+                console.log("ss");
                 $(this).parent("div").find(".minImg").show();
             });
             //编辑操作

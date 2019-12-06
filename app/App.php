@@ -11,5 +11,5 @@ class App extends Model
     public $primaryKey = "id";
     protected $guarded = [];
 
-    protected $dateFormat = false;
+    public $timestamps = false;
 }

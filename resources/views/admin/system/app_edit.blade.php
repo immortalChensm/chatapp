@@ -249,7 +249,7 @@
                             layer.msg("文件已移除！");
                         }
                         var inputUploadFile = $(".inputUploadFile");
-                            if ($(inputUploadFile).val() == task.json.file){
+                            if ($(inputUploadFile).val() == task.json.url){
                                 $(inputUploadFile).remove();
                             }
 

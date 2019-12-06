@@ -131,13 +131,11 @@
 
             })
 
+            
 
-
-            $(".qrcode").click(function (e) {
+            $("#datagrid").on("click",".qrcode",function (e) {
                 $(this).find("div").show();
             });
-
-
             //编辑操作
             $("#datagrid").on("click",".update",function (e) {
                location.href = "/admin/system/app/edit/"+$(this).attr("data");

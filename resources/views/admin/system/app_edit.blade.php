@@ -207,6 +207,7 @@
                             {{--return "<audio src='"+uri+"' autoplay></audio>"+--}}
                                 {{--"<img src='"+"{{asset('attached/musicLogo.png')}}"+"'>";--}}
                         {{--});--}}
+                                console.log(task);
                         $("#postForm").append(function () {
                             return "<input type='hidden' class='inputUploadFile' name='uri' value='"+task.json.fileKeyName+"' data='"+task.name+"'/>";
                         });

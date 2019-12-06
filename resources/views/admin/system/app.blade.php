@@ -154,7 +154,7 @@
                             if (data.code==1){
                                 layer.msg(data.message);
                                 setTimeout(function () {
-                                    window.location = "{{url('admin/get/system/app')}}";
+                                    window.location = "{{url('admin/system/app')}}";
                                 },2000);
                             }else{
                                 layer.msg(data.message);

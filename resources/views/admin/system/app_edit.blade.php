@@ -232,13 +232,28 @@
 
             });
 
-            //移除文件
+            //移除存储桶上的文件
             function removeCosFile(task,uri)
             {
-                var inputUploadFile = $(".inputUploadFile");
-                if ($(inputUploadFile).val() == task.json.fileKeyName){
-                    $(inputUploadFile).remove();
-                }
+                $.ajax({
+                    type:'post',
+                    data:{
+                        imgFile:task.json.url,
+                        fileKeyName:task.json.fileKeyName,
+                        '_token':"{{csrf_token()}}",
+                    },
+                    url:uri,
+                    success:function (res) {
+                        if (res.code==1){
+                            layer.msg("文件已移除！");
+                        }
+                        var inputUploadFile = $(".inputUploadFile");
+                            if ($(inputUploadFile).val() == task.json.fileKeyName){
+                                $(inputUploadFile).remove();
+                            }
+
+                    }
+                });
             }
         </script>
         @endsection

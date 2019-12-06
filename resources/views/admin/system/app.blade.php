@@ -28,8 +28,8 @@
                             <h3 class="box-title">
 
                                 <div class="input-group input-box input-max-box">
-                                    <span class="input-group-addon"><i class="fa">标签名称</i></span>
-                                    <input type="text" class="form-control " name="name" placeholder="标签名称">
+                                    <span class="input-group-addon"><i class="fa">版本号</i></span>
+                                    <input type="text" class="form-control " name="version" placeholder="版本号">
                                 </div>
 
 
@@ -94,16 +94,20 @@
                 var table = $('#datagrid').DataTable({
                     processing:true,
                     columns: [
-                        { data:"tagId",name:"tagId",orderable: true,searchable:false },
-                        { data:"name",name:"name",orderable: true,searchable:true },
-                        { data:"created_at",name:"created_at"}
+                        { data:"id",name:"id",orderable: true,searchable:false },
+                        { data:"name",name:"name",orderable: true,searchable:false },
+                        { data:"version",name:"version",orderable: true,searchable:true },
+                        { data:"platform",name:"platform",orderable: true,searchable:false },
+                        { data:"description",name:"description",orderable: true,searchable:false },
+                        { data:"uri",name:"uri",orderable: true,searchable:false },
+                        { data:"createdDate",name:"createdDate"}
                     ],
                     columnDefs: [ {
-                        "targets": 3,
+                        "targets": 7,
                         "render": function ( data, type, row, meta ) {
 
-                            var BtnHtml = "<button type='button' class='btn  btn-success btn-sm update' data='"+row.tagId+"'>修改</button>";
-                            BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm delete' data='"+row.tagId+"' data-name='"+row.name+"'>移除</button>";
+                            var BtnHtml = "<button type='button' class='btn  btn-success btn-sm update' data='"+row.id+"'>修改</button>";
+                            BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm delete' data='"+row.id+"' data-name='"+row.name+"'>移除</button>";
                             return BtnHtml;
                         }
                     } ],
@@ -111,7 +115,7 @@
                     language:dataGridlanguage,
                     serverSide: true,
                     ajax: {
-                        url: '/admin/article/tags/list',
+                        url: '/admin/get/system/app',
                         type: 'GET'
                     },
                     "searching": false,
@@ -120,8 +124,8 @@
                 });
 
                 $("#search").on("click",function (e) {
-                    var name = $(":input[name=name]").val();
-                    table.ajax.url( '/admin/article/tags/list?name='+name).load();
+                    var name = $(":input[name=version]").val();
+                    table.ajax.url( '/admin/get/system/app?version='+name).load();
                 })
 
             })
@@ -129,7 +133,7 @@
 
             //编辑操作
             $("#datagrid").on("click",".update",function (e) {
-               location.href = "/admin/article/tags/edit/"+$(this).attr("data");
+               location.href = "/system/app/edit/"+$(this).attr("data");
             });
 
             //移除操作

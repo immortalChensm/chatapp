@@ -20,8 +20,20 @@ class SystemController extends Controller
     /***********************app*********************/
     function app()
     {
-        $data = (new Collection(Db::table("app")->get()))->toArray();
-        return view("admin.system.app",compact('data'));
+        return view("admin.system.app");
+    }
+    function appList(Request $request,App $app)
+    {
+        return $this->models(...[$request,$app,function (&$searchItem)use($request){
+            $searchItem['version']   = $request->query->get('version');
+        },function ($query,&$searchItem){
+            if ($searchItem['version']){
+                $query->where("version","LIKE","%".$searchItem['version']."%");
+            }
+
+        },function (&$item){
+            $item->createdDate = date("Y-m-d H", strtotime($item->date));
+        }]);
     }
     function appEdit()
     {
@@ -30,21 +42,27 @@ class SystemController extends Controller
     }
     function appStore(Request $request)
     {
-        print_r($request->all());
-//        $prepareData = [ 'name'        => $request->name,
-//                         'description' => $request->description,
-//                         'version' => $request->version,
-//                         'uri'       => $request->uri,
-//                         'platform'       => $request->platform];
-//        if (isset($request->id)){
-//            $result = App::where("id","=",$request->id)->update($prepareData)?['code' => 1, 'message' => '更新成功'] : ['code' => 0, 'message' => '更新失败'];
-//            return $result;
-//
-//        }else {
-//            return App::create(array_merge($prepareData,[
-//                'date'       => time()
-//            ])) ? ['code' => 1, 'message' => '添加成功'] : ['code' => 0, 'message' => '添加失败'];
-//        }
+        if (isset($request->name)&&isset($request->platform)&&isset($request->version)&&isset($request->uri))
+        $prepareData = [ 'name'        => $request->name,
+                         'description' => $request->description,
+                         'version' => $request->version,
+                         'uri'       => $request->uri,
+                         'platform'       => $request->platform];
+
+//        $uri = $this->downloadCosFile([
+//            'fileKeyName'=>$prepareData['uri'],
+//            'expire'=>config('cos')['expire']
+//        ])['data'];
+
+        if (isset($request->id)){
+            $result = App::where("id","=",$request->id)->update($prepareData)?['code' => 1, 'message' => '更新成功'] : ['code' => 0, 'message' => '更新失败'];
+            return $result;
+
+        }else {
+            return App::create(array_merge($prepareData,[
+                'date'       => time()
+            ])) ? ['code' => 1, 'message' => '添加成功'] : ['code' => 0, 'message' => '添加失败'];
+        }
     }
     /***********************app*********************/
 

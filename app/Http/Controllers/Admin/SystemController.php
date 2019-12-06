@@ -32,7 +32,7 @@ class SystemController extends Controller
             }
 
         },function (&$item){
-            $item->createdDate = date("Y-m-d H", strtotime($item->created_at));
+            $item->createdDate = date("Y-m-d H", $item->created_at);
         }]);
     }
     function appEdit()

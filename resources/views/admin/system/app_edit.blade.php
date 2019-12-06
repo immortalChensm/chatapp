@@ -98,7 +98,7 @@
                                                         </div>
                                                         <div class="u-name" title="{{$data['name']}}">{{$data['name']}}</div>
                                                         <div class="u-close-bg" style="opacity: 0.3;"></div>
-                                                        <div class="u-close-text" data="{{$data['uri']}}" >X</div>
+                                                        <div class="u-close-text" data="{{$data['file']}}" >X</div>
                                                     </div>
 
 
@@ -224,6 +224,7 @@
                     json:{
                         imgFile:$(this).attr("data"),
                         fileKeyName:$(this).attr("data"),
+                        file:$(this).attr("data"),
                     }
                 },"/admin/remove/upload/file");
 

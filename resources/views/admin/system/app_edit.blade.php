@@ -209,8 +209,8 @@
                         {{--});--}}
                                 console.log(task);
                         $("#postForm").append(function () {
-                            return "<input type='hidden' class='inputUploadFile' name='uri' value='"+task.json.url+"' data='"+task.name+"'/>";
-                            return "<input type='hidden'  name='file' value='"+task.json.file+"' data='"+task.name+"'/>";
+                            return "<input type='hidden' name='file' value='"+task.json.file+"' data='"+task.name+"'/><input type='hidden' class='inputUploadFile' name='uri' value='"+task.json.url+"' data='"+task.name+"'/>";
+
                         });
                     }
                 }

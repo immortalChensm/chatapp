@@ -62,7 +62,7 @@
                                     <select class="form-control" name="platform">
                                         <option value="">请选择平台</option>
                                             @foreach(['Android','Ios'] as $item)
-                                                <option value="{{$item}}" @if($item==$data['platform']) selected @endif >{{$item}}</option>
+                                                <option value="{{$item}}" @if(isset($data['id'])) @if($item==$data['platform']) selected @endif @endif >{{$item}}</option>
                                             @endforeach
 
                                     </select>

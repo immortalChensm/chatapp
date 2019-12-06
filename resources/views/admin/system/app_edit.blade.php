@@ -227,8 +227,8 @@
                         file:$(this).attr("data"),
                     }
                 },"/admin/remove/upload/file");
-
-                $($($(this)[0]).parent()[0]).remove();
+                var inputUploadFile = $(".inputUploadFile");
+                $(inputUploadFile).remove();
 
 
             });

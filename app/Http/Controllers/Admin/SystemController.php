@@ -37,7 +37,7 @@ class SystemController extends Controller
             $file = substr($item->file,0,-3)."png";
             $qrCode->writeFile($file);
             $img = substr($item->uri,0,-3)."png";
-            $item->uri = "<img src='$img' width='50px' height='50px' onmouseover='function(e){consoe.log(e);}'/><div class='qrcode' style='display: none'><img src='$img' </div>";
+            $item->uri = "<img src='$img' width='50px' height='50px' onmouseover='$(this).next('div').show();'/><div class='qrcode' style='display: none'><img src='$img' </div>";
             //header('Content-Type: '.$qrCode->getContentType());
            // $item->uri = $qrCode->writeString();
 

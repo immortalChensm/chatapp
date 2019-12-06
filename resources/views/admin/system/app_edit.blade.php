@@ -113,7 +113,7 @@
                             </div>
 
                             <div class="box-footer">
-                                <a  class="btn btn-success" onclick="store()">提交</a>
+                                <a  class="btn btn-success" onclick="store()" id="submit">提交</a>
                                 <a href="{{url()->previous()}}" class="btn btn-info">返回</a>
                             </div>
                         </form>
@@ -193,11 +193,17 @@
                             layer.msg("一次只能上传一个文件！");
                             return false;
                         }
+                        $("#sumbit").attr("disabled","disabled");
                         if (task.disabled) return layer.msg("允许上传的文件格式为：" + this.ops.allows);
                     },
                     remove: function (task) {
                         //log(task.name + " : 已移除！");
-                        removeCosFile(task,"{{url('/admin/remove/upload/file')}}");
+                        if (task){
+                            removeCosFile(task,"{{url('/admin/remove/upload/file')}}");
+                        }else{
+                            layer.msg("无效操作");
+                        }
+
                     },
                     complete: function(task){
                         //音乐
@@ -208,6 +214,7 @@
                                 {{--"<img src='"+"{{asset('attached/musicLogo.png')}}"+"'>";--}}
                         {{--});--}}
                                 console.log(task);
+                        $("#sumbit").removeAttr("disabled");
                         $("#postForm").append(function () {
                             return "<input type='hidden' name='file' value='"+task.json.file+"' data='"+task.name+"'/><input type='hidden' class='inputUploadFile' name='uri' value='"+task.json.url+"' data='"+task.name+"'/>";
 
@@ -219,19 +226,23 @@
             //修改相册时的删除
             $("div.u-close-text").click(function (e) {
                 //console.log($(this).attr("data"));
+                if ($(this).attr("data")){
+                    removeCosFile({
+                        json:{
+                            imgFile:$(this).attr("data"),
+                            fileKeyName:$(this).attr("data"),
+                            file:$(this).attr("data"),
+                        }
+                    },"/admin/remove/upload/file");
 
-                removeCosFile({
-                    json:{
-                        imgFile:$(this).attr("data"),
-                        fileKeyName:$(this).attr("data"),
-                        file:$(this).attr("data"),
-                    }
-                },"/admin/remove/upload/file");
+                    $($($(this)[0]).parent()[0]).remove();
+                    var inputUploadFile = $(".inputUploadFile");
+                    $(inputUploadFile).remove();
 
-                $($($(this)[0]).parent()[0]).remove();
-                var inputUploadFile = $(".inputUploadFile");
-                $(inputUploadFile).remove();
 
+                } else{
+                    layer.msg("无效操作");
+                }
 
             });
 

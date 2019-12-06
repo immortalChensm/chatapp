@@ -34,9 +34,9 @@ class SystemController extends Controller
         },function (&$item){
             $item->createdDate = date("Y-m-d H", $item->created_at);
             $qrCode = new QrCode($item->uri);
-            $file = substr($item->file,0,-3)."png";
+            $file = substr($item->file,0,-4)."1.png";
             $qrCode->writeFile($file);
-            $img = substr($item->uri,0,-3)."png";
+            $img = substr($item->uri,0,-4)."1.png";
             $item->uri = "<div class='qrcode'><img class='minImg' src='$img' width='50px' height='50px'/></div><div  class='sourceImg' style='display: none'><img src='$img'/> </div>";
         }]);
     }

@@ -13,9 +13,15 @@ class UploaderController extends Controller
 
     function removeFile()
     {
-        if ($this->removeCosFile(['key'=>request()->fileKeyName])['code']==1){
+        if (preg_match('/apk|IPA/',request()->fileKeyName)){
+            unlink(request()->fileKeyName);
             return response()->json(['code'=>1,'message'=>'移除成功']);
+        }else{
+            if ($this->removeCosFile(['key'=>request()->fileKeyName])['code']==1){
+                return response()->json(['code'=>1,'message'=>'移除成功']);
+            }
         }
+
 
     }
 

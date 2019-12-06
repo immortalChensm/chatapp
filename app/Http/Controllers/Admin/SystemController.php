@@ -30,20 +30,21 @@ class SystemController extends Controller
     }
     function appStore(Request $request)
     {
-        $prepareData = [ 'name'        => $request->name,
-                         'description' => $request->description,
-                         'version' => $request->version,
-                         'uri'       => $request->uri,
-                         'platform'       => $request->platform];
-        if (isset($request->id)){
-            $result = App::where("id","=",$request->id)->update($prepareData)?['code' => 1, 'message' => '更新成功'] : ['code' => 0, 'message' => '更新失败'];
-            return $result;
-
-        }else {
-            return App::create(array_merge($prepareData,[
-                'date'       => time()
-            ])) ? ['code' => 1, 'message' => '添加成功'] : ['code' => 0, 'message' => '添加失败'];
-        }
+        print_r($request->all());
+//        $prepareData = [ 'name'        => $request->name,
+//                         'description' => $request->description,
+//                         'version' => $request->version,
+//                         'uri'       => $request->uri,
+//                         'platform'       => $request->platform];
+//        if (isset($request->id)){
+//            $result = App::where("id","=",$request->id)->update($prepareData)?['code' => 1, 'message' => '更新成功'] : ['code' => 0, 'message' => '更新失败'];
+//            return $result;
+//
+//        }else {
+//            return App::create(array_merge($prepareData,[
+//                'date'       => time()
+//            ])) ? ['code' => 1, 'message' => '添加成功'] : ['code' => 0, 'message' => '添加失败'];
+//        }
     }
     /***********************app*********************/
 

@@ -90,8 +90,8 @@
 
                                                     <div class="u-item u-over">
                                                         <div class="u-img">
-                                                            <img src="{{asset("attached/musicLogo.png")}}">
-                                                            <audio src="{{$data['uri']}}"></audio>
+                                                            {{--<img src="{{asset("attached/musicLogo.png")}}">--}}
+                                                            {{--<audio src="{{$data['uri']}}"></audio>--}}
                                                         </div>
                                                         <div class="u-progress-bar" style="opacity: 0.3;">
                                                             <div class="u-progress" style="opacity: 0.5; width: 100%;"></div>
@@ -217,18 +217,16 @@
             //修改相册时的删除
             $("div.u-close-text").click(function (e) {
                 //console.log($(this).attr("data"));
-                if ($($(this)[0]).attr("data-user")!=2){
-                    layer.msg("该相册为用户发布的内容禁止操作！");
-                } else{
-                    removeCosFile({
-                        json:{
-                            imgFile:$(this).attr("data"),
-                            fileKeyName:$(this).attr("data"),
-                        }
-                    },"/admin/musics/update/remove");
 
-                    $($($(this)[0]).parent()[0]).remove();
-                }
+                removeCosFile({
+                    json:{
+                        imgFile:$(this).attr("data"),
+                        fileKeyName:$(this).attr("data"),
+                    }
+                },"/admin/remove/upload/file");
+
+                $($($(this)[0]).parent()[0]).remove();
+
 
             });
 

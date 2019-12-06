@@ -133,19 +133,19 @@
 
             //编辑操作
             $("#datagrid").on("click",".update",function (e) {
-               location.href = "/system/app/edit/"+$(this).attr("data");
+               location.href = "/admin/system/app/edit/"+$(this).attr("data");
             });
 
             //移除操作
             $("#datagrid").on("click",".delete",function (e) {
 
                 var dataid = $(this).attr("data");
-                layer.confirm('您确定要删除('+$(this).attr("data-name")+")这个标签吗？", {
+                layer.confirm('您确定要删除('+$(this).attr("data-name")+")这个应用吗？删除后用户将无法下载", {
                     btn: ['确认','取消'] //按钮
                 }, function(){
                     $.ajax({
                         type: "delete",
-                        url: "{{url('/admin/article/tags/remove/')}}/"+dataid,
+                        url: "{{url('/admin/system/app/remove/')}}/"+dataid,
                         dataType: 'json',
                         data: {
                             "_token":"{{csrf_token()}}"
@@ -154,7 +154,7 @@
                             if (data.code==1){
                                 layer.msg(data.message);
                                 setTimeout(function () {
-                                    window.location = "{{url('admin/article/tags')}}";
+                                    window.location = "{{url('admin/get/system/app')}}";
                                 },2000);
                             }else{
                                 layer.msg(data.message);

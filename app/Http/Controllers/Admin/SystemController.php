@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\App;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
@@ -15,11 +17,36 @@ class SystemController extends Controller
         return view("admin.system.index",compact('data'));
     }
 
+    /***********************app*********************/
     function app()
     {
         $data = (new Collection(Db::table("app")->get()))->toArray();
         return view("admin.system.app",compact('data'));
     }
+    function appEdit()
+    {
+        isset(request()->id)?$data=App::where("id","=",request()->id)->first():$data='';
+        return view("admin.system.appEdit",compact('data'));
+    }
+    function appStore(Request $request)
+    {
+        $prepareData = [ 'name'        => $request->name,
+                         'description' => $request->description,
+                         'version' => $request->version,
+                         'uri'       => $request->uri,
+                         'platform'       => $request->platform];
+        if (isset($request->id)){
+            $result = App::where("id","=",$request->id)->update($prepareData)?['code' => 1, 'message' => '更新成功'] : ['code' => 0, 'message' => '更新失败'];
+            return $result;
+
+        }else {
+            return App::create(array_merge($prepareData,[
+                'date'       => time()
+            ])) ? ['code' => 1, 'message' => '添加成功'] : ['code' => 0, 'message' => '添加失败'];
+        }
+    }
+    /***********************app*********************/
+
 
     function store()
     {

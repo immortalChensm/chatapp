@@ -47,16 +47,9 @@ class SystemController extends Controller
                             'description' => $request->description,
                             'version'     => $request->version,
                             'uri'         => $request->uri,
+                            'file'         => $request->file,
                             'platform'    => $request->platform];
 
-//            $uri = $this->downloadCosFile([
-//                'fileKeyName' => $prepareData['uri'],
-//                'expire'      => config('cos')['expire']
-//            ])['data'];
-//echo $uri;
-//            $file = "public/attached/" . $request->uri;
-//            file_put_contents($file, file_get_contents($uri));
-//            $prepareData['uri'] = $file;
             if (isset($request->id)) {
                 $result = App::where("id", "=", $request->id)->update($prepareData) ? ['code' => 1, 'message' => '更新成功'] : ['code' => 0, 'message' => '更新失败'];
                 return $result;
@@ -69,10 +62,9 @@ class SystemController extends Controller
             return ['code' => 0, 'message' => '参数错误'];
         }
     }
-
     function removeApp(App $app)
     {
-        $uriKey = $app->uri;
+        $uriKey = $app->file;
         if ($app->delete()){
             unlink($uriKey);
             return ['code'=>1,'message'=>'删除成功！'];

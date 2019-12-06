@@ -145,9 +145,9 @@
                     success: function(data){
                         if (data.code == 1){
                             layer.msg(data.message);
-                           {{--setTimeout(function () {--}}
-                               {{--window.location = "{{url('admin/musics')}}";--}}
-                           {{--},2000);--}}
+                           setTimeout(function () {
+                               window.location = "{{url('admin/system/app')}}";
+                           },2000);
 
                         }else if(data.code ==100)
                         {
@@ -209,7 +209,8 @@
                         {{--});--}}
                                 console.log(task);
                         $("#postForm").append(function () {
-                            return "<input type='hidden' class='inputUploadFile' name='uri' value='"+task.json.fileKeyName+"' data='"+task.name+"'/>";
+                            return "<input type='hidden' class='inputUploadFile' name='uri' value='"+task.json.url+"' data='"+task.name+"'/>";
+                            return "<input type='hidden' class='inputUploadFile' name='file' value='"+task.json.file+"' data='"+task.name+"'/>";
                         });
                     }
                 }
@@ -239,6 +240,7 @@
                     data:{
                         imgFile:task.json.url,
                         fileKeyName:task.json.fileKeyName,
+                        file:task.json.file,
                         '_token':"{{csrf_token()}}",
                     },
                     url:uri,

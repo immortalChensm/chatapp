@@ -41,7 +41,8 @@ class Controller extends BaseController
             if($file->upload()){
                 $result = [
                     'error'=>0,
-                    'url'=>asset("attached/".$file->getNameWithExtension())
+                    'url'=>asset("attached/".$file->getNameWithExtension()),
+                    'file'=>config("upload")['attachedDir']."/".$file->getNameWithExtension()
                 ];
             }
             //上传成功的文件全扔到存储桶里

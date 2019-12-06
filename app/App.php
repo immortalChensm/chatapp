@@ -10,4 +10,6 @@ class App extends Model
     protected $table = "app";
     public $primaryKey = "id";
     protected $guarded = [];
+
+    protected $dateFormat = false;
 }

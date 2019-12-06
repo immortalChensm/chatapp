@@ -49,14 +49,14 @@ class SystemController extends Controller
                             'uri'         => $request->uri,
                             'platform'    => $request->platform];
 
-            $uri = $this->downloadCosFile([
-                'fileKeyName' => $prepareData['uri'],
-                'expire'      => config('cos')['expire']
-            ])['data'];
-echo $uri;
-            $file = "public/attached/" . $request->uri;
-            file_put_contents($file, file_get_contents($uri));
-            $prepareData['uri'] = $file;
+//            $uri = $this->downloadCosFile([
+//                'fileKeyName' => $prepareData['uri'],
+//                'expire'      => config('cos')['expire']
+//            ])['data'];
+//echo $uri;
+//            $file = "public/attached/" . $request->uri;
+//            file_put_contents($file, file_get_contents($uri));
+//            $prepareData['uri'] = $file;
             if (isset($request->id)) {
                 $result = App::where("id", "=", $request->id)->update($prepareData) ? ['code' => 1, 'message' => '更新成功'] : ['code' => 0, 'message' => '更新失败'];
                 return $result;

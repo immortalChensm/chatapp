@@ -45,7 +45,7 @@ class Controller extends BaseController
                 ];
             }
             //上传成功的文件全扔到存储桶里
-            if ($result['error'] == 0){
+            if ($result['error'] == 0&&!preg_match('/apk|IPA/',$result['url'])){
                 $fileKeyName = "other/".$file->getNameWithExtension();
                 $localFileSrc = config("upload")['attachedDir']."/".$file->getNameWithExtension();
                 $cosUpload = $this->uploadCosFile([

@@ -140,7 +140,7 @@
                     { data:"createdDate",name:"createdDate",orderable: false,searchable:true }
                 ],
                 columnDefs: [ {
-                    "targets": 16,
+                    "targets": 14,
                     "render": function ( data, type, row, meta ) {
                         var BtnHtml = "<button type='button' class='fa fa-edit btn  btn-success btn-sm update' data='"+row.articleId+"' data-user='"+row.userType+"'>修改</button>";
                         BtnHtml+= "  <button type='button' class='fa fa-remove btn  btn-danger btn-sm delete' data='"+row.articleId+"' data-title='"+row.title+"' data-user='"+row.userType+"'>移除</button>";

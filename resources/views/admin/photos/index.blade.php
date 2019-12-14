@@ -51,10 +51,10 @@
                                 <tr>
                                     <th>标题</th>
                                     <th>用户</th>
-                                    <th>评论数</th>
-                                    <th>阅读数</th>
-                                    <th>点赞数</th>
-                                    <th>踩点数</th>
+                                    <th>评论</th>
+                                    <th>阅读</th>
+                                    <th>点赞</th>
+                                    <th>踩点</th>
                                     <th>屏蔽</th>
                                     <th>能分享</th>
                                     <th>置顶</th>
@@ -71,10 +71,10 @@
                                 <tr>
                                     <th>标题</th>
                                     <th>用户</th>
-                                    <th>评论数</th>
-                                    <th>阅读数</th>
-                                    <th>点赞数</th>
-                                    <th>踩点数</th>
+                                    <th>评论</th>
+                                    <th>阅读</th>
+                                    <th>点赞</th>
+                                    <th>踩点</th>
                                     <th>屏蔽</th>
                                     <th>能分享</th>
                                     <th>置顶</th>
@@ -107,8 +107,7 @@
                     processing:true,
                     autoWidth: true,
                     columns: [
-                        { data:"photoId",name:"photoId",orderable: true,searchable:false },
-                        { data:"title",name:"title",orderable: true,searchable:true,width:'20%' },
+                        { data:"title",name:"title",orderable: true,searchable:true,width:'17%' },
                         { data:"userId",name:"userId",orderable: false,searchable:true },
                         { data:"commentCount",name:"commentCount",orderable: true,searchable:true },
                         { data:"readCount",name:"readCount",orderable: true,searchable:true },

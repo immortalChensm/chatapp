@@ -50,19 +50,19 @@
                             <table id="datagrid" class="table table-bordered table-striped table-hover">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>视频标题</th>
-                                    <th>发布用户</th>
-                                    <th>评论数</th>
-                                    <th>阅读数</th>
-                                    <th>点赞数</th>
-                                    <th>踩点数</th>
-                                    <th>屏蔽否</th>
-                                    <th>能分享否</th>
-                                    <th>置顶否</th>
-                                    <th>置顶起始时间</th>
-                                    <th>置顶过期时间/H</th>
-                                    <th>发布时间</th>
+                                    <th>标题</th>
+                                    <th>用户</th>
+                                    <th>评论</th>
+                                    <th>阅读</th>
+                                    <th>点赞</th>
+                                    <th>踩点</th>
+                                    <th>屏蔽</th>
+                                    <th>能分享</th>
+                                    <th>置顶</th>
+                                    <th>序号</th>
+                                    <th>起始/T</th>
+                                    <th>过期/H</th>
+                                    <th>发布/T</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -72,10 +72,10 @@
                                 <tr>
                                     <th>标题</th>
                                     <th>用户</th>
-                                    <th>评论数</th>
-                                    <th>阅读数</th>
-                                    <th>点赞数</th>
-                                    <th>踩点数</th>
+                                    <th>评论</th>
+                                    <th>阅读</th>
+                                    <th>点赞</th>
+                                    <th>踩点</th>
                                     <th>屏蔽</th>
                                     <th>能分享</th>
                                     <th>置顶</th>

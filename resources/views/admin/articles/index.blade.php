@@ -65,10 +65,10 @@
                                     <th>标题</th>
                                     <th>标签</th>
                                     <th>用户</th>
-                                    <th>评论数</th>
-                                    <th>阅读数</th>
-                                    <th>点赞数</th>
-                                    <th>踩点数</th>
+                                    <th>评论</th>
+                                    <th>阅读</th>
+                                    <th>点赞</th>
+                                    <th>踩点</th>
                                     <th>屏蔽</th>
                                     <th>能分享</th>
                                     <th>置顶</th>
@@ -86,10 +86,10 @@
                                     <th>标题</th>
                                     <th>标签</th>
                                     <th>用户</th>
-                                    <th>评论数</th>
-                                    <th>阅读数</th>
-                                    <th>点赞数</th>
-                                    <th>踩点数</th>
+                                    <th>评论</th>
+                                    <th>阅读</th>
+                                    <th>点赞</th>
+                                    <th>踩点</th>
                                     <th>屏蔽</th>
                                     <th>能分享</th>
                                     <th>置顶</th>

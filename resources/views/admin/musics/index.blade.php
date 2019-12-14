@@ -59,12 +59,15 @@
                                     <th>音乐标题</th>
                                     <th>歌手</th>
                                     <th>发布用户</th>
-                                    <th>评论数量</th>
-                                    <th>阅读数量</th>
-                                    <th>点赞数量</th>
-                                    <th>踩点数量</th>
-                                    <th>屏蔽</th>
-                                    <th>分享</th>
+                                    <th>评论数</th>
+                                    <th>阅读数</th>
+                                    <th>点赞数</th>
+                                    <th>踩点数</th>
+                                    <th>屏蔽否</th>
+                                    <th>能分享否</th>
+                                    <th>置顶否</th>
+                                    <th>置顶起始时间</th>
+                                    <th>置顶过期时间/H</th>
                                     <th>发布时间</th>
                                     <th>操作</th>
                                 </tr>
@@ -77,12 +80,16 @@
                                     <th>音乐标题</th>
                                     <th>歌手</th>
                                     <th>发布用户</th>
-                                    <th>评论数量</th>
-                                    <th>阅读数量</th>
-                                    <th>点赞数量</th>
-                                    <th>踩点数量</th>
-                                    <th>屏蔽</th>
-                                    <th>分享</th>
+                                    <th>评论数</th>
+                                    <th>阅读数</th>
+                                    <th>点赞数</th>
+                                    <th>踩点数</th>
+                                    <th>屏蔽否</th>
+                                    <th>能分享否</th>
+                                    <th>置顶否</th>
+                                    <th>置顶序号</th>
+                                    <th>置顶起始时间</th>
+                                    <th>置顶过期时间/H</th>
                                     <th>发布时间</th>
                                     <th>操作</th>
                                 </tr>
@@ -119,10 +126,14 @@
                         { data:"downCount",name:"downCount",orderable: true,searchable:true },
                         { data:"isShow",name:"isShow",orderable: true,searchable:true },
                         { data:"canShared",name:"canShared",orderable: true,searchable:true },
+                        { data:"top",name:"top",orderable: true,searchable:true },
+                        { data:"topNumber",name:"topNumber",orderable: true,searchable:true },
+                        { data:"topStartTime",name:"topStartTime",orderable: true,searchable:true },
+                        { data:"expire",name:"expire",orderable: true,searchable:true },
                         { data:"createdDate",name:"createdDate",orderable: false,searchable:true },
                     ],
                     columnDefs: [ {
-                        "targets": 11,
+                        "targets": 15,
                         "render": function ( data, type, row, meta ) {
 
                             var BtnHtml = "<button type='button' class='btn  btn-success btn-sm update' data='"+row.musicId+"'>修改</button>";
@@ -274,26 +285,75 @@
             });
 
             //置顶操作
+            {{--$("#datagrid").on("click",".top",function (e) {--}}
+                {{--var dateId = $(this).attr("data");--}}
+                {{--$.ajax({--}}
+                    {{--type: "post",--}}
+                    {{--url: "{{url('/admin/manager/setTop/')}}",--}}
+                    {{--dataType: 'json',--}}
+                    {{--data: {--}}
+                        {{--"_token": "{{csrf_token()}}",--}}
+                        {{--'topId':dateId,--}}
+                        {{--'topType':'3'--}}
+                    {{--},--}}
+                    {{--success: function (data) {--}}
+                        {{--if (data.code == 1) {--}}
+                            {{--layer.msg(data.message);--}}
+                        {{--} else {--}}
+                            {{--layer.msg(data.message);--}}
+                        {{--}--}}
+                    {{--},--}}
+                    {{--error: function (data) {--}}
+
+                    {{--}--}}
+                {{--});--}}
+            {{--});--}}
             $("#datagrid").on("click",".top",function (e) {
                 var dateId = $(this).attr("data");
-                $.ajax({
-                    type: "post",
-                    url: "{{url('/admin/manager/setTop/')}}",
-                    dataType: 'json',
-                    data: {
-                        "_token": "{{csrf_token()}}",
-                        'topId':dateId,
-                        'topType':'3'
-                    },
-                    success: function (data) {
-                        if (data.code == 1) {
-                            layer.msg(data.message);
-                        } else {
-                            layer.msg(data.message);
-                        }
-                    },
-                    error: function (data) {
+                var title = $(":input[name=title]").val();
+                var tagId = $(":input[name=tagId]").val();
+                layer.open({
+                    type:0,
+                    area: ['540px', '240px'],
+                    content: "<input type='number' class='form-control'  name='number' placeholder='请输入置顶编号'/><input type='number' class='form-control'  name='text' placeholder='请输入置顶时间'/>"
+                    ,btn: ['提交', '取消']
+                    ,btn1: function(index, layero){
+                        //按钮【按钮一】的回调
 
+                        var expire = $(layero).find(":input[name=text]").val();
+                        var number = $(layero).find(":input[name=number]").val();
+                        if (message.length==0){
+                            layer.msg("请填写时间");
+                            return false;
+                        }
+                        $.ajax({
+                            type: "post",
+                            url: "{{url('/admin/manager/setTop/')}}",
+                            dataType: 'json',
+                            data: {
+                                "_token": "{{csrf_token()}}",
+                                'topId':dateId,
+                                'topType':'3',
+                                'expire':expire,
+                                'number':number,
+                            },
+                            success: function (data) {
+                                if (data.code == 1) {
+                                    layer.msg(data.message);
+                                } else {
+                                    layer.msg(data.message);
+                                }
+                            },
+                            error: function (data) {
+
+                            }
+                        });
+
+                    }
+                    ,cancel: function(){
+                        //右上角关闭回调
+
+                        //return false 开启该代码可禁止点击该按钮关闭
                     }
                 });
             });

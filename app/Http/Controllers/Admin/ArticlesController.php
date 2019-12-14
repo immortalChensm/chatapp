@@ -43,7 +43,11 @@ class ArticlesController extends Controller
 
             }
         },function (&$item){
-            $item->tagName     = $item->tag->name;
+            if (isset($item->tag->name)) {
+                $item->tagName = $item->tag->name;
+            }else{
+                $item->tagName = "";
+            }
             if ($item->userType==2){
                 $item->userId      = "平台发布";
                 $item->userIdMsg = 0;
@@ -58,6 +62,13 @@ class ArticlesController extends Controller
             $item->canSharedFlag   = $item->canShared;
             $item->canShared   = $item->canShared == 1 ? '是' : '否';
             $item->isStoraged  = $item->isStoraged == 1 ? '是' : '否';
+            //是否置顶
+            $item->top  = $item->top == 1 ? '是' : '否';
+            //置顶开始时间
+            if ($item->topStartTime){
+                $item->topStartTime = date("Y-m-d H", $item->topStartTime);
+            }
+
             $item->createdDate = date("Y-m-d H", strtotime($item->created_at));
         }]);
     }

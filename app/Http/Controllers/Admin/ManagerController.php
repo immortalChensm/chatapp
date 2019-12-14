@@ -145,20 +145,31 @@ class ManagerController extends Controller
 
     function top()
     {
-        $ret = DB::table("top")->where("id","=",1)->value("topId");
-        if ($ret){
-            DB::table("top")->where("id","=",1)->update([
-                'topId'=>request("topId"),
-                "topType"=>request("topType"),
-                "created_at"=>date("Y-m-d H:i:s")
+        $tables = [1=>'articles',2=>'musics',3=>'photos',4=>'videos'];
+        $fields = [1=>'articleId',2=>'musicId',3=>'photoId',4=>'videoId'];
+        $top = DB::table($tables[request("topType")])->where($fields[request("topType")],"=",request("topId"))->first();
+        //这内容已经置顶且未过期
+        if ($top['top']==1&&time()<($top['topStartTime']+($top['expire']*3600))){
+            DB::table($tables[request("topType")])->where($fields[request("topType")],"=",request("topId"))->update([
+                "top"=>0,
+                'expire'=>0,
+                'number'=>0
             ]);
         }else{
-            DB::table("top")->insert([
-                'topId'=>request("topId"),
-                "topType"=>request("topType"),
-                "created_at"=>date("Y-m-d H:i:s")
-            ]);
+            //内容不存在|也需要验证置顶编号
+            $number = DB::table("apmv")->where("topNumber",request("number"))->value("topNumber");
+            if (empty($number)){
+                DB::table($tables[request("topType")])->where($fields[request("topType")],"=",request("topId"))->update([
+                    'top'=>1,
+                    "topStartTime"=>time(),
+                    "expire"=>request("expire"),
+                    'number'=>request("number")
+                ]);
+            }else{
+                return ['code'=>0,'message'=>'置顶编号不可重复'];
+            }
+
         }
-        return ['code'=>1,'message'=>'设置成功'];
+        return ['code'=>1,'message'=>'置顶成功'];
     }
 }

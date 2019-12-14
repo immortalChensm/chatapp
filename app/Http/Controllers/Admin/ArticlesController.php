@@ -67,6 +67,11 @@ class ArticlesController extends Controller
             //置顶开始时间
             if ($item->topStartTime){
                 $item->topStartTime = date("Y-m-d H", $item->topStartTime);
+            }else{
+                $item->topStartTime = "";
+            }
+            if (empty($item->expire)){
+                $item->expire = "";
             }
 
             $item->createdDate = date("Y-m-d H", strtotime($item->created_at));

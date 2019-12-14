@@ -140,7 +140,7 @@
                         { data:"topStartTime",name:"topStartTime",orderable: true,searchable:true },
                         { data:"expire",name:"expire",orderable: true,searchable:true },
                         { data:"isStoraged",name:"isStoraged",orderable: true,searchable:true },
-                        { data:"createdDate",name:"createdDate",orderable: false,searchable:true },
+                        { data:"createdDate",name:"createdDate",orderable: false,searchable:true }
                     ],
                     columnDefs: [ {
                         "targets": 16,
@@ -285,7 +285,7 @@
             {{--});--}}
             $("#datagrid").on("click",".top",function (e) {
                 var dateId = $(this).attr("data");
-                
+
                 layer.open({
                     type:0,
                     area: ['540px', '240px'],

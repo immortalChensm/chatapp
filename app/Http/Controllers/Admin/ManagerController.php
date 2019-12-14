@@ -163,7 +163,7 @@ class ManagerController extends Controller
                     'top'=>1,
                     "topStartTime"=>time(),
                     "expire"=>request("expire"),
-                    'number'=>request("number")
+                    'topNumber'=>request("number")
                 ]);
             }else{
                 return ['code'=>0,'message'=>'置顶编号不可重复'];

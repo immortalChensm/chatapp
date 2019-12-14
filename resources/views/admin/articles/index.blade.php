@@ -62,10 +62,9 @@
                             <table id="datagrid" class="table table-bordered table-striped table-hover">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>标题</th>
                                     <th>标签</th>
-                                    <th>发布用户</th>
+                                    <th>用户</th>
                                     <th>评论数</th>
                                     <th>阅读数</th>
                                     <th>点赞数</th>
@@ -73,7 +72,7 @@
                                     <th>屏蔽否</th>
                                     <th>能分享</th>
                                     <th>置顶否</th>
-                                    <th>置顶序号</th>
+                                    <th>序号</th>
                                     <th>置顶起始</th>
                                     <th>过期时间/H</th>
                                     <th>发布时间</th>
@@ -84,10 +83,9 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>ID</th>
                                     <th>标题</th>
                                     <th>标签</th>
-                                    <th>发布用户</th>
+                                    <th>用户</th>
                                     <th>评论数</th>
                                     <th>阅读数</th>
                                     <th>点赞数</th>
@@ -95,7 +93,7 @@
                                     <th>屏蔽否</th>
                                     <th>能分享</th>
                                     <th>置顶否</th>
-                                    <th>置顶序号</th>
+                                    <th>序号</th>
                                     <th>置顶起始</th>
                                     <th>过期时间/H</th>
                                     <th>发布时间</th>
@@ -125,7 +123,6 @@
                 processing:true,
                 autoWidth: true,
                 columns: [
-                    { data:"articleId",name:"articleId",orderable: true,searchable:false },
                     { data:"title",name:"title",orderable: true,searchable:true,width:'17%' },
                     { data:"tagName",name:"tagName",orderable: false,searchable:false },
                     { data:"userId",name:"userId",orderable: false,searchable:true },

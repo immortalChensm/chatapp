@@ -285,8 +285,7 @@
             {{--});--}}
             $("#datagrid").on("click",".top",function (e) {
                 var dateId = $(this).attr("data");
-                var title = $(":input[name=title]").val();
-                var tagId = $(":input[name=tagId]").val();
+                
                 layer.open({
                     type:0,
                     area: ['540px', '240px'],

@@ -97,6 +97,9 @@ class PhotosController extends Controller
             if (empty($item->expire)){
                 $item->expire = "";
             }
+            if (empty($item->topNumber)){
+                $item->topNumber = 0;
+            }
             $item->createdDate = date("Y-m-d H", strtotime($item->created_at));
         }]);
     }

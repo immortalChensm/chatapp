@@ -153,8 +153,9 @@ class ManagerController extends Controller
             DB::table($tables[request("topType")])->where($fields[request("topType")],"=",request("topId"))->update([
                 "top"=>0,
                 'expire'=>0,
-                'number'=>0
+                'topNumber'=>0
             ]);
+
         }else{
             //内容不存在|也需要验证置顶编号
             $number = DB::table("apmv")->where("topNumber",request("number"))->value("topNumber");
@@ -170,6 +171,6 @@ class ManagerController extends Controller
             }
 
         }
-        return ['code'=>1,'message'=>'置顶成功'];
+        return ['code'=>1,'message'=>'操作成功'];
     }
 }

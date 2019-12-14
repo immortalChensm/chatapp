@@ -96,6 +96,18 @@ class PhotosController extends Controller
             }
             if (empty($item->expire)){
                 $item->expire = "";
+            }else{
+                //已置顶且未过期
+                if ($item->top==1&&time()<($item->topStartTime+($item->expire*3600))){
+                    $item->expire = $item->expire."[未过期]";
+                }else if ($item->top==1&&time()>($item->topStartTime+($item->expire*3600))){
+                    //已置顶且过期
+                    Photos::where("photoId","=",$item->photoId)->update(['top'=>0,'topStartTime'=>0,'expire'=>0]);
+                    $item->expire = "[过期]";
+                }else{
+                    $item->expire = "";
+                }
+
             }
             if (empty($item->topNumber)){
                 $item->topNumber = 0;

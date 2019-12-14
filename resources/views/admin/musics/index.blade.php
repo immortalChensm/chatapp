@@ -55,20 +55,20 @@
                             <table id="datagrid" class="table table-bordered table-striped table-hover">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>音乐标题</th>
+                                    <th>标题</th>
                                     <th>歌手</th>
-                                    <th>发布用户</th>
+                                    <th>用户</th>
                                     <th>评论数</th>
                                     <th>阅读数</th>
                                     <th>点赞数</th>
                                     <th>踩点数</th>
-                                    <th>屏蔽否</th>
-                                    <th>能分享否</th>
-                                    <th>置顶否</th>
-                                    <th>置顶起始时间</th>
-                                    <th>置顶过期时间/H</th>
-                                    <th>发布时间</th>
+                                    <th>屏蔽</th>
+                                    <th>能分享</th>
+                                    <th>置顶</th>
+                                    <th>序号</th>
+                                    <th>起始/T</th>
+                                    <th>过期/H</th>
+                                    <th>发布/T</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -76,21 +76,20 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>音乐标题</th>
+                                    <th>标题</th>
                                     <th>歌手</th>
-                                    <th>发布用户</th>
+                                    <th>用户</th>
                                     <th>评论数</th>
                                     <th>阅读数</th>
                                     <th>点赞数</th>
                                     <th>踩点数</th>
-                                    <th>屏蔽否</th>
-                                    <th>能分享否</th>
-                                    <th>置顶否</th>
-                                    <th>置顶序号</th>
-                                    <th>置顶起始时间</th>
-                                    <th>置顶过期时间/H</th>
-                                    <th>发布时间</th>
+                                    <th>屏蔽</th>
+                                    <th>能分享</th>
+                                    <th>置顶</th>
+                                    <th>序号</th>
+                                    <th>起始/T</th>
+                                    <th>过期/H</th>
+                                    <th>发布/T</th>
                                     <th>操作</th>
                                 </tr>
                                 </tfoot>
@@ -116,7 +115,6 @@
                     processing:true,
                     autoWidth: true,
                     columns: [
-                        { data:"musicId",name:"musicId",orderable: true,searchable:false },
                         { data:"singer",name:"singer",orderable: true,searchable:false },
                         { data:"title",name:"title",orderable: true,searchable:true,width:'20%'},
                         { data:"userId",name:"userId",orderable: false,searchable:true },
@@ -133,7 +131,7 @@
                         { data:"createdDate",name:"createdDate",orderable: false,searchable:true },
                     ],
                     columnDefs: [ {
-                        "targets": 15,
+                        "targets": 14,
                         "render": function ( data, type, row, meta ) {
 
                             var BtnHtml = "<button type='button' class='btn  btn-success btn-sm update' data='"+row.musicId+"'>修改</button>";
@@ -322,8 +320,12 @@
 
                         var expire = $(layero).find(":input[name=text]").val();
                         var number = $(layero).find(":input[name=number]").val();
-                        if (message.length==0){
-                            layer.msg("请填写时间");
+                        if (expire.length==0){
+                            layer.msg("请填写过期时间");
+                            return false;
+                        }
+                        if (number.length==0){
+                            layer.msg("请填写编号");
                             return false;
                         }
                         $.ajax({

@@ -69,13 +69,13 @@
                                     <th>阅读数</th>
                                     <th>点赞数</th>
                                     <th>踩点数</th>
-                                    <th>屏蔽否</th>
+                                    <th>屏蔽</th>
                                     <th>能分享</th>
-                                    <th>置顶否</th>
+                                    <th>置顶</th>
                                     <th>序号</th>
-                                    <th>置顶起始</th>
-                                    <th>过期时间/H</th>
-                                    <th>发布时间</th>
+                                    <th>起始/T</th>
+                                    <th>过期/H</th>
+                                    <th>发布/T</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>

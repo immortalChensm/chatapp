@@ -64,18 +64,18 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>标题</th>
-                                    <th>文章标签</th>
+                                    <th>标签</th>
                                     <th>发布用户</th>
                                     <th>评论数</th>
                                     <th>阅读数</th>
                                     <th>点赞数</th>
                                     <th>踩点数</th>
                                     <th>屏蔽否</th>
-                                    <th>能分享否</th>
+                                    <th>能分享</th>
                                     <th>置顶否</th>
                                     <th>置顶序号</th>
-                                    <th>置顶起始时间</th>
-                                    <th>置顶过期时间/H</th>
+                                    <th>置顶起始</th>
+                                    <th>过期时间/H</th>
                                     <th>发布时间</th>
                                     <th>操作</th>
                                 </tr>
@@ -86,18 +86,18 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>标题</th>
-                                    <th>文章标签</th>
+                                    <th>标签</th>
                                     <th>发布用户</th>
                                     <th>评论数</th>
                                     <th>阅读数</th>
                                     <th>点赞数</th>
                                     <th>踩点数</th>
                                     <th>屏蔽否</th>
-                                    <th>能分享否</th>
+                                    <th>能分享</th>
                                     <th>置顶否</th>
                                     <th>置顶序号</th>
-                                    <th>置顶起始时间</th>
-                                    <th>置顶过期时间/H</th>
+                                    <th>置顶起始</th>
+                                    <th>过期时间/H</th>
                                     <th>发布时间</th>
                                     <th>操作</th>
                                 </tr>
@@ -126,7 +126,7 @@
                 autoWidth: true,
                 columns: [
                     { data:"articleId",name:"articleId",orderable: true,searchable:false },
-                    { data:"title",name:"title",orderable: true,searchable:true,width:'20%' },
+                    { data:"title",name:"title",orderable: true,searchable:true,width:'17%' },
                     { data:"tagName",name:"tagName",orderable: false,searchable:false },
                     { data:"userId",name:"userId",orderable: false,searchable:true },
                     { data:"commentCount",name:"commentCount",orderable: true,searchable:true },

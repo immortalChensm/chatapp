@@ -73,9 +73,9 @@
                                     <th>屏蔽否</th>
                                     <th>能分享否</th>
                                     <th>置顶否</th>
-                                    <th>置顶序号</th>
-                                    <th>置顶起始时间</th>
-                                    <th>置顶过期时间/H</th>
+                                    {{--<th>置顶序号</th>--}}
+                                    {{--<th>置顶起始时间</th>--}}
+                                    {{--<th>置顶过期时间/H</th>--}}
                                     <th>发布时间</th>
                                     <th>操作</th>
                                 </tr>
@@ -95,9 +95,9 @@
                                     <th>屏蔽否</th>
                                     <th>能分享否</th>
                                     <th>置顶否</th>
-                                    <th>置顶序号</th>
-                                    <th>置顶起始时间</th>
-                                    <th>置顶过期时间/H</th>
+                                    {{--<th>置顶序号</th>--}}
+                                    {{--<th>置顶起始时间</th>--}}
+                                    {{--<th>置顶过期时间/H</th>--}}
                                     <th>发布时间</th>
                                     <th>操作</th>
                                 </tr>
@@ -136,9 +136,9 @@
                         { data:"isShow",name:"isShow",orderable: true,searchable:true },
                         { data:"canShared",name:"canShared",orderable: true,searchable:true },
                         { data:"top",name:"top",orderable: true,searchable:true },
-                        { data:"topNumber",name:"topNumber",orderable: true,searchable:true },
-                        { data:"topStartTime",name:"topStartTime",orderable: true,searchable:true },
-                        { data:"expire",name:"expire",orderable: true,searchable:true },
+                        // { data:"topNumber",name:"topNumber",orderable: true,searchable:true },
+                        // { data:"topStartTime",name:"topStartTime",orderable: true,searchable:true },
+                        // { data:"expire",name:"expire",orderable: true,searchable:true },
                         { data:"isStoraged",name:"isStoraged",orderable: true,searchable:true },
                         { data:"createdDate",name:"createdDate",orderable: false,searchable:true },
                     ],

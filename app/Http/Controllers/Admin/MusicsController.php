@@ -60,8 +60,6 @@ class MusicsController extends Controller
                     //已置顶且过期
                     Musics::where("musicId","=",$item->musicId)->update(['top'=>0,'topStartTime'=>0,'expire'=>0]);
                     $item->expire = "[过期]";
-                }else{
-                    $item->expire = "";
                 }
 
             }

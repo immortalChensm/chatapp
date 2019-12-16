@@ -42,8 +42,6 @@ class MusicsController extends Controller
             $item->isShow      = $item->isShow == 0 ? '是' : '否';
             $item->canSharedFlag   = $item->canShared;
             $item->canShared  = $item->canShared == 1 ? '是' : '否';
-            //是否置顶
-            $item->top  = $item->top == 1 ? '是' : '否';
 
             if (empty($item->expire)){
                 $item->expire = "";
@@ -58,6 +56,9 @@ class MusicsController extends Controller
                 }
 
             }
+            //是否置顶
+            $item->top  = $item->top == 1 ? '是' : '否';
+
             //置顶开始时间
             if ($item->topStartTime){
                 $item->topStartTime = date("Y-m-d H", $item->topStartTime);

@@ -308,8 +308,12 @@
             {{--});--}}
             $("#datagrid").on("click",".top",function (e) {
                 var dateId = $(this).attr("data");
-                var title = $(":input[name=title]").val();
+
                 var tagId = $(":input[name=tagId]").val();
+
+                var title = $(":input[name=title]").val();
+                var singer = $(":input[name=singer]").val();
+
                 layer.open({
                     type:0,
                     area: ['540px', '240px'],
@@ -342,6 +346,9 @@
                             success: function (data) {
                                 if (data.code == 1) {
                                     layer.msg(data.message);
+                                    setTimeout(function () {
+                                        refreshData({'title':title,'singer':singer});
+                                    }, 2000);
                                 } else {
                                     layer.msg(data.message);
                                 }

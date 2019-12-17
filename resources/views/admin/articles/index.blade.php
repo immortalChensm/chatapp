@@ -282,7 +282,8 @@
         {{--});--}}
         $("#datagrid").on("click",".top",function (e) {
             var dateId = $(this).attr("data");
-
+            var title = $(":input[name=title]").val();
+            var tagId = $(":input[name=tagId]").val();
             layer.open({
                 type:0,
                 area: ['540px', '240px'],
@@ -315,6 +316,10 @@
                         success: function (data) {
                             if (data.code == 1) {
                                 layer.msg(data.message);
+                                setTimeout(function () {
+                                    //window.location = "{{url('admin/articles')}}";
+                                    window.tableGrid.ajax.url( '/admin/get/articles?title='+ title+"&tagId="+tagId).load();
+                                }, 2000);
                             } else {
                                 layer.msg(data.message);
                             }

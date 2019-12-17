@@ -301,6 +301,9 @@
                             success: function (data) {
                                 if (data.code == 1) {
                                     layer.msg(data.message);
+                                    setTimeout(function () {
+                                        refreshData(title);
+                                    },2000);
                                 } else {
                                     layer.msg(data.message);
                                 }

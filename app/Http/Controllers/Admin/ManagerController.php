@@ -145,8 +145,8 @@ class ManagerController extends Controller
 
     function top()
     {
-        $tables = [1=>'articles',2=>'musics',3=>'photos',4=>'videos'];
-        $fields = [1=>'articleId',2=>'musicId',3=>'photoId',4=>'videoId'];
+        $tables = [1=>'articles',3=>'musics',2=>'photos',4=>'videos'];
+        $fields = [1=>'articleId',3=>'musicId',2=>'photoId',4=>'videoId'];
         $top = DB::table($tables[request("topType")])->where($fields[request("topType")],"=",request("topId"))->first();
         //这内容已经置顶且未过期
         if (isset($top)&&$top->top==1&&time()<($top->topStartTime+($top->expire*3600))){

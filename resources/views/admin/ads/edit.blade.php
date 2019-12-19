@@ -17,7 +17,7 @@
 
         <section class="content-header">
             <h1>
-                相册管理
+                广告管理
             </h1>
             <ol class="breadcrumb">
                 <li><a href="{{url("/admin")}}"><i class="fa fa-dashboard"></i> 首页</a></li>

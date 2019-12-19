@@ -97,6 +97,21 @@
             </li>
             @endif
 
+            @if(array_key_exists('广告管理',session("permission")))
+                <li class="treeview @if(preg_match('/ads/',request()->url())) active @endif">
+                    <a href="#">
+                        <i class="fa fa-file-image-o"></i> <span>广告管理</span>
+                        <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        @if(in_array("admin/ads",session("permission")['广告管理']))
+                            <li @if(preg_match('/ads/',request()->url())) class="active" @endif  ><a href="{{url("admin/ads")}}"><i class="fa fa-circle-o"></i> 广告列表</a></li>@endif
+                    </ul>
+                </li>
+            @endif
+
             @if(array_key_exists('视频管理',session("permission")))
             <li class="treeview @if(preg_match('/videos/',request()->url())) active @endif">
                 <a href="#">

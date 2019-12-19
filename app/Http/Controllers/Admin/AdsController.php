@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Ads;
 use App\Http\Requests\Admin\StorePhotoPost;
-use App\Images;
-use App\Photos;
+
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
@@ -19,25 +19,25 @@ class AdsController extends Controller
 
     function edit()
     {
-        if(isset(request()->photoId)){
-            $photo = Photos::where("photoId","=",request()->photoId)->first();
-            $uriKeys = $photo->images;
-            //从缓存里取出相册
-            $cacheKey = config("cos")['cachePhotoKey'].$photo->photoId;
-            if ($this->getRedisClient()->exists($cacheKey)){
-                $uriFiles = unserialize($this->getRedisClient()->get($cacheKey));
-                //判断缓存里的照片数量和数据库的数量是否对应
-                if (count($uriFiles) != count($uriKeys)){
-                    $uriFiles = $this->downLoadCosFileAndCache($uriKeys,$cacheKey);
-                }
-            }else{
-                $uriFiles = $this->downLoadCosFileAndCache($uriKeys,$cacheKey);
-            }
-            $photo['uriKey'] = $uriFiles;
+        if(isset(request()->id)){
+            $ads = Ads::where("id","=",request()->id)->first();
+//            $uriKeys = $ads->uri;
+//            //从缓存里取出相册
+//            $cacheKey = config("cos")['cachePhotoKey'].$photo->photoId;
+//            if ($this->getRedisClient()->exists($cacheKey)){
+//                $uriFiles = unserialize($this->getRedisClient()->get($cacheKey));
+//                //判断缓存里的照片数量和数据库的数量是否对应
+//                if (count($uriFiles) != count($uriKeys)){
+//                    $uriFiles = $this->downLoadCosFileAndCache($uriKeys,$cacheKey);
+//                }
+//            }else{
+//                $uriFiles = $this->downLoadCosFileAndCache($uriKeys,$cacheKey);
+//            }
+//            $photo['uriKey'] = $uriFiles;
 
         }
-        $data = isset($photo)?$photo:'';
-        return view("admin.photos.edit",compact('data'));
+        $data = isset($ads)?$ads:'';
+        return view("admin.ads.edit",compact('data'));
     }
 
     /**
@@ -64,13 +64,13 @@ class AdsController extends Controller
         return $uriFiles;
     }
 
-    function photos(Request $request,Photos $photos)
+    function ads(Request $request,Ads $ads)
     {
-        return $this->models(...[$request,$photos,function (&$searchItem)use($request){
-            $searchItem['title']   = $request->query->get('title');
+        return $this->models(...[$request,$ads,function (&$searchItem)use($request){
+            $searchItem['name']   = $request->query->get('name');
         },function ($query,&$searchItem){
-            if ($searchItem['title']){
-                $query->where("title","LIKE","%".$searchItem['title']."%");
+            if ($searchItem['name']){
+                $query->where("name","LIKE","%".$searchItem['name']."%");
             }
         },function (&$item){
             if ($item->userType==2){

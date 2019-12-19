@@ -42,9 +42,9 @@
                             <input type="hidden" name="id" data-id = "@if(isset($data['id'])){{$data['id']}} @endif" value=" @if(isset($data['id'])){{$data['id']}} @endif">
 
                             @if(isset($data['id']))
-                                {{--@foreach($data['uri'] as $key=>$uri)--}}
-                                    {{--<input type="hidden" class="inputUploadFile" name="uri[]" value="{{$key}}"/>--}}
-                                {{--@endforeach--}}
+                                @foreach($data['uri'] as $uri)
+                                    <input type="hidden" class="inputUploadFile" name="uri[]" value="{{$uri}}"/>
+                                @endforeach
                             @endif
                             <div class="box-body">
 
@@ -97,7 +97,7 @@
                                                     @if(isset($data['id']))
                                                 <div id="upload-image-view" class="clearfix ui-image html5">
 
-                                                    @foreach($data['uri'] as $key=>$uri)
+                                                    @foreach($data['uri'] as $uri)
                                                     <div class="u-item u-over">
                                                         <div class="u-img">
                                                             <img src="{{$uri}}">
@@ -105,9 +105,9 @@
                                                         <div class="u-progress-bar" style="opacity: 0.3;">
                                                             <div class="u-progress" style="opacity: 0.5; width: 100%;"></div>
                                                         </div>
-                                                        <div class="u-name" title="{{$key}}">{{$key}}</div>
+                                                        <div class="u-name" title="{{$uri}}">{{$uri}}</div>
                                                         <div class="u-close-bg" style="opacity: 0.3;"></div>
-                                                        <div class="u-close-text" data="{{$key}}">X</div>
+                                                        <div class="u-close-text" data="{{$uri}}">X</div>
                                                     </div>
                                                         @endforeach
 

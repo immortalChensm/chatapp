@@ -226,7 +226,7 @@
                         imgFile:$(this).attr("data"),
                         fileKeyName:$(this).attr("data"),
                     }
-                },"admin/remove/upload/file");
+                },"/admin/remove/upload/file");
 
                 $($($(this)[0]).parent()[0]).remove();
 

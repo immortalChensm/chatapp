@@ -100,7 +100,13 @@
                                                     @foreach($data['uri'] as $uri)
                                                     <div class="u-item u-over">
                                                         <div class="u-img">
+                                                            @if($data['type']==1){
                                                             <img src="{{$uri}}">
+                                                                @else
+                                                                <video src="{{$uri}}" autoplay controls></video>
+                                                        @endif
+
+
                                                         </div>
                                                         <div class="u-progress-bar" style="opacity: 0.3;">
                                                             <div class="u-progress" style="opacity: 0.5; width: 100%;"></div>

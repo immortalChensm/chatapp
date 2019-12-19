@@ -20,7 +20,9 @@ class UploaderController extends Controller
             restore_error_handler();
             return response()->json(['code'=>1,'message'=>'移除成功']);
         }else{
-            if ($this->removeCosFile(['key'=>request()->fileKeyName])['code']==1){
+            $data = (parse_url(request()->fileKeyName));
+            $file = explode("/",$data['path']);
+            if ($this->removeCosFile(['key'=>array_pop($file)])['code']==1){
                 return response()->json(['code'=>1,'message'=>'移除成功']);
             }
         }

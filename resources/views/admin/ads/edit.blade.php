@@ -211,7 +211,7 @@
                     },
                     complete: function(task){
                         $("#postForm").append(function () {
-                            return "<input type='hidden' class='inputUploadFile' name='uri[]' value='"+task.json.fileKeyName+"' data='"+task.name+"'/>";
+                            return "<input type='hidden' class='inputUploadFile' name='uri[]' value='"+task.json.url+"' data='"+task.name+"'/>";
                         });
                     }
                 }

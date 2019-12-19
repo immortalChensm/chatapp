@@ -263,7 +263,16 @@ class Controller extends BaseController
      */
     function removeCosFile($data)
     {
-        return deleteCosFile($data);
+        //return deleteCosFile($data);
+        $client = new \GuzzleHttp\Client([
+            'base_uri'=>"http://148.70.221.198:9901/",
+            'verify' => false
+        ]);
+        $response = $client->request("POST","api/image/remove",[
+            'form_params'=>$data
+        ]);
+
+        return json_decode($response->getBody()->getContents(),true);
     }
 
     /**

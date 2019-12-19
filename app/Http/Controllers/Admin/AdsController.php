@@ -21,6 +21,7 @@ class AdsController extends Controller
             $ads = Ads::where("id","=",request()->id)->first();
         }
         $data = isset($ads)?$ads:'';
+        print_r($data);
         return view("admin.ads.edit",compact('data'));
     }
 
@@ -43,6 +44,7 @@ class AdsController extends Controller
     {
         $data = request()->except("_token","s");
         $data['uri'] = implode(",",$data['uri']);
+        $data['created_at'] = time();
         if (isset($request->id)){
             return Ads::where("id","=",$request->id)->update($data)?['code'=>1,'message'=>'更新成功']:['code'=>1,'message'=>'更新失败'];
         }else{

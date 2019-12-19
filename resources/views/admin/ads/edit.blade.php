@@ -202,6 +202,13 @@
                 on: {
                     //添加之前触发
                     add: function (task) {
+                        //限制数量
+                        if ($(":input[name=type]").val()==2){
+                            if ($(".inputUploadFile").val()){
+                                layer.msg("一次只能一个文件！");
+                                return false;
+                            }
+                        }
 
                         if (task.disabled) return layer.msg("允许上传的文件格式为：" + this.ops.allows);
                     },

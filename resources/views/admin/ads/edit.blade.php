@@ -52,15 +52,40 @@
                                     <label for="exampleInputEmail1">广告名称</label>
                                     <input type="text" class="form-control input-max-box" class="edit-box" name="name" value="@if(isset($data['id'])) {{$data['name']}} @endif" placeholder="广告名称">
                                 </div>
-
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">公司名称</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="company" value="@if(isset($data['id'])) {{$data['company']}} @endif" placeholder="公司名称">
+                                </div>
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">公司地址</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="address" value="@if(isset($data['id'])) {{$data['address']}} @endif" placeholder="公司地址">
+                                </div>
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">联系人</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="contact" value="@if(isset($data['id'])) {{$data['contact']}} @endif" placeholder="联系人">
+                                </div>
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">联系电话</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="mobile" value="@if(isset($data['id'])) {{$data['mobile']}} @endif" placeholder="联系电话">
+                                </div>
                                 <div class="form-group" >
                                     <label>活动内容</label>
                                     <textarea name="content"  value="@if(isset($data['id'])) {{$data['content']}} @endif" class="form-control textarea-input" rows="4">@if(isset($data['id'])){{$data['content']}} @endif</textarea>
                                 </div>
+                                <div class="input-group input-box">
+                                    <span class="input-group-addon"><i class="fa">广告类型</i></span>
+                                    <select class="form-control" name="tagId">
+                                        <option value="">请选择</option>
+                                            @foreach([1=>'图片',2=>'视频'] as $k=>$item)
+                                                <option value="{{$k}}" @if($k==request()['type']) selected @endif >{{$item}}</option>
+                                            @endforeach
 
+                                    </select>
+
+                                </div>
                                 <div class="form-group">
                                         <div>
-                                            <a id="upload-target" class="btn btn-success btn-success-upload">上传图片/视频</a>
+                                            <a id="upload-target" class="btn btn-success btn-success-upload">上传</a>
                                         </div>
                                         <div class="content">
                                             <div class="contentin">

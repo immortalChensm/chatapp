@@ -24,6 +24,8 @@ class UploaderController extends Controller
             $file = explode("/",$data['path']);
             if ($this->removeCosFile(['key'=>array_pop($file)])['code']==1){
                 return response()->json(['code'=>1,'message'=>'移除成功']);
+            }else{
+                return response()->json(['code'=>0,'message'=>'移除失败']);
             }
         }
 

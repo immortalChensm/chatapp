@@ -42,9 +42,9 @@
                             <input type="hidden" name="id" data-id = "@if(isset($data['id'])){{$data['id']}} @endif" value=" @if(isset($data['id'])){{$data['id']}} @endif">
 
                             @if(isset($data['id']))
-                                @foreach($data['uri'] as $key=>$uri)
-                                    <input type="hidden" class="inputUploadFile" name="uri[]" value="{{$key}}"/>
-                                @endforeach
+                                {{--@foreach($data['uri'] as $key=>$uri)--}}
+                                    {{--<input type="hidden" class="inputUploadFile" name="uri[]" value="{{$key}}"/>--}}
+                                {{--@endforeach--}}
                             @endif
                             <div class="box-body">
 

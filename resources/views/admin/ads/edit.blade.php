@@ -1,6 +1,6 @@
 @extends("layouts.main")
 @section("title")
-    相册编辑
+    广告编辑
     @endsection
 @section("css")
     <link rel="stylesheet" href="{{asset("adminlte/css/common.css")}}">
@@ -21,8 +21,8 @@
             </h1>
             <ol class="breadcrumb">
                 <li><a href="{{url("/admin")}}"><i class="fa fa-dashboard"></i> 首页</a></li>
-                <li><a href="{{url("/admin/photos")}}"><i class="fa"></i> 相册管理</a></li>
-                <li class="active">相册编辑</li>
+                <li><a href="{{url("/admin/ads")}}"><i class="fa"></i> 广告管理</a></li>
+                <li class="active">广告编辑</li>
             </ol>
         </section>
 
@@ -39,40 +39,40 @@
                         <form role="form" id="postForm">
                             {{csrf_field()}}
 
-                            <input type="hidden" name="photoId" data-id = "@if(isset($data['photoId'])){{$data['photoId']}} @endif" data-user = "@if(isset($data['photoId'])){{$data['userType']}} @endif" value=" @if(isset($data['photoId'])){{$data['photoId']}} @endif">
+                            <input type="hidden" name="id" data-id = "@if(isset($data['id'])){{$data['id']}} @endif" value=" @if(isset($data['id'])){{$data['id']}} @endif">
 
-                            @if(isset($data['photoId']))
-                                @foreach($data['uriKey'] as $key=>$uri)
-                                    <input type="hidden" class="inputUploadFile" name="uriKey[]" value="{{$key}}"/>
+                            @if(isset($data['id']))
+                                @foreach($data['uri'] as $key=>$uri)
+                                    <input type="hidden" class="inputUploadFile" name="uri[]" value="{{$key}}"/>
                                 @endforeach
                             @endif
                             <div class="box-body">
 
                                 <div class="form-group edit-box">
-                                    <label for="exampleInputEmail1">相册名称</label>
-                                    <input type="text" class="form-control input-max-box" class="edit-box" name="title" value="@if(isset($data['photoId'])) {{$data['title']}} @endif" placeholder="相册名称">
+                                    <label for="exampleInputEmail1">广告名称</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="name" value="@if(isset($data['id'])) {{$data['name']}} @endif" placeholder="广告名称">
                                 </div>
 
                                 <div class="form-group" >
-                                    <label>相册简介</label>
-                                    <textarea name="introduction"  value="@if(isset($data['photoId'])) {{$data['introduction']}} @endif" class="form-control textarea-input" rows="4">@if(isset($data['photoId'])){{$data['introduction']}} @endif</textarea>
+                                    <label>活动内容</label>
+                                    <textarea name="content"  value="@if(isset($data['id'])) {{$data['content']}} @endif" class="form-control textarea-input" rows="4">@if(isset($data['id'])){{$data['content']}} @endif</textarea>
                                 </div>
 
                                 <div class="form-group">
                                         <div>
-                                            <a id="upload-target" class="btn btn-success btn-success-upload">添加图片</a>
+                                            <a id="upload-target" class="btn btn-success btn-success-upload">上传图片/视频</a>
                                         </div>
                                         <div class="content">
                                             <div class="contentin">
 
-                                                @if(!isset($data['photoId']))
+                                                @if(!isset($data['id']))
                                                 <div id="upload-image-view" class="clearfix"></div>
                                                 @endif
 
-                                                    @if(isset($data['photoId']))
+                                                    @if(isset($data['id']))
                                                 <div id="upload-image-view" class="clearfix ui-image html5">
 
-                                                    @foreach($data['uriKey'] as $key=>$uri)
+                                                    @foreach($data['uri'] as $key=>$uri)
                                                     <div class="u-item u-over">
                                                         <div class="u-img">
                                                             <img src="{{$uri}}">
@@ -82,7 +82,7 @@
                                                         </div>
                                                         <div class="u-name" title="{{$key}}">{{$key}}</div>
                                                         <div class="u-close-bg" style="opacity: 0.3;"></div>
-                                                        <div class="u-close-text" data="{{$key}}" data-user="{{$data['userType']}}">X</div>
+                                                        <div class="u-close-text" data="{{$key}}">X</div>
                                                     </div>
                                                         @endforeach
 
@@ -123,14 +123,14 @@
             function store(){
                 $.ajax({
                     type: 'POST',
-                    url: "{{url('admin/photos/save')}}",
+                    url: "{{url('admin/ads/save')}}",
                     dataType: 'json',
                     data: $('#postForm').serializeArray(),
                     success: function(data){
                         if (data.code == 1){
                             layer.msg(data.message);
                            setTimeout(function () {
-                               window.location = "{{url('admin/photos')}}";
+                               window.location = "{{url('admin/ads')}}";
                            },2000);
 
                         }else if(data.code ==100)
@@ -165,7 +165,7 @@
                 view: boxView,
                 //将auto配置为false以手动上传
                 auto: true,
-                allows: ".jpg,.png,.gif,.bmp",
+                allows: ".jpg,.png,.gif,.bmp,.mp4",
                 //图片缩放
                 scale: {
                     //要缩放的图片格式
@@ -177,12 +177,7 @@
                 on: {
                     //添加之前触发
                     add: function (task) {
-                        if ($(":input[name=photoId]").attr("data-id")>0){
-                            if ($(":input[name=photoId]").attr("data-user")!=2){
-                                layer.msg("该相册为用户发布的内容禁止操作！");
-                                return false;
-                            }
-                        }
+
                         if (task.disabled) return layer.msg("允许上传的文件格式为：" + this.ops.allows);
                     },
                     remove: function (task) {
@@ -191,31 +186,29 @@
                     },
                     complete: function(task){
                         $("#postForm").append(function () {
-                            return "<input type='hidden' class='inputUploadFile' name='uriKey[]' value='"+task.json.fileKeyName+"' data='"+task.name+"'/>";
+                            return "<input type='hidden' class='inputUploadFile' name='uri[]' value='"+task.json.fileKeyName+"' data='"+task.name+"'/>";
                         });
                     }
                 }
             });
 
-            //修改相册时的删除
+            //修改时的删除
             $("div.u-close-text").click(function (e) {
                 //console.log($(this).attr("data"));
-                if ($($(this)[0]).attr("data-user")!=2){
-                    layer.msg("该相册为用户发布的内容禁止操作！");
-                } else{
-                    removeCosFile({
-                        json:{
-                            imgFile:$(this).attr("data"),
-                            fileKeyName:$(this).attr("data"),
-                        }
-                    },"/admin/photos/update/remove");
 
-                    $($($(this)[0]).parent()[0]).remove();
-                }
+                removeCosFile({
+                    json:{
+                        imgFile:$(this).attr("data"),
+                        fileKeyName:$(this).attr("data"),
+                    }
+                },"/admin/photos/update/remove");
+
+                $($($(this)[0]).parent()[0]).remove();
+
 
             });
 
-            //移除存储桶上的文件
+            //移除文件
             function removeCosFile(task,uri)
             {
                 $.ajax({
@@ -228,7 +221,7 @@
                     url:uri,
                     success:function (res) {
                         if (res.code==1){
-                            layer.msg("照片已移除！");
+                            layer.msg("已移除！");
                         }
                         var inputUploadFile = $(".inputUploadFile");
                         for(var j=0;j<inputUploadFile.length;j++){

@@ -21,6 +21,71 @@ class Controller extends BaseController
     /**
      * 上传文件
      */
+//    function upload()
+//    {
+//        $storage = new FileSystem(config("upload")['attachedDir']);
+//        ($file = new File("imgFile",$storage))->setName(uniqid());
+//        $file->addValidations([
+//            new Size(env("UPLOAD_MAX_FILESIZE"))
+//        ]);
+//
+//        if (request()->get("dir")!=null){
+//            if (in_array(config("upload"), config("upload")[request()->get("dir")]) === false) {
+//                $result = [
+//                    'error'=>1,
+//                    'message'=>'上传的文件扩展不允许'
+//                ];
+//            }
+//        }
+//        try {
+//            if($file->upload()){
+//                $result = [
+//                    'error'=>0,
+//                    'url'=>asset("attached/".$file->getNameWithExtension()),
+//                    'file'=>config("upload")['attachedDir']."/".$file->getNameWithExtension()
+//                ];
+//            }
+//            //上传成功的文件全扔到存储桶里
+//            if ($result['error'] == 0&&!preg_match('/apk|IPA/',$result['url'])){
+//                $fileKeyName = "other/".$file->getNameWithExtension();
+//                $localFileSrc = config("upload")['attachedDir']."/".$file->getNameWithExtension();
+//                $cosUpload = $this->uploadCosFile([
+//                    'fileKeyName'=>$fileKeyName,
+//                    'file'=>$localFileSrc
+//                ]);
+//                //$videoImageSrc = $this->videoCoverResolve($fileKeyName,$localFileSrc);
+//                if ($cosUpload['code']==1){
+//                    //删除本地的文件，获取存储桶上的文件uri
+//                    if ($this->getFileSystem()->exists($localFileSrc))$this->getFileSystem()->delete($localFileSrc);
+//                    $cosFile = $this->downloadCosFile(['fileKeyName'=>$fileKeyName,'expire'=>config("cos")['expire']]);
+//                    $result = [
+//                        'error'=>0,
+//                        'url'=>$cosFile['data'],
+//                        'fileKeyName'=>$fileKeyName
+//                    ];
+//                }else{
+//                    //上传失败
+//                    $result = [
+//                        'error'=>1,
+//                        'message'=>'上传失败请重试！'
+//                    ];
+//                }
+//            }
+//
+//
+//        } catch (\Exception $e) {
+//            $result = [
+//              'error'=>1,
+//              'message'=>$file->getErrors()
+//            ];
+//        }
+//        if (!empty($videoImageSrc)){
+//            $result['videoImageSrc'] = $videoImageSrc;
+//        }
+//        return $result;
+//
+//    }
+
     function upload()
     {
         $storage = new FileSystem(config("upload")['attachedDir']);
@@ -45,22 +110,23 @@ class Controller extends BaseController
                     'file'=>config("upload")['attachedDir']."/".$file->getNameWithExtension()
                 ];
             }
-            //上传成功的文件全扔到存储桶里
+            //上传成功的文件全扔自个儿的服务器
             if ($result['error'] == 0&&!preg_match('/apk|IPA/',$result['url'])){
-                $fileKeyName = "other/".$file->getNameWithExtension();
+                $fileKeyName = $file->getNameWithExtension();
                 $localFileSrc = config("upload")['attachedDir']."/".$file->getNameWithExtension();
-                $cosUpload = $this->uploadCosFile([
+                $cosUpload = $this->uploadFileToSelfService([
                     'fileKeyName'=>$fileKeyName,
                     'file'=>$localFileSrc
                 ]);
-                //$videoImageSrc = $this->videoCoverResolve($fileKeyName,$localFileSrc);
-                if ($cosUpload['code']==1){
-                    //删除本地的文件，获取存储桶上的文件uri
+
+                if ($cosUpload['code']==200){
+                    //删除本地的文件，获取上传的文件uri
                     if ($this->getFileSystem()->exists($localFileSrc))$this->getFileSystem()->delete($localFileSrc);
-                    $cosFile = $this->downloadCosFile(['fileKeyName'=>$fileKeyName,'expire'=>config("cos")['expire']]);
+                    //$cosFile = $this->downloadCosFile(['fileKeyName'=>$fileKeyName,'expire'=>config("cos")['expire']]);
+
                     $result = [
                         'error'=>0,
-                        'url'=>$cosFile['data'],
+                        'url'=>$cosUpload['file'],
                         'fileKeyName'=>$fileKeyName
                     ];
                 }else{
@@ -75,8 +141,8 @@ class Controller extends BaseController
 
         } catch (\Exception $e) {
             $result = [
-              'error'=>1,
-              'message'=>$file->getErrors()
+                'error'=>1,
+                'message'=>$file->getErrors()
             ];
         }
         if (!empty($videoImageSrc)){
@@ -86,6 +152,30 @@ class Controller extends BaseController
 
     }
 
+    //上传文件到自个儿的服务器
+    function uploadFileToSelfService($file)
+    {
+        $uri = "http://148.70.221.198:9901/api/image/upload";
+
+        $client = new \GuzzleHttp\Client([
+            'base_uri'=>"http://148.70.221.198:9901/",
+            'verify' => false
+        ]);
+
+        $response = $client->request('POST', 'api/image/upload', [
+            'multipart' => [
+                [
+                    'name'     => 'file',
+                    'contents' => fopen($file['file'], 'r'),
+                    'filename' => $file['fileKeyName'],
+                    'headers'  => [
+                        'X-Foo' => 'this is an extra header to include'
+                    ]
+                ]
+            ]
+        ]);
+        return json_decode($response->getBody()->getContents(),true);
+    }
     private function videoCoverResolve($fileKeyName,$localFileSrc)
     {
 

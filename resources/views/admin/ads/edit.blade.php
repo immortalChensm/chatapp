@@ -72,9 +72,9 @@
                                     <label>活动内容</label>
                                     <textarea name="content"  value="@if(isset($data['id'])) {{$data['content']}} @endif" class="form-control textarea-input" rows="4">@if(isset($data['id'])){{$data['content']}} @endif</textarea>
                                 </div>
-                                <div class="input-group" style="width: 100px">
+                                <div class="input-group" >
                                     <span class="input-group-addon"><i class="fa">广告类型</i></span>
-                                    <select class="form-control" name="tagId">
+                                    <select class="form-control" name="tagId" style="width: 100px">
                                         <option value="">请选择</option>
                                             @foreach([1=>'图片',2=>'视频'] as $k=>$item)
                                                 <option value="{{$k}}" @if($k==request()['type']) selected @endif >{{$item}}</option>

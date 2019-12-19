@@ -68,6 +68,12 @@ class AdsController extends Controller
 
     function remove(Ads $ads)
     {
+        $image = $ads->first();
+        foreach ($image as $uri){
+            $file = (parse_url($uri));
+            $key = (explode("/",$file));
+            $this->removeCosFile(['key'=>$key]);
+        }
         return $ads->delete()?['code'=>1,'message'=>'删除成功！']:['code'=>0,'message'=>'删除失败！'];
     }
 

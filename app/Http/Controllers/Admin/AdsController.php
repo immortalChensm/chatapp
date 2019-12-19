@@ -70,7 +70,7 @@ class AdsController extends Controller
     {
         $image = $ads->where("id","=",request()->id)->first();
         if ($image['uri']){
-           
+
             foreach (explode(",",$image['uri']) as $uri){
                 $file = (parse_url($uri));
                 $key = (explode("/",$file['path']));
@@ -78,6 +78,8 @@ class AdsController extends Controller
                 $this->removeCosFile(['key'=>$temp]);
             }
             return $ads->delete()?['code'=>1,'message'=>'删除成功！'.$image]:['code'=>0,'message'=>'删除失败！'];
+        }else{
+            return ['code'=>0,'message'=>$image];
         }
 
     }

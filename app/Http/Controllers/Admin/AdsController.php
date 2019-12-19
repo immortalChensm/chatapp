@@ -55,9 +55,9 @@ class AdsController extends Controller
     }
 
     /**
-     * 删除照片
+     * 删除
      */
-    function removePhotoFile()
+    function removeAdsFile()
     {
         if (Images::where("uriKey","=",request()->fileKeyName)->delete()){
             if ($this->removeCosFile(['key'=>request()->fileKeyName])['code']==1){

@@ -226,7 +226,7 @@
                         imgFile:$(this).attr("data"),
                         fileKeyName:$(this).attr("data"),
                     }
-                },"http://148.70.221.198:9901/api/image/remove");
+                },"admin/remove/upload/file");
 
                 $($($(this)[0]).parent()[0]).remove();
 
@@ -239,7 +239,9 @@
                 $.ajax({
                     type:'post',
                     data:{
-                        key:task.json.url,
+                        imgFile:task.json.url,
+                        fileKeyName:task.json.fileKeyName,
+                        '_token':"{{csrf_token()}}",
                     },
                     url:uri,
                     success:function (res) {

@@ -10,5 +10,5 @@ class Ads extends Model
     public $primaryKey="id";
     protected $table = "ads";
     protected $guarded = [];
-
+    public $timestamps = false;
 }

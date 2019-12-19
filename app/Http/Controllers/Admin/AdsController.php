@@ -66,24 +66,9 @@ class AdsController extends Controller
         }
     }
 
-    function remove(Photos $photos)
+    function remove(Ads $ads)
     {
-        //不是自己的相册禁止操作
-        $photos->id = $photos->photoId;
-        if (($checkIfCan = $this->isManager($photos))&&$checkIfCan['code']==0){
-            return $checkIfCan;
-        }
-        //删除数据库的记录+删除存储桶上的文件+清空缓存
-        $cosKeyNames = Images::where("photoId","=",$photos->photoId)->get();
-        if ($photos->delete()){
-            $cacheKey = config("cos")['cachePhotoKey'].$photos->photoId;
-            $this->getRedisClient()->del($cacheKey);
-            foreach($cosKeyNames as $item){
-                $this->removeCosFile(['key'=>$item->uriKey]);
-            }
-            Images::where("photoId",$photos->photoId)->delete();
-            return ['code'=>1,'message'=>'删除成功！'];
-        }
+        return $ads->delete()?['code'=>1,'message'=>'删除成功！']:['code'=>0,'message'=>'删除失败！'];
     }
 
 }

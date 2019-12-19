@@ -139,12 +139,8 @@
 
                 var title = $(":input[name=title]").val();
 
-                if ($(this).attr("data-user")!=2){
-                    layer.msg("该相册为用户发布的内容禁止操作！");
-                    return false;
-                }
                 var dataid = $(this).attr("data");
-                layer.confirm('您确定要删除('+$(this).attr("data-name")+")这个相册吗？", {
+                layer.confirm('您确定要删除('+$(this).attr("data-name")+")这个广告吗？", {
                     btn: ['确认','取消'] //按钮
                 }, function(){
                     $.ajax({
@@ -175,7 +171,7 @@
             });
 
             function refreshData(title) {
-                window.tableGrid.ajax.url( '/admin/get/photos?title='+title).load();
+                window.tableGrid.ajax.url( '/admin/get/ads?name='+title).load();
             }
 
 

@@ -38,7 +38,7 @@
                         </div>
                         <form role="form" id="postForm">
                             {{csrf_field()}}
-{{reqeust()->id}}
+{{request()['id']}}
                             <input type="hidden" name="id" data-id = "@if(isset($data['id'])){{$data['id']}} @endif" value=" @if(isset($data['id'])){{$data['id']}} @endif">
 
                             @if(isset($data['id']))

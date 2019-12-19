@@ -41,10 +41,12 @@ class AdsController extends Controller
 
     function store(StoreAdsPost $request)
     {
+        $data = request()->except("_token","s");
+        $data['uri'] = implode(",",$data['uri']);
         if (isset($request->id)){
-            return Ads::where("id","=",$request->id)->update(request()->except("_token","s"))?['code'=>1,'message'=>'更新成功']:['code'=>1,'message'=>'更新失败'];
+            return Ads::where("id","=",$request->id)->update($data)?['code'=>1,'message'=>'更新成功']:['code'=>1,'message'=>'更新失败'];
         }else{
-           return Ads::create(request()->except("_token","s"))?['code'=>1,'message'=>'添加成功']:['code'=>1,'message'=>'添加失败'];
+           return Ads::create($data)?['code'=>1,'message'=>'添加成功']:['code'=>1,'message'=>'添加失败'];
         }
     }
 

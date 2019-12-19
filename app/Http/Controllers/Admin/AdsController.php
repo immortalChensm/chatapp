@@ -73,6 +73,7 @@ class AdsController extends Controller
             foreach (explode(",",$image['uri']) as $uri){
                 $file = (parse_url($uri));
                 $key = (explode("/",$file['path']));
+                echo "<script>alert('$key')</script>";
                 $this->removeCosFile(['key'=>array_pop($key)]);
             }
             return $ads->delete()?['code'=>1,'message'=>'删除成功！']:['code'=>0,'message'=>'删除失败！'];

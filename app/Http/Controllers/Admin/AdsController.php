@@ -68,7 +68,7 @@ class AdsController extends Controller
 
     function remove(Ads $ads)
     {
-        $image = $ads->first();
+        $image = $ads->where("id",request()->id)->first();
         foreach ($image['uri'] as $uri){
             $file = (parse_url($uri));
             $key = (explode("/",$file['path']));

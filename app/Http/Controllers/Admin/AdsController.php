@@ -70,13 +70,14 @@ class AdsController extends Controller
     {
         $image = $ads->where("id","=",request()->id)->first();
         if ($image['uri']){
+            $temp = "";
             foreach (explode(",",$image['uri']) as $uri){
                 $file = (parse_url($uri));
                 $key = (explode("/",$file['path']));
-                echo "<script>alert('$key')</script>";
-                $this->removeCosFile(['key'=>array_pop($key)]);
+                $temp = array_pop($key);
+                $this->removeCosFile(['key'=>$temp]);
             }
-            return $ads->delete()?['code'=>1,'message'=>'删除成功！']:['code'=>0,'message'=>'删除失败！'];
+            return $ads->delete()?['code'=>1,'message'=>'删除成功！'.$image]:['code'=>0,'message'=>'删除失败！'];
         }
 
     }

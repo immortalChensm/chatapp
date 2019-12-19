@@ -77,7 +77,7 @@
                                     <select class="form-control" name="type" style="width: 100px">
                                         <option value="">请选择</option>
                                             @foreach([1=>'图片',2=>'视频'] as $k=>$item)
-                                                <option value="{{$k}}" @if($k==request()['type']) selected @endif >{{$item}}</option>
+                                                <option value="{{$k}}" @if($k==$data['type']) selected @endif >{{$item}}</option>
                                             @endforeach
 
                                     </select>

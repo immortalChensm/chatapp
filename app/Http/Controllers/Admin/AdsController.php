@@ -21,7 +21,9 @@ class AdsController extends Controller
             $ads = Ads::where("id","=",request()->id)->first();
         }
         $data = isset($ads)?$ads:'';
-
+        if (!empty($data)){
+            $data['uri'] = explode(",",$data['uri']);
+        }
         return view("admin.ads.edit",compact('data'));
     }
 

@@ -70,7 +70,7 @@ class AdsController extends Controller
     {
         $image = $ads->where("id","=",request()->id)->first();
         if ($image['uri']){
-            $temp = "";
+           
             foreach (explode(",",$image['uri']) as $uri){
                 $file = (parse_url($uri));
                 $key = (explode("/",$file['path']));

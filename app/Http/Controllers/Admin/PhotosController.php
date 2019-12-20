@@ -25,17 +25,17 @@ class PhotosController extends Controller
             $photo = Photos::where("photoId","=",request()->photoId)->first();
             $uriKeys = $photo->images;
             //从缓存里取出相册
-            $cacheKey = config("cos")['cachePhotoKey'].$photo->photoId;
-            if ($this->getRedisClient()->exists($cacheKey)){
-                $uriFiles = unserialize($this->getRedisClient()->get($cacheKey));
-                //判断缓存里的照片数量和数据库的数量是否对应
-                if (count($uriFiles) != count($uriKeys)){
-                    $uriFiles = $this->downLoadCosFileAndCache($uriKeys,$cacheKey);
-                }
-            }else{
-                $uriFiles = $this->downLoadCosFileAndCache($uriKeys,$cacheKey);
-            }
-            $photo['uriKey'] = $uriFiles;
+            //$cacheKey = config("cos")['cachePhotoKey'].$photo->photoId;
+            //if ($this->getRedisClient()->exists($cacheKey)){
+            //    $uriFiles = unserialize($this->getRedisClient()->get($cacheKey));
+            //    //判断缓存里的照片数量和数据库的数量是否对应
+            //    if (count($uriFiles) != count($uriKeys)){
+            //        $uriFiles = $this->downLoadCosFileAndCache($uriKeys,$cacheKey);
+            //    }
+            //}else{
+            //    $uriFiles = $this->downLoadCosFileAndCache($uriKeys,$cacheKey);
+            //}
+            $photo['uriKey'] = $uriKeys;
 
         }
         $data = isset($photo)?$photo:'';
@@ -135,8 +135,8 @@ class PhotosController extends Controller
             //如果是修改自己的
            if (Photos::where("photoId","=",$request->photoId)->update($prepareData)){
                $updateResult = $this->insertImageFile($request,$photo,'update')?['code'=>1,'message'=>'更新成功']:['code'=>1,'message'=>'更新失败'];
-               $cacheKey = config("cos")['cachePhotoKey'].$photo->photoId;
-               $this->downLoadCosFileAndCache(Images::where("photoId","=",$photo->photoId)->get(),$cacheKey);
+               //$cacheKey = config("cos")['cachePhotoKey'].$photo->photoId;
+               //$this->downLoadCosFileAndCache(Images::where("photoId","=",$photo->photoId)->get(),$cacheKey);
                return $updateResult;
            }
         }else{

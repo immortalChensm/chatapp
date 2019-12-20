@@ -409,11 +409,12 @@ class Controller extends BaseController
 
     function playModel(Model $model)
     {
-        $uri = $this->downloadCosFile([
-            'fileKeyName'=>$model['uriKey'],
-            'expire'=>config('cos')['expire']
-        ])['data'];
-        return $uri?['code'=>1,'message'=>$uri]:['code'=>0,'message'=>'链接失效请重试'];
+//        $uri = $this->downloadCosFile([
+//            'fileKeyName'=>$model['uriKey'],
+//            'expire'=>config('cos')['expire']
+//        ])['data'];
+        //return $uri?['code'=>1,'message'=>$uri]:['code'=>0,'message'=>'链接失效请重试'];
+        return $uri?['code'=>1,'message'=>$model['uriKey']]:['code'=>0,'message'=>'链接失效请重试'];
     }
 
     function getApi($method,$uri,$data=[])

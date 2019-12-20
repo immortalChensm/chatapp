@@ -45,7 +45,7 @@
                                     </span>
                                 </div>
 
-                                <button type="button" class="btn bg-navy margin addBtn" onclick="location.href='{{url("/admin/musics/edit")}}'">添加音乐</button>
+                                {{--<button type="button" class="btn bg-navy margin addBtn" onclick="location.href='{{url("/admin/musics/edit")}}'">添加音乐</button>--}}
 
 
                             </h3>
@@ -134,7 +134,8 @@
                         "targets": 14,
                         "render": function ( data, type, row, meta ) {
 
-                            var BtnHtml = "<button type='button' class='btn  btn-success btn-sm update' data='"+row.musicId+"'>修改</button>";
+                            //<button type='button' class='btn  btn-success btn-sm update' data='"+row.musicId+"'>修改</button>
+                            var BtnHtml = "";
                             BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm delete' data='"+row.musicId+"' data-name='"+row.title+"' data-user='"+row.userType+"'>移除</button>";
                             BtnHtml+= "  <button type='button' class='fa fa-eye btn  btn-danger btn-sm isShow' data-btn='isShow' data='"+row.musicId+"' data-title='"+row.title+"' data-user='"+row.userType+"' data-userId='"+row.userIdMsg+"' data-show='"+row.isShowFlag+"'>屏蔽</button>";
                             BtnHtml+= "  <button type='button' class='fa fa-share btn  btn-danger btn-sm disableShare' data-btn='disableShare' data='"+row.musicId+"' data-title='"+row.title+"' data-user='"+row.userType+"' data-userId='"+row.userIdMsg+"' data-share='"+row.canSharedFlag+"'>分享</button>";

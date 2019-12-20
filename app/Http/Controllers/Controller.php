@@ -86,6 +86,7 @@ class Controller extends BaseController
 //
 //    }
 
+//移动到自己的服务器
     function upload()
     {
         $storage = new FileSystem(config("upload")['attachedDir']);

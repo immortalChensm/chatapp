@@ -17,24 +17,33 @@ function getCosClient()
 }
 
 /**
- * 删除存储桶上的文件
+ * 删除存储桶上的文件【修改为自己的服务器】
  * @param $data
  * @return array
  */
 function deleteCosFile($data)
 {
-    try {
-        $result = getCosClient()->deleteObject(array(
-            'Bucket' => config("cos")['bucket'],
-            'Key' => $data['key'],
-        ));
+   // try {
+//        $result = getCosClient()->deleteObject(array(
+//            'Bucket' => config("cos")['bucket'],
+//            'Key' => $data['key'],
+//        ));
+        $client = new \GuzzleHttp\Client([
+            'base_uri'=>config("cos")['removeFileUri'],
+            'verify' => false
+        ]);
+        $response = $client->request("POST","api/image/remove",[
+            'form_params'=>$data
+        ]);
+
+        return json_decode($response->getBody()->getContents(),true);
         // 请求成功
         $result = ['code'=>1,'data'=>$result];
-    } catch (\Exception $e) {
+    //} catch (\Exception $e) {
         // 请求失败
-        $result = ['code'=>0,'data'=>$e];
-    }
-    return $result;
+    //    $result = ['code'=>0,'data'=>$e];
+    //}
+    //return $result;
 }
 
 /**

@@ -223,6 +223,15 @@
                         removeCosFile(task,"{{url('/admin/remove/upload/file')}}");
                     },
                     complete: function(task){
+
+                        if($(":input[name=type]").val()==2){
+                            //视频
+                            var uri = $("#upload-image-view").find("img").attr("src");
+                            $("#upload-image-view").find("img").remove();
+                            $("#upload-image-view .u-item .u-img").append(function () {
+                                return "<video src='"+uri+"' autoplay controls></audio>";
+                            });
+                        }
                         $("#postForm").append(function () {
                             return "<input type='hidden' class='inputUploadFile' name='uri[]' value='"+task.json.url+"' data='"+task.name+"'/>";
                         });

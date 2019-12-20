@@ -37,9 +37,12 @@ class removeArticleListener
            if ($fileSystem->exists(public_path()."/".$src)){
                $fileSystem->delete(public_path()."/".$src);
            }
-           preg_match_all('/other(.*)\?/',$src,$match);
-           if ($match[1][0]){
-               deleteCosFile(['key' => "other".$match[1][0]]);
+           //preg_match_all('/other(.*)\?/',$src,$match);
+//           if ($match[1][0]){
+//               deleteCosFile(['key' => "other".$match[1][0]]);
+//           }
+           if ($src){
+               deleteCosFile(['key' => $src]);
            }
        }
         foreach ($videoFiles as $file){
@@ -47,11 +50,13 @@ class removeArticleListener
             if ($fileSystem->exists(public_path()."/".$src)){
                 $fileSystem->delete(public_path()."/".$src);
             }
-            preg_match_all('/other(.*)\?/',$src,$match);
-            if ($match[1][0]){
-                deleteCosFile(['key' => "other".$match[1][0]]);
+//            preg_match_all('/other(.*)\?/',$src,$match);
+//            if ($match[1][0]){
+//                deleteCosFile(['key' => "other".$match[1][0]]);
+//            }
+            if ($src){
+                deleteCosFile(['key' => $src]);
             }
-
         }
         return true;
 

@@ -1,6 +1,6 @@
 @extends("layouts.main")
 @section("title")
-    相册编辑
+    相册查看
     @endsection
 @section("css")
     <link rel="stylesheet" href="{{asset("adminlte/css/common.css")}}">
@@ -22,7 +22,7 @@
             <ol class="breadcrumb">
                 <li><a href="{{url("/admin")}}"><i class="fa fa-dashboard"></i> 首页</a></li>
                 <li><a href="{{url("/admin/photos")}}"><i class="fa"></i> 相册管理</a></li>
-                <li class="active">相册编辑</li>
+                <li class="active">相册查看</li>
             </ol>
         </section>
 
@@ -97,7 +97,7 @@
                             </div>
 
                             <div class="box-footer">
-                                <a  class="btn btn-success" onclick="store()">提交</a>
+                                {{--<a  class="btn btn-success" onclick="store()">提交</a>--}}
                                 <a href="{{url()->previous()}}" class="btn btn-info">返回</a>
                             </div>
                         </form>

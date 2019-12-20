@@ -125,7 +125,7 @@
                         "targets": 13,
                         "render": function ( data, type, row, meta ) {
 
-                            // var BtnHtml = "<button type='button' class='btn  btn-success btn-sm update' data='"+row.photoId+"'>修改</button>";
+                            var BtnHtml = "<button type='button' class='btn  btn-success btn-sm update' data='"+row.photoId+"'>查看相册</button>";
                             BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm delete' data='"+row.photoId+"' data-name='"+row.title+"' data-user='"+row.userType+"'>移除</button>";
                             BtnHtml+= "  <button type='button' class='fa fa-eye btn  btn-danger btn-sm isShow' data-btn='isShow' data='"+row.photoId+"' data-title='"+row.title+"' data-user='"+row.userType+"' data-userId='"+row.userIdMsg+"' data-show='"+row.isShowFlag+"'>屏蔽</button>";
                             BtnHtml+= "  <button type='button' class='fa fa-share btn  btn-danger btn-sm disableShare' data-btn='disableShare' data='"+row.photoId+"' data-title='"+row.title+"' data-user='"+row.userType+"' data-userId='"+row.userIdMsg+"' data-share='"+row.canSharedFlag+"'>分享</button>";

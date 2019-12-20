@@ -35,7 +35,10 @@ class PhotosController extends Controller
             //}else{
             //    $uriFiles = $this->downLoadCosFileAndCache($uriKeys,$cacheKey);
             //}
-            $photo['uriKey'] = $uriKeys;
+            foreach($uriKeys as $item){
+                $photo['uriKey'][$item->uriKey] = $item->uriKey;
+            }
+
 
         }
         $data = isset($photo)?$photo:'';

@@ -55,8 +55,8 @@
 
                                 <div class="form-group edit-box">
                                     <label for="exampleInputEmail1">广告时效</label>
-                                    <input type="text" class="form-control input-max-box" class="edit-box" name="startDate" value="@if(isset($data['id'])) {{$data['startDate']}} @endif" placeholder="起时日期">
-                                    <input type="text" class="form-control input-max-box" class="edit-box" name="endDate" value="@if(isset($data['id'])) {{$data['endDate']}} @endif" placeholder="终止日期">
+                                    <input type="date" class="form-control input-max-box" class="edit-box" name="startDate" value="@if(isset($data['id'])) {{$data['startDate']}} @endif" placeholder="起时日期">
+                                    <input type="date" class="form-control input-max-box" class="edit-box" name="endDate" value="@if(isset($data['id'])) {{$data['endDate']}} @endif" placeholder="终止日期">
                                 </div>
 
                                 <div class="form-group edit-box" id="intervalInput">

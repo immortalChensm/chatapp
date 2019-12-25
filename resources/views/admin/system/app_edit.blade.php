@@ -54,7 +54,7 @@
 
                                 <div class="form-group edit-box">
                                     <label for="exampleInputEmail1">版本号</label>
-                                    <input type="number" class="form-control input-max-box" class="edit-box" name="version" value="@if(isset($data['id'])) {{$data['version']}} @endif" placeholder="版本号">
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="version" value="@if(isset($data['id'])) {{$data['version']}} @endif" placeholder="版本号">
                                 </div>
 
                                 <div class="form-group edit-box">

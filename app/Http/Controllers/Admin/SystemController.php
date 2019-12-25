@@ -37,6 +37,7 @@ class SystemController extends Controller
             $file = substr($item->file,0,-4)."1.png";
             $qrCode->writeFile($file);
             $img = substr($item->uri,0,-4)."1.png";
+            $item->upgrade = ($item->upgrade==1?'是':'否');
             $item->uri = "<div class='qrcode'><img class='minImg' src='$img' width='50px' height='50px'/></div><div  class='sourceImg' style='display: none'><img src='$img'/> </div>";
         }]);
     }

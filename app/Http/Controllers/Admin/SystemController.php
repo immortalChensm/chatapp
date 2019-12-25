@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Agreement;
 use App\App;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -92,30 +93,31 @@ class SystemController extends Controller
         return ['code'=>1,'message'=>'保存成功'];
     }
 
-    function top()
+    function agreementList(Request $request,Agreement $agreement)
     {
-        $data = DB::table("top")->first();
-        if (!empty($data)){
-            if ($data->topType==1){
-                $data->title = DB::table("articles")->where("articleId",$data->topId)->value("title");
-                $data->name = "文章";
+        return $this->models(...[$request,$agreement,function (&$searchItem)use($request){
+            $searchItem['agreement']   = $request->query->get('content');
+        },function ($query,&$searchItem){
+            if ($searchItem['agreement']){
+                $query->where("agreement","LIKE","%".$searchItem['content']."%");
             }
-            if ($data->topType==2){
-                $data->title = DB::table("photos")->where("photoId",$data->topId)->value("title");
-                $data->name = "图片";
-            }
-            if ($data->topType==3){
-                $data->title = DB::table("musics")->where("musicId",$data->topId)->value("title");
-                $data->name = "音乐";
-            }
-            if ($data->topType==4){
-                $data->title = DB::table("videos")->where("videoId",$data->topId)->value("title");
-                $data->name = "视频";
-            }
-        }else{
-            $data = [];
-        }
 
-        return view("admin.system.top",compact('data'));
+        },function (&$item){
+            $item->createdDate = date("Y-m-d H", $item->created_at);
+
+        }]);
+    }
+
+    function removeAgreement(Agreement $agreement)
+    {
+        if ($agreement->delete()){
+            return ['code'=>1,'message'=>'删除成功！'];
+        }
+    }
+
+    function agreement()
+    {
+
+        return view("admin.system.agreement",compact('data'));
     }
 }

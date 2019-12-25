@@ -87,7 +87,7 @@
                     { data:"id",name:"id",orderable: true,searchable:false },
                     { data:"name",name:"name",orderable: true,searchable:false },
                     { data:"agreement",name:"version",orderable: true,searchable:true },
-                    { data:"createdDate",name:"createdDate"}
+                    { data:"created_at",name:"created_at"}
                 ],
                 columnDefs: [ {
                     "targets": 4,

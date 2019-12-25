@@ -66,8 +66,8 @@
                                     <span class="input-group-addon"><i class="fa">强制更新</i></span>
                                     <select class="form-control" name="upgrade">
                                         <option value="">请选择</option>
-                                        @foreach(['是','否'] as $item)
-                                            <option value="{{$item}}" @if(isset($data['id'])) @if($item==$data['upgrade']) selected @endif @endif >{{$item}}</option>
+                                        @foreach([1=>'是',0=>'否'] as $k=>$item)
+                                            <option value="{{$k}}" @if(isset($data['id'])) @if($k==$data['upgrade']) selected @endif @endif >{{$item}}</option>
                                         @endforeach
 
                                     </select>

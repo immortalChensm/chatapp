@@ -52,6 +52,8 @@
                                     <th>ID</th>
                                     <th>应用名称</th>
                                     <th>版本号</th>
+                                    <th>版本名称</th>
+                                    <th>强制更新</th>
                                     <th>平台</th>
                                     <th>简介</th>
                                     <th>下载地址</th>
@@ -66,6 +68,8 @@
                                     <th>ID</th>
                                     <th>应用名称</th>
                                     <th>版本号</th>
+                                    <th>版本名称</th>
+                                    <th>强制更新</th>
                                     <th>平台</th>
                                     <th>简介</th>
                                     <th>下载地址</th>
@@ -97,13 +101,15 @@
                         { data:"id",name:"id",orderable: true,searchable:false },
                         { data:"name",name:"name",orderable: true,searchable:false },
                         { data:"version",name:"version",orderable: true,searchable:true },
+                        { data:"versionName",name:"versionName",orderable: true,searchable:true },
+                        { data:"upgrade",name:"upgrade",orderable: true,searchable:true },
                         { data:"platform",name:"platform",orderable: true,searchable:false },
                         { data:"description",name:"description",orderable: true,searchable:false },
                         { data:"uri",name:"uri",orderable: true,searchable:false },
                         { data:"createdDate",name:"createdDate"}
                     ],
                     columnDefs: [ {
-                        "targets": 7,
+                        "targets": 9,
                         "render": function ( data, type, row, meta ) {
 
                             var BtnHtml = "<button type='button' class='btn  btn-success btn-sm update' data='"+row.id+"'>修改</button>";

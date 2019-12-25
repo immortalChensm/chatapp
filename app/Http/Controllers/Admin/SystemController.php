@@ -53,6 +53,8 @@ class SystemController extends Controller
                             'version'     => $request->version,
                             'uri'         => $request->uri,
                             'file'         => $request->file,
+                            'versionName'         => $request->versionName,
+                            'upgrade'         => $request->upgrade,
                             'platform'    => $request->platform];
 
 

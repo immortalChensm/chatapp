@@ -54,7 +54,23 @@
 
                                 <div class="form-group edit-box">
                                     <label for="exampleInputEmail1">版本号</label>
-                                    <input type="text" class="form-control input-max-box" class="edit-box" name="version" value="@if(isset($data['id'])) {{$data['version']}} @endif" placeholder="版本号">
+                                    <input type="number" class="form-control input-max-box" class="edit-box" name="version" value="@if(isset($data['id'])) {{$data['version']}} @endif" placeholder="版本号">
+                                </div>
+
+                                <div class="form-group edit-box">
+                                    <label for="exampleInputEmail1">版本名称</label>
+                                    <input type="text" class="form-control input-max-box" class="edit-box" name="versionName" value="@if(isset($data['id'])) {{$data['versionName']}} @endif" placeholder="版本名称">
+                                </div>
+
+                                <div class="form-group edit-box">
+                                    <span class="input-group-addon"><i class="fa">强制更新</i></span>
+                                    <select class="form-control" name="upgrade">
+                                        <option value="">请选择</option>
+                                        @foreach(['是','否'] as $item)
+                                            <option value="{{$item}}" @if(isset($data['id'])) @if($item==$data['upgrade']) selected @endif @endif >{{$item}}</option>
+                                        @endforeach
+
+                                    </select>
                                 </div>
 
                                 <div class="form-group edit-box">

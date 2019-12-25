@@ -11,7 +11,7 @@ class Agreement extends Model
     public $primaryKey = "id";
     protected $guarded = [];
 
-    public $timestamps = false;
+    //public $timestamps = false;
 
     public function userName(){
         return $this->belongsTo('App\User','userId','userId')->select(['realName','name']);

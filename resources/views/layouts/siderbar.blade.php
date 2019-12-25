@@ -272,7 +272,7 @@
                 <ul class="treeview-menu">
                     @if(in_array("admin/system/index",session("permission")['系统设置']))
                     <li @if(preg_match('/index/',request()->url())) class="active" @endif><a href="{{url("admin/system/index")}}"><i class="fa fa-circle-o"></i> 网站设置</a></li>@endif
-                        @if(in_array("admin/system/top",session("permission")['系统设置']))
+                        @if(in_array("admin/system/agreement",session("permission")['系统设置']))
                     <li @if(preg_match('/agreement/',request()->url())) class="active" @endif><a href="{{url("admin/system/agreement")}}"><i class="fa fa-circle-o"></i> 意见收集</a></li>@endif
                         @if(in_array("admin/system/app",session("permission")['系统设置']))
                             <li @if(preg_match('/app/',request()->url())) class="active" @endif><a href="{{url("admin/system/app")}}"><i class="fa fa-circle-o"></i> APP应用配置</a></li>@endif

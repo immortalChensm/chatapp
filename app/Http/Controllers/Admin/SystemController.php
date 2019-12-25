@@ -103,7 +103,7 @@ class SystemController extends Controller
             }
 
         },function (&$item){
-            $item->createdDate = date("Y-m-d H", $item->created_at);
+            $item->createdDate = $item->created_at;
             if (isset($item->userName)){
                 $item->name = $item->userName->realName;
             }else{

@@ -35,11 +35,11 @@ class CommentsController extends Controller
             }
             $query->where("isDeleted","=",0);//软删除
         },function (&$item){
-            $item->userName        = User::where("userId", $item['userId'])->value("name");
+            $item->userName        = User::where("userId", $item['userId'])->value("realName");
             $item->createdDate     = date("Y-m-d H", strtotime($item->created_at));
             $item->title           = DB::table($this->typeTable[$item->modelType])->value("title");
             $item->commentPraise   = $item['praise'];
-            $item->commentUserName = User::where("userId", $item['ownerUserId'])->value("name");
+            $item->commentUserName = User::where("userId", $item['ownerUserId'])->value("realName");
             $item->typeName        = $this->typeTitle[$item->modelType];
             $item->commentReply    = count($item->reply);
             $item->isShow = $item->isShow==1?'否':'是';

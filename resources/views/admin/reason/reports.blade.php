@@ -107,7 +107,7 @@
                         { data:"id",name:"id",orderable: true,searchable:false },
                         { data:"reasonName",name:"reasonName",orderable: false,searchable:true },
                         { data:"reason",name:"reason",orderable: false,searchable:true },
-                        { data:"userName",name:"userName",orderable: false,searchable:true },
+                        { data:"user_name.realName",name:"user_name.realName",orderable: false,searchable:true },
                         { data:"contact",name:"contact",orderable: false,searchable:true },
                         { data:"title",name:"title",orderable: false,searchable:true },
                         { data:"typeName",name:"typeName",orderable: false,searchable:true },

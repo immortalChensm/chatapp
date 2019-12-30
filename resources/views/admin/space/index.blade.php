@@ -89,7 +89,7 @@
                     processing:true,
                     columns: [
                         { data:"id",name:"id",orderable: true,searchable:false },
-                        { data:"userName",name:"userName",orderable: true,searchable:true },
+                        { data:"buyer.realName",name:"buyer.realName",orderable: true,searchable:true },
                         { data:"sellerUserName",name:"sellerUserName",orderable: false,searchable:false },
                         { data:"spaceNum",name:"spaceNum",orderable: false,searchable:false },
                         { data:"buyDate",name:"buyDate",orderable: false,searchable:false },

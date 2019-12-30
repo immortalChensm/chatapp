@@ -91,8 +91,8 @@
                     processing:true,
                     columns: [
                         { data:"id",name:"id",orderable: true,searchable:false },
-                        { data:"user_name.name",name:"userName",orderable: false,searchable:false },
-                        { data:"report_user_name.name",name:"reportUserName",orderable: false,searchable:false },
+                        { data:"user_name.name",name:"user_name.name",orderable: false,searchable:false },
+                        { data:"report_user_name.name",name:"report_user_name.name",orderable: false,searchable:false },
                         { data:"reason",name:"reason",orderable: false,searchable:true },
                         { data:"createdDate",name:"createdDate"}
                     ],

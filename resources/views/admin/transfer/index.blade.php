@@ -93,9 +93,9 @@
                     processing:true,
                     columns: [
                         { data:"id",name:"id",orderable: true,searchable:false },
-                        { data:"userName",name:"userName",orderable: false,searchable:true },
+                        { data:"sender.realName",name:"sender.realName",orderable: false,searchable:true },
                         { data:"money",name:"money",orderable: false,searchable:true },
-                        { data:"whoName",name:"whoName",orderable: false,searchable:true },
+                        { data:"who.realName",name:"who.realName",orderable: false,searchable:true },
                         { data:"message",name:"message",orderable: false,searchable:true },
                         { data:"createdDate",name:"createdDate",orderable: false},
                         { data:"state",name:"state",orderable: false}

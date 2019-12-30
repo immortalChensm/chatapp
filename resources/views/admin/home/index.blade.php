@@ -134,7 +134,7 @@
                                         @foreach($data['users'] as $user)
                                         <li>
                                             <img src="{{$user->headImgUrl['data']}}" alt="User Image" style="width: 122px;height: 122px;">
-                                            <a class="users-list-name" href="#">{{$user->name}}</a>
+                                            <a class="users-list-name" href="#">{{$user->realName}}</a>
                                             <span class="users-list-date">{{$user->created_at}}</span>
                                         </li>
                                         @endforeach

@@ -38,7 +38,7 @@ class BusinessController extends Controller
            }else{
                $item->state = "已结账";
            }
-            $item->userName        = User::where("userId", $item['userId'])->value("name");
+            $item->userName        = User::where("userId", $item['userId'])->value("realName");
             $item->type            = (function($type){$typeName=['1'=>'撰写专记','2'=>'专业拍摄','3'=>'音乐制作','4'=>'视频拍摄'];return $typeName[$type];})($item->type);
             $item->createdDate     = date("Y-m-d H", strtotime($item->created_at));
         }]);

@@ -92,7 +92,7 @@
                     autoWidth: true,
                     columns: [
                         { data:"orderNo",name:"orderNo",orderable: true,searchable:false },
-                        { data:"userName",name:"userName",orderable: false,searchable:true },
+                        { data:"sender.realName",name:"sender.realName",orderable: false,searchable:true },
                         { data:"money",name:"money",orderable: false,searchable:true },
                         { data:"createdDate",name:"createdDate",orderable: false},
                         { data:"payType",name:"payType",orderable: false},

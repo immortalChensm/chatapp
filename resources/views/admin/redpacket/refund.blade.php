@@ -91,7 +91,7 @@
                     processing:true,
                     columns: [
                         { data:"id",name:"id",orderable: true,searchable:false },
-                        { data:"userName",name:"userName",orderable: true,searchable:true },
+                        { data:"user.realName",name:"user.realName",orderable: true,searchable:true },
                         { data:"sendMoney",name:"sendMoney",orderable: false,searchable:false },
                         { data:"message",name:"message",orderable: false,searchable:false },
                         { data:"num",name:"num",orderable: false,searchable:false },

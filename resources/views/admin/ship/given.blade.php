@@ -90,8 +90,8 @@
                     processing:true,
                     columns: [
                         { data:"id",name:"id",orderable: true,searchable:false },
-                        { data:"userName",name:"userName",orderable: true,searchable:true },
-                        { data:"givenUserName",name:"givenUserName",orderable: false,searchable:false },
+                        { data:"giver.realName",name:"giver.realName",orderable: true,searchable:true },
+                        { data:"user.realName",name:"user.realName",orderable: false,searchable:false },
                         { data:"shipNum",name:"shipNum",orderable: false,searchable:false },
                         { data:"createdDate",name:"createdDate",orderable: false,searchable:false },
                     ],

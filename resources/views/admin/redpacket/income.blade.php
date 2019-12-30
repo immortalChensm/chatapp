@@ -92,8 +92,8 @@
                     processing:true,
                     columns: [
                         { data:"id",name:"id",orderable: true,searchable:false },
-                        { data:"userName",name:"userName",orderable: true,searchable:true },
-                        { data:"recvName",name:"recvName",orderable: true,searchable:true },
+                        { data:"sender.realName",name:"sender.realName",orderable: true,searchable:true },
+                        { data:"recver.realName",name:"recver.realName",orderable: true,searchable:true },
                         { data:"money",name:"money",orderable: false,searchable:false },
                         { data:"recvDate",name:"recvDate",orderable: false,searchable:false },
                         { data:"createdDate",name:"createdDate",orderable: false,searchable:false }

@@ -25,7 +25,7 @@ class UpgradeController extends Controller
                 $query->whereIn("userId",$searchItem['userId']);
             }
         },function (&$item){
-            $item->userName        = User::where("userId", $item['userId'])->value("name");
+            $item->userName        = User::where("userId", $item['userId'])->value("realName");
             $item->storageSize     = $item->storageSize."M";
             $item->createdDate     = date("Y-m-d H", strtotime($item->created_at));
         }]);

@@ -74,14 +74,14 @@ class UsersController extends Controller
     function edit()
     {
         isset(request()->userId) ? $data = User::where("userId", "=", request()->userId)->first() : $data = '';
-        !empty($data['headImgUrl']) ? $headImgUrl = $data['headImgUrl'] : $headImgUrl = 'other/defaultlogo.png';
-        $result = $this->downloadCosFile([
-            'fileKeyName' => $headImgUrl,
-            'expire'      => config('cos')['expire']
-        ]);
-        if ($result['code'] == 1) {
-            $data['headImgUrl'] = $result['data'];
-        }
+//        !empty($data['headImgUrl']) ? $headImgUrl = $data['headImgUrl'] : $headImgUrl = 'other/defaultlogo.png';
+//        $result = $this->downloadCosFile([
+//            'fileKeyName' => $headImgUrl,
+//            'expire'      => config('cos')['expire']
+//        ]);
+//        if ($result['code'] == 1) {
+//            $data['headImgUrl'] = $result['data'];
+//        }
         $this->userProfileHandler($data);
         return view("admin.users.edit", compact('data'));
     }
@@ -121,20 +121,20 @@ class UsersController extends Controller
         $data['loginInfo']      = DB::table("users_extend")->where("userId", $data['userId'])->first();
         $data['relationNum']      = DB::table("user_relation")->whereIn("userId", [$data['userId']])->count("userId");
         if ($data['isValiated'] == 1) {
-            $result = $this->downloadCosFile([
-                'fileKeyName' => $data['idCardFrontPic'],
-                'expire'      => config('cos')['expire']
-            ]);
-            if ($result['code'] == 1) {
-                $data['idCardFace'] = $result['data'];
-            }
-            $result = $this->downloadCosFile([
-                'fileKeyName' => $data['idCardBackPic'],
-                'expire'      => config('cos')['expire']
-            ]);
-            if ($result['code'] == 1) {
-                $data['idCardWall'] = $result['data'];
-            }
+//            $result = $this->downloadCosFile([
+//                'fileKeyName' => $data['idCardFrontPic'],
+//                'expire'      => config('cos')['expire']
+//            ]);
+//            if ($result['code'] == 1) {
+//                $data['idCardFace'] = $result['data'];
+//            }
+//            $result = $this->downloadCosFile([
+//                'fileKeyName' => $data['idCardBackPic'],
+//                'expire'      => config('cos')['expire']
+//            ]);
+//            if ($result['code'] == 1) {
+//                $data['idCardWall'] = $result['data'];
+//            }
         }
 
 

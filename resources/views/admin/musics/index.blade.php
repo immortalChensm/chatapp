@@ -115,8 +115,8 @@
                     processing:true,
                     autoWidth: true,
                     columns: [
-                        { data:"title",name:"title",orderable: true,searchable:false },
-                        { data:"singer",name:"singer",orderable: true,searchable:true,width:'17%'},
+                        { data:"title",name:"title",orderable: true,searchable:false,width:'17%' },
+                        { data:"singer",name:"singer",orderable: true,searchable:true},
                         { data:"userId",name:"userId",orderable: false,searchable:true },
                         { data:"commentCount",name:"commentCount",orderable: true,searchable:true },
                         { data:"readCount",name:"readCount",orderable: true,searchable:true },

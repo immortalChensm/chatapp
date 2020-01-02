@@ -28,8 +28,8 @@ class TransferOrderController extends Controller
                 $query->where("userId","=",$searchItem['userId']);
             }
         },function (&$item){
-            $item->userName = property_exists($item->sender,'realName')?$item->sender->realName:$item->sender->name;
-            $item->whoName = property_exists($item->who,'realName')?$item->who->realName:$item->who->name;
+            $item->userName = isset($item->sender)?$item->sender->realName:"";
+            $item->whoName = isset($item->who)?$item->who->realName:"";
             $item->createdDate = date("Y-m-d H:i:s", strtotime($item->created_at));
             if ($item->state==1){
                 $item->state = "未领取";

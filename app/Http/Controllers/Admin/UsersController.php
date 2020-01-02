@@ -40,9 +40,9 @@ class UsersController extends Controller
             if ($searchItem['sex']) {
                 $query->where("sex", "=", $searchItem['sex']);
             }
-            if ($searchItem['isValiated']) {
+            //if ($searchItem['isValiated']) {
                 $query->where("isValiated", "=", $searchItem['isValiated']);
-            }
+            //}
 
         }, function (&$item) {
             $item->sex         = $item->sex == 1 ? '男' : '女';

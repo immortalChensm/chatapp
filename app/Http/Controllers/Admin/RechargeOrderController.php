@@ -18,8 +18,8 @@ class RechargeOrderController extends Controller
     function orders(Request $request,Recharge $recharge)
     {
         return $this->models(...[$request,$recharge,function (&$searchItem)use($request){
-            if (!empty($request->query->get('buyer'))){
-                $userIds = User::where("realName","LIKE","%".$request->query->get('buyer')."%")->value("userId");
+            if (!empty($request->query->get('name'))){
+                $userIds = User::where("realName","LIKE","%".$request->query->get('name')."%")->value("userId");
                 $searchItem['userId']   = $userIds;
             }
         },function ($query,&$searchItem){

@@ -32,7 +32,14 @@ class UsersController extends Controller
                 $query->where("mobile", "LIKE", "%" . $searchItem['mobile'] . "%");
             }
             if ($searchItem['handNum']) {
-                $query->where("handNum", "LIKE", "%" . $searchItem['handNum'] . "%");
+                if (strlen($searchItem['handNum'])>6){
+                    $area = substr($searchItem['handNum'],0,6);
+                    $handNum = substr($searchItem['handNum'],6);
+                    $query->where("handNum", "LIKE", "%" . $handNum . "%")->where("area","=",$area);
+                }else{
+                    $query->where("handNum", "LIKE", "%" . $searchItem['handNum'] . "%");
+                }
+                
             }
             if ($searchItem['realName']) {
                 $query->where("realName", "LIKE", "%" . $searchItem['realName'] . "%");
@@ -59,6 +66,7 @@ class UsersController extends Controller
             $item->idCard = 0;
             $item->idCardFrontPic = 0;
             $item->idCardBackPic = 0;
+            $item->handNum = $item->area.$item->handNum;
         }]);
     }
 

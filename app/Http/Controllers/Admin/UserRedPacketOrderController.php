@@ -19,11 +19,11 @@ class UserRedPacketOrderController extends Controller
     {
         return $this->models(...[$request,$redPackets,function (&$searchItem)use($request){
             if (!empty($request->query->get('sender'))){
-                $userIds = User::where("name","LIKE","%".$request->query->get('sender')."%")->value("userId");
+                $userIds = User::where("realName","LIKE","%".$request->query->get('sender')."%")->value("userId");
                 $searchItem['sendUserId']   = $userIds;
             }
             if (!empty($request->query->get('recver'))){
-                $userIds = User::where("name","LIKE","%".$request->query->get('recver')."%")->value("userId");
+                $userIds = User::where("realName","LIKE","%".$request->query->get('recver')."%")->value("userId");
                 $searchItem['userId']   = $userIds;
             }
         },function ($query,&$searchItem){
@@ -34,8 +34,8 @@ class UserRedPacketOrderController extends Controller
                 $query->where("userId","=",$searchItem['userId']);
             }
         },function (&$item){
-            $item->userName = property_exists($item->sender,'realName')?$item->sender->realName:$item->sender->name;
-            $item->recvName = property_exists($item->recver,'realName')?$item->recver->realName:$item->recver->name;
+            $item->userName = isset($item->sender)?$item->sender->realName:"";
+            $item->recvName = isset($item->recver)?$item->recver->realName:"";
             $item->recvDate = date("Y-m-d H:i:s", strtotime($item->created_at));
             $item->createdDate = date("Y-m-d H:i:s", strtotime($item->sendDate->created_at));
         }]);

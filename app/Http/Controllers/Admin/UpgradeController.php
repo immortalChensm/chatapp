@@ -17,7 +17,7 @@ class UpgradeController extends Controller
     {
         return $this->models(...[$request,$upgrade,function (&$searchItem)use($request){
             if (!empty($request->query->get('name'))){
-                $userIds = User::where("name","LIKE","%".$request->query->get('name')."%")->pluck("userId");
+                $userIds = User::where("realName","LIKE","%".$request->query->get('name')."%")->pluck("userId");
                 $searchItem['userId']   = count($userIds->toArray())>0?$userIds->toArray():'';
             }
         },function ($query,&$searchItem){

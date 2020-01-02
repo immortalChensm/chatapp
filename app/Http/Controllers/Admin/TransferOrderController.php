@@ -20,7 +20,7 @@ class TransferOrderController extends Controller
     {
         return $this->models(...[$request,$transfer,function (&$searchItem)use($request){
             if (!empty($request->query->get('name'))){
-                $userIds = User::where("realName","LIKE","%".$request->query->get('buyer')."%")->value("userId");
+                $userIds = User::where("realName","LIKE","%".$request->query->get('name')."%")->value("userId");
                 $searchItem['userId']   = $userIds;
             }
         },function ($query,&$searchItem){

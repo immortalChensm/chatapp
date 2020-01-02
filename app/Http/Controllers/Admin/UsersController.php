@@ -37,9 +37,9 @@ class UsersController extends Controller
                     $handNum = substr($searchItem['handNum'],6);
                     $query->where("handNum", "LIKE", "%" . $handNum . "%")->where("area","=",$area);
                 }else{
-                    $query->where("handNum", "LIKE", "%" . $searchItem['handNum'] . "%");
+                    $query->where("area", "LIKE", "%" . $searchItem['handNum'] . "%");
                 }
-                
+
             }
             if ($searchItem['realName']) {
                 $query->where("realName", "LIKE", "%" . $searchItem['realName'] . "%");

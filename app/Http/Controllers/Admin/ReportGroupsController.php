@@ -17,7 +17,7 @@ class ReportGroupsController extends Controller
     {
         return $this->models(...[$request,$reportGroup,function (&$searchItem)use($request){
             if (!empty($request->query->get('name'))){
-                $Ids = Groups::where("realName","LIKE","%".$request->query->get('name')."%")->pluck("GroupId");
+                $Ids = Groups::where("Name","LIKE","%".$request->query->get('name')."%")->pluck("GroupId");
                 $searchItem['groupId']   = count($Ids->toArray())>0?$Ids->toArray():'';
             }
         },function ($query,&$searchItem){

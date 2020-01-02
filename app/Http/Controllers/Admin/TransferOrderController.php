@@ -19,7 +19,7 @@ class TransferOrderController extends Controller
     function orders(Request $request,Transfer $transfer)
     {
         return $this->models(...[$request,$transfer,function (&$searchItem)use($request){
-            if (!empty($request->query->get('buyer'))){
+            if (!empty($request->query->get('name'))){
                 $userIds = User::where("realName","LIKE","%".$request->query->get('buyer')."%")->value("userId");
                 $searchItem['userId']   = $userIds;
             }

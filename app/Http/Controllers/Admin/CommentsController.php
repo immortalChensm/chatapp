@@ -23,7 +23,7 @@ class CommentsController extends Controller
         return $this->models(...[$request,$comments,function (&$searchItem)use($request){
             $searchItem['content']   = $request->query->get('content');
             if (!empty($request->query->get('name'))){
-                $userIds = User::where("name","LIKE","%".$request->query->get('name')."%")->pluck("userId");
+                $userIds = User::where("realName","LIKE","%".$request->query->get('name')."%")->pluck("userId");
                 $searchItem['userId']   = count($userIds->toArray())>0?$userIds->toArray():'';
             }
         },function ($query,&$searchItem){

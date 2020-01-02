@@ -39,10 +39,12 @@ class ShipOrderController extends Controller
             }
 
         },function (&$item){
-            if ($item->sellerUserId==1&&$item->userId){
+            if ($item->sellerUserId==1){
                 $item->sellerUserName = '平台';
-            }else{
+            }else if ($item->seller){
                 $item->sellerUserName = $item->seller->realName;
+            }else{
+                $item->sellerUserName = "账号不存在";
             }
             $item->typeName = ($item->type==1)?'商户':'平台';
             if ($item->payType==3){

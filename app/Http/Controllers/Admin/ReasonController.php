@@ -35,7 +35,12 @@ class ReasonController extends Controller
                 $query->where("reasonId",$searchItem['reasonId']);
             }
         },function (&$item)use($reports){
-            $item->reasonName      = $item->reasonName->reason;
+            if ($item->reasonName){
+                $item->reasonName      = $item->reasonName->reason;
+            }else{
+                $item->reasonName      = "";
+            }
+
             $item->userName  = isset($item->userName->realName)?$item->userName->realName:$item->userName->name;
             $item->createdDate = date("Y-m-d H", strtotime($item->created_at));
             $item->title = DB::table($this->typeTable[$item->modelType])->value("title");

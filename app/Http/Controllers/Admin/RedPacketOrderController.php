@@ -21,7 +21,7 @@ class RedPacketOrderController extends Controller
     {
         return $this->models(...[$request,$redPackets,function (&$searchItem)use($request){
             if (!empty($request->query->get('buyer'))){
-                $userIds = User::where("name","LIKE","%".$request->query->get('buyer')."%")->value("userId");
+                $userIds = User::where("realName","LIKE","%".$request->query->get('buyer')."%")->value("userId");
                 $searchItem['userId']   = $userIds;
             }
         },function ($query,&$searchItem){

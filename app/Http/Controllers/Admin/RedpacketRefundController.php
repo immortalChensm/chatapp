@@ -19,7 +19,7 @@ class RedpacketRefundController extends Controller
     {
         return $this->models(...[$request,$redpacketRefund,function (&$searchItem)use($request){
             if (!empty($request->query->get('sender'))){
-                $userIds = User::where("name","LIKE","%".$request->query->get('sender')."%")->value("userId");
+                $userIds = User::where("realName","LIKE","%".$request->query->get('sender')."%")->value("userId");
                 $searchItem['userId']   = $userIds;
             }
         },function ($query,&$searchItem){

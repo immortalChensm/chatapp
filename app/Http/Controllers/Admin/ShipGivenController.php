@@ -20,11 +20,11 @@ class ShipGivenController extends Controller
         return $this->models(...[$request,$shipGiven,function (&$searchItem)use($request){
 
             if (!empty($request->query->get('sender'))){
-                $userIds = User::where("name","LIKE","%".$request->query->get('sender')."%")->value("userId");
+                $userIds = User::where("realName","LIKE","%".$request->query->get('sender')."%")->value("userId");
                 $searchItem['givenUserId']   = $userIds;
             }
             if (!empty($request->query->get('giver'))){
-                $userIds = User::where("name","LIKE","%".$request->query->get('giver')."%")->value("userId");
+                $userIds = User::where("realName","LIKE","%".$request->query->get('giver')."%")->value("userId");
                 $searchItem['userId']   = $userIds;
             }
         },function ($query,&$searchItem){

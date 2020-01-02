@@ -20,11 +20,11 @@ class ShipOrderController extends Controller
         return $this->models(...[$request,$shipOrder,function (&$searchItem)use($request){
             $searchItem['type']       = $request->type;
             if (!empty($request->query->get('seller'))){
-                $userIds = User::where("name","LIKE","%".$request->query->get('seller')."%")->value("userId");
+                $userIds = User::where("realName","LIKE","%".$request->query->get('seller')."%")->value("userId");
                 $searchItem['sellerUserId']   = $userIds;
             }
             if (!empty($request->query->get('buyer'))){
-                $userIds = User::where("name","LIKE","%".$request->query->get('buyer')."%")->value("userId");
+                $userIds = User::where("realName","LIKE","%".$request->query->get('buyer')."%")->value("userId");
                 $searchItem['userId']   = $userIds;
             }
         },function ($query,&$searchItem){
@@ -42,7 +42,7 @@ class ShipOrderController extends Controller
             if ($item->sellerUserId==1){
                 $item->sellerUserName = '平台';
             }else{
-                $item->sellerUserName = property_exists($item->seller,'realName')?$item->seller->realName:$item->seller->name;
+                $item->sellerUserName = $item->seller->realName;
             }
             $item->typeName = ($item->type==1)?'商户':'平台';
             if ($item->payType==3){
@@ -54,7 +54,7 @@ class ShipOrderController extends Controller
             }
 
             if (isset($item->buyer)){
-                $item->userName = property_exists($item->buyer,'realName')?$item->buyer->realName:$item->buyer->name;
+                $item->userName = $item->buyer->realName;
             }else{
                 $item->userName = "暂无";
             }

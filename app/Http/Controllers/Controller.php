@@ -156,10 +156,9 @@ class Controller extends BaseController
     //上传文件到自个儿的服务器
     function uploadFileToSelfService($file)
     {
-        $uri = "http://148.70.221.198:9901/api/image/upload";
 
         $client = new \GuzzleHttp\Client([
-            'base_uri'=>"http://148.70.221.198:9901/",
+            'base_uri'=>config("cos")['removeFileUri'],
             'verify' => false
         ]);
 
@@ -266,7 +265,7 @@ class Controller extends BaseController
     {
         //return deleteCosFile($data);
         $client = new \GuzzleHttp\Client([
-            'base_uri'=>"http://148.70.221.198:9901/",
+            'base_uri'=>config("cos")['removeFileUri'],
             'verify' => false
         ]);
         $response = $client->request("POST","api/image/remove",[

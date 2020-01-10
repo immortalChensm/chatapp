@@ -94,7 +94,7 @@ class Controller extends BaseController
         if(!preg_match("/.apk/",$_FILES['imgFile'])){
             ($file = new File("imgFile",$storage))->setName(uniqid());
         }else{
-            ($file = new File("imgFile",$storage)->setName("传联"));
+            ($file = new File("imgFile",$storage))->setName("传联");
         }
 
         $file->addValidations([

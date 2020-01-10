@@ -91,7 +91,7 @@ class Controller extends BaseController
     {
         $storage = new FileSystem(config("upload")['attachedDir']);
 print_r($_FILES);
-        if(!preg_match("/.apk/",$_FILES['fileName'])){
+        if(!preg_match("/.apk/",$_FILES['imgFile']['name'])){
             ($file = new File("imgFile",$storage))->setName(uniqid());
         }else{
             ($file = new File("imgFile",$storage))->setName("传联");

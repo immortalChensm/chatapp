@@ -304,7 +304,7 @@
             {{--});--}}
             sendMessageToUserWhenShowOrShareAction(userId,action,show,share,articleTitle);
 
-        {{--});--}}
+        });
 
         //置顶操作
         {{--$("#datagrid").on("click",".top",function (e) {--}}

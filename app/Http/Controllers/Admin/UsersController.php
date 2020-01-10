@@ -98,22 +98,31 @@ class UsersController extends Controller
     {
        DB::table("users_extend")->where("userId",request("userId"))->update([request("field")=>request("value")]);
        $msgTitle = [
-           'canLogin'=>(request("value")==1?"系统已解除你的登录限制":"系统已禁止你登录本应用"),
-           'canPost'=>(request("value")==1?"系统已解除你的文章发布限制":"系统已禁止你发布文章功能"),
-           'canPhoto'=>(request("value")==1?"系统已解除你的相册发布限制":"系统已禁止你发布相册功能"),
-           'canMusic'=>(request("value")==1?"系统已解除你的音乐发布限制":"系统已禁止你发布音乐功能"),
-           'canVideo'=>(request("value")==1?"系统已解除你的视频发布限制":"系统已禁止你发布视频功能"),
-           'canComment'=>(request("value")==1?"系统已解除你的评论限制":"系统已禁止你评论功能"),
-           'canShare'=>(request("value")==1?"系统已解除你的分享限制":"系统已禁止你的分享功能"),
+           'canLogin'=>(request("value")==1?"经综合评估，已解除你登录传联的限制！":"接到举报，你涉嫌利用传联从事违规活动，已被系统禁止登录！"),
+           'canPost'=>(request("value")==1?"经综合评估，已解除你发布文章的限制！":"系系统检测到你发布的文章多次违规，已被限制发布！"),
+           'canPhoto'=>(request("value")==1?"经综合评估，已解除你发布相册的限制！":"系统检测到你发布的相册多次违规，已被限制发布！"),
+           'canMusic'=>(request("value")==1?"经综合评估，已解除你发布音频的限制！":"系统检测到你发布的音频多次违规，已被限制发布！"),
+           'canVideo'=>(request("value")==1?"经综合评估，已解除你发布视频的限制!":"系统检测到你发布的视频多次违规，已被限制发布！"),
+           'canComment'=>(request("value")==1?"经综合评估，已解除你评论的限制！":"系统检测到你的评论多次违规，已被限制评论！"),
+           'canShare'=>(request("value")==1?"经综合评估，已解除你分享的限制！":"系统检测到你分享的内容多次违规，已被限制分享！"),
        ];
-       //if (in_array(request("field"),$msgTitle)){
+       if (in_array(request("field"),array_keys($msgTitle))){
            $this->getApi("POST","api/im/sendMsg",[
                'content'=>$msgTitle[request("field")],
                'userId'=>request("userId"),
                'msgType'=>6,
                'title'=>"系统警告",
            ]);
-      // }
+           if (request("field")=='canLogin'){
+               $mobile   = DB::table("users")->where("userId", request("userId"))->value("mobile");
+               $content = (request("value")==1?"经综合评估，已解除你登录传联的限制！":"接到举报，你涉嫌利用传联从事违规活动，已被系统禁止登录！");
+               $this->getApi("POST","api/verify/code",[
+                   'message'=>$content,
+                   'mobile'=>$mobile,
+                   'scene'=>3
+               ]);
+           }
+       }
 
        return ['code' => 1, 'message' => '设置成功'];
     }

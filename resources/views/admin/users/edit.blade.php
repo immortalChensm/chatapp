@@ -424,7 +424,7 @@
             offSwitchColor   : '#fff',
             onJackColor      : '#fff',
             offJackColor     : '#fff',
-            showText         : false,
+            showText         : true,
             disabled         : false,
             onChange         : function(e){
                 console.log(this);

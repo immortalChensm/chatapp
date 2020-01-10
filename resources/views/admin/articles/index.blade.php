@@ -227,84 +227,84 @@
 
             var action = $(this).attr("data-btn");
             if ($(this).hasClass("disableShare"))type=2;
-            {{--$.ajax({--}}
-                {{--type: "put",--}}
-                {{--url: "{{url('/admin/articles/shieldOrShare/')}}/" + dateId,--}}
-                {{--dataType: 'json',--}}
-                {{--data: {--}}
-                    {{--"_token": "{{csrf_token()}}",--}}
-                    {{--'type':type,--}}
-                {{--},--}}
-                {{--success: function (data) {--}}
-                    {{--if (data.code == 1) {--}}
-                        {{--layer.msg(data.message);--}}
-                        {{--setTimeout(function () {--}}
-                            {{--//window.location = "{{url('admin/articles')}}";--}}
-                            {{--window.tableGrid.ajax.url( '/admin/get/articles?title='+ title+"&tagId="+tagId).load();--}}
-                        {{--}, 2000);--}}
-                    {{--} else {--}}
-                        {{--layer.msg(data.message);--}}
-                    {{--}--}}
-                {{--},--}}
-                {{--error: function (data) {--}}
-
-                {{--}--}}
-            {{--});--}}
-            layer.open({
-                type:0,
-                area: ['540px', '240px'],
-                content: "<div><ul><li>11</li><li>22</li></ul></div><textarea placeholder='请填写原因'></textarea>"
-                ,btn: ['提交', '取消']
-                ,btn1: function(index, layero){
-                    //按钮【按钮一】的回调
-
-                    var expire = $(layero).find(":input[name=text]").val();
-                    var number = $(layero).find(":input[name=number]").val();
-                    if (expire.length==0){
-                        layer.msg("请填写过期时间");
-                        return false;
+            $.ajax({
+                type: "put",
+                url: "{{url('/admin/articles/shieldOrShare/')}}/" + dateId,
+                dataType: 'json',
+                data: {
+                    "_token": "{{csrf_token()}}",
+                    'type':type,
+                },
+                success: function (data) {
+                    if (data.code == 1) {
+                        layer.msg(data.message);
+                        setTimeout(function () {
+                            //window.location = "{{url('admin/articles')}}";
+                            window.tableGrid.ajax.url( '/admin/get/articles?title='+ title+"&tagId="+tagId).load();
+                        }, 2000);
+                    } else {
+                        layer.msg(data.message);
                     }
-                    if (number.length==0){
-                        layer.msg("请填写编号");
-                        return false;
-                    }
-                    $.ajax({
-                        type: "post",
-                        url: "{{url('/admin/manager/setTop/')}}",
-                        dataType: 'json',
-                        data: {
-                            "_token": "{{csrf_token()}}",
-                            'topId':dateId,
-                            'topType':'1',
-                            'expire':expire,
-                            'number':number,
-                        },
-                        success: function (data) {
-                            if (data.code == 1) {
-                                layer.msg(data.message);
-                                setTimeout(function () {
-                                    //window.location = "{{url('admin/articles')}}";
-                                    window.tableGrid.ajax.url( '/admin/get/articles?title='+ title+"&tagId="+tagId).load();
-                                }, 2000);
-                            } else {
-                                layer.msg(data.message);
-                            }
-                        },
-                        error: function (data) {
+                },
+                error: function (data) {
 
-                        }
-                    });
-
-                }
-                ,cancel: function(){
-                    //右上角关闭回调
-
-                    //return false 开启该代码可禁止点击该按钮关闭
                 }
             });
-            sendMessageToUserWhenShowOrShareAction(userId,action,show,share,articleTitle);
+            {{--layer.open({--}}
+                {{--type:0,--}}
+                {{--area: ['800px', '450px'],--}}
+                {{--content: "<div><ul><li>11</li><li>22</li></ul></div><textarea placeholder='请填写原因'></textarea>"--}}
+                {{--,btn: ['提交', '取消']--}}
+                {{--,btn1: function(index, layero){--}}
+                    {{--//按钮【按钮一】的回调--}}
 
-        });
+                    {{--var expire = $(layero).find(":input[name=text]").val();--}}
+                    {{--var number = $(layero).find(":input[name=number]").val();--}}
+                    {{--if (expire.length==0){--}}
+                        {{--layer.msg("请填写过期时间");--}}
+                        {{--return false;--}}
+                    {{--}--}}
+                    {{--if (number.length==0){--}}
+                        {{--layer.msg("请填写编号");--}}
+                        {{--return false;--}}
+                    {{--}--}}
+                    {{--$.ajax({--}}
+                        {{--type: "post",--}}
+                        {{--url: "{{url('/admin/manager/setTop/')}}",--}}
+                        {{--dataType: 'json',--}}
+                        {{--data: {--}}
+                            {{--"_token": "{{csrf_token()}}",--}}
+                            {{--'topId':dateId,--}}
+                            {{--'topType':'1',--}}
+                            {{--'expire':expire,--}}
+                            {{--'number':number,--}}
+                        {{--},--}}
+                        {{--success: function (data) {--}}
+                            {{--if (data.code == 1) {--}}
+                                {{--layer.msg(data.message);--}}
+                                {{--setTimeout(function () {--}}
+                                    {{--//window.location = "{{url('admin/articles')}}";--}}
+                                    {{--window.tableGrid.ajax.url( '/admin/get/articles?title='+ title+"&tagId="+tagId).load();--}}
+                                {{--}, 2000);--}}
+                            {{--} else {--}}
+                                {{--layer.msg(data.message);--}}
+                            {{--}--}}
+                        {{--},--}}
+                        {{--error: function (data) {--}}
+
+                        {{--}--}}
+                    {{--});--}}
+
+                {{--}--}}
+                {{--,cancel: function(){--}}
+                    {{--//右上角关闭回调--}}
+
+                    {{--//return false 开启该代码可禁止点击该按钮关闭--}}
+                {{--}--}}
+            {{--});--}}
+            {{--sendMessageToUserWhenShowOrShareAction(userId,action,show,share,articleTitle);--}}
+
+        {{--});--}}
 
         //置顶操作
         {{--$("#datagrid").on("click",".top",function (e) {--}}

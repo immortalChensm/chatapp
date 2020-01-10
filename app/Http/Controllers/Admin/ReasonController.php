@@ -61,6 +61,11 @@ class ReasonController extends Controller
         return ['code'=>1,'message'=>$result];
     }
 
+    function getAllData()
+    {
+
+    }
+
     function removeReport(Reports $reports)
     {
         return $this->removeModel($reports);

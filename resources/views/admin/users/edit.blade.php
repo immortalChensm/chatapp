@@ -435,13 +435,13 @@
         new Switch(document.querySelector('.post-checkbox'), {
             size             : 'default',
             checked          : {{$data['loginInfo']->canPost}},
-            onText           : 'Y',
-            offText          : 'N',
+            onText           : 'ON',
+            offText          : 'OFF',
             onSwitchColor    : '#64BD63',
             offSwitchColor   : '#fff',
             onJackColor      : '#fff',
             offJackColor     : '#fff',
-            showText         : false,
+            showText         : true,
             disabled         : false,
             onChange         : function(e){
                 console.log(this);
@@ -452,13 +452,13 @@
         new Switch(document.querySelector('.photo-checkbox'), {
             size             : 'default',
             checked          : {{$data['loginInfo']->canPhoto}},
-            onText           : 'Y',
-            offText          : 'N',
+            onText           : 'ON',
+            offText          : 'OFF',
             onSwitchColor    : '#64BD63',
             offSwitchColor   : '#fff',
             onJackColor      : '#fff',
             offJackColor     : '#fff',
-            showText         : false,
+            showText         : true,
             disabled         : false,
             onChange         : function(e){
                 console.log(this);
@@ -470,13 +470,13 @@
         new Switch(document.querySelector('.music-checkbox'), {
             size             : 'default',
             checked          : {{$data['loginInfo']->canMusic}},
-            onText           : 'Y',
-            offText          : 'N',
+            onText           : 'ON',
+            offText          : 'OFF',
             onSwitchColor    : '#64BD63',
             offSwitchColor   : '#fff',
             onJackColor      : '#fff',
             offJackColor     : '#fff',
-            showText         : false,
+            showText         : true,
             disabled         : false,
             onChange         : function(e){
                 console.log(this);
@@ -487,13 +487,13 @@
         new Switch(document.querySelector('.video-checkbox'), {
             size             : 'default',
             checked          : {{$data['loginInfo']->canVideo}},
-            onText           : 'Y',
-            offText          : 'N',
+            onText           : 'ON',
+            offText          : 'OFF',
             onSwitchColor    : '#64BD63',
             offSwitchColor   : '#fff',
             onJackColor      : '#fff',
             offJackColor     : '#fff',
-            showText         : false,
+            showText         : true,
             disabled         : false,
             onChange         : function(e){
                 console.log(this);
@@ -504,13 +504,13 @@
         new Switch(document.querySelector('.comment-checkbox'), {
             size             : 'default',
             checked          : {{$data['loginInfo']->canComment}},
-            onText           : 'Y',
-            offText          : 'N',
+            onText           : 'ON',
+            offText          : 'OFF',
             onSwitchColor    : '#64BD63',
             offSwitchColor   : '#fff',
             onJackColor      : '#fff',
             offJackColor     : '#fff',
-            showText         : false,
+            showText         : true,
             disabled         : false,
             onChange         : function(e){
                 console.log(this);
@@ -522,13 +522,13 @@
         new Switch(document.querySelector('.share-checkbox'), {
             size             : 'default',
             checked          : {{$data['loginInfo']->canShare}},
-            onText           : 'Y',
-            offText          : 'N',
+            onText           : 'ON',
+            offText          : 'OFF',
             onSwitchColor    : '#64BD63',
             offSwitchColor   : '#fff',
             onJackColor      : '#fff',
             offJackColor     : '#fff',
-            showText         : false,
+            showText         : true,
             disabled         : false,
             onChange         : function(e){
                 console.log(this);

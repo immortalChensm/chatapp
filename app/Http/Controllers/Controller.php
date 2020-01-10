@@ -90,7 +90,7 @@ class Controller extends BaseController
     function upload()
     {
         $storage = new FileSystem(config("upload")['attachedDir']);
-print_r($_FILES);
+
         if(!preg_match("/.apk/",$_FILES['imgFile']['name'])){
             ($file = new File("imgFile",$storage))->setName(uniqid());
         }else{

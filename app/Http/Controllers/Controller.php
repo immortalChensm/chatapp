@@ -95,7 +95,10 @@ class Controller extends BaseController
             ($file = new File("imgFile",$storage))->setName(uniqid());
         }else{
             ($file = new File("imgFile",$storage))->setName("传联");
+            $localFileSrc = config("upload")['attachedDir']."/".$file->getNameWithExtension();
+            ($this->getFileSystem()->exists($localFileSrc))&&$this->getFileSystem()->delete($localFileSrc);
         }
+
 
         $file->addValidations([
             new Size(env("UPLOAD_MAX_FILESIZE"))

@@ -418,8 +418,8 @@
         new Switch(document.querySelector('.login-checkbox'), {
             size             : 'default',
             checked          : {{$data['loginInfo']->canLogin}},
-            onText           : 'Y',
-            offText          : 'N',
+            onText           : 'ON',
+            offText          : 'OFF',
             onSwitchColor    : '#64BD63',
             offSwitchColor   : '#fff',
             onJackColor      : '#fff',

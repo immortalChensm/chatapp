@@ -90,7 +90,13 @@ class Controller extends BaseController
     function upload()
     {
         $storage = new FileSystem(config("upload")['attachedDir']);
-        ($file = new File("imgFile",$storage))->setName(uniqid());
+
+        if(!preg_match("/.apk/",$_FILES['imgFile'])){
+            ($file = new File("imgFile",$storage))->setName(uniqid());
+        }else{
+            ($file = new File("imgFile",$storage));
+        }
+
         $file->addValidations([
             new Size(env("UPLOAD_MAX_FILESIZE"))
         ]);

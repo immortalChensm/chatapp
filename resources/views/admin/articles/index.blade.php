@@ -302,7 +302,7 @@
                     {{--//return false 开启该代码可禁止点击该按钮关闭--}}
                 {{--}--}}
             {{--});--}}
-            {{--sendMessageToUserWhenShowOrShareAction(userId,action,show,share,articleTitle);--}}
+            sendMessageToUserWhenShowOrShareAction(userId,action,show,share,articleTitle);
 
         {{--});--}}
 

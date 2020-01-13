@@ -19,7 +19,7 @@ class HomeController extends Controller
         $data['articleNum'] = DB::table("articles")->count("articleId") + DB::table("videos")->count("videoId") + DB::table("musics")->count("musicId") + DB::table("photos")->count("photoId");
         $data['shipSale']   = DB::table("users_ships_order")->where("sellerUserId", "=", 1)->where("type", "=", 2)->sum("payMoney");
         $data['spaceSale']  = DB::table("users_space_order")->sum("shipNum");
-        $data['users']      = DB::table("users")->select(["name", "created_at","headImgUrl"])->orderBy("created_at","desc")->limit(8)->get();
+        $data['users']      = DB::table("users")->select(["name as realName", "created_at","headImgUrl"])->orderBy("created_at","desc")->limit(8)->get();
         $businessTotal      = DB::table("users_business")->select(["id", "state"])->count("id");
         $businessOk      = DB::table("users_business")->where("state","=",1)->select(["id", "state"])->count("id");
         if ($businessOk&&$businessTotal){

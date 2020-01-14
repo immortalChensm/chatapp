@@ -95,6 +95,7 @@
                                     <th>手机号码</th>
                                     <th>是否认证</th>
                                     <th>注册时间</th>
+                                    <th>账号状态</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -111,6 +112,7 @@
                                     <th>手机号码</th>
                                     <th>是否认证</th>
                                     <th>注册时间</th>
+                                    <th>账号状态</th>
                                     <th>操作</th>
                                 </tr>
                                 </tfoot>
@@ -145,9 +147,10 @@
                         { data:"mobile",name:"mobile",orderable: true,searchable:true },
                         { data:"isValiated",name:"isValiated",orderable: true,searchable:true },
                         { data:"createdDate",name:"createdDate",orderable: false,searchable:true },
+                        { data:"status",name:"status",orderable: false,searchable:true },
                     ],
                     columnDefs: [ {
-                        "targets": 9,
+                        "targets": 10,
                         "render": function ( data, type, row, meta ) {
                             var BtnHtml = "<button type='button' class='fa fa-edit btn  btn-success btn-sm update' data='"+row.userId+"' data-user='"+row.userType+"'>编辑/查看</button>";
                             BtnHtml+= "  <button type='button' class='fa fa-remove btn  btn-danger btn-sm delete' data='"+row.userId+"' data-title='"+row.name+"' data-user='"+row.userType+"'>移除</button>";

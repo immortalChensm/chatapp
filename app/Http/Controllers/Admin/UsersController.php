@@ -67,6 +67,7 @@ class UsersController extends Controller
             $item->idCardFrontPic = 0;
             $item->idCardBackPic = 0;
             $item->handNum = $item->area.$item->handNum;
+            $item->status = ($item->status==1)?'正常':'已注销';
         }]);
     }
 

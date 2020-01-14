@@ -263,7 +263,7 @@
                     dataType: 'json',
                     data: {
                         "_token":"{{csrf_token()}}",
-                        content:(show==1?"你发布的《"+articleTitle+"》内容存在违规,系统已屏蔽!":"你发布的《"+articleTitle+"》内容已解除屏蔽!"),
+                        content:(show==1?"你发布的《"+articleTitle+"》内容存在违规,系统已屏蔽!":"你发布的《"+articleTitle+"》,已解除屏蔽!"),
                         userId:userId,
                         msgType:6,
                         title:'系统警告',
@@ -287,7 +287,7 @@
                     dataType: 'json',
                     data: {
                         "_token":"{{csrf_token()}}",
-                        content:(share==1?"你发布的《"+articleTitle+"》内容存在违规,系统已禁止分享!":"你发布的《"+articleTitle+"》内容已解除分享功能!"),
+                        content:(share==1?"你发布的《"+articleTitle+"》内容存在违规,系统已禁止分享!":"你发布的《"+articleTitle+"》,已解除分享功能!"),
                         userId:userId,
                         msgType:6,
                         title:'系统警告',

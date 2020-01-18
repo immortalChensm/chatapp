@@ -153,7 +153,7 @@
                         "targets": 10,
                         "render": function ( data, type, row, meta ) {
                             var BtnHtml = "<button type='button' class='fa fa-edit btn  btn-success btn-sm update' data='"+row.userId+"' data-user='"+row.userType+"'>编辑/查看</button>";
-                            BtnHtml+= "  <button type='button' class='fa fa-remove btn  btn-danger btn-sm delete' data='"+row.userId+"' data-title='"+row.name+"' data-user='"+row.userType+"'>移除</button>";
+                            BtnHtml+= "  <button type='button' class='fa fa-remove btn  btn-danger btn-sm delete' data='"+row.userId+"' data-title='"+row.name+"' data-user='"+row.userType+"'>帐号注销</button>";
                             // if ( row.chatBtn==1) {
                             //     BtnHtml+= "  <button type='button' class='fa  fa-comments btn  btn-info btn-sm talk' data='"+row.userId+"' data-title='"+row.name+"' data-user='"+row.userType+"'>聊天</button>";
                             // }
@@ -210,7 +210,7 @@
             $("#datagrid").on("click",".delete",function (e) {
                 var title = $(":input[name=name]").val();
                 var dateId = $(this).attr("data");
-                layer.confirm('您确定要删除('+$(this).attr("data-title")+")该用户？", {
+                layer.confirm('您确定要注销('+$(this).attr("data-title")+")该用户？", {
                     btn: ['确认','取消'] //按钮
                 }, function(){
                     $.ajax({

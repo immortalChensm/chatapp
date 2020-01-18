@@ -73,7 +73,12 @@ class UsersController extends Controller
 
     function remove(User $user)
     {
+        $userId = $user->userId;
         if ($user->delete()) {
+            $this->getApi("POST","api/account/delete",[
+                'userId'=>$userId
+            ]);
+
             return ['code' => 1, 'message' => '删除成功'];
         } else {
             return ['code' => 0, 'message' => '删除失败'];

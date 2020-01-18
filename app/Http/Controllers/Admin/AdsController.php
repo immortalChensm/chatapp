@@ -76,7 +76,7 @@ class AdsController extends Controller
                 $temp = array_pop($key);
                 $this->removeCosFile(['key'=>$temp]);
             }
-            return $ads->delete()?['code'=>1,'message'=>'删除成功！'.$image]:['code'=>0,'message'=>'删除失败！'];
+            return $ads->delete()?['code'=>1,'message'=>'删除成功！']:['code'=>0,'message'=>'删除失败！'];
         }else{
             return ['code'=>0,'message'=>$image];
         }

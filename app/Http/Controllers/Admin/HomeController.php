@@ -29,7 +29,7 @@ class HomeController extends Controller
         }
 
         foreach ($data['users'] as $k=>$user){
-            empty($user->headImgUrl)&&$user->headImgUrl='http://148.70.221.198/chuanlian.com/pc/image/cl_user_avatar.png';
+            empty($user->headImgUrl)&&$user->headImgUrl='http://148.70.221.198/pc/image/cl_user_avatar.png';
 //            $data['users'][$k]->headImgUrl = downloadCosFile(['fileKeyName'=>$user->headImgUrl,'expire'=>config("cos.expire")]);
             $data['users'][$k]->headImgUr = $user->headImgUrl;
         }

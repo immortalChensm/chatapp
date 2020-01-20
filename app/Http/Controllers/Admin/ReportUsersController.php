@@ -27,16 +27,15 @@ class ReportUsersController extends Controller
         },function (&$item)use($reportUsers){
             if (!empty($item->userName->realName)){
                 $item->userName  = $item->userName->realName;
-            }
-            if (!empty($item->userName->name)){
+            } elseif (!empty($item->userName->name)){
                 $item->userName  = $item->userName->name;
             }else{
                 $item->userName  = "";
             }
+
             if (!empty($item->reportUserName->realName)){
                 $item->reportUserName  = $item->reportUserName->realName;
-            }
-            if (!empty($item->reportUserName->name)){
+            } elseif (!empty($item->reportUserName->name)){
                 $item->reportUserName  = $item->reportUserName->name;
             }else{
                 $item->reportUserName  = "";

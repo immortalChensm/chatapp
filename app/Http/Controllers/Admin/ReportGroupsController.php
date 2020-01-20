@@ -25,7 +25,7 @@ class ReportGroupsController extends Controller
                 $query->whereIn("groupId",$searchItem['groupId']);
             }
         },function (&$item)use($reportGroup){
-            $item->userName  = isset($item->userName->realName)?$item->userName->realName:$item->userName->name;
+            $item->userName  = !empty($item->userName->realName)?$item->userName->realName:$item->userName->name;
             $item->reportGroupName  = Groups::where("groupId",$item->groupId)->value("Name");
             $item->createdDate = date("Y-m-d H", strtotime($item->created_at));
 

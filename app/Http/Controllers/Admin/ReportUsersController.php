@@ -25,18 +25,18 @@ class ReportUsersController extends Controller
                 $query->whereIn("reportedUserId",$searchItem['reportedUserId']);
             }
         },function (&$item)use($reportUsers){
-            if (isset($item->userName->realName)){
+            if (!empty($item->userName->realName)){
                 $item->userName  = $item->userName->realName;
             }
-            if (isset($item->userName->name)){
+            if (!empty($item->userName->name)){
                 $item->userName  = $item->userName->name;
             }else{
                 $item->userName  = "";
             }
-            if (isset($item->reportUserName->realName)){
+            if (!empty($item->reportUserName->realName)){
                 $item->reportUserName  = $item->reportUserName->realName;
             }
-            if (isset($item->reportUserName->name)){
+            if (!empty($item->reportUserName->name)){
                 $item->reportUserName  = $item->reportUserName->name;
             }else{
                 $item->reportUserName  = "";

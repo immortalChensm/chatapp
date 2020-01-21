@@ -105,7 +105,7 @@ class UsersController extends Controller
        DB::table("users_extend")->where("userId",request("userId"))->update([request("field")=>request("value")]);
        $msgTitle = [
            'canLogin'=>(request("value")==1?"经综合评估，已解除你登录传联的限制！":"接到举报，你涉嫌利用传联从事违规活动，已被系统禁止登录！"),
-           'canPost'=>(request("value")==1?"经综合评估，已解除你发布文章的限制！":"系系统检测到你发布的文章多次违规，已被限制发布！"),
+           'canPost'=>(request("value")==1?"经综合评估，已解除你发布文章的限制！":"系统检测到你发布的文章多次违规，已被限制发布！"),
            'canPhoto'=>(request("value")==1?"经综合评估，已解除你发布相册的限制！":"系统检测到你发布的相册多次违规，已被限制发布！"),
            'canMusic'=>(request("value")==1?"经综合评估，已解除你发布音频的限制！":"系统检测到你发布的音频多次违规，已被限制发布！"),
            'canVideo'=>(request("value")==1?"经综合评估，已解除你发布视频的限制!":"系统检测到你发布的视频多次违规，已被限制发布！"),

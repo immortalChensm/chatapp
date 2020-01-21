@@ -25,21 +25,9 @@ class ReportUsersController extends Controller
                 $query->whereIn("reportedUserId",$searchItem['reportedUserId']);
             }
         },function (&$item)use($reportUsers){
-            if (!empty($item->userName->realName)){
-                $item->userName  = $item->userName->realName;
-            } elseif (!empty($item->userName->name)){
-                $item->userName  = $item->userName->name;
-            }else{
-                $item->userName  = "";
-            }
 
-            if (!empty($item->reportUserName->realName)){
-                $item->reportUserName  = $item->reportUserName->realName;
-            } elseif (!empty($item->reportUserName->name)){
-                $item->reportUserName  = $item->reportUserName->name;
-            }else{
-                $item->reportUserName  = "";
-            }
+            $item->userName = User::where("userId","=",$item['userId'])->value("realName")?User::where("userId","=",$item['userId'])->value("realName"):User::where("userId","=",$item['userId'])->value("name");
+            $item->reportUserName = User::where("userId","=",$item['reportedUserId'])->value("realName")?User::where("userId","=",$item['reportedUserId'])->value("realName"):User::where("userId","=",$item['reportedUserId'])->value("name");
             $item->createdDate = date("Y-m-d H", strtotime($item->created_at));
 
         }]);

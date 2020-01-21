@@ -34,8 +34,8 @@ class RepliesController extends Controller
             }
             $query->where("isDeleted","=",0);//软删除
         },function (&$item){
-            $item->userName        = User::where("userId", $item['userId'])->value("realName");
-            $item->replyUserName   = User::where("userId", $item['commentUserId'])->value("realName");
+            $item->userName        = User::where("userId", $item['userId'])->value("realName")?User::where("userId", $item['userId'])->value("realName"):User::where("userId", $item['userId'])->value("name");
+            $item->replyUserName   = User::where("userId", $item['commentUserId'])->value("realName")?User::where("userId", $item['commentUserId'])->value("realName"):User::where("userId", $item['commentUserId'])->value("name");
             $item->createdDate     = date("Y-m-d H", strtotime($item->created_at));
             $item->isShow = $item->isShow==1?'否':'是';
 

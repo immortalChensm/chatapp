@@ -45,7 +45,7 @@ class ReasonController extends Controller
             $item->createdDate = date("Y-m-d H", strtotime($item->created_at));
             $item->title = DB::table($this->typeTable[$item->modelType])->where($this->typeField[$item->modelType],"=",$item['modelId'])->value("title");
             $item->reportUserId = DB::table($this->typeTable[$item->modelType])->where($this->typeField[$item->modelType],"=",$item['modelId'])->value("userId");
-            $item->reportUserName = DB::table("users")->where("userId","=",$item['userId'])->value("name")?DB::table("users")->where("userId","=",$item['userId'])->value("name"):DB::table("users")->where("userId","=",$item['userId'])->value("realName");
+            $item->reportUserName = DB::table("users")->where("userId","=",$item->reportUserId)->value("name")?DB::table("users")->where("userId","=",$item['userId'])->value("name"):DB::table("users")->where("userId","=",$item['userId'])->value("realName");
             $item->typeName = $this->typeTitle[$item->modelType];
         }]);
     }

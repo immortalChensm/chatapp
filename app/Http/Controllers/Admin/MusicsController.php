@@ -36,7 +36,7 @@ class MusicsController extends Controller
                 $item->userIdMsg = 0;
             }else{
                 $item->userIdMsg = $item['userId'];
-                $item->userId      = User::where("userId","=",$item['userId'])->value("realName");
+                $item->userId      = User::where("userId","=",$item['userId'])->value("realName")?User::where("userId","=",$item['userId'])->value("realName"):User::where("userId","=",$item['userId'])->value("name");
             }
             $item->isShowFlag      = $item->isShow ;
             $item->isShow      = $item->isShow == 0 ? '是' : '否';

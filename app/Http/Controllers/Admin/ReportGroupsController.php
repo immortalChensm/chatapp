@@ -6,6 +6,7 @@ use App\Groups;
 use App\ReportGroup;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
 class ReportGroupsController extends Controller
 {
     function index()

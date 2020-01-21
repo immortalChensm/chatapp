@@ -8,7 +8,7 @@ use App\Reports;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-
+use App\User;
 class ReasonController extends Controller
 {
     protected $typeTable       = ['1' => 'articles', '2' => 'photos', '3' => 'musics', '4' => 'videos'];

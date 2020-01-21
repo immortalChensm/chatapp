@@ -46,7 +46,7 @@ class ReasonController extends Controller
             $item->title = DB::table($this->typeTable[$item->modelType])->where($this->typeField[$item->modelType],"=",$item['modelId'])->value("title");
             $userId = DB::table($this->typeTable[$item->modelType])->where($this->typeField[$item->modelType],"=",$item['modelId'])->value("userId");
             $item->reportUserId = $userId;
-            $item->reportUserName = DB::table("users")->where("userId","=",$userId)->value("name")?DB::table("users")->where("userId","=",$item['userId'])->value("name"):DB::table("users")->where("userId","=",$item['userId'])->value("realName");
+            $item->reportUserName = DB::table("users")->where("userId","=",$userId)->value("name")?DB::table("users")->where("userId","=",$userId)->value("name"):DB::table("users")->where("userId","=",$userId)->value("realName");
             $item->typeName = $this->typeTitle[$item->modelType];
         }]);
     }

@@ -61,6 +61,7 @@
                                     <th>举报原因</th>
                                     <th>举报详情</th>
                                     <th>举报者</th>
+                                    <th>被举报者</th>
                                     <th>联系人信息</th>
                                     <th>举报内容</th>
                                     <th>类型</th>
@@ -76,6 +77,7 @@
                                     <th>举报原因</th>
                                     <th>举报详情</th>
                                     <th>举报者</th>
+                                    <th>被举报者</th>
                                     <th>联系人信息</th>
                                     <th>举报内容</th>
                                     <th>类型</th>
@@ -108,6 +110,7 @@
                         { data:"reasonName",name:"reasonName",orderable: false,searchable:true },
                         { data:"reason",name:"reason",orderable: false,searchable:true },
                         { data:"userName",name:"userName",orderable: false,searchable:true },
+                        { data:"reportUserName",name:"reportUserName",orderable: false,searchable:true },
                         { data:"contact",name:"contact",orderable: false,searchable:true },
                         { data:"title",name:"title",orderable: false,searchable:true },
                         { data:"typeName",name:"typeName",orderable: false,searchable:true },

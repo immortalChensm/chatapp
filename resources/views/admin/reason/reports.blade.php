@@ -117,7 +117,7 @@
                         { data:"createdDate",name:"createdDate"}
                     ],
                     columnDefs: [ {
-                        "targets": 8,
+                        "targets": 9,
                         "render": function ( data, type, row, meta ) {
 
                             var BtnHtml = "";

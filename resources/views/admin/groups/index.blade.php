@@ -42,19 +42,19 @@
                         </div>
 
                         <div class="box-body">
-                            <table id="datagrid" class="table table-bordered table-striped table-hover">
+                            <table id="datagrid" class="table-bordered table table-striped table-hover display nowrap " style="width:100%">
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>群ID</th>
-                                    <th>群名称</th>
-                                    <th>群人数</th>
-                                    <th>群简介</th>
-                                    <th>创建人</th>
+                                    <th>群组ID号</th>
+                                    <th>群组名称</th>
+                                    <th>群组总人数</th>
+                                    <th>群组简介</th>
+                                    <th>群组创建人</th>
                                     <th>群主ID</th>
-                                    <th>群主名</th>
-                                    <th>类型</th>
-                                    <th>创建时间</th>
+                                    <th>群主名字</th>
+                                    <th>群组类型</th>
+                                    <th>群组创建时间</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -63,15 +63,15 @@
                                 <tfoot>
                                 <tr>
                                     <th>ID</th>
-                                    <th>群ID</th>
-                                    <th>群名称</th>
-                                    <th>群人数</th>
-                                    <th>群简介</th>
-                                    <th>创建人</th>
+                                    <th>群组ID号</th>
+                                    <th>群组名称</th>
+                                    <th>群组总人数</th>
+                                    <th>群组简介</th>
+                                    <th>群组创建人</th>
                                     <th>群主ID</th>
-                                    <th>群主名</th>
-                                    <th>类型</th>
-                                    <th>创建时间</th>
+                                    <th>群主名字</th>
+                                    <th>群组类型</th>
+                                    <th>群组创建时间</th>
                                     <th>操作</th>
                                 </tr>
                                 </tfoot>
@@ -95,6 +95,7 @@
             $(function () {
                 var table = $('#datagrid').DataTable({
                     processing:true,
+                    "scrollX": true,
                     columns: [
                         { data:"id",name:"id",orderable: true,searchable:false },
                         { data:"GroupId",name:"GroupId",orderable: true,searchable:true },

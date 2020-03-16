@@ -46,12 +46,12 @@
                         </div>
 
                         <div class="box-body">
-                            <table id="datagrid" class="table table-bordered table-striped table-hover">
+                            <table id="datagrid" class="table-bordered table table-striped table-hover display nowrap " style="width:100%">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>ID编号</th>
                                     <th>举报人</th>
-                                    <th>被举报群</th>
+                                    <th>被举报群组名称</th>
                                     <th>举报原因</th>
                                     <th>举报日期</th>
                                     <th>操作</th>
@@ -61,9 +61,9 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>ID编号</th>
                                     <th>举报人</th>
-                                    <th>被举报群</th>
+                                    <th>被举报群组名称</th>
                                     <th>举报原因</th>
                                     <th>举报日期</th>
                                     <th>操作</th>
@@ -89,6 +89,7 @@
             $(function () {
                 var table = $('#datagrid').DataTable({
                     processing:true,
+                    "scrollX": true,
                     columns: [
                         { data:"id",name:"id",orderable: true,searchable:false },
                         { data:"user_name.realName",name:"user_name.realName",orderable: false,searchable:false },

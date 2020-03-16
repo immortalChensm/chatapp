@@ -46,17 +46,17 @@
                         </div>
 
                         <div class="box-body">
-                            <table id="datagrid" class="table table-bordered table-striped table-hover">
+                            <table id="datagrid" class="table-bordered table table-striped table-hover display nowrap " style="width:100%">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>ID编号</th>
                                     <th>应用名称</th>
-                                    <th>版本号</th>
-                                    <th>版本名称</th>
-                                    <th>强制更新</th>
-                                    <th>平台</th>
-                                    <th>简介</th>
-                                    <th>下载地址</th>
+                                    <th>应用版本号</th>
+                                    <th>应用版本名称</th>
+                                    <th>是否强制更新</th>
+                                    <th>应用运行平台</th>
+                                    <th>应用简介</th>
+                                    <th>应用下载地址</th>
                                     <th>发布时间</th>
                                     <th>操作</th>
                                 </tr>
@@ -65,14 +65,14 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>ID编号</th>
                                     <th>应用名称</th>
-                                    <th>版本号</th>
-                                    <th>版本名称</th>
-                                    <th>强制更新</th>
-                                    <th>平台</th>
-                                    <th>简介</th>
-                                    <th>下载地址</th>
+                                    <th>应用版本号</th>
+                                    <th>应用版本名称</th>
+                                    <th>是否强制更新</th>
+                                    <th>应用运行平台</th>
+                                    <th>应用简介</th>
+                                    <th>应用下载地址</th>
                                     <th>发布时间</th>
                                     <th>操作</th>
                                 </tr>
@@ -97,6 +97,7 @@
             $(function () {
                 var table = $('#datagrid').DataTable({
                     processing:true,
+                    "scrollX": true,
                     columns: [
                         { data:"id",name:"id",orderable: true,searchable:false },
                         { data:"name",name:"name",orderable: true,searchable:false },

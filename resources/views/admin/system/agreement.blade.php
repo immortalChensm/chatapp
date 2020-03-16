@@ -42,10 +42,10 @@
                         </div>
 
                         <div class="box-body">
-                            <table id="datagrid" class="table table-bordered table-striped table-hover">
+                            <table id="datagrid" class="table-bordered table table-striped table-hover display nowrap " style="width:100%">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>ID编号</th>
                                     <th>提意见人</th>
                                     <th>建议内容</th>
                                     <th>提交时间</th>
@@ -56,7 +56,7 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>ID编号</th>
                                     <th>提意见人</th>
                                     <th>建议内容</th>
                                     <th>提交时间</th>
@@ -83,6 +83,7 @@
         $(function () {
             var table = $('#datagrid').DataTable({
                 processing:true,
+                "scrollX": true,
                 columns: [
                     { data:"id",name:"id",orderable: true,searchable:false },
                     { data:"name",name:"name",orderable: true,searchable:false },

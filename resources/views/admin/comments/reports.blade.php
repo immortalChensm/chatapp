@@ -57,7 +57,7 @@
                             <table id="datagrid" class="table table-bordered table-striped table-hover">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>ID编号</th>
                                     <th>举报原因</th>
                                     <th>举报详情</th>
                                     <th>举报者</th>
@@ -72,7 +72,7 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>ID编号</th>
                                     <th>举报原因</th>
                                     <th>举报详情</th>
                                     <th>举报者</th>

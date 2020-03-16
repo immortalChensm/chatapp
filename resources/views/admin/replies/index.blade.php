@@ -51,15 +51,14 @@
                         </div>
 
                         <div class="box-body">
-                            <table id="datagrid" class="table table-bordered table-striped table-hover">
+                            <table id="datagrid" class="table-bordered table table-striped table-hover display nowrap " style="width:100%">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>ID编号</th>
                                     <th>回复人</th>
                                     <th>回复内容</th>
                                     <th>被回复者</th>
-
-                                    <th>屏蔽</th>
+                                    <th title="屏蔽后内容将不可见">是否屏蔽</th>
                                     <th>回复时间</th>
                                     <th>操作</th>
                                 </tr>
@@ -68,11 +67,11 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>ID编号</th>
                                     <th>回复人</th>
                                     <th>回复内容</th>
                                     <th>被回复者</th>
-                                    <th>屏蔽</th>
+                                    <th title="屏蔽后内容将不可见">是否屏蔽</th>
                                     <th>回复时间</th>
                                     <th>操作</th>
                                 </tr>
@@ -97,7 +96,7 @@
             $(function () {
                 var table = $('#datagrid').DataTable({
                     processing:true,
-                    autoWidth: true,
+                    "scrollX": true,
                     columns: [
                         { data:"id",name:"id",orderable: true,searchable:false },
                         { data:"userName",name:"userName",orderable: false,searchable:true },

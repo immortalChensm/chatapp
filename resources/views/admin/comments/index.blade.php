@@ -51,20 +51,19 @@
                         </div>
 
                         <div class="box-body">
-                            <table id="datagrid" class="table table-bordered table-striped table-hover">
+                            <table id="datagrid" class="table-bordered table table-striped table-hover display nowrap " style="width:100%">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>评论者</th>
+                                    <th>ID编号</th>
+                                    <th>评论用户</th>
                                     <th>评论内容</th>
-                                    <th>评论对象</th>
+                                    <th>评论标题</th>
                                     <th>评论类型</th>
                                     <th>被评论者</th>
                                     <th>评论赞数</th>
                                     <th>评论回复数</th>
-                                    <th>屏蔽</th>
+                                    <th title="屏蔽后用户的评论内容将不可见">是否屏蔽</th>
                                     <th>评论时间</th>
-
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -72,17 +71,16 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>评论者</th>
+                                    <th>ID编号</th>
+                                    <th>评论用户</th>
                                     <th>评论内容</th>
-                                    <th>评论对象</th>
+                                    <th>评论标题</th>
                                     <th>评论类型</th>
                                     <th>被评论者</th>
                                     <th>评论赞数</th>
                                     <th>评论回复数</th>
-                                    <th>屏蔽</th>
+                                    <th title="屏蔽后用户的评论内容将不可见">是否屏蔽</th>
                                     <th>评论时间</th>
-
                                     <th>操作</th>
                                 </tr>
                                 </tfoot>
@@ -106,7 +104,7 @@
             $(function () {
                 var table = $('#datagrid').DataTable({
                     processing:true,
-                    autoWidth: true,
+                    "scrollX": true,
                     columns: [
                         { data:"id",name:"id",orderable: true,searchable:false },
                         { data:"userName",name:"userName",orderable: false,searchable:true },

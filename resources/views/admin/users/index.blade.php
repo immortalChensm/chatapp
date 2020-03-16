@@ -86,7 +86,7 @@
                             <table id="datagrid" class="table-bordered table table-striped table-hover display nowrap " style="width:100%">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>ID编号</th>
                                     <th>用户昵称/网名</th>
                                     <th>传联号</th>
                                     <th>用户星级</th>
@@ -102,7 +102,7 @@
                                     <th>是否认证</th>
                                     <th>注册时间</th>
                                     <th>账号状态</th>
-                                    <th>传联号前缀编号</th>
+                                    <th>传联号城市编号</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -110,7 +110,7 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>ID编号</th>
                                     <th>用户昵称/网名</th>
                                     <th>传联号</th>
                                     <th>用户星级</th>
@@ -126,7 +126,7 @@
                                     <th>是否认证</th>
                                     <th>注册时间</th>
                                     <th>账号状态</th>
-                                    <th>传联号前缀编号</th>
+                                    <th>传联号城市编号</th>
                                     <th>操作</th>
                                 </tr>
                                 </tfoot>

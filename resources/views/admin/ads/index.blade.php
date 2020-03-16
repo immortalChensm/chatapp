@@ -46,15 +46,15 @@
                         </div>
 
                         <div class="box-body">
-                            <table id="datagrid" class="table table-bordered table-striped table-hover">
+                            <table id="datagrid" class="table-bordered table table-striped table-hover display nowrap " style="width:100%">
                                 <thead>
                                 <tr>
-                                    <th>广告名称</th>
-                                    <th>公司</th>
+                                    <th>广告标题</th>
+                                    <th>广告公司</th>
                                     <th>联系人</th>
-                                    <th>电话</th>
+                                    <th>联系电话</th>
                                     <th>公司地址</th>
-                                    <th>发布/T</th>
+                                    <th>发布时间</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -62,12 +62,12 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>广告名称</th>
-                                    <th>公司</th>
+                                    <th>广告标题</th>
+                                    <th>广告公司</th>
                                     <th>联系人</th>
-                                    <th>电话</th>
+                                    <th>联系电话</th>
                                     <th>公司地址</th>
-                                    <th>发布/T</th>
+                                    <th>发布时间</th>
                                     <th>操作</th>
                                 </tr>
                                 </tfoot>
@@ -91,7 +91,7 @@
             $(function () {
                 var table = $('#datagrid').DataTable({
                     processing:true,
-                    autoWidth: true,
+                    "scrollX": true,
                     columns: [
                         { data:"name",name:"name",orderable: true,searchable:true,width:'17%' },
                         { data:"company",name:"company",orderable: false,searchable:true },

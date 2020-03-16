@@ -52,23 +52,23 @@
                         </div>
 
                         <div class="box-body">
-                            <table id="datagrid" class="table table-bordered table-striped table-hover">
+                            <table id="datagrid" class="table-bordered table table-striped table-hover display nowrap " style="width:100%">
                                 <thead>
                                 <tr>
-                                    <th>标题</th>
-                                    <th>歌手</th>
-                                    <th>用户</th>
-                                    <th>评论</th>
-                                    <th>阅读</th>
-                                    <th>点赞</th>
-                                    <th>踩点</th>
-                                    <th>屏蔽</th>
-                                    <th>能分享</th>
-                                    <th>置顶</th>
-                                    <th>序号</th>
-                                    <th>起始/T</th>
-                                    <th>过期/H</th>
-                                    <th>发布/T</th>
+                                    <th>音乐标题</th>
+                                    <th>歌手名字</th>
+                                    <th>发布用户</th>
+                                    <th>评论量</th>
+                                    <th>阅读量</th>
+                                    <th>点赞量</th>
+                                    <th>踩点量</th>
+                                    <th title="屏蔽后前台就不会在展示">是否屏蔽</th>
+                                    <th>是否能分享</th>
+                                    <th>是否置顶</th>
+                                    <th>置顶序号</th>
+                                    <th>置顶起始时间</th>
+                                    <th>置顶过期时间</th>
+                                    <th>发布时间</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -76,20 +76,20 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>标题</th>
-                                    <th>歌手</th>
-                                    <th>用户</th>
-                                    <th>评论</th>
-                                    <th>阅读</th>
-                                    <th>点赞</th>
-                                    <th>踩点</th>
-                                    <th>屏蔽</th>
-                                    <th>能分享</th>
-                                    <th>置顶</th>
-                                    <th>序号</th>
-                                    <th>起始/T</th>
-                                    <th>过期/H</th>
-                                    <th>发布/T</th>
+                                    <th>音乐标题</th>
+                                    <th>歌手名字</th>
+                                    <th>发布用户</th>
+                                    <th>评论量</th>
+                                    <th>阅读量</th>
+                                    <th>点赞量</th>
+                                    <th>踩点量</th>
+                                    <th title="屏蔽后前台就不会在展示">是否屏蔽</th>
+                                    <th>是否能分享</th>
+                                    <th>是否置顶</th>
+                                    <th>置顶序号</th>
+                                    <th>置顶起始时间</th>
+                                    <th>置顶过期时间</th>
+                                    <th>发布时间</th>
                                     <th>操作</th>
                                 </tr>
                                 </tfoot>
@@ -113,7 +113,7 @@
             $(function () {
                 var table = $('#datagrid').DataTable({
                     processing:true,
-                    autoWidth: true,
+                    "scrollX": true,
                     columns: [
                         { data:"title",name:"title",orderable: true,searchable:false,width:'17%' },
                         { data:"singer",name:"singer",orderable: true,searchable:true},

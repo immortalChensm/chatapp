@@ -83,19 +83,26 @@
                         </div>
 
                         <div class="box-body">
-                            <table id="datagrid" class="table table-bordered table-striped table-hover">
+                            <table id="datagrid" class="table-bordered table table-striped table-hover display nowrap " style="width:100%">
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>用户昵称</th>
+                                    <th>用户昵称/网名</th>
                                     <th>传联号</th>
                                     <th>用户星级</th>
+                                    <th>用户身份证号</th>
+                                    <th>所在省份</th>
+                                    <th>所在城市</th>
+                                    <th>常住地</th>
+                                    <th>船票余额</th>
+                                    <th>钱包余额</th>
                                     <th>真实姓名</th>
                                     <th>性别</th>
                                     <th>手机号码</th>
                                     <th>是否认证</th>
                                     <th>注册时间</th>
                                     <th>账号状态</th>
+                                    <th>传联号前缀编号</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -104,15 +111,22 @@
                                 <tfoot>
                                 <tr>
                                     <th>ID</th>
-                                    <th>用户昵称</th>
+                                    <th>用户昵称/网名</th>
                                     <th>传联号</th>
                                     <th>用户星级</th>
+                                    <th>用户身份证号</th>
+                                    <th>所在省份</th>
+                                    <th>所在城市</th>
+                                    <th>常住地</th>
+                                    <th>船票余额</th>
+                                    <th>钱包余额</th>
                                     <th>真实姓名</th>
                                     <th>性别</th>
                                     <th>手机号码</th>
                                     <th>是否认证</th>
                                     <th>注册时间</th>
                                     <th>账号状态</th>
+                                    <th>传联号前缀编号</th>
                                     <th>操作</th>
                                 </tr>
                                 </tfoot>
@@ -137,20 +151,28 @@
 
                 var table = $('#datagrid').DataTable({
                     processing:true,
+                    "scrollX": true,
                     columns: [
                         { data:"userId",name:"userId",orderable: true,searchable:false },
                         { data:"name",name:"name",orderable: true,searchable:true },
                         { data:"handNum",name:"handNum",orderable: false,searchable:false },
                         { data:"star",name:"star",orderable: false,searchable:true },
+                        { data:"idCard",name:"idCard",orderable: false,searchable:true },
+                        { data:"province",name:"province",orderable: false,searchable:true },
+                        { data:"city",name:"city",orderable: false,searchable:true },
+                        { data:"placeAddress",name:"placeAddress",orderable: false,searchable:true },
+                        { data:"shipNumber",name:"shipNumber",orderable: false,searchable:true },
+                        { data:"money",name:"money",orderable: false,searchable:true },
                         { data:"realName",name:"realName",orderable: true,searchable:true },
                         { data:"sex",name:"sex",orderable: true,searchable:true },
                         { data:"mobile",name:"mobile",orderable: true,searchable:true },
                         { data:"isValiated",name:"isValiated",orderable: true,searchable:true },
                         { data:"createdDate",name:"createdDate",orderable: false,searchable:true },
                         { data:"status",name:"status",orderable: false,searchable:true },
+                        { data:"area",name:"area",orderable: false,searchable:true },
                     ],
                     columnDefs: [ {
-                        "targets": 10,
+                        "targets": 17,
                         "render": function ( data, type, row, meta ) {
                             var BtnHtml = "<button type='button' class='fa fa-edit btn  btn-success btn-sm update' data='"+row.userId+"' data-user='"+row.userType+"'>编辑/查看</button>";
                             BtnHtml+= "  <button type='button' class='fa fa-remove btn  btn-danger btn-sm delete' data='"+row.userId+"' data-title='"+row.name+"' data-user='"+row.userType+"'>帐号注销</button>";

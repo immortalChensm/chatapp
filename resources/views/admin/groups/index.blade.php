@@ -50,7 +50,7 @@
                                     <th>群组名称</th>
                                     <th>群组总人数</th>
                                     <th>群组简介</th>
-                                    <th>群组创建人</th>
+                                    <th>群组创建编号</th>
                                     <th>群主ID</th>
                                     <th>群主名字</th>
                                     <th>群组类型</th>
@@ -67,7 +67,7 @@
                                     <th>群组名称</th>
                                     <th>群组总人数</th>
                                     <th>群组简介</th>
-                                    <th>群组创建人</th>
+                                    <th>群组创建编号</th>
                                     <th>群主ID</th>
                                     <th>群主名字</th>
                                     <th>群组类型</th>
@@ -112,9 +112,9 @@
                         "targets": 10,
                         "render": function ( data, type, row, meta ) {
                             var BtnHtml = "";
-                            BtnHtml+= "  <button type='button' class='fa fa-remove btn  btn-danger btn-sm delete' data='"+row.GroupId+"' data-title='"+row.Name+"' data-user='"+row.GroupId+"'>解散群</button>";
+                            BtnHtml+= "  <button type='button' class='fa fa-remove btn  btn-danger btn-sm delete' data='"+row.GroupId+"' data-title='"+row.Name+"' data-user='"+row.GroupId+"' title='解散'>解散群</button>";
                             BtnHtml+= "  <button type='button' class='fa fa-info btn  btn-success btn-sm send' data='"+row.GroupId+"' data-title='"+row.Name+"' data-user='"+row.GroupId+"'>发送消息</button>";
-                            BtnHtml+= "  <button type='button' class='fa fa-info btn  btn-success btn-sm warn' data='"+row.Owner_Account+"' data-title='"+row.Name+"' data-user='"+row.GroupId+"'>警告群主</button>";
+                            BtnHtml+= "  <button type='button' class='fa fa-info btn  btn-success btn-sm warn' data='"+row.Owner_Account+"' data-title='"+row.Name+"' data-user='"+row.GroupId+"' title='可单独警告群主'>警告群主</button>";
                             return BtnHtml;
                         }
                     } ],

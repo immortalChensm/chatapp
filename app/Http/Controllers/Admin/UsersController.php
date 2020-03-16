@@ -63,9 +63,13 @@ class UsersController extends Controller
 //            }
             $item->password = 0;
             $item->payPassword = 0;
-            $item->idCard = 0;
+            //$item->idCard = 0;
             $item->idCardFrontPic = 0;
             $item->idCardBackPic = 0;
+            $item->province = DB::table("region")->where("id",$item->birthPlaceProvinceId)->value("name");
+            $item->city = DB::table("region")->where("id",$item->birthPlaceCityId)->value("name");
+            //$item->nowPlace = DB::table("region")->where("id",$item->birthPlaceCityId)->value("name");
+
             $item->handNum = $item->area.$item->handNum;
             $item->status = ($item->status==1)?'正常':'已注销';
         }]);

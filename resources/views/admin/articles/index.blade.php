@@ -122,6 +122,7 @@
             var table = $('#datagrid').DataTable({
                 processing:true,
                 autoWidth: true,
+                scrollX: true,
                 columns: [
                     { data:"title",name:"title",orderable: true,searchable:true,width:'17%' },
                     { data:"tagName",name:"tagName",orderable: false,searchable:false },

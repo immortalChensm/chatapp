@@ -46,10 +46,10 @@
                         </div>
 
                         <div class="box-body">
-                            <table id="datagrid" class="table table-bordered table-striped table-hover">
+                            <table id="datagrid" class="table-bordered table table-striped table-hover display nowrap " style="width:100%">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>ID编号</th>
                                     <th>转账用户</th>
                                     <th>转账金额</th>
                                     <th>收款人</th>
@@ -62,7 +62,7 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>ID编号</th>
                                     <th>转账用户</th>
                                     <th>转账金额</th>
                                     <th>收款人</th>
@@ -91,6 +91,7 @@
             $(function () {
                 var table = $('#datagrid').DataTable({
                     processing:true,
+                    "scrollX": true,
                     columns: [
                         { data:"id",name:"id",orderable: true,searchable:false },
                         { data:"sender.realName",name:"sender.realName",orderable: false,searchable:true },

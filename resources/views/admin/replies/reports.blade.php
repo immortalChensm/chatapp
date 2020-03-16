@@ -54,16 +54,16 @@
                         </div>
 
                         <div class="box-body">
-                            <table id="datagrid" class="table table-bordered table-striped table-hover">
+                            <table id="datagrid" class="table-bordered table table-striped table-hover display nowrap " style="width:100%">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>ID编号</th>
                                     <th>举报原因</th>
                                     <th>举报详情</th>
                                     <th>举报者</th>
                                     <th>联系人信息</th>
                                     <th>举报内容</th>
-                                    <th>类型</th>
+                                    <th>内容类型</th>
                                     <th>举报时间</th>
                                     <th>操作</th>
                                 </tr>
@@ -72,13 +72,13 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>ID编号</th>
                                     <th>举报原因</th>
                                     <th>举报详情</th>
                                     <th>举报者</th>
                                     <th>联系人信息</th>
                                     <th>举报内容</th>
-                                    <th>类型</th>
+                                    <th>内容类型</th>
                                     <th>举报时间</th>
                                     <th>操作</th>
                                 </tr>
@@ -103,6 +103,7 @@
             $(function () {
                 var table = $('#datagrid').DataTable({
                     processing:true,
+                    "scrollX": true,
                     columns: [
                         { data:"id",name:"id",orderable: true,searchable:false },
                         { data:"reasonName",name:"reasonName",orderable: false,searchable:true },

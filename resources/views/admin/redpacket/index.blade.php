@@ -42,13 +42,13 @@
                         </div>
 
                         <div class="box-body">
-                            <table id="datagrid" class="table table-bordered table-striped table-hover">
+                            <table id="datagrid" class="table-bordered table table-striped table-hover display nowrap " style="width:100%">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>ID编号</th>
                                     <th>发送人</th>
                                     <th>红包金额</th>
-                                    <th>留言</th>
+                                    <th>红包留言</th>
                                     <th>红包个数</th>
                                     <th>是否过期</th>
                                     <th>已领人数</th>
@@ -59,10 +59,10 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>ID编号</th>
                                     <th>发送人</th>
                                     <th>红包金额</th>
-                                    <th>留言</th>
+                                    <th>红包留言</th>
                                     <th>红包个数</th>
                                     <th>是否过期</th>
                                     <th>已领人数</th>
@@ -89,6 +89,7 @@
             $(function () {
                 var table = $('#datagrid').DataTable({
                     processing:true,
+                    "scrollX": true,
                     columns: [
                         { data:"id",name:"id",orderable: true,searchable:false },
                         { data:"sender.realName",name:"sender.realName",orderable: true,searchable:true },

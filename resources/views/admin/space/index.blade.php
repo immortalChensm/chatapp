@@ -42,12 +42,12 @@
                         </div>
 
                         <div class="box-body">
-                            <table id="datagrid" class="table table-bordered table-striped table-hover">
+                            <table id="datagrid" class="table-bordered table table-striped table-hover display nowrap " style="width:100%">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>买家</th>
-                                    <th>卖家</th>
+                                    <th>ID编号</th>
+                                    <th>买家名字</th>
+                                    <th>卖家名字</th>
                                     <th>空间大小/G</th>
                                     <th>购买/续费时间</th>
                                     <th>过期时间</th>
@@ -58,9 +58,9 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>买家</th>
-                                    <th>卖家</th>
+                                    <th>ID编号</th>
+                                    <th>买家名字</th>
+                                    <th>卖家名字</th>
                                     <th>空间大小/G</th>
                                     <th>购买/续费时间</th>
                                     <th>过期时间</th>
@@ -87,6 +87,7 @@
             $(function () {
                 var table = $('#datagrid').DataTable({
                     processing:true,
+                    "scrollX": true,
                     columns: [
                         { data:"id",name:"id",orderable: true,searchable:false },
                         { data:"buyer.realName",name:"buyer.realName",orderable: true,searchable:true },

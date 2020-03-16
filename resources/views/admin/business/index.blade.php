@@ -57,18 +57,18 @@
                         </div>
 
                         <div class="box-body">
-                            <table id="datagrid" class="table table-bordered table-striped table-hover">
+                            <table id="datagrid" class="table-bordered table table-striped table-hover display nowrap " style="width:100%">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>ID编号</th>
                                     <th>业务类型</th>
                                     <th>提交人</th>
                                     <th>用户姓名</th>
                                     <th>联系电话</th>
                                     <th>联系地址</th>
                                     <th>提交时间</th>
-                                    <th>状态</th>
-                                    <th>备注</th>
+                                    <th>处理状态</th>
+                                    <th>后台备注</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -76,15 +76,15 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>ID编号</th>
                                     <th>业务类型</th>
                                     <th>提交人</th>
                                     <th>用户姓名</th>
                                     <th>联系电话</th>
                                     <th>联系地址</th>
                                     <th>提交时间</th>
-                                    <th>状态</th>
-                                    <th>备注</th>
+                                    <th>处理状态</th>
+                                    <th>后台备注</th>
                                     <th>操作</th>
                                 </tr>
                                 </tfoot>
@@ -108,6 +108,7 @@
             $(function () {
                 var table = $('#datagrid').DataTable({
                     processing:true,
+                    "scrollX": true,
                     columns: [
                         { data:"id",name:"id",orderable: true,searchable:false },
                         { data:"type",name:"type",orderable: false,searchable:false },

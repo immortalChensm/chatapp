@@ -60,15 +60,15 @@
                         </div>
 
                         <div class="box-body">
-                            <table id="datagrid" class="table table-bordered table-striped table-hover">
+                            <table id="datagrid" class="table-bordered table table-striped table-hover display nowrap " style="width:100%">
                                 <thead>
                                 <tr>
-                                    <th>订单号</th>
-                                    <th>买家</th>
-                                    <th>卖家</th>
+                                    <th>订单编号</th>
+                                    <th>买家名字</th>
+                                    <th>卖家名字</th>
                                     <th>船票类别</th>
-                                    <th>购买/出售数量</th>
-                                    <th>购买/出售金额</th>
+                                    <th>购买数量/出售数量</th>
+                                    <th>购买数量/出售金额</th>
                                     <th>购买时间/售出时间</th>
                                     <th>支付状态</th>
                                     <th>支付方式</th>
@@ -78,12 +78,12 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>订单号</th>
-                                    <th>买家</th>
-                                    <th>卖家</th>
+                                    <th>订单编号</th>
+                                    <th>买家名字</th>
+                                    <th>卖家名字</th>
                                     <th>船票类别</th>
-                                    <th>购买/出售数量</th>
-                                    <th>购买/出售金额</th>
+                                    <th>购买数量/出售数量</th>
+                                    <th>购买数量/出售金额</th>
                                     <th>购买时间/售出时间</th>
                                     <th>支付状态</th>
                                     <th>支付方式</th>
@@ -109,6 +109,7 @@
             $(function () {
                 var table = $('#datagrid').DataTable({
                     processing:true,
+                    "scrollX": true,
                     columns: [
                         { data:"orderNo",name:"orderNo",orderable: true,searchable:false },
                         { data:"userName",name:"userName",orderable: true,searchable:true },

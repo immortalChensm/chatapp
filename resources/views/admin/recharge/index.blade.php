@@ -46,27 +46,27 @@
                         </div>
 
                         <div class="box-body">
-                            <table id="datagrid" class="table table-bordered table-striped table-hover">
+                            <table id="datagrid" class="table-bordered table table-striped table-hover display nowrap " style="width:100%">
                                 <thead>
                                 <tr>
-                                    <th>订单号</th>
+                                    <th>订单编号</th>
                                     <th>充值用户</th>
                                     <th>充值金额</th>
                                     <th>充值时间</th>
                                     <th>充值方式</th>
-                                    <th>状态</th>
+                                    <th>充值状态</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>订单号</th>
+                                    <th>订单编号</th>
                                     <th>充值用户</th>
                                     <th>充值金额</th>
                                     <th>充值时间</th>
                                     <th>充值方式</th>
-                                    <th>状态</th>
+                                    <th>充值状态</th>
                                 </tr>
                                 </tfoot>
                             </table>
@@ -89,7 +89,7 @@
             $(function () {
                 var table = $('#datagrid').DataTable({
                     processing:true,
-                    autoWidth: true,
+                    "scrollX": true,
                     columns: [
                         { data:"orderNo",name:"orderNo",orderable: true,searchable:false },
                         { data:"sender.realName",name:"sender.realName",orderable: false,searchable:true },

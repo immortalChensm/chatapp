@@ -33,10 +33,10 @@
                                     <input type="text" class="form-control " name="title" placeholder="视频名称">
                                 </div>
 
-                                <div class="input-group input-box input-max-box">
-                                    <span class="input-group-addon"><i class="fa">发布用户</i></span>
-                                    <input type="hidden" class="form-control " name="user" placeholder="发布用户">
-                                </div>
+                                {{--<div class="input-group input-box input-max-box">--}}
+                                    {{--<span class="input-group-addon"><i class="fa">发布用户</i></span>--}}
+                                    {{--<input type="hidden" class="form-control " name="user" placeholder="发布用户">--}}
+                                {{--</div>--}}
 
 
 

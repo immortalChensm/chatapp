@@ -76,7 +76,7 @@ class SystemController extends Controller
     {
         $uriKey = $app->file;
         if ($app->delete()){
-            unlink($uriKey);
+            //unlink($uriKey);
             return ['code'=>1,'message'=>'删除成功！'];
         }
     }

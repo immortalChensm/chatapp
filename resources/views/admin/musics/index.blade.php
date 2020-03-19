@@ -112,6 +112,14 @@
         <script src="{{asset("adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
         <script src="{{asset("adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
         <script>
+
+            function getSearchParms()
+            {
+                var title = $(":input[name=title]").val();
+                var singer = $(":input[name=singer]").val();
+                return {'title':title,'singer':singer};
+            }
+
             $(function () {
                 var table = $('#datagrid').DataTable({
                     processing:true,
@@ -160,9 +168,8 @@
                 });
                 window.tableGrid =table;
                 $("#search").on("click",function (e) {
-                    var title = $(":input[name=title]").val();
-                    var singer = $(":input[name=singer]").val();
-                    refreshData({'title':title,'singer':singer});
+
+                    refreshData(getSearchParms());
                 })
 
             })
@@ -176,8 +183,6 @@
             //移除操作
             $("#datagrid").on("click",".delete",function (e) {
 
-                var title = $(":input[name=title]").val();
-                var singer = $(":input[name=singer]").val();
 
                 // if ($(this).attr("data-user")!=2){
                 //     layer.msg("该音乐为用户发布的内容禁止操作！");
@@ -198,7 +203,7 @@
                             if (data.code==1){
                                 layer.msg(data.message);
                                 setTimeout(function () {
-                                    refreshData({'title':title,'singer':singer});
+                                    refreshData(getSearchParms());
                                 },2000);
                             }else{
                                 layer.msg(data.message);
@@ -243,7 +248,7 @@
                         if (data.code == 1) {
                             layer.msg(data.message);
                             setTimeout(function () {
-                                refreshData({'title':title,'singer':singer});
+                                refreshData(getSearchParms());
                             }, 2000);
                         } else {
                             layer.msg(data.message);
@@ -352,7 +357,7 @@
                                 if (data.code == 1) {
                                     layer.msg(data.message);
                                     setTimeout(function () {
-                                        refreshData({'title':title,'singer':singer});
+                                        refreshData(getSearchParms());
                                     }, 2000);
                                 } else {
                                     layer.msg(data.message);

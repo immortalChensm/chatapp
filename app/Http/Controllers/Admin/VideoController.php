@@ -40,14 +40,14 @@ class VideoController extends Controller
     {
         return $this->models(...[$request,$video,function (&$searchItem)use($request){
             $searchItem['title']   = $request->query->get('title');
-            $searchItem['userId']   = User::where("realName","=",request("user"))->orWhere('name',"=",request("user"))->value("userId");
+            //$searchItem['userId']   = User::where("realName","=",request("user"))->orWhere('name',"=",request("user"))->value("userId");
         },function ($query,&$searchItem){
             if ($searchItem['title']){
                 $query->where("title","LIKE","%".$searchItem['title']."%");
             }
-            if ($searchItem['userId']){
-                $query->where("userId","=",$searchItem['userId']);
-            }
+//            if ($searchItem['userId']){
+//                $query->where("userId","=",$searchItem['userId']);
+//            }
         },function (&$item){
             if ($item->userType==2){
                 $item->userId      = "平台发布";

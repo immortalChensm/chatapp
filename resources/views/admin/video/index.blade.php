@@ -35,7 +35,7 @@
 
                                 <div class="input-group input-box input-max-box">
                                     <span class="input-group-addon"><i class="fa">发布用户</i></span>
-                                    <input type="text" class="form-control " name="user" placeholder="发布用户">
+                                    <input type="hidden" class="form-control " name="user" placeholder="发布用户">
                                 </div>
 
 
@@ -218,7 +218,7 @@
             });
 
             function refreshData(data) {
-                window.tableGrid.ajax.url( '/admin/get/videos?title='+data.title+"&user="+data.user).load();
+                window.tableGrid.ajax.url( '/admin/get/videos?title='+data.title).load();
             }
 
             //屏蔽操作

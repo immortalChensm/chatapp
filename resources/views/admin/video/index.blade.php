@@ -33,6 +33,12 @@
                                     <input type="text" class="form-control " name="title" placeholder="视频名称">
                                 </div>
 
+                                <div class="input-group input-box input-max-box">
+                                    <span class="input-group-addon"><i class="fa">发布用户</i></span>
+                                    <input type="text" class="form-control " name="user" placeholder="发布用户">
+                                </div>
+
+
 
                                 <div class="search-box" id="search">
                                     <span class="input-group-btn">
@@ -105,7 +111,16 @@
         <script src="{{asset("adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
         <script src="{{asset("adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
         <script>
+
+            function getSearchParms()
+            {
+                var title = $(":input[name=title]").val();
+                var user = $(":input[name=user]").val();
+                return {'title':title,'user':user};
+            }
+
             $(function () {
+
                 var table = $('#datagrid').DataTable({
                     processing:true,
                     "scrollX": true,
@@ -152,12 +167,11 @@
                 });
                 window.tableGrid =table;
                 $("#search").on("click",function (e) {
-                    var title = $(":input[name=title]").val();
-                    var singer = $(":input[name=singer]").val();
-                    refreshData({'title':title,'singer':singer});
+                    refreshData(getSearchParms());
                 })
 
             })
+
 
 
             //编辑操作
@@ -167,8 +181,6 @@
 
             //移除操作
             $("#datagrid").on("click",".delete",function (e) {
-
-                var title = $(":input[name=title]").val();
 
                 // if ($(this).attr("data-user")!=2){
                 //     layer.msg("该视频为用户发布的内容禁止操作！");
@@ -189,7 +201,7 @@
                             if (data.code==1){
                                 layer.msg(data.message);
                                 setTimeout(function () {
-                                    refreshData(title);
+                                    refreshData(getSearchParms());
                                 },2000);
                             }else{
                                 layer.msg(data.message);
@@ -206,7 +218,7 @@
             });
 
             function refreshData(data) {
-                window.tableGrid.ajax.url( '/admin/get/videos?title='+data.title).load();
+                window.tableGrid.ajax.url( '/admin/get/videos?title='+data.title+"&user="+data.user).load();
             }
 
             //屏蔽操作
@@ -234,7 +246,7 @@
                         if (data.code == 1) {
                             layer.msg(data.message);
                             setTimeout(function () {
-                                refreshData({'title':title});
+                                refreshData(getSearchParms());
                             }, 2000);
                         } else {
                             layer.msg(data.message);
@@ -344,7 +356,7 @@
                                 if (data.code == 1) {
                                     layer.msg(data.message);
                                     setTimeout(function () {
-                                        refreshData({'title':title});
+                                        refreshData(getSearchParms());
                                     }, 2000);
                                 } else {
                                     layer.msg(data.message);

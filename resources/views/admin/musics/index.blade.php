@@ -177,6 +177,7 @@
             $("#datagrid").on("click",".delete",function (e) {
 
                 var title = $(":input[name=title]").val();
+                var singer = $(":input[name=singer]").val();
 
                 // if ($(this).attr("data-user")!=2){
                 //     layer.msg("该音乐为用户发布的内容禁止操作！");
@@ -197,7 +198,7 @@
                             if (data.code==1){
                                 layer.msg(data.message);
                                 setTimeout(function () {
-                                    refreshData(title);
+                                    refreshData({'title':title,'singer':singer});
                                 },2000);
                             }else{
                                 layer.msg(data.message);

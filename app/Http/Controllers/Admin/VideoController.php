@@ -134,14 +134,14 @@ class VideoController extends Controller
     function remove(Videos $videos)
     {
         $videos->id = $videos->videoId;
-        if (($checkIfCan = $this->isManager($videos))&&$checkIfCan['code']==0){
-            return $checkIfCan;
-        }
+//        if (($checkIfCan = $this->isManager($videos))&&$checkIfCan['code']==0){
+//            return $checkIfCan;
+//        }
         //删除数据库的记录+删除存储桶上的文件+清空缓存
         $uriKey = $videos->uriKey;
         if ($videos->delete()){
-            $cacheKey = config("cos")['cacheMusicKey'].$videos->videoId;
-            $this->getRedisClient()->del($cacheKey);
+            //$cacheKey = config("cos")['cacheMusicKey'].$videos->videoId;
+            //$this->getRedisClient()->del($cacheKey);
             $this->removeCosFile(['key'=>$uriKey]);
             return ['code'=>1,'message'=>'删除成功！'];
         }

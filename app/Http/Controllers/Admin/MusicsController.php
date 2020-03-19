@@ -138,14 +138,14 @@ class MusicsController extends Controller
     function remove(Musics $musics)
     {
         $musics->id = $musics->musicId;
-        if (($checkIfCan = $this->isManager($musics))&&$checkIfCan['code']==0){
-            return $checkIfCan;
-        }
+//        if (($checkIfCan = $this->isManager($musics))&&$checkIfCan['code']==0){
+//            return $checkIfCan;
+//        }
         //删除数据库的记录+删除存储桶上的文件+清空缓存
         $uriKey = $musics->uriKey;
         if ($musics->delete()){
-            $cacheKey = config("cos")['cacheMusicKey'].$musics->musicId;
-            $this->getRedisClient()->del($cacheKey);
+            //$cacheKey = config("cos")['cacheMusicKey'].$musics->musicId;
+            //$this->getRedisClient()->del($cacheKey);
             $this->removeCosFile(['key'=>$uriKey]);
             return ['code'=>1,'message'=>'删除成功！'];
         }

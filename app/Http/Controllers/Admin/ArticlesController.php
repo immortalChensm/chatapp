@@ -174,11 +174,15 @@ class ArticlesController extends Controller
     function remove(Articles $articles)
     {
         $articles->id = $articles->articleId;
-        if(($checkIfCan=$this->isManager($articles))&&$checkIfCan['code']==0){
-            return $checkIfCan;
-        }
+//        if(($checkIfCan=$this->isManager($articles))&&$checkIfCan['code']==0){
+//            return $checkIfCan;
+//        }
         $articleHtml = $articles->where("articleId","=",$articles->articleId)->value("content");
+        $cosKeyNames = $articles->where("articleId","=",$articles->articleId)->value("image");
         if($articles->delete()){
+            foreach(explode(",",$cosKeyNames) as $item){
+                $this->removeCosFile(['key'=>$item]);
+            }
             event(new removeArticle($articleHtml));
             return ['code'=>1,'message'=>'删除成功'];
         }else{return ['code'=>0,'message'=>'删除失败'];}

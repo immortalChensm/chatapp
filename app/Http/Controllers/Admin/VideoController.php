@@ -56,7 +56,7 @@ class VideoController extends Controller
             $item->isShow      = $item->isShow == 0 ? '是' : '否';
             $item->canSharedFlag   = $item->canShared;
             $item->canShared   = $item->canShared == 1 ? '是' : '否';
-
+            $item->isStoraged  = $item->isStoraged == 1 ? '是' : '否';
 
             if (empty($item->expire)){
                 $item->expire = "";

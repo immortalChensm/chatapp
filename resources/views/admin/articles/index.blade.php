@@ -72,6 +72,7 @@
                                     <th>踩点量</th>
                                     <th title="屏蔽后前台就不会在展示">是否屏蔽</th>
                                     <th title="可控制用户该内容是否有分享权限">是否能分享</th>
+                                    <th title="用户发布的内容是否已经选择永久存储">用户是否永久存储</th>
                                     <th>是否置顶</th>
                                     <th>置顶序号</th>
                                     <th>置顶起始时间</th>
@@ -93,6 +94,7 @@
                                     <th>踩点量</th>
                                     <th title="屏蔽后前台就不会在展示">是否屏蔽</th>
                                     <th title="可控制用户该内容是否有分享权限">是否能分享</th>
+                                    <th title="用户发布的内容是否已经选择永久存储">用户是否永久存储</th>
                                     <th>是否置顶</th>
                                     <th>置顶序号</th>
                                     <th>置顶起始时间</th>
@@ -136,6 +138,7 @@
                     { data:"downCount",name:"downCount",orderable: true,searchable:true },
                     { data:"isShow",name:"isShow",orderable: true,searchable:true },
                     { data:"canShared",name:"canShared",orderable: true,searchable:true },
+                    { data:"isStoraged",name:"isStoraged",orderable: true,searchable:true },
                     { data:"top",name:"top",orderable: true,searchable:true },
                     { data:"topNumber",name:"topNumber",orderable: true,searchable:true },
                     { data:"topStartTime",name:"topStartTime",orderable: true,searchable:true },
@@ -144,7 +147,7 @@
                     { data:"createdDate",name:"createdDate",orderable: false,searchable:true }
                 ],
                 columnDefs: [ {
-                    "targets": 14,
+                    "targets": 15,
                     "render": function ( data, type, row, meta ) {
                         var BtnHtml = "<button type='button' class='fa fa-edit btn  btn-success btn-sm update' data='"+row.articleId+"' data-user='"+row.userType+"'>修改</button>";
                         BtnHtml+= "  <button type='button' class='fa fa-remove btn  btn-danger btn-sm delete' data='"+row.articleId+"' data-title='"+row.title+"' data-user='"+row.userType+"'>移除</button>";

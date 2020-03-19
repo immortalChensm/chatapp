@@ -170,10 +170,10 @@
 
                 var title = $(":input[name=title]").val();
 
-                if ($(this).attr("data-user")!=2){
-                    layer.msg("该视频为用户发布的内容禁止操作！");
-                    return false;
-                }
+                // if ($(this).attr("data-user")!=2){
+                //     layer.msg("该视频为用户发布的内容禁止操作！");
+                //     return false;
+                // }
                 var dataid = $(this).attr("data");
                 layer.confirm('您确定要删除('+$(this).attr("data-name")+")这个视频吗？", {
                     btn: ['确认','取消'] //按钮

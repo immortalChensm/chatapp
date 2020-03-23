@@ -42,7 +42,7 @@ class KeywordRankingController extends Controller
             $sql = "SELECT keyword,count(keyword) as ranking FROM users_search GROUP BY keyword LIMIT $start,$length";
             $totalSql = "SELECT COUNT(keyword) as page FROM users_search GROUP BY keyword";
         }
-
+        echo $sql;
         $data = DB::select($sql);
         $count = DB::select($totalSql);
         return response()->json([

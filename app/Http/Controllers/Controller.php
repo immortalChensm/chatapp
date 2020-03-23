@@ -355,17 +355,11 @@ class Controller extends BaseController
         $recordsTotal = $model->count($model->primaryKey);
         if (!in_array($model->getTable(),['permissions','roles','managers'])) {
 
-            if (in_array($model->getTable(), ['users_search'])){
-                $data         = $model->selectRaw("count(keyword) as ranking,keyword")->where(function ($query) use ($searchItem,$queryCallback) {
-                    $queryCallback($query,$searchItem);
+            $data         = $model->where(function ($query) use ($searchItem,$queryCallback) {
+                $queryCallback($query,$searchItem);
 
-                })->groupBy("keyword");
-            }else{
-                $data         = $model->where(function ($query) use ($searchItem,$queryCallback) {
-                    $queryCallback($query,$searchItem);
+            })->orderByRaw("created_at desc,".$orderSql);
 
-                })->orderByRaw("created_at desc,".$orderSql);
-            }
 
         }else{
             $data         = $model->where(function ($query) use ($searchItem,$queryCallback) {

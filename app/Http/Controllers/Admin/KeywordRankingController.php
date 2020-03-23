@@ -37,11 +37,11 @@ class KeywordRankingController extends Controller
             $whereCondition.= "date_format(created_at,'%Y-%m-%d') < {$endDate} AND ";
         }
         if ($whereCondition){
-            $sql = "SELECT keyword,count(keyword) as ranking FROM users_search WHERE ".substr($whereCondition,0,-4)." LIMIT $page,$length";
-            $totalSql = "SELECT COUNT(id) as page FROM users_serach WHERE ".substr($whereCondition,0,-4);
+            $sql = "SELECT keyword,count(keyword) as ranking FROM users_search WHERE ".substr($whereCondition,0,-4)." GROUP BY keyword LIMIT $page,$length";
+            $totalSql = "SELECT COUNT(id) as page FROM users_serach WHERE ".substr($whereCondition,0,-4)." GROUP BY keyword";
         }else{
-            $sql = "SELECT keyword,count(keyword) as ranking FROM users_search LIMIT $page,$length";
-            $totalSql = "SELECT COUNT(id) as page FROM users_serach";
+            $sql = "SELECT keyword,count(keyword) as ranking FROM users_search GROUP BY keyword LIMIT $page,$length";
+            $totalSql = "SELECT COUNT(id) as page FROM users_serach GROUP BY keyword";
         }
 
         $data = DB::select($sql);

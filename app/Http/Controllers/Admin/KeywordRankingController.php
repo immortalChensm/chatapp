@@ -41,7 +41,7 @@ class KeywordRankingController extends Controller
             $totalSql = "SELECT COUNT(id) as page FROM users_search WHERE ".substr($whereCondition,0,-4)." GROUP BY keyword";
         }else{
             $sql = "SELECT keyword,count(keyword) as ranking FROM users_search GROUP BY keyword LIMIT $page,$length";
-            $totalSql = "SELECT COUNT(id) as page FROM users_search GROUP BY keyword";
+            $totalSql = "SELECT COUNT(keyword) as page FROM users_search GROUP BY keyword";
         }
 
         $data = DB::select($sql);

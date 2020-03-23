@@ -49,7 +49,7 @@ class KeywordRankingController extends Controller
         return response()->json([
             "draw"            => intval($request->draw),
             "recordsTotal"    => intval(DB::table('users_search')->count("id")),
-            "recordsFiltered" => intval($count->page),
+            "recordsFiltered" => intval(count($count)),
             "data"            => $data
         ],200);
     }

@@ -38,10 +38,10 @@ class KeywordRankingController extends Controller
         }
         if ($whereCondition){
             $sql = "SELECT keyword,count(keyword) as ranking FROM users_search WHERE ".substr($whereCondition,0,-4)." GROUP BY keyword LIMIT $page,$length";
-            $totalSql = "SELECT COUNT(id) as page FROM users_serach WHERE ".substr($whereCondition,0,-4)." GROUP BY keyword";
+            $totalSql = "SELECT COUNT(id) as page FROM users_search WHERE ".substr($whereCondition,0,-4)." GROUP BY keyword";
         }else{
             $sql = "SELECT keyword,count(keyword) as ranking FROM users_search GROUP BY keyword LIMIT $page,$length";
-            $totalSql = "SELECT COUNT(id) as page FROM users_serach GROUP BY keyword";
+            $totalSql = "SELECT COUNT(id) as page FROM users_search GROUP BY keyword";
         }
 
         $data = DB::select($sql);
@@ -49,7 +49,7 @@ class KeywordRankingController extends Controller
         return response()->json([
             "draw"            => intval($request->draw),
             "recordsTotal"    => intval(DB::table('users_search')->count("id")),
-            "recordsFiltered" => intval($count),
+            "recordsFiltered" => intval($count['page']),
             "data"            => $data
         ],200);
     }

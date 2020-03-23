@@ -83,7 +83,7 @@
             @endif
 
             @if(array_key_exists('搜索排行',session("permission")))
-                <li class="treeview @if(preg_match('/keywords/ranking',request()->url())) active @endif">
+                <li class="treeview @if(preg_match('/keywords/',request()->url())) active @endif">
                     <a href="#">
                         <i class="fa fa-book"></i> <span>关键词排行</span>
                         <span class="pull-right-container">
@@ -93,7 +93,7 @@
                     <ul class="treeview-menu">
 
                         @if(in_array("admin/keywords/ranking",session("permission")['搜索排行']))
-                            <li @if(preg_match('/keywords/search',request()->url())) class="active" @endif ><a href="{{url("admin/keywords/ranking")}}"><i class="fa fa-circle-o"></i> 排行列表</a></li>@endif
+                            <li @if(preg_match('/keywords/',request()->url())) class="active" @endif ><a href="{{url("admin/keywords/ranking")}}"><i class="fa fa-circle-o"></i> 排行列表</a></li>@endif
                     </ul>
                 </li>
             @endif

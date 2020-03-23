@@ -57,7 +57,6 @@
                             <table id="datagrid" class="table table-bordered table-striped table-hover">
                                 <thead>
                                 <tr>
-                                    <th>ID编号</th>
                                     <th>关键词名称</th>
                                     <th>搜索次数</th>
                                     <th>操作</th>
@@ -67,7 +66,6 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>ID编号</th>
                                     <th>关键词名称</th>
                                     <th>搜索次数</th>
                                     <th>操作</th>
@@ -94,12 +92,11 @@
                 var table = $('#datagrid').DataTable({
                     processing:true,
                     columns: [
-                        { data:"id",name:"id",orderable: true,searchable:false },
                         { data:"keyword",name:"keyword",orderable: true,searchable:true },
                         { data:"ranking",name:"ranking",orderable: true,searchable:true },
                     ],
                     columnDefs: [ {
-                        "targets": 3,
+                        "targets": 2,
                         "render": function ( data, type, row, meta ) {
 
                             var BtnHtml = "";

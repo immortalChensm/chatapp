@@ -83,7 +83,7 @@ class ManagerController extends Controller
                     'roleId'=>$request['roleId'],
                     'password'=>$request['password'],
                 ])) {
-                    return view("admin.manager.login");
+                    return ['code'=>1,'message'=>'密码修改成功'];
                 }
                 else{
                     return ['code'=>0,'message'=>'更新失败'];

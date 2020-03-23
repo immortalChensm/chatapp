@@ -93,8 +93,12 @@
                     data: $('#postForm').serializeArray(),
                     success: function(data){
                         if (data.code == 1){
-                            layer.msg(data.message);
 
+                            if (data.message=="密码修改成功"){
+                                layer.msg("密码修改成功准备跳转");
+                                window.location = "{{url('admin/login')}}";
+                            }
+                            layer.msg(data.message);
                             setTimeout(function () {
                                 window.location = "{{url('admin/managers')}}";
                             },2000);

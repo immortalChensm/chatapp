@@ -88,6 +88,14 @@
         <script src="{{asset("adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
         <script src="{{asset("adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
         <script>
+
+            function searchKeyword(table)
+            {
+                var keyword = $(":input[name=keyword]").val();
+                var startDate = $(":input[name=startDate]").val();
+                var endDate = $(":input[name=endDate]").val();
+                table.ajax.url( '/admin/keywords/ranking/list?keyword='+keyword+"&startDate="+startDate+"&endDate="+endDate).load();
+            }
             $(function () {
                 var table = $('#datagrid').DataTable({
                     processing:true,
@@ -117,8 +125,7 @@
                 });
 
                 $("#search").on("click",function (e) {
-                    var keyword = $(":input[name=keyword]").val();
-                    table.ajax.url( '/admin/keywords/ranking/list?keyword='+keyword).load();
+                    searchKeyword(table);
                 })
 
             })
@@ -133,12 +140,12 @@
             $("#datagrid").on("click",".delete",function (e) {
 
                 var dataid = $(this).attr("data");
-                layer.confirm('您确定要删除('+$(this).attr("data-name")+")这个标签吗？", {
+                layer.confirm('您确定要删除('+$(this).attr("data-name")+")这条记录吗？", {
                     btn: ['确认','取消'] //按钮
                 }, function(){
                     $.ajax({
                         type: "delete",
-                        url: "{{url('/admin/article/tags/remove/')}}/"+dataid,
+                        url: "{{url('/admin/keywords/ranking/remove')}}/"+dataid,
                         dataType: 'json',
                         data: {
                             "_token":"{{csrf_token()}}"
@@ -147,7 +154,7 @@
                             if (data.code==1){
                                 layer.msg(data.message);
                                 setTimeout(function () {
-                                    window.location = "{{url('admin/article/tags')}}";
+                                    searchKeyword(table);
                                 },2000);
                             }else{
                                 layer.msg(data.message);

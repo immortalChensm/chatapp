@@ -100,11 +100,13 @@
                                 setTimeout(function () {
                                     window.location = "{{url('admin/login')}}";
                                 },2000);
+                            }else{
+                                layer.msg(data.message);
+                                setTimeout(function () {
+                                    window.location = "{{url('admin/managers')}}";
+                                },2000);
                             }
-                            layer.msg(data.message);
-                            setTimeout(function () {
-                                window.location = "{{url('admin/managers')}}";
-                            },2000);
+
 
                         }else if(data.code ==100)
                         {

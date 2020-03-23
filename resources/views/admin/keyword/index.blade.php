@@ -34,12 +34,12 @@
 
                                 <div class="input-group input-box input-max-box">
                                     <span class="input-group-addon"><i class="fa">起始日期</i></span>
-                                    <input type="datetime" class="form-control " name="startDate" placeholder="起始日期">
+                                    <input type="date" class="form-control " name="startDate" placeholder="起始日期">
                                 </div>
 
                                 <div class="input-group input-box input-max-box">
                                     <span class="input-group-addon"><i class="fa">终止日期</i></span>
-                                    <input type="datetime" class="form-control " name="endDate" placeholder="终止日期">
+                                    <input type="date" class="form-control " name="endDate" placeholder="终止日期">
                                 </div>
 
                                 <div class="search-box" id="search">

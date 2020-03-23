@@ -23,7 +23,6 @@ class KeywordRankingController extends Controller
         $endDate       = isset($request->endDate)?$request->endDate:0;
         $start = $request->start;
         $length = $request->length;
-        $page = (($start)*$length);
         $whereCondition = "";
         if ($keyword){
             $whereCondition = "keyword LIKE '%{$keyword}%' AND ";
@@ -37,10 +36,10 @@ class KeywordRankingController extends Controller
             $whereCondition.= "date_format(created_at,'%Y-%m-%d') < {$endDate} AND ";
         }
         if ($whereCondition){
-            $sql = "SELECT keyword,count(keyword) as ranking FROM users_search WHERE ".substr($whereCondition,0,-4)." GROUP BY keyword LIMIT $page,$length";
+            $sql = "SELECT keyword,count(keyword) as ranking FROM users_search WHERE ".substr($whereCondition,0,-4)." GROUP BY keyword LIMIT $start,$length";
             $totalSql = "SELECT COUNT(id) as page FROM users_search WHERE ".substr($whereCondition,0,-4)." GROUP BY keyword";
         }else{
-            $sql = "SELECT keyword,count(keyword) as ranking FROM users_search GROUP BY keyword LIMIT $page,$length";
+            $sql = "SELECT keyword,count(keyword) as ranking FROM users_search GROUP BY keyword LIMIT $start,$length";
             $totalSql = "SELECT COUNT(keyword) as page FROM users_search GROUP BY keyword";
         }
 

@@ -33,7 +33,7 @@ class KeywordRankingController extends Controller
         }
         if ($startDate&&!$endDate){
             $whereCondition.= "date_format(created_at,'%Y-%m-%d') > {$startDate} AND ";
-        }else{
+        }else if (!$startDate&&$endDate){
             $whereCondition.= "date_format(created_at,'%Y-%m-%d') < {$endDate} AND ";
         }
         if ($whereCondition){

@@ -1,6 +1,6 @@
 @extends("layouts.main")
 @section("title")
-    文章标签列表
+    搜索列表
     @endsection
         @section("css")
         <link rel="stylesheet" href="{{asset("adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css")}}">
@@ -11,11 +11,11 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                文章标签管理
+                搜索排行
             </h1>
             <ol class="breadcrumb">
                 <li><a href="{{url("/admin")}}"><i class="fa fa-dashboard"></i> 首页</a></li>
-                <li class="active">文章标签列表</li>
+                <li class="active">搜索列表</li>
             </ol>
         </section>
         <!-- Main content -->
@@ -28,10 +28,19 @@
                             <h3 class="box-title">
 
                                 <div class="input-group input-box input-max-box">
-                                    <span class="input-group-addon"><i class="fa">标签名称</i></span>
-                                    <input type="text" class="form-control " name="name" placeholder="标签名称">
+                                    <span class="input-group-addon"><i class="fa">关键词名称</i></span>
+                                    <input type="text" class="form-control " name="keyword" placeholder="关键词名称">
                                 </div>
 
+                                <div class="input-group input-box input-max-box">
+                                    <span class="input-group-addon"><i class="fa">起始日期</i></span>
+                                    <input type="datetime-local" class="form-control " name="startTime" placeholder="起始日期">
+                                </div>
+
+                                <div class="input-group input-box input-max-box">
+                                    <span class="input-group-addon"><i class="fa">终止日期</i></span>
+                                    <input type="datetime-local" class="form-control " name="endTime" placeholder="终止日期">
+                                </div>
 
                                 <div class="search-box" id="search">
                                     <span class="input-group-btn">
@@ -39,7 +48,6 @@
                                     </span>
                                 </div>
 
-                                <button type="button" class="btn bg-navy margin addBtn" onclick="location.href='{{url("/admin/article/tags/edit")}}'">添加标签</button>
 
 
                             </h3>
@@ -50,8 +58,8 @@
                                 <thead>
                                 <tr>
                                     <th>ID编号</th>
-                                    <th>标签名称</th>
-                                    <th>添加时间</th>
+                                    <th>关键词名称</th>
+                                    <th>搜索次数</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -60,8 +68,8 @@
                                 <tfoot>
                                 <tr>
                                     <th>ID编号</th>
-                                    <th>标签名称</th>
-                                    <th>添加时间</th>
+                                    <th>关键词名称</th>
+                                    <th>搜索次数</th>
                                     <th>操作</th>
                                 </tr>
                                 </tfoot>
@@ -86,15 +94,15 @@
                 var table = $('#datagrid').DataTable({
                     processing:true,
                     columns: [
-                        { data:"tagId",name:"tagId",orderable: true,searchable:false },
-                        { data:"name",name:"name",orderable: true,searchable:true },
-                        { data:"created_at",name:"created_at"}
+                        { data:"id",name:"id",orderable: true,searchable:false },
+                        { data:"keyword",name:"keyword",orderable: true,searchable:true },
+                        { data:"ranking",name:"ranking",orderable: true,searchable:true },
                     ],
                     columnDefs: [ {
                         "targets": 3,
                         "render": function ( data, type, row, meta ) {
 
-                            var BtnHtml = "<button type='button' class='btn  btn-success btn-sm update' data='"+row.tagId+"'>修改</button>";
+                            var BtnHtml = "";
                             BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm delete' data='"+row.tagId+"' data-name='"+row.name+"'>移除</button>";
                             return BtnHtml;
                         }
@@ -103,7 +111,7 @@
                     language:dataGridlanguage,
                     serverSide: true,
                     ajax: {
-                        url: '/admin/article/tags/list',
+                        url: '/admin/keywords/ranking/list',
                         type: 'GET'
                     },
                     "searching": false,
@@ -112,8 +120,8 @@
                 });
 
                 $("#search").on("click",function (e) {
-                    var name = $(":input[name=name]").val();
-                    table.ajax.url( '/admin/article/tags/list?name='+name).load();
+                    var keyword = $(":input[name=keyword]").val();
+                    table.ajax.url( '/admin/keywords/ranking/list?keyword='+keyword).load();
                 })
 
             })

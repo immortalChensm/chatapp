@@ -353,11 +353,20 @@ class Controller extends BaseController
         $start  = $request->query->get('start');//从多少开始
         $length = $request->query->get('length');//数据长度
         $recordsTotal = $model->count($model->primaryKey);
-        if (!in_array($model->getTable(),['permissions','roles','managers'])){
-            $data         = $model->where(function ($query) use ($searchItem,$queryCallback) {
-                $queryCallback($query,$searchItem);
+        if (!in_array($model->getTable(),['permissions','roles','managers'])) {
 
-            })->orderByRaw("created_at desc,".$orderSql);
+            if (in_array($model->getTable(), ['users_search'])){
+                $data         = $model->selectRaw("count(keyword) as ranking,keyword")->where(function ($query) use ($searchItem,$queryCallback) {
+                    $queryCallback($query,$searchItem);
+
+                })->groupBy("keyword");
+            }else{
+                $data         = $model->where(function ($query) use ($searchItem,$queryCallback) {
+                    $queryCallback($query,$searchItem);
+
+                })->orderByRaw("created_at desc,".$orderSql);
+            }
+
         }else{
             $data         = $model->where(function ($query) use ($searchItem,$queryCallback) {
                 $queryCallback($query,$searchItem);

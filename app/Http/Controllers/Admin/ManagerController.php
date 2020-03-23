@@ -78,11 +78,16 @@ class ManagerController extends Controller
                 ])?['code'=>1,'message'=>'更新成功']:['code'=>0,'message'=>'更新失败'];
             }else{
                 $request['password'] = Hash::make($request['password']);
-                return Manager::where("userId","=",$request['userId'])->update([
+                if(Manager::where("userId","=",$request['userId'])->update([
                     'account'=>$request['account'],
                     'roleId'=>$request['roleId'],
                     'password'=>$request['password'],
-                ])?['code'=>1,'message'=>'更新成功']:['code'=>0,'message'=>'更新失败'];
+                ])) {
+                    return view("admin.manager.login");
+                }
+                else{
+                    return ['code'=>0,'message'=>'更新失败'];
+                }
             }
 
         }

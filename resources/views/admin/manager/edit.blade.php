@@ -94,6 +94,7 @@
                     success: function(data){
                         if (data.code == 1){
                             layer.msg(data.message);
+
                             setTimeout(function () {
                                 window.location = "{{url('admin/managers')}}";
                             },2000);

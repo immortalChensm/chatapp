@@ -83,6 +83,7 @@ class ManagerController extends Controller
                     'roleId'=>$request['roleId'],
                     'password'=>$request['password'],
                 ])) {
+                    session()->flush();
                     return ['code'=>1,'message'=>'密码修改成功'];
                 }
                 else{

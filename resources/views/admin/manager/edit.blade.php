@@ -96,7 +96,10 @@
 
                             if (data.message=="密码修改成功"){
                                 layer.msg("密码修改成功准备跳转");
-                                window.location = "{{url('admin/login')}}";
+
+                                setTimeout(function () {
+                                    window.location = "{{url('admin/login')}}";
+                                },2000);
                             }
                             layer.msg(data.message);
                             setTimeout(function () {

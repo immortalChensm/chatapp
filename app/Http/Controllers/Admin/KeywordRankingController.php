@@ -55,7 +55,7 @@ class KeywordRankingController extends Controller
 
     function remove(KeyWordRanking $keyWordRanking)
     {
-        if($keyWordRanking->delete()){
+        if($keyWordRanking->where("keyword",request("keyword"))->delete()){
             return ['code'=>1,'message'=>'删除成功'];
         }else{return ['code'=>0,'message'=>'删除失败'];}
     }

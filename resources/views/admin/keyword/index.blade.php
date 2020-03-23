@@ -108,7 +108,7 @@
                         "render": function ( data, type, row, meta ) {
 
                             var BtnHtml = "";
-                            BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm delete' data='"+row.tagId+"' data-name='"+row.name+"'>移除</button>";
+                            BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm delete' data='"+row.keyword+"' data-name='"+row.keyword+"'>移除</button>";
                             return BtnHtml;
                         }
                     } ],
@@ -139,13 +139,13 @@
             //移除操作
             $("#datagrid").on("click",".delete",function (e) {
 
-                var dataid = $(this).attr("data");
-                layer.confirm('您确定要删除('+$(this).attr("data-name")+")这条记录吗？", {
+                var keyword = $(this).attr("data");
+                layer.confirm('您确定要删除('+$(this).attr("data-name")+")这条关键词的所有记录吗？", {
                     btn: ['确认','取消'] //按钮
                 }, function(){
                     $.ajax({
                         type: "delete",
-                        url: "{{url('/admin/keywords/ranking/remove')}}/"+dataid,
+                        url: "{{url('/admin/keywords/ranking/remove')}}/"+keyword,
                         dataType: 'json',
                         data: {
                             "_token":"{{csrf_token()}}"

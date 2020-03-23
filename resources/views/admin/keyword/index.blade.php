@@ -127,7 +127,39 @@
                 $("#search").on("click",function (e) {
                     searchKeyword(table);
                 })
+                //移除操作
+                $("#datagrid").on("click",".delete",function (e) {
 
+                    var keyword = $(this).attr("data");
+                    layer.confirm('您确定要删除('+$(this).attr("data-name")+")这条关键词的所有记录吗？", {
+                        btn: ['确认','取消'] //按钮
+                    }, function(){
+                        $.ajax({
+                            type: "delete",
+                            url: "{{url('/admin/keywords/ranking/remove')}}/"+keyword,
+                            dataType: 'json',
+                            data: {
+                                "_token":"{{csrf_token()}}"
+                            },
+                            success: function(data){
+                                if (data.code==1){
+                                    layer.msg(data.message);
+                                    setTimeout(function () {
+                                        searchKeyword(table);
+                                    },2000);
+                                }else{
+                                    layer.msg(data.message);
+                                }
+                            },
+                            error:function(data){
+
+                            }
+                        });
+
+                    }, function(){
+
+                    });
+                });
             })
 
 
@@ -136,39 +168,7 @@
                location.href = "/admin/article/tags/edit/"+$(this).attr("data");
             });
 
-            //移除操作
-            $("#datagrid").on("click",".delete",function (e) {
 
-                var keyword = $(this).attr("data");
-                layer.confirm('您确定要删除('+$(this).attr("data-name")+")这条关键词的所有记录吗？", {
-                    btn: ['确认','取消'] //按钮
-                }, function(){
-                    $.ajax({
-                        type: "delete",
-                        url: "{{url('/admin/keywords/ranking/remove')}}/"+keyword,
-                        dataType: 'json',
-                        data: {
-                            "_token":"{{csrf_token()}}"
-                        },
-                        success: function(data){
-                            if (data.code==1){
-                                layer.msg(data.message);
-                                setTimeout(function () {
-                                    searchKeyword(table);
-                                },2000);
-                            }else{
-                                layer.msg(data.message);
-                            }
-                        },
-                        error:function(data){
-
-                        }
-                    });
-
-                }, function(){
-
-                });
-            });
 
 
         </script>

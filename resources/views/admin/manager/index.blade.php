@@ -103,7 +103,9 @@
                         "render": function ( data, type, row, meta ) {
 
                             var BtnHtml = "<button type='button' class='btn  btn-success btn-sm manager-update' data='"+row.userId+"'>修改</button>";
-                            BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm manager-delete' data='"+row.userId+"' data-account='"+row.account+"'>移除</button>";
+                            if (row.userId!=1){
+                                BtnHtml+= "  <button type='button' class='btn  btn-danger btn-sm manager-delete' data='"+row.userId+"' data-account='"+row.account+"'>移除</button>";
+                            }
                             return BtnHtml;
                         }
                     } ],

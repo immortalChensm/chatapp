@@ -146,7 +146,10 @@ class ManagerController extends Controller
 
     function removeManager(Manager $manager)
     {
-        return $this->removeModel($manager);
+        if ($manager->userId!=1){
+            return $this->removeModel($manager);
+        }
+
     }
 
     function top()

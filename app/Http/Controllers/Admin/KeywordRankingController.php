@@ -23,7 +23,7 @@ class KeywordRankingController extends Controller
         $endDate       = isset($request->endDate)?$request->endDate:0;
         $start = $request->start;
         $length = $request->length;
-        $page = (($start+1)*$length);
+        $page = (($start)*$length);
         $whereCondition = "";
         if ($keyword){
             $whereCondition = "keyword LIKE '%{$keyword}%' AND ";

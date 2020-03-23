@@ -28,12 +28,12 @@ class KeywordRankingController extends Controller
             $whereCondition = "keyword LIKE '%{$keyword}%' AND ";
         }
         if ($startDate&&$endDate){
-            $whereCondition.= "date_format(created_at,'%Y-%m-%d') BETWEEN {$startDate} AND $endDate AND ";
+            $whereCondition.= "date_format(created_at,'%Y-%m-%d') BETWEEN '{$startDate}'' AND '$endDate' AND ";
         }
         if ($startDate&&!$endDate){
-            $whereCondition.= "date_format(created_at,'%Y-%m-%d') > {$startDate} AND ";
+            $whereCondition.= "date_format(created_at,'%Y-%m-%d') > '{$startDate}' AND ";
         }else if (!$startDate&&$endDate){
-            $whereCondition.= "date_format(created_at,'%Y-%m-%d') < {$endDate} AND ";
+            $whereCondition.= "date_format(created_at,'%Y-%m-%d') < '{$endDate}' AND ";
         }
         if ($whereCondition){
             $sql = "SELECT keyword,count(keyword) as ranking FROM users_search WHERE ".substr($whereCondition,0,-4)." GROUP BY keyword LIMIT $start,$length";
@@ -42,7 +42,7 @@ class KeywordRankingController extends Controller
             $sql = "SELECT keyword,count(keyword) as ranking FROM users_search GROUP BY keyword LIMIT $start,$length";
             $totalSql = "SELECT COUNT(keyword) as page FROM users_search GROUP BY keyword";
         }
-        echo $sql;
+       
         $data = DB::select($sql);
         $count = DB::select($totalSql);
         return response()->json([

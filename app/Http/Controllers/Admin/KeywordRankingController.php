@@ -29,12 +29,12 @@ class KeywordRankingController extends Controller
             $whereCondition = "keyword LIKE '%{$keyword}%' AND ";
         }
         if ($startDate&&$endDate){
-            $whereCondition.= "date_format(created_at) BETWEEN {$startDate} AND $endDate AND ";
+            $whereCondition.= "date_format(created_at,'%Y-%m-%d') BETWEEN {$startDate} AND $endDate AND ";
         }
         if ($startDate&&!$endDate){
-            $whereCondition.= "date_format(created_at) > {$startDate} AND ";
+            $whereCondition.= "date_format(created_at,'%Y-%m-%d') > {$startDate} AND ";
         }else{
-            $whereCondition.= "date_format(created_at) < {$endDate} AND ";
+            $whereCondition.= "date_format(created_at,'%Y-%m-%d') < {$endDate} AND ";
         }
         if ($whereCondition){
             $sql = "SELECT keyword,count(keyword) as ranking FROM users_search WHERE ".substr($whereCondition,0,-4)." LIMIT $page,$length";

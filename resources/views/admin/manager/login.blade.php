@@ -95,7 +95,8 @@
             increaseArea: '20%' /* optional */
         });
 
-        $(".login").on("click",function (e) {
+        function loginSubmit()
+        {
             if ($("#account").val().length==''){
                 layer.msg("请填写登录账号");
                 $("#account").focus();
@@ -132,6 +133,15 @@
 
                 }
             });
+        }
+        $(document).keydown(function (e) {
+            if(e.keyCode ==13){
+                loginSubmit();
+            }
+        });
+
+        $(".login").on("click",function (e) {
+            loginSubmit();
         });
     });
 </script>
